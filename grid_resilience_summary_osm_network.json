@@ -1,0 +1,4899 @@
+{
+  "version": "1.0",
+  "type": "100m_grid_resilience_summary",
+  "method": "For each route, remove its AI contribution from each 100m grid cell and compute LTRS = disrupted_AI / baseline_AI.",
+  "coverage": {
+    "grid_count": 159451,
+    "baseline_positive_grid": 122315,
+    "routes_count": 543
+  },
+  "single_route_impacts": [
+    {
+      "route": "UL25",
+      "affected_grid": 2763,
+      "critical_grid": 295,
+      "high_or_critical_grid": 1075,
+      "lost_ai_sum": 11449.912,
+      "mean_ltrs": 0.7363,
+      "mean_ai_loss_ratio": 0.2637
+    },
+    {
+      "route": "R2",
+      "affected_grid": 1739,
+      "critical_grid": 542,
+      "high_or_critical_grid": 1033,
+      "lost_ai_sum": 7603.952,
+      "mean_ltrs": 0.6218,
+      "mean_ai_loss_ratio": 0.3782
+    },
+    {
+      "route": "358_Special/School",
+      "affected_grid": 3289,
+      "critical_grid": 453,
+      "high_or_critical_grid": 990,
+      "lost_ai_sum": 13463.679,
+      "mean_ltrs": 0.7745,
+      "mean_ai_loss_ratio": 0.2255
+    },
+    {
+      "route": "99",
+      "affected_grid": 1552,
+      "critical_grid": 697,
+      "high_or_critical_grid": 916,
+      "lost_ai_sum": 6084.453,
+      "mean_ltrs": 0.6634,
+      "mean_ai_loss_ratio": 0.3366
+    },
+    {
+      "route": "401_Special/School",
+      "affected_grid": 1518,
+      "critical_grid": 307,
+      "high_or_critical_grid": 862,
+      "lost_ai_sum": 7165.853,
+      "mean_ltrs": 0.6404,
+      "mean_ai_loss_ratio": 0.3596
+    },
+    {
+      "route": "638_Special/School",
+      "affected_grid": 2191,
+      "critical_grid": 302,
+      "high_or_critical_grid": 806,
+      "lost_ai_sum": 9693.534,
+      "mean_ltrs": 0.7354,
+      "mean_ai_loss_ratio": 0.2646
+    },
+    {
+      "route": "SL2",
+      "affected_grid": 2578,
+      "critical_grid": 325,
+      "high_or_critical_grid": 789,
+      "lost_ai_sum": 9724.321,
+      "mean_ltrs": 0.8077,
+      "mean_ai_loss_ratio": 0.1923
+    },
+    {
+      "route": "UL86",
+      "affected_grid": 2355,
+      "critical_grid": 283,
+      "high_or_critical_grid": 775,
+      "lost_ai_sum": 8829.767,
+      "mean_ltrs": 0.7754,
+      "mean_ai_loss_ratio": 0.2246
+    },
+    {
+      "route": "S1",
+      "affected_grid": 1926,
+      "critical_grid": 312,
+      "high_or_critical_grid": 751,
+      "lost_ai_sum": 8387.547,
+      "mean_ltrs": 0.7002,
+      "mean_ai_loss_ratio": 0.2998
+    },
+    {
+      "route": "B13",
+      "affected_grid": 1188,
+      "critical_grid": 268,
+      "high_or_critical_grid": 683,
+      "lost_ai_sum": 5430.711,
+      "mean_ltrs": 0.6668,
+      "mean_ai_loss_ratio": 0.3332
+    },
+    {
+      "route": "B15",
+      "affected_grid": 1894,
+      "critical_grid": 305,
+      "high_or_critical_grid": 642,
+      "lost_ai_sum": 8492.607,
+      "mean_ltrs": 0.7144,
+      "mean_ai_loss_ratio": 0.2856
+    },
+    {
+      "route": "313_Special/School",
+      "affected_grid": 1226,
+      "critical_grid": 280,
+      "high_or_critical_grid": 639,
+      "lost_ai_sum": 5247.308,
+      "mean_ltrs": 0.7573,
+      "mean_ai_loss_ratio": 0.2427
+    },
+    {
+      "route": "W16",
+      "affected_grid": 1479,
+      "critical_grid": 371,
+      "high_or_critical_grid": 597,
+      "lost_ai_sum": 5843.542,
+      "mean_ltrs": 0.738,
+      "mean_ai_loss_ratio": 0.262
+    },
+    {
+      "route": "89",
+      "affected_grid": 1678,
+      "critical_grid": 239,
+      "high_or_critical_grid": 577,
+      "lost_ai_sum": 5919.163,
+      "mean_ltrs": 0.7707,
+      "mean_ai_loss_ratio": 0.2293
+    },
+    {
+      "route": "U1",
+      "affected_grid": 1600,
+      "critical_grid": 296,
+      "high_or_critical_grid": 574,
+      "lost_ai_sum": 5881.119,
+      "mean_ltrs": 0.7608,
+      "mean_ai_loss_ratio": 0.2392
+    },
+    {
+      "route": "UL19",
+      "affected_grid": 2817,
+      "critical_grid": 202,
+      "high_or_critical_grid": 573,
+      "lost_ai_sum": 10021.066,
+      "mean_ltrs": 0.8553,
+      "mean_ai_loss_ratio": 0.1447
+    },
+    {
+      "route": "64",
+      "affected_grid": 1403,
+      "critical_grid": 168,
+      "high_or_critical_grid": 567,
+      "lost_ai_sum": 5910.451,
+      "mean_ltrs": 0.8155,
+      "mean_ai_loss_ratio": 0.1845
+    },
+    {
+      "route": "R68",
+      "affected_grid": 1798,
+      "critical_grid": 218,
+      "high_or_critical_grid": 556,
+      "lost_ai_sum": 7273.227,
+      "mean_ltrs": 0.7776,
+      "mean_ai_loss_ratio": 0.2224
+    },
+    {
+      "route": "111",
+      "affected_grid": 1987,
+      "critical_grid": 183,
+      "high_or_critical_grid": 550,
+      "lost_ai_sum": 7114.107,
+      "mean_ltrs": 0.7931,
+      "mean_ai_loss_ratio": 0.2069
+    },
+    {
+      "route": "UL15",
+      "affected_grid": 1583,
+      "critical_grid": 148,
+      "high_or_critical_grid": 543,
+      "lost_ai_sum": 5377.798,
+      "mean_ltrs": 0.8168,
+      "mean_ai_loss_ratio": 0.1832
+    },
+    {
+      "route": "191",
+      "affected_grid": 1408,
+      "critical_grid": 411,
+      "high_or_critical_grid": 538,
+      "lost_ai_sum": 5595.56,
+      "mean_ltrs": 0.7994,
+      "mean_ai_loss_ratio": 0.2006
+    },
+    {
+      "route": "K2",
+      "affected_grid": 1455,
+      "critical_grid": 363,
+      "high_or_critical_grid": 531,
+      "lost_ai_sum": 6065.505,
+      "mean_ltrs": 0.7709,
+      "mean_ai_loss_ratio": 0.2291
+    },
+    {
+      "route": "R70",
+      "affected_grid": 1597,
+      "critical_grid": 220,
+      "high_or_critical_grid": 523,
+      "lost_ai_sum": 6302.756,
+      "mean_ltrs": 0.7914,
+      "mean_ai_loss_ratio": 0.2086
+    },
+    {
+      "route": "U5",
+      "affected_grid": 1749,
+      "critical_grid": 171,
+      "high_or_critical_grid": 523,
+      "lost_ai_sum": 6302.753,
+      "mean_ltrs": 0.7843,
+      "mean_ai_loss_ratio": 0.2157
+    },
+    {
+      "route": "162",
+      "affected_grid": 1746,
+      "critical_grid": 337,
+      "high_or_critical_grid": 517,
+      "lost_ai_sum": 6446.31,
+      "mean_ltrs": 0.8109,
+      "mean_ai_loss_ratio": 0.1891
+    },
+    {
+      "route": "H12",
+      "affected_grid": 1354,
+      "critical_grid": 369,
+      "high_or_critical_grid": 511,
+      "lost_ai_sum": 4718.446,
+      "mean_ltrs": 0.719,
+      "mean_ai_loss_ratio": 0.281
+    },
+    {
+      "route": "127",
+      "affected_grid": 1375,
+      "critical_grid": 336,
+      "high_or_critical_grid": 508,
+      "lost_ai_sum": 4994.402,
+      "mean_ltrs": 0.7346,
+      "mean_ai_loss_ratio": 0.2654
+    },
+    {
+      "route": "W13",
+      "affected_grid": 1503,
+      "critical_grid": 264,
+      "high_or_critical_grid": 507,
+      "lost_ai_sum": 6146.348,
+      "mean_ltrs": 0.7404,
+      "mean_ai_loss_ratio": 0.2596
+    },
+    {
+      "route": "221",
+      "affected_grid": 1495,
+      "critical_grid": 375,
+      "high_or_critical_grid": 505,
+      "lost_ai_sum": 5232.76,
+      "mean_ltrs": 0.8245,
+      "mean_ai_loss_ratio": 0.1755
+    },
+    {
+      "route": "U3",
+      "affected_grid": 1757,
+      "critical_grid": 267,
+      "high_or_critical_grid": 501,
+      "lost_ai_sum": 6516.144,
+      "mean_ltrs": 0.7611,
+      "mean_ai_loss_ratio": 0.2389
+    },
+    {
+      "route": "174",
+      "affected_grid": 1545,
+      "critical_grid": 165,
+      "high_or_critical_grid": 500,
+      "lost_ai_sum": 5025.788,
+      "mean_ltrs": 0.8138,
+      "mean_ai_loss_ratio": 0.1862
+    },
+    {
+      "route": "EL1",
+      "affected_grid": 1133,
+      "critical_grid": 245,
+      "high_or_critical_grid": 482,
+      "lost_ai_sum": 4960.472,
+      "mean_ltrs": 0.8,
+      "mean_ai_loss_ratio": 0.2
+    },
+    {
+      "route": "362",
+      "affected_grid": 937,
+      "critical_grid": 15,
+      "high_or_critical_grid": 476,
+      "lost_ai_sum": 3677.179,
+      "mean_ltrs": 0.6947,
+      "mean_ai_loss_ratio": 0.3053
+    },
+    {
+      "route": "UL5",
+      "affected_grid": 2181,
+      "critical_grid": 0,
+      "high_or_critical_grid": 470,
+      "lost_ai_sum": 8078.772,
+      "mean_ltrs": 0.8474,
+      "mean_ai_loss_ratio": 0.1526
+    },
+    {
+      "route": "H28",
+      "affected_grid": 1314,
+      "critical_grid": 259,
+      "high_or_critical_grid": 465,
+      "lost_ai_sum": 5047.529,
+      "mean_ltrs": 0.7793,
+      "mean_ai_loss_ratio": 0.2207
+    },
+    {
+      "route": "S2",
+      "affected_grid": 1160,
+      "critical_grid": 306,
+      "high_or_critical_grid": 458,
+      "lost_ai_sum": 4467.64,
+      "mean_ltrs": 0.7255,
+      "mean_ai_loss_ratio": 0.2745
+    },
+    {
+      "route": "146",
+      "affected_grid": 876,
+      "critical_grid": 245,
+      "high_or_critical_grid": 458,
+      "lost_ai_sum": 3399.238,
+      "mean_ltrs": 0.7882,
+      "mean_ai_loss_ratio": 0.2118
+    },
+    {
+      "route": "107",
+      "affected_grid": 973,
+      "critical_grid": 371,
+      "high_or_critical_grid": 450,
+      "lost_ai_sum": 3280.784,
+      "mean_ltrs": 0.769,
+      "mean_ai_loss_ratio": 0.231
+    },
+    {
+      "route": "P4",
+      "affected_grid": 1815,
+      "critical_grid": 194,
+      "high_or_critical_grid": 446,
+      "lost_ai_sum": 7522.864,
+      "mean_ltrs": 0.8124,
+      "mean_ai_loss_ratio": 0.1876
+    },
+    {
+      "route": "154",
+      "affected_grid": 1423,
+      "critical_grid": 304,
+      "high_or_critical_grid": 442,
+      "lost_ai_sum": 4749.532,
+      "mean_ltrs": 0.8461,
+      "mean_ai_loss_ratio": 0.1539
+    },
+    {
+      "route": "165",
+      "affected_grid": 1462,
+      "critical_grid": 2,
+      "high_or_critical_grid": 438,
+      "lost_ai_sum": 5680.839,
+      "mean_ltrs": 0.8122,
+      "mean_ai_loss_ratio": 0.1878
+    },
+    {
+      "route": "UL16",
+      "affected_grid": 2343,
+      "critical_grid": 135,
+      "high_or_critical_grid": 432,
+      "lost_ai_sum": 9603.171,
+      "mean_ltrs": 0.8399,
+      "mean_ai_loss_ratio": 0.1601
+    },
+    {
+      "route": "W3",
+      "affected_grid": 1654,
+      "critical_grid": 191,
+      "high_or_critical_grid": 426,
+      "lost_ai_sum": 6187.621,
+      "mean_ltrs": 0.8421,
+      "mean_ai_loss_ratio": 0.1579
+    },
+    {
+      "route": "233",
+      "affected_grid": 848,
+      "critical_grid": 270,
+      "high_or_critical_grid": 425,
+      "lost_ai_sum": 3215.24,
+      "mean_ltrs": 0.7337,
+      "mean_ai_loss_ratio": 0.2663
+    },
+    {
+      "route": "131",
+      "affected_grid": 1228,
+      "critical_grid": 336,
+      "high_or_critical_grid": 422,
+      "lost_ai_sum": 4556.7,
+      "mean_ltrs": 0.8177,
+      "mean_ai_loss_ratio": 0.1823
+    },
+    {
+      "route": "282",
+      "affected_grid": 1676,
+      "critical_grid": 342,
+      "high_or_critical_grid": 420,
+      "lost_ai_sum": 5334.828,
+      "mean_ltrs": 0.843,
+      "mean_ai_loss_ratio": 0.157
+    },
+    {
+      "route": "371",
+      "affected_grid": 1042,
+      "critical_grid": 306,
+      "high_or_critical_grid": 418,
+      "lost_ai_sum": 3795.679,
+      "mean_ltrs": 0.8181,
+      "mean_ai_loss_ratio": 0.1819
+    },
+    {
+      "route": "60",
+      "affected_grid": 1581,
+      "critical_grid": 168,
+      "high_or_critical_grid": 413,
+      "lost_ai_sum": 4680.445,
+      "mean_ltrs": 0.8664,
+      "mean_ai_loss_ratio": 0.1336
+    },
+    {
+      "route": "UL26",
+      "affected_grid": 1640,
+      "critical_grid": 117,
+      "high_or_critical_grid": 413,
+      "lost_ai_sum": 6124.974,
+      "mean_ltrs": 0.8696,
+      "mean_ai_loss_ratio": 0.1304
+    },
+    {
+      "route": "184",
+      "affected_grid": 1430,
+      "critical_grid": 311,
+      "high_or_critical_grid": 404,
+      "lost_ai_sum": 4820.946,
+      "mean_ltrs": 0.8133,
+      "mean_ai_loss_ratio": 0.1867
+    },
+    {
+      "route": "UL17",
+      "affected_grid": 2557,
+      "critical_grid": 12,
+      "high_or_critical_grid": 394,
+      "lost_ai_sum": 9314.285,
+      "mean_ltrs": 0.8273,
+      "mean_ai_loss_ratio": 0.1727
+    },
+    {
+      "route": "313",
+      "affected_grid": 1287,
+      "critical_grid": 124,
+      "high_or_critical_grid": 393,
+      "lost_ai_sum": 4481.338,
+      "mean_ltrs": 0.8164,
+      "mean_ai_loss_ratio": 0.1836
+    },
+    {
+      "route": "403",
+      "affected_grid": 714,
+      "critical_grid": 242,
+      "high_or_critical_grid": 389,
+      "lost_ai_sum": 2685.866,
+      "mean_ltrs": 0.857,
+      "mean_ai_loss_ratio": 0.143
+    },
+    {
+      "route": "K1",
+      "affected_grid": 1590,
+      "critical_grid": 76,
+      "high_or_critical_grid": 389,
+      "lost_ai_sum": 7196.297,
+      "mean_ltrs": 0.7705,
+      "mean_ai_loss_ratio": 0.2295
+    },
+    {
+      "route": "UL24",
+      "affected_grid": 2544,
+      "critical_grid": 82,
+      "high_or_critical_grid": 383,
+      "lost_ai_sum": 8346.33,
+      "mean_ltrs": 0.861,
+      "mean_ai_loss_ratio": 0.139
+    },
+    {
+      "route": "116",
+      "affected_grid": 703,
+      "critical_grid": 252,
+      "high_or_critical_grid": 381,
+      "lost_ai_sum": 2684.892,
+      "mean_ltrs": 0.7813,
+      "mean_ai_loss_ratio": 0.2187
+    },
+    {
+      "route": "413",
+      "affected_grid": 853,
+      "critical_grid": 193,
+      "high_or_critical_grid": 381,
+      "lost_ai_sum": 2962.965,
+      "mean_ltrs": 0.7339,
+      "mean_ai_loss_ratio": 0.2661
+    },
+    {
+      "route": "208",
+      "affected_grid": 1769,
+      "critical_grid": 308,
+      "high_or_critical_grid": 376,
+      "lost_ai_sum": 5397.603,
+      "mean_ltrs": 0.8521,
+      "mean_ai_loss_ratio": 0.1479
+    },
+    {
+      "route": "51",
+      "affected_grid": 1742,
+      "critical_grid": 330,
+      "high_or_critical_grid": 372,
+      "lost_ai_sum": 4857.059,
+      "mean_ltrs": 0.807,
+      "mean_ai_loss_ratio": 0.193
+    },
+    {
+      "route": "336",
+      "affected_grid": 1354,
+      "critical_grid": 237,
+      "high_or_critical_grid": 371,
+      "lost_ai_sum": 5178.233,
+      "mean_ltrs": 0.8096,
+      "mean_ai_loss_ratio": 0.1904
+    },
+    {
+      "route": "656",
+      "affected_grid": 755,
+      "critical_grid": 29,
+      "high_or_critical_grid": 370,
+      "lost_ai_sum": 2719.126,
+      "mean_ltrs": 0.6811,
+      "mean_ai_loss_ratio": 0.3189
+    },
+    {
+      "route": "407",
+      "affected_grid": 1342,
+      "critical_grid": 247,
+      "high_or_critical_grid": 367,
+      "lost_ai_sum": 4058.919,
+      "mean_ltrs": 0.8747,
+      "mean_ai_loss_ratio": 0.1253
+    },
+    {
+      "route": "SL1",
+      "affected_grid": 2300,
+      "critical_grid": 121,
+      "high_or_critical_grid": 366,
+      "lost_ai_sum": 7820.051,
+      "mean_ltrs": 0.8393,
+      "mean_ai_loss_ratio": 0.1607
+    },
+    {
+      "route": "286",
+      "affected_grid": 1325,
+      "critical_grid": 5,
+      "high_or_critical_grid": 365,
+      "lost_ai_sum": 4721.827,
+      "mean_ltrs": 0.7937,
+      "mean_ai_loss_ratio": 0.2063
+    },
+    {
+      "route": "UL55",
+      "affected_grid": 1775,
+      "critical_grid": 78,
+      "high_or_critical_grid": 362,
+      "lost_ai_sum": 7244.005,
+      "mean_ltrs": 0.8125,
+      "mean_ai_loss_ratio": 0.1875
+    },
+    {
+      "route": "613",
+      "affected_grid": 1123,
+      "critical_grid": 75,
+      "high_or_critical_grid": 361,
+      "lost_ai_sum": 4524.085,
+      "mean_ltrs": 0.7463,
+      "mean_ai_loss_ratio": 0.2537
+    },
+    {
+      "route": "158",
+      "affected_grid": 1129,
+      "critical_grid": 181,
+      "high_or_critical_grid": 359,
+      "lost_ai_sum": 4453.737,
+      "mean_ltrs": 0.8044,
+      "mean_ai_loss_ratio": 0.1956
+    },
+    {
+      "route": "222",
+      "affected_grid": 1409,
+      "critical_grid": 190,
+      "high_or_critical_grid": 356,
+      "lost_ai_sum": 4697.236,
+      "mean_ltrs": 0.8269,
+      "mean_ai_loss_ratio": 0.1731
+    },
+    {
+      "route": "350",
+      "affected_grid": 901,
+      "critical_grid": 118,
+      "high_or_critical_grid": 355,
+      "lost_ai_sum": 3300.936,
+      "mean_ltrs": 0.7677,
+      "mean_ai_loss_ratio": 0.2323
+    },
+    {
+      "route": "R9_Special/School",
+      "affected_grid": 610,
+      "critical_grid": 332,
+      "high_or_critical_grid": 353,
+      "lost_ai_sum": 2350.193,
+      "mean_ltrs": 0.663,
+      "mean_ai_loss_ratio": 0.337
+    },
+    {
+      "route": "110_Special/School",
+      "affected_grid": 2705,
+      "critical_grid": 112,
+      "high_or_critical_grid": 351,
+      "lost_ai_sum": 8610.241,
+      "mean_ltrs": 0.8898,
+      "mean_ai_loss_ratio": 0.1102
+    },
+    {
+      "route": "114",
+      "affected_grid": 1771,
+      "critical_grid": 152,
+      "high_or_critical_grid": 349,
+      "lost_ai_sum": 6151.118,
+      "mean_ltrs": 0.8229,
+      "mean_ai_loss_ratio": 0.1771
+    },
+    {
+      "route": "SL5",
+      "affected_grid": 2107,
+      "critical_grid": 147,
+      "high_or_critical_grid": 346,
+      "lost_ai_sum": 6408.286,
+      "mean_ltrs": 0.88,
+      "mean_ai_loss_ratio": 0.12
+    },
+    {
+      "route": "169",
+      "affected_grid": 953,
+      "critical_grid": 225,
+      "high_or_critical_grid": 341,
+      "lost_ai_sum": 3805.672,
+      "mean_ltrs": 0.825,
+      "mean_ai_loss_ratio": 0.175
+    },
+    {
+      "route": "157",
+      "affected_grid": 1684,
+      "critical_grid": 11,
+      "high_or_critical_grid": 340,
+      "lost_ai_sum": 5928.539,
+      "mean_ltrs": 0.8528,
+      "mean_ai_loss_ratio": 0.1472
+    },
+    {
+      "route": "T3",
+      "affected_grid": 2593,
+      "critical_grid": 137,
+      "high_or_critical_grid": 329,
+      "lost_ai_sum": 9273.36,
+      "mean_ltrs": 0.8494,
+      "mean_ai_loss_ratio": 0.1506
+    },
+    {
+      "route": "105",
+      "affected_grid": 1313,
+      "critical_grid": 52,
+      "high_or_critical_grid": 329,
+      "lost_ai_sum": 4574.009,
+      "mean_ltrs": 0.8199,
+      "mean_ai_loss_ratio": 0.1801
+    },
+    {
+      "route": "496",
+      "affected_grid": 987,
+      "critical_grid": 88,
+      "high_or_critical_grid": 321,
+      "lost_ai_sum": 3477.787,
+      "mean_ltrs": 0.8347,
+      "mean_ai_loss_ratio": 0.1653
+    },
+    {
+      "route": "422",
+      "affected_grid": 1712,
+      "critical_grid": 197,
+      "high_or_critical_grid": 319,
+      "lost_ai_sum": 5430.128,
+      "mean_ltrs": 0.8094,
+      "mean_ai_loss_ratio": 0.1906
+    },
+    {
+      "route": "248",
+      "affected_grid": 1001,
+      "critical_grid": 281,
+      "high_or_critical_grid": 315,
+      "lost_ai_sum": 3509.78,
+      "mean_ltrs": 0.8273,
+      "mean_ai_loss_ratio": 0.1727
+    },
+    {
+      "route": "R10",
+      "affected_grid": 659,
+      "critical_grid": 0,
+      "high_or_critical_grid": 311,
+      "lost_ai_sum": 2430.626,
+      "mean_ltrs": 0.7134,
+      "mean_ai_loss_ratio": 0.2866
+    },
+    {
+      "route": "U4",
+      "affected_grid": 1485,
+      "critical_grid": 93,
+      "high_or_critical_grid": 310,
+      "lost_ai_sum": 5179.088,
+      "mean_ltrs": 0.817,
+      "mean_ai_loss_ratio": 0.183
+    },
+    {
+      "route": "UL57",
+      "affected_grid": 1820,
+      "critical_grid": 89,
+      "high_or_critical_grid": 305,
+      "lost_ai_sum": 5085.725,
+      "mean_ltrs": 0.8975,
+      "mean_ai_loss_ratio": 0.1025
+    },
+    {
+      "route": "UL35",
+      "affected_grid": 1303,
+      "critical_grid": 118,
+      "high_or_critical_grid": 304,
+      "lost_ai_sum": 4722.647,
+      "mean_ltrs": 0.8742,
+      "mean_ai_loss_ratio": 0.1258
+    },
+    {
+      "route": "N65",
+      "affected_grid": 1977,
+      "critical_grid": 0,
+      "high_or_critical_grid": 302,
+      "lost_ai_sum": 7440.684,
+      "mean_ltrs": 0.8592,
+      "mean_ai_loss_ratio": 0.1408
+    },
+    {
+      "route": "380",
+      "affected_grid": 1210,
+      "critical_grid": 140,
+      "high_or_critical_grid": 297,
+      "lost_ai_sum": 4107.191,
+      "mean_ltrs": 0.825,
+      "mean_ai_loss_ratio": 0.175
+    },
+    {
+      "route": "UL41",
+      "affected_grid": 1620,
+      "critical_grid": 80,
+      "high_or_critical_grid": 295,
+      "lost_ai_sum": 6526.018,
+      "mean_ltrs": 0.8055,
+      "mean_ai_loss_ratio": 0.1945
+    },
+    {
+      "route": "319",
+      "affected_grid": 1175,
+      "critical_grid": 168,
+      "high_or_critical_grid": 290,
+      "lost_ai_sum": 4067.284,
+      "mean_ltrs": 0.8511,
+      "mean_ai_loss_ratio": 0.1489
+    },
+    {
+      "route": "193",
+      "affected_grid": 1012,
+      "critical_grid": 132,
+      "high_or_critical_grid": 283,
+      "lost_ai_sum": 3502.272,
+      "mean_ltrs": 0.8466,
+      "mean_ai_loss_ratio": 0.1534
+    },
+    {
+      "route": "356",
+      "affected_grid": 1233,
+      "critical_grid": 55,
+      "high_or_critical_grid": 278,
+      "lost_ai_sum": 4858.432,
+      "mean_ltrs": 0.7807,
+      "mean_ai_loss_ratio": 0.2193
+    },
+    {
+      "route": "625",
+      "affected_grid": 1071,
+      "critical_grid": 4,
+      "high_or_critical_grid": 277,
+      "lost_ai_sum": 3721.532,
+      "mean_ltrs": 0.7446,
+      "mean_ai_loss_ratio": 0.2554
+    },
+    {
+      "route": "434",
+      "affected_grid": 607,
+      "critical_grid": 200,
+      "high_or_critical_grid": 274,
+      "lost_ai_sum": 2185.491,
+      "mean_ltrs": 0.641,
+      "mean_ai_loss_ratio": 0.359
+    },
+    {
+      "route": "E3",
+      "affected_grid": 2091,
+      "critical_grid": 49,
+      "high_or_critical_grid": 274,
+      "lost_ai_sum": 7368.003,
+      "mean_ltrs": 0.887,
+      "mean_ai_loss_ratio": 0.113
+    },
+    {
+      "route": "U7",
+      "affected_grid": 1495,
+      "critical_grid": 94,
+      "high_or_critical_grid": 268,
+      "lost_ai_sum": 5105.903,
+      "mean_ltrs": 0.8275,
+      "mean_ai_loss_ratio": 0.1725
+    },
+    {
+      "route": "N113",
+      "affected_grid": 1905,
+      "critical_grid": 0,
+      "high_or_critical_grid": 268,
+      "lost_ai_sum": 6022.773,
+      "mean_ltrs": 0.9062,
+      "mean_ai_loss_ratio": 0.0938
+    },
+    {
+      "route": "N29",
+      "affected_grid": 1948,
+      "critical_grid": 0,
+      "high_or_critical_grid": 259,
+      "lost_ai_sum": 5696.234,
+      "mean_ltrs": 0.9214,
+      "mean_ai_loss_ratio": 0.0786
+    },
+    {
+      "route": "386",
+      "affected_grid": 1310,
+      "critical_grid": 151,
+      "high_or_critical_grid": 257,
+      "lost_ai_sum": 4319.649,
+      "mean_ltrs": 0.7972,
+      "mean_ai_loss_ratio": 0.2028
+    },
+    {
+      "route": "161",
+      "affected_grid": 1544,
+      "critical_grid": 0,
+      "high_or_critical_grid": 255,
+      "lost_ai_sum": 4925.477,
+      "mean_ltrs": 0.8134,
+      "mean_ai_loss_ratio": 0.1866
+    },
+    {
+      "route": "UL27",
+      "affected_grid": 1428,
+      "critical_grid": 94,
+      "high_or_critical_grid": 253,
+      "lost_ai_sum": 5643.244,
+      "mean_ltrs": 0.824,
+      "mean_ai_loss_ratio": 0.176
+    },
+    {
+      "route": "246",
+      "affected_grid": 1342,
+      "critical_grid": 196,
+      "high_or_critical_grid": 252,
+      "lost_ai_sum": 5061.773,
+      "mean_ltrs": 0.7978,
+      "mean_ai_loss_ratio": 0.2022
+    },
+    {
+      "route": "UL7",
+      "affected_grid": 2139,
+      "critical_grid": 159,
+      "high_or_critical_grid": 252,
+      "lost_ai_sum": 7550.279,
+      "mean_ltrs": 0.8499,
+      "mean_ai_loss_ratio": 0.1501
+    },
+    {
+      "route": "103",
+      "affected_grid": 1216,
+      "critical_grid": 107,
+      "high_or_critical_grid": 252,
+      "lost_ai_sum": 4313.327,
+      "mean_ltrs": 0.8365,
+      "mean_ai_loss_ratio": 0.1635
+    },
+    {
+      "route": "296",
+      "affected_grid": 1074,
+      "critical_grid": 78,
+      "high_or_critical_grid": 252,
+      "lost_ai_sum": 3335.339,
+      "mean_ltrs": 0.8853,
+      "mean_ai_loss_ratio": 0.1147
+    },
+    {
+      "route": "298",
+      "affected_grid": 806,
+      "critical_grid": 0,
+      "high_or_critical_grid": 252,
+      "lost_ai_sum": 2647.382,
+      "mean_ltrs": 0.8206,
+      "mean_ai_loss_ratio": 0.1794
+    },
+    {
+      "route": "UL82",
+      "affected_grid": 1694,
+      "critical_grid": 61,
+      "high_or_critical_grid": 251,
+      "lost_ai_sum": 5819.662,
+      "mean_ltrs": 0.8738,
+      "mean_ai_loss_ratio": 0.1262
+    },
+    {
+      "route": "E8",
+      "affected_grid": 1756,
+      "critical_grid": 90,
+      "high_or_critical_grid": 250,
+      "lost_ai_sum": 6631.801,
+      "mean_ltrs": 0.8654,
+      "mean_ai_loss_ratio": 0.1346
+    },
+    {
+      "route": "626",
+      "affected_grid": 1026,
+      "critical_grid": 43,
+      "high_or_critical_grid": 248,
+      "lost_ai_sum": 3513.608,
+      "mean_ltrs": 0.8519,
+      "mean_ai_loss_ratio": 0.1481
+    },
+    {
+      "route": "UL48",
+      "affected_grid": 705,
+      "critical_grid": 93,
+      "high_or_critical_grid": 247,
+      "lost_ai_sum": 2845.64,
+      "mean_ltrs": 0.7797,
+      "mean_ai_loss_ratio": 0.2203
+    },
+    {
+      "route": "120",
+      "affected_grid": 1201,
+      "critical_grid": 47,
+      "high_or_critical_grid": 246,
+      "lost_ai_sum": 3659.981,
+      "mean_ltrs": 0.8809,
+      "mean_ai_loss_ratio": 0.1191
+    },
+    {
+      "route": "252",
+      "affected_grid": 1163,
+      "critical_grid": 39,
+      "high_or_critical_grid": 243,
+      "lost_ai_sum": 4068.005,
+      "mean_ltrs": 0.8474,
+      "mean_ai_loss_ratio": 0.1526
+    },
+    {
+      "route": "EL2",
+      "affected_grid": 1675,
+      "critical_grid": 193,
+      "high_or_critical_grid": 242,
+      "lost_ai_sum": 4697.202,
+      "mean_ltrs": 0.8388,
+      "mean_ai_loss_ratio": 0.1612
+    },
+    {
+      "route": "124",
+      "affected_grid": 1158,
+      "critical_grid": 77,
+      "high_or_critical_grid": 242,
+      "lost_ai_sum": 4074.053,
+      "mean_ltrs": 0.818,
+      "mean_ai_loss_ratio": 0.182
+    },
+    {
+      "route": "372",
+      "affected_grid": 901,
+      "critical_grid": 212,
+      "high_or_critical_grid": 240,
+      "lost_ai_sum": 2765.162,
+      "mean_ltrs": 0.7847,
+      "mean_ai_loss_ratio": 0.2153
+    },
+    {
+      "route": "320",
+      "affected_grid": 1686,
+      "critical_grid": 7,
+      "high_or_critical_grid": 239,
+      "lost_ai_sum": 5507.673,
+      "mean_ltrs": 0.8373,
+      "mean_ai_loss_ratio": 0.1627
+    },
+    {
+      "route": "635",
+      "affected_grid": 741,
+      "critical_grid": 54,
+      "high_or_critical_grid": 238,
+      "lost_ai_sum": 2203.382,
+      "mean_ltrs": 0.8313,
+      "mean_ai_loss_ratio": 0.1687
+    },
+    {
+      "route": "601",
+      "affected_grid": 1271,
+      "critical_grid": 124,
+      "high_or_critical_grid": 237,
+      "lost_ai_sum": 3589.228,
+      "mean_ltrs": 0.8054,
+      "mean_ai_loss_ratio": 0.1946
+    },
+    {
+      "route": "145",
+      "affected_grid": 1777,
+      "critical_grid": 85,
+      "high_or_critical_grid": 227,
+      "lost_ai_sum": 6172.599,
+      "mean_ltrs": 0.8334,
+      "mean_ai_loss_ratio": 0.1666
+    },
+    {
+      "route": "UL53",
+      "affected_grid": 2225,
+      "critical_grid": 33,
+      "high_or_critical_grid": 225,
+      "lost_ai_sum": 7819.571,
+      "mean_ltrs": 0.8835,
+      "mean_ai_loss_ratio": 0.1165
+    },
+    {
+      "route": "N21",
+      "affected_grid": 2540,
+      "critical_grid": 0,
+      "high_or_critical_grid": 225,
+      "lost_ai_sum": 7488.526,
+      "mean_ltrs": 0.9014,
+      "mean_ai_loss_ratio": 0.0986
+    },
+    {
+      "route": "498",
+      "affected_grid": 671,
+      "critical_grid": 45,
+      "high_or_critical_grid": 224,
+      "lost_ai_sum": 2175.458,
+      "mean_ltrs": 0.8583,
+      "mean_ai_loss_ratio": 0.1417
+    },
+    {
+      "route": "698",
+      "affected_grid": 1216,
+      "critical_grid": 0,
+      "high_or_critical_grid": 224,
+      "lost_ai_sum": 4844.828,
+      "mean_ltrs": 0.7959,
+      "mean_ai_loss_ratio": 0.2041
+    },
+    {
+      "route": "293",
+      "affected_grid": 552,
+      "critical_grid": 132,
+      "high_or_critical_grid": 223,
+      "lost_ai_sum": 1807.304,
+      "mean_ltrs": 0.7236,
+      "mean_ai_loss_ratio": 0.2764
+    },
+    {
+      "route": "H32",
+      "affected_grid": 779,
+      "critical_grid": 79,
+      "high_or_critical_grid": 223,
+      "lost_ai_sum": 2610.256,
+      "mean_ltrs": 0.8429,
+      "mean_ai_loss_ratio": 0.1571
+    },
+    {
+      "route": "462",
+      "affected_grid": 939,
+      "critical_grid": 170,
+      "high_or_critical_grid": 222,
+      "lost_ai_sum": 2892.456,
+      "mean_ltrs": 0.8611,
+      "mean_ai_loss_ratio": 0.1389
+    },
+    {
+      "route": "405",
+      "affected_grid": 744,
+      "critical_grid": 97,
+      "high_or_critical_grid": 221,
+      "lost_ai_sum": 2500.093,
+      "mean_ltrs": 0.8607,
+      "mean_ai_loss_ratio": 0.1393
+    },
+    {
+      "route": "199",
+      "affected_grid": 998,
+      "critical_grid": 25,
+      "high_or_critical_grid": 221,
+      "lost_ai_sum": 3501.095,
+      "mean_ltrs": 0.8475,
+      "mean_ai_loss_ratio": 0.1525
+    },
+    {
+      "route": "699",
+      "affected_grid": 901,
+      "critical_grid": 0,
+      "high_or_critical_grid": 220,
+      "lost_ai_sum": 2707.389,
+      "mean_ltrs": 0.7673,
+      "mean_ai_loss_ratio": 0.2327
+    },
+    {
+      "route": "256",
+      "affected_grid": 1034,
+      "critical_grid": 175,
+      "high_or_critical_grid": 215,
+      "lost_ai_sum": 2956.087,
+      "mean_ltrs": 0.7684,
+      "mean_ai_loss_ratio": 0.2316
+    },
+    {
+      "route": "696",
+      "affected_grid": 1644,
+      "critical_grid": 131,
+      "high_or_critical_grid": 215,
+      "lost_ai_sum": 5844.022,
+      "mean_ltrs": 0.8375,
+      "mean_ai_loss_ratio": 0.1625
+    },
+    {
+      "route": "195",
+      "affected_grid": 1450,
+      "critical_grid": 44,
+      "high_or_critical_grid": 212,
+      "lost_ai_sum": 5022.094,
+      "mean_ltrs": 0.8391,
+      "mean_ai_loss_ratio": 0.1609
+    },
+    {
+      "route": "433",
+      "affected_grid": 866,
+      "critical_grid": 189,
+      "high_or_critical_grid": 211,
+      "lost_ai_sum": 2656.505,
+      "mean_ltrs": 0.8688,
+      "mean_ai_loss_ratio": 0.1312
+    },
+    {
+      "route": "367",
+      "affected_grid": 1490,
+      "critical_grid": 58,
+      "high_or_critical_grid": 208,
+      "lost_ai_sum": 4677.783,
+      "mean_ltrs": 0.9024,
+      "mean_ai_loss_ratio": 0.0976
+    },
+    {
+      "route": "P12",
+      "affected_grid": 1616,
+      "critical_grid": 25,
+      "high_or_critical_grid": 206,
+      "lost_ai_sum": 6798.193,
+      "mean_ltrs": 0.8227,
+      "mean_ai_loss_ratio": 0.1773
+    },
+    {
+      "route": "466",
+      "affected_grid": 1315,
+      "critical_grid": 134,
+      "high_or_critical_grid": 205,
+      "lost_ai_sum": 5182.272,
+      "mean_ltrs": 0.8502,
+      "mean_ai_loss_ratio": 0.1498
+    },
+    {
+      "route": "307",
+      "affected_grid": 1478,
+      "critical_grid": 45,
+      "high_or_critical_grid": 205,
+      "lost_ai_sum": 4716.7,
+      "mean_ltrs": 0.8577,
+      "mean_ai_loss_ratio": 0.1423
+    },
+    {
+      "route": "E10",
+      "affected_grid": 1494,
+      "critical_grid": 114,
+      "high_or_critical_grid": 201,
+      "lost_ai_sum": 4963.704,
+      "mean_ltrs": 0.8905,
+      "mean_ai_loss_ratio": 0.1095
+    },
+    {
+      "route": "H11",
+      "affected_grid": 981,
+      "critical_grid": 50,
+      "high_or_critical_grid": 201,
+      "lost_ai_sum": 3889.962,
+      "mean_ltrs": 0.7694,
+      "mean_ai_loss_ratio": 0.2306
+    },
+    {
+      "route": "375",
+      "affected_grid": 703,
+      "critical_grid": 172,
+      "high_or_critical_grid": 200,
+      "lost_ai_sum": 2141.753,
+      "mean_ltrs": 0.8695,
+      "mean_ai_loss_ratio": 0.1305
+    },
+    {
+      "route": "SL9",
+      "affected_grid": 2284,
+      "critical_grid": 67,
+      "high_or_critical_grid": 199,
+      "lost_ai_sum": 7778.902,
+      "mean_ltrs": 0.8522,
+      "mean_ai_loss_ratio": 0.1478
+    },
+    {
+      "route": "255",
+      "affected_grid": 804,
+      "critical_grid": 82,
+      "high_or_critical_grid": 198,
+      "lost_ai_sum": 2826.775,
+      "mean_ltrs": 0.797,
+      "mean_ai_loss_ratio": 0.203
+    },
+    {
+      "route": "481",
+      "affected_grid": 1171,
+      "critical_grid": 115,
+      "high_or_critical_grid": 197,
+      "lost_ai_sum": 3662.58,
+      "mean_ltrs": 0.8541,
+      "mean_ai_loss_ratio": 0.1459
+    },
+    {
+      "route": "177",
+      "affected_grid": 1787,
+      "critical_grid": 103,
+      "high_or_critical_grid": 197,
+      "lost_ai_sum": 4925.451,
+      "mean_ltrs": 0.8564,
+      "mean_ai_loss_ratio": 0.1436
+    },
+    {
+      "route": "213",
+      "affected_grid": 1255,
+      "critical_grid": 103,
+      "high_or_critical_grid": 197,
+      "lost_ai_sum": 3684.315,
+      "mean_ltrs": 0.8378,
+      "mean_ai_loss_ratio": 0.1622
+    },
+    {
+      "route": "450",
+      "affected_grid": 1187,
+      "critical_grid": 49,
+      "high_or_critical_grid": 197,
+      "lost_ai_sum": 3966.077,
+      "mean_ltrs": 0.8607,
+      "mean_ai_loss_ratio": 0.1393
+    },
+    {
+      "route": "101",
+      "affected_grid": 915,
+      "critical_grid": 160,
+      "high_or_critical_grid": 196,
+      "lost_ai_sum": 2933.246,
+      "mean_ltrs": 0.857,
+      "mean_ai_loss_ratio": 0.143
+    },
+    {
+      "route": "493",
+      "affected_grid": 1463,
+      "critical_grid": 89,
+      "high_or_critical_grid": 190,
+      "lost_ai_sum": 4126.916,
+      "mean_ltrs": 0.8665,
+      "mean_ai_loss_ratio": 0.1335
+    },
+    {
+      "route": "315",
+      "affected_grid": 741,
+      "critical_grid": 110,
+      "high_or_critical_grid": 189,
+      "lost_ai_sum": 2737.153,
+      "mean_ltrs": 0.8138,
+      "mean_ai_loss_ratio": 0.1862
+    },
+    {
+      "route": "UL63",
+      "affected_grid": 2148,
+      "critical_grid": 13,
+      "high_or_critical_grid": 187,
+      "lost_ai_sum": 7894.116,
+      "mean_ltrs": 0.8443,
+      "mean_ai_loss_ratio": 0.1557
+    },
+    {
+      "route": "D3",
+      "affected_grid": 1317,
+      "critical_grid": 39,
+      "high_or_critical_grid": 186,
+      "lost_ai_sum": 5081.744,
+      "mean_ltrs": 0.852,
+      "mean_ai_loss_ratio": 0.148
+    },
+    {
+      "route": "179",
+      "affected_grid": 1284,
+      "critical_grid": 134,
+      "high_or_critical_grid": 184,
+      "lost_ai_sum": 4705.386,
+      "mean_ltrs": 0.8225,
+      "mean_ai_loss_ratio": 0.1775
+    },
+    {
+      "route": "377",
+      "affected_grid": 887,
+      "critical_grid": 90,
+      "high_or_critical_grid": 180,
+      "lost_ai_sum": 3225.7,
+      "mean_ltrs": 0.8374,
+      "mean_ai_loss_ratio": 0.1626
+    },
+    {
+      "route": "62",
+      "affected_grid": 1294,
+      "critical_grid": 4,
+      "high_or_critical_grid": 179,
+      "lost_ai_sum": 4264.482,
+      "mean_ltrs": 0.8315,
+      "mean_ai_loss_ratio": 0.1685
+    },
+    {
+      "route": "264",
+      "affected_grid": 913,
+      "critical_grid": 60,
+      "high_or_critical_grid": 178,
+      "lost_ai_sum": 3300.151,
+      "mean_ltrs": 0.8619,
+      "mean_ai_loss_ratio": 0.1381
+    },
+    {
+      "route": "W6",
+      "affected_grid": 1185,
+      "critical_grid": 39,
+      "high_or_critical_grid": 176,
+      "lost_ai_sum": 4075.853,
+      "mean_ltrs": 0.8471,
+      "mean_ai_loss_ratio": 0.1529
+    },
+    {
+      "route": "365",
+      "affected_grid": 1352,
+      "critical_grid": 30,
+      "high_or_critical_grid": 174,
+      "lost_ai_sum": 3728.891,
+      "mean_ltrs": 0.8677,
+      "mean_ai_loss_ratio": 0.1323
+    },
+    {
+      "route": "UL64",
+      "affected_grid": 1631,
+      "critical_grid": 4,
+      "high_or_critical_grid": 173,
+      "lost_ai_sum": 6257.41,
+      "mean_ltrs": 0.8576,
+      "mean_ai_loss_ratio": 0.1424
+    },
+    {
+      "route": "439",
+      "affected_grid": 458,
+      "critical_grid": 124,
+      "high_or_critical_grid": 172,
+      "lost_ai_sum": 1526.512,
+      "mean_ltrs": 0.7522,
+      "mean_ai_loss_ratio": 0.2478
+    },
+    {
+      "route": "651",
+      "affected_grid": 845,
+      "critical_grid": 111,
+      "high_or_critical_grid": 171,
+      "lost_ai_sum": 2546.691,
+      "mean_ltrs": 0.8556,
+      "mean_ai_loss_ratio": 0.1444
+    },
+    {
+      "route": "SL6",
+      "affected_grid": 2892,
+      "critical_grid": 39,
+      "high_or_critical_grid": 170,
+      "lost_ai_sum": 11579.091,
+      "mean_ltrs": 0.8928,
+      "mean_ai_loss_ratio": 0.1072
+    },
+    {
+      "route": "621",
+      "affected_grid": 818,
+      "critical_grid": 63,
+      "high_or_critical_grid": 169,
+      "lost_ai_sum": 2790.359,
+      "mean_ltrs": 0.8411,
+      "mean_ai_loss_ratio": 0.1589
+    },
+    {
+      "route": "150",
+      "affected_grid": 1356,
+      "critical_grid": 12,
+      "high_or_critical_grid": 168,
+      "lost_ai_sum": 4215.341,
+      "mean_ltrs": 0.859,
+      "mean_ai_loss_ratio": 0.141
+    },
+    {
+      "route": "121",
+      "affected_grid": 1805,
+      "critical_grid": 151,
+      "high_or_critical_grid": 166,
+      "lost_ai_sum": 4768.249,
+      "mean_ltrs": 0.8905,
+      "mean_ai_loss_ratio": 0.1095
+    },
+    {
+      "route": "117",
+      "affected_grid": 1008,
+      "critical_grid": 105,
+      "high_or_critical_grid": 166,
+      "lost_ai_sum": 2727.115,
+      "mean_ltrs": 0.8524,
+      "mean_ai_loss_ratio": 0.1476
+    },
+    {
+      "route": "UL58",
+      "affected_grid": 2027,
+      "critical_grid": 101,
+      "high_or_critical_grid": 165,
+      "lost_ai_sum": 6703.392,
+      "mean_ltrs": 0.8742,
+      "mean_ai_loss_ratio": 0.1258
+    },
+    {
+      "route": "284",
+      "affected_grid": 979,
+      "critical_grid": 56,
+      "high_or_critical_grid": 165,
+      "lost_ai_sum": 3010.958,
+      "mean_ltrs": 0.8518,
+      "mean_ai_loss_ratio": 0.1482
+    },
+    {
+      "route": "N8",
+      "affected_grid": 2509,
+      "critical_grid": 0,
+      "high_or_critical_grid": 164,
+      "lost_ai_sum": 7496.367,
+      "mean_ltrs": 0.913,
+      "mean_ai_loss_ratio": 0.087
+    },
+    {
+      "route": "234",
+      "affected_grid": 1388,
+      "critical_grid": 59,
+      "high_or_critical_grid": 163,
+      "lost_ai_sum": 4700.829,
+      "mean_ltrs": 0.8734,
+      "mean_ai_loss_ratio": 0.1266
+    },
+    {
+      "route": "UL83",
+      "affected_grid": 349,
+      "critical_grid": 85,
+      "high_or_critical_grid": 158,
+      "lost_ai_sum": 971.608,
+      "mean_ltrs": 0.6513,
+      "mean_ai_loss_ratio": 0.3487
+    },
+    {
+      "route": "533",
+      "affected_grid": 665,
+      "critical_grid": 32,
+      "high_or_critical_grid": 153,
+      "lost_ai_sum": 2313.267,
+      "mean_ltrs": 0.8583,
+      "mean_ai_loss_ratio": 0.1417
+    },
+    {
+      "route": "399",
+      "affected_grid": 287,
+      "critical_grid": 145,
+      "high_or_critical_grid": 152,
+      "lost_ai_sum": 1009.757,
+      "mean_ltrs": 0.6929,
+      "mean_ai_loss_ratio": 0.3071
+    },
+    {
+      "route": "398",
+      "affected_grid": 907,
+      "critical_grid": 91,
+      "high_or_critical_grid": 152,
+      "lost_ai_sum": 2783.216,
+      "mean_ltrs": 0.8303,
+      "mean_ai_loss_ratio": 0.1697
+    },
+    {
+      "route": "164",
+      "affected_grid": 1005,
+      "critical_grid": 78,
+      "high_or_critical_grid": 152,
+      "lost_ai_sum": 3444.34,
+      "mean_ltrs": 0.835,
+      "mean_ai_loss_ratio": 0.165
+    },
+    {
+      "route": "SCS",
+      "affected_grid": 475,
+      "critical_grid": 73,
+      "high_or_critical_grid": 152,
+      "lost_ai_sum": 1882.605,
+      "mean_ltrs": 0.7748,
+      "mean_ai_loss_ratio": 0.2252
+    },
+    {
+      "route": "312",
+      "affected_grid": 1052,
+      "critical_grid": 116,
+      "high_or_critical_grid": 150,
+      "lost_ai_sum": 3027.887,
+      "mean_ltrs": 0.904,
+      "mean_ai_loss_ratio": 0.096
+    },
+    {
+      "route": "642",
+      "affected_grid": 802,
+      "critical_grid": 59,
+      "high_or_critical_grid": 147,
+      "lost_ai_sum": 2468.69,
+      "mean_ltrs": 0.8535,
+      "mean_ai_loss_ratio": 0.1465
+    },
+    {
+      "route": "102",
+      "affected_grid": 1768,
+      "critical_grid": 51,
+      "high_or_critical_grid": 147,
+      "lost_ai_sum": 5024.439,
+      "mean_ltrs": 0.8881,
+      "mean_ai_loss_ratio": 0.1119
+    },
+    {
+      "route": "354",
+      "affected_grid": 910,
+      "critical_grid": 92,
+      "high_or_critical_grid": 145,
+      "lost_ai_sum": 3282.436,
+      "mean_ltrs": 0.8587,
+      "mean_ai_loss_ratio": 0.1413
+    },
+    {
+      "route": "309",
+      "affected_grid": 715,
+      "critical_grid": 64,
+      "high_or_critical_grid": 145,
+      "lost_ai_sum": 2652.148,
+      "mean_ltrs": 0.8572,
+      "mean_ai_loss_ratio": 0.1428
+    },
+    {
+      "route": "603",
+      "affected_grid": 929,
+      "critical_grid": 1,
+      "high_or_critical_grid": 145,
+      "lost_ai_sum": 3290.602,
+      "mean_ltrs": 0.8584,
+      "mean_ai_loss_ratio": 0.1416
+    },
+    {
+      "route": "56",
+      "affected_grid": 1288,
+      "critical_grid": 1,
+      "high_or_critical_grid": 144,
+      "lost_ai_sum": 4181.463,
+      "mean_ltrs": 0.9024,
+      "mean_ai_loss_ratio": 0.0976
+    },
+    {
+      "route": "34",
+      "affected_grid": 1693,
+      "critical_grid": 92,
+      "high_or_critical_grid": 143,
+      "lost_ai_sum": 4715.645,
+      "mean_ltrs": 0.8788,
+      "mean_ai_loss_ratio": 0.1212
+    },
+    {
+      "route": "660",
+      "affected_grid": 876,
+      "critical_grid": 2,
+      "high_or_critical_grid": 143,
+      "lost_ai_sum": 2530.372,
+      "mean_ltrs": 0.8672,
+      "mean_ai_loss_ratio": 0.1328
+    },
+    {
+      "route": "340",
+      "affected_grid": 940,
+      "critical_grid": 0,
+      "high_or_critical_grid": 143,
+      "lost_ai_sum": 2599.898,
+      "mean_ltrs": 0.8469,
+      "mean_ai_loss_ratio": 0.1531
+    },
+    {
+      "route": "341",
+      "affected_grid": 1644,
+      "critical_grid": 31,
+      "high_or_critical_grid": 142,
+      "lost_ai_sum": 4714.579,
+      "mean_ltrs": 0.9231,
+      "mean_ai_loss_ratio": 0.0769
+    },
+    {
+      "route": "93",
+      "affected_grid": 1410,
+      "critical_grid": 70,
+      "high_or_critical_grid": 138,
+      "lost_ai_sum": 4625.673,
+      "mean_ltrs": 0.8589,
+      "mean_ai_loss_ratio": 0.1411
+    },
+    {
+      "route": "640",
+      "affected_grid": 745,
+      "critical_grid": 40,
+      "high_or_critical_grid": 137,
+      "lost_ai_sum": 2712.718,
+      "mean_ltrs": 0.8318,
+      "mean_ai_loss_ratio": 0.1682
+    },
+    {
+      "route": "UL92",
+      "affected_grid": 2715,
+      "critical_grid": 2,
+      "high_or_critical_grid": 137,
+      "lost_ai_sum": 8833.761,
+      "mean_ltrs": 0.8737,
+      "mean_ai_loss_ratio": 0.1263
+    },
+    {
+      "route": "297",
+      "affected_grid": 1351,
+      "critical_grid": 89,
+      "high_or_critical_grid": 136,
+      "lost_ai_sum": 4166.218,
+      "mean_ltrs": 0.894,
+      "mean_ai_loss_ratio": 0.106
+    },
+    {
+      "route": "H3",
+      "affected_grid": 706,
+      "critical_grid": 57,
+      "high_or_critical_grid": 135,
+      "lost_ai_sum": 2690.315,
+      "mean_ltrs": 0.8486,
+      "mean_ai_loss_ratio": 0.1514
+    },
+    {
+      "route": "135",
+      "affected_grid": 1098,
+      "critical_grid": 16,
+      "high_or_critical_grid": 134,
+      "lost_ai_sum": 4495.576,
+      "mean_ltrs": 0.8636,
+      "mean_ai_loss_ratio": 0.1364
+    },
+    {
+      "route": "119",
+      "affected_grid": 1444,
+      "critical_grid": 51,
+      "high_or_critical_grid": 133,
+      "lost_ai_sum": 3658.974,
+      "mean_ltrs": 0.913,
+      "mean_ai_loss_ratio": 0.087
+    },
+    {
+      "route": "198",
+      "affected_grid": 994,
+      "critical_grid": 111,
+      "high_or_critical_grid": 132,
+      "lost_ai_sum": 2781.729,
+      "mean_ltrs": 0.9144,
+      "mean_ai_loss_ratio": 0.0856
+    },
+    {
+      "route": "156",
+      "affected_grid": 1093,
+      "critical_grid": 8,
+      "high_or_critical_grid": 130,
+      "lost_ai_sum": 3960.8,
+      "mean_ltrs": 0.8545,
+      "mean_ai_loss_ratio": 0.1455
+    },
+    {
+      "route": "C10",
+      "affected_grid": 1202,
+      "critical_grid": 2,
+      "high_or_critical_grid": 127,
+      "lost_ai_sum": 4342.183,
+      "mean_ltrs": 0.907,
+      "mean_ai_loss_ratio": 0.093
+    },
+    {
+      "route": "440",
+      "affected_grid": 1087,
+      "critical_grid": 85,
+      "high_or_critical_grid": 126,
+      "lost_ai_sum": 3927.33,
+      "mean_ltrs": 0.8927,
+      "mean_ai_loss_ratio": 0.1073
+    },
+    {
+      "route": "W5",
+      "affected_grid": 934,
+      "critical_grid": 39,
+      "high_or_critical_grid": 126,
+      "lost_ai_sum": 3365.993,
+      "mean_ltrs": 0.8762,
+      "mean_ai_loss_ratio": 0.1238
+    },
+    {
+      "route": "300",
+      "affected_grid": 990,
+      "critical_grid": 9,
+      "high_or_critical_grid": 126,
+      "lost_ai_sum": 3474.777,
+      "mean_ltrs": 0.8723,
+      "mean_ai_loss_ratio": 0.1277
+    },
+    {
+      "route": "50",
+      "affected_grid": 1331,
+      "critical_grid": 41,
+      "high_or_critical_grid": 125,
+      "lost_ai_sum": 3851.685,
+      "mean_ltrs": 0.9019,
+      "mean_ai_loss_ratio": 0.0981
+    },
+    {
+      "route": "245",
+      "affected_grid": 1364,
+      "critical_grid": 66,
+      "high_or_critical_grid": 124,
+      "lost_ai_sum": 4716.583,
+      "mean_ltrs": 0.8623,
+      "mean_ai_loss_ratio": 0.1377
+    },
+    {
+      "route": "333",
+      "affected_grid": 1148,
+      "critical_grid": 64,
+      "high_or_critical_grid": 123,
+      "lost_ai_sum": 3761.444,
+      "mean_ltrs": 0.9071,
+      "mean_ai_loss_ratio": 0.0929
+    },
+    {
+      "route": "444",
+      "affected_grid": 1178,
+      "critical_grid": 4,
+      "high_or_critical_grid": 123,
+      "lost_ai_sum": 3539.651,
+      "mean_ltrs": 0.8549,
+      "mean_ai_loss_ratio": 0.1451
+    },
+    {
+      "route": "430",
+      "affected_grid": 993,
+      "critical_grid": 46,
+      "high_or_critical_grid": 121,
+      "lost_ai_sum": 3060.823,
+      "mean_ltrs": 0.9041,
+      "mean_ai_loss_ratio": 0.0959
+    },
+    {
+      "route": "75",
+      "affected_grid": 1347,
+      "critical_grid": 45,
+      "high_or_critical_grid": 121,
+      "lost_ai_sum": 3645.895,
+      "mean_ltrs": 0.9087,
+      "mean_ai_loss_ratio": 0.0913
+    },
+    {
+      "route": "53",
+      "affected_grid": 1764,
+      "critical_grid": 22,
+      "high_or_critical_grid": 119,
+      "lost_ai_sum": 5006.65,
+      "mean_ltrs": 0.9055,
+      "mean_ai_loss_ratio": 0.0945
+    },
+    {
+      "route": "79",
+      "affected_grid": 1203,
+      "critical_grid": 45,
+      "high_or_critical_grid": 118,
+      "lost_ai_sum": 4430.928,
+      "mean_ltrs": 0.8367,
+      "mean_ai_loss_ratio": 0.1633
+    },
+    {
+      "route": "250",
+      "affected_grid": 1185,
+      "critical_grid": 0,
+      "high_or_critical_grid": 114,
+      "lost_ai_sum": 3333.283,
+      "mean_ltrs": 0.909,
+      "mean_ai_loss_ratio": 0.091
+    },
+    {
+      "route": "183",
+      "affected_grid": 1651,
+      "critical_grid": 0,
+      "high_or_critical_grid": 113,
+      "lost_ai_sum": 5138.426,
+      "mean_ltrs": 0.8842,
+      "mean_ai_loss_ratio": 0.1158
+    },
+    {
+      "route": "54",
+      "affected_grid": 1553,
+      "critical_grid": 93,
+      "high_or_critical_grid": 111,
+      "lost_ai_sum": 4110.349,
+      "mean_ltrs": 0.8804,
+      "mean_ai_loss_ratio": 0.1196
+    },
+    {
+      "route": "276",
+      "affected_grid": 1480,
+      "critical_grid": 53,
+      "high_or_critical_grid": 110,
+      "lost_ai_sum": 4202.944,
+      "mean_ltrs": 0.9104,
+      "mean_ai_loss_ratio": 0.0896
+    },
+    {
+      "route": "261",
+      "affected_grid": 1290,
+      "critical_grid": 42,
+      "high_or_critical_grid": 110,
+      "lost_ai_sum": 3373.858,
+      "mean_ltrs": 0.8868,
+      "mean_ai_loss_ratio": 0.1132
+    },
+    {
+      "route": "395",
+      "affected_grid": 759,
+      "critical_grid": 56,
+      "high_or_critical_grid": 107,
+      "lost_ai_sum": 2544.569,
+      "mean_ltrs": 0.8712,
+      "mean_ai_loss_ratio": 0.1288
+    },
+    {
+      "route": "Y452",
+      "affected_grid": 1613,
+      "critical_grid": 38,
+      "high_or_critical_grid": 107,
+      "lost_ai_sum": 5230.249,
+      "mean_ltrs": 0.9021,
+      "mean_ai_loss_ratio": 0.0979
+    },
+    {
+      "route": "280",
+      "affected_grid": 1119,
+      "critical_grid": 1,
+      "high_or_critical_grid": 107,
+      "lost_ai_sum": 3442.882,
+      "mean_ltrs": 0.8405,
+      "mean_ai_loss_ratio": 0.1595
+    },
+    {
+      "route": "N3",
+      "affected_grid": 2410,
+      "critical_grid": 0,
+      "high_or_critical_grid": 107,
+      "lost_ai_sum": 6256.508,
+      "mean_ltrs": 0.9277,
+      "mean_ai_loss_ratio": 0.0723
+    },
+    {
+      "route": "UL3",
+      "affected_grid": 2644,
+      "critical_grid": 14,
+      "high_or_critical_grid": 106,
+      "lost_ai_sum": 10187.339,
+      "mean_ltrs": 0.8639,
+      "mean_ai_loss_ratio": 0.1361
+    },
+    {
+      "route": "658",
+      "affected_grid": 852,
+      "critical_grid": 25,
+      "high_or_critical_grid": 105,
+      "lost_ai_sum": 2451.317,
+      "mean_ltrs": 0.847,
+      "mean_ai_loss_ratio": 0.153
+    },
+    {
+      "route": "263",
+      "affected_grid": 1624,
+      "critical_grid": 0,
+      "high_or_critical_grid": 103,
+      "lost_ai_sum": 4399.758,
+      "mean_ltrs": 0.9136,
+      "mean_ai_loss_ratio": 0.0864
+    },
+    {
+      "route": "E7",
+      "affected_grid": 2012,
+      "critical_grid": 0,
+      "high_or_critical_grid": 102,
+      "lost_ai_sum": 5294.9,
+      "mean_ltrs": 0.9069,
+      "mean_ai_loss_ratio": 0.0931
+    },
+    {
+      "route": "C11",
+      "affected_grid": 1071,
+      "critical_grid": 2,
+      "high_or_critical_grid": 101,
+      "lost_ai_sum": 3537.568,
+      "mean_ltrs": 0.8816,
+      "mean_ai_loss_ratio": 0.1184
+    },
+    {
+      "route": "UL28",
+      "affected_grid": 1074,
+      "critical_grid": 32,
+      "high_or_critical_grid": 100,
+      "lost_ai_sum": 4084.652,
+      "mean_ltrs": 0.8846,
+      "mean_ai_loss_ratio": 0.1154
+    },
+    {
+      "route": "H20",
+      "affected_grid": 564,
+      "critical_grid": 8,
+      "high_or_critical_grid": 98,
+      "lost_ai_sum": 1862.918,
+      "mean_ltrs": 0.8582,
+      "mean_ai_loss_ratio": 0.1418
+    },
+    {
+      "route": "N73",
+      "affected_grid": 1652,
+      "critical_grid": 29,
+      "high_or_critical_grid": 97,
+      "lost_ai_sum": 5554.58,
+      "mean_ltrs": 0.9115,
+      "mean_ai_loss_ratio": 0.0885
+    },
+    {
+      "route": "281",
+      "affected_grid": 1672,
+      "critical_grid": 58,
+      "high_or_critical_grid": 95,
+      "lost_ai_sum": 5436.463,
+      "mean_ltrs": 0.8796,
+      "mean_ai_loss_ratio": 0.1204
+    },
+    {
+      "route": "128",
+      "affected_grid": 1641,
+      "critical_grid": 47,
+      "high_or_critical_grid": 95,
+      "lost_ai_sum": 4242.673,
+      "mean_ltrs": 0.9007,
+      "mean_ai_loss_ratio": 0.0993
+    },
+    {
+      "route": "66",
+      "affected_grid": 1235,
+      "critical_grid": 44,
+      "high_or_critical_grid": 94,
+      "lost_ai_sum": 2995.326,
+      "mean_ltrs": 0.8907,
+      "mean_ai_loss_ratio": 0.1093
+    },
+    {
+      "route": "673",
+      "affected_grid": 1114,
+      "critical_grid": 0,
+      "high_or_critical_grid": 93,
+      "lost_ai_sum": 3708.998,
+      "mean_ltrs": 0.8257,
+      "mean_ai_loss_ratio": 0.1743
+    },
+    {
+      "route": "678",
+      "affected_grid": 740,
+      "critical_grid": 51,
+      "high_or_critical_grid": 92,
+      "lost_ai_sum": 2619.375,
+      "mean_ltrs": 0.8557,
+      "mean_ai_loss_ratio": 0.1443
+    },
+    {
+      "route": "SL10",
+      "affected_grid": 2243,
+      "critical_grid": 42,
+      "high_or_critical_grid": 92,
+      "lost_ai_sum": 6225.17,
+      "mean_ltrs": 0.8868,
+      "mean_ai_loss_ratio": 0.1132
+    },
+    {
+      "route": "N55",
+      "affected_grid": 2237,
+      "critical_grid": 0,
+      "high_or_critical_grid": 92,
+      "lost_ai_sum": 6068.664,
+      "mean_ltrs": 0.9175,
+      "mean_ai_loss_ratio": 0.0825
+    },
+    {
+      "route": "291",
+      "affected_grid": 550,
+      "critical_grid": 46,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 1754.778,
+      "mean_ltrs": 0.8362,
+      "mean_ai_loss_ratio": 0.1638
+    },
+    {
+      "route": "147",
+      "affected_grid": 1002,
+      "critical_grid": 37,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 3266.607,
+      "mean_ltrs": 0.8908,
+      "mean_ai_loss_ratio": 0.1092
+    },
+    {
+      "route": "E11",
+      "affected_grid": 972,
+      "critical_grid": 30,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 2982.794,
+      "mean_ltrs": 0.9134,
+      "mean_ai_loss_ratio": 0.0866
+    },
+    {
+      "route": "Y52_Special/School",
+      "affected_grid": 1676,
+      "critical_grid": 26,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 4437.479,
+      "mean_ltrs": 0.9358,
+      "mean_ai_loss_ratio": 0.0642
+    },
+    {
+      "route": "N551",
+      "affected_grid": 1737,
+      "critical_grid": 0,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 5084.259,
+      "mean_ltrs": 0.9121,
+      "mean_ai_loss_ratio": 0.0879
+    },
+    {
+      "route": "215",
+      "affected_grid": 725,
+      "critical_grid": 0,
+      "high_or_critical_grid": 91,
+      "lost_ai_sum": 2138.827,
+      "mean_ltrs": 0.8394,
+      "mean_ai_loss_ratio": 0.1606
+    },
+    {
+      "route": "N171",
+      "affected_grid": 1844,
+      "critical_grid": 33,
+      "high_or_critical_grid": 90,
+      "lost_ai_sum": 4894.34,
+      "mean_ltrs": 0.9328,
+      "mean_ai_loss_ratio": 0.0672
+    },
+    {
+      "route": "C10_Special/School",
+      "affected_grid": 1044,
+      "critical_grid": 4,
+      "high_or_critical_grid": 89,
+      "lost_ai_sum": 3686.08,
+      "mean_ltrs": 0.922,
+      "mean_ai_loss_ratio": 0.078
+    },
+    {
+      "route": "417",
+      "affected_grid": 928,
+      "critical_grid": 0,
+      "high_or_critical_grid": 89,
+      "lost_ai_sum": 2999.647,
+      "mean_ltrs": 0.8718,
+      "mean_ai_loss_ratio": 0.1282
+    },
+    {
+      "route": "685",
+      "affected_grid": 329,
+      "critical_grid": 71,
+      "high_or_critical_grid": 88,
+      "lost_ai_sum": 979.339,
+      "mean_ltrs": 0.614,
+      "mean_ai_loss_ratio": 0.386
+    },
+    {
+      "route": "TR5",
+      "affected_grid": 1293,
+      "critical_grid": 11,
+      "high_or_critical_grid": 88,
+      "lost_ai_sum": 3566.892,
+      "mean_ltrs": 0.9026,
+      "mean_ai_loss_ratio": 0.0974
+    },
+    {
+      "route": "T2",
+      "affected_grid": 2630,
+      "critical_grid": 39,
+      "high_or_critical_grid": 87,
+      "lost_ai_sum": 6249.007,
+      "mean_ltrs": 0.9108,
+      "mean_ai_loss_ratio": 0.0892
+    },
+    {
+      "route": "227",
+      "affected_grid": 902,
+      "critical_grid": 13,
+      "high_or_critical_grid": 87,
+      "lost_ai_sum": 2660.352,
+      "mean_ltrs": 0.8878,
+      "mean_ai_loss_ratio": 0.1122
+    },
+    {
+      "route": "289",
+      "affected_grid": 979,
+      "critical_grid": 2,
+      "high_or_critical_grid": 87,
+      "lost_ai_sum": 3278.679,
+      "mean_ltrs": 0.8975,
+      "mean_ai_loss_ratio": 0.1025
+    },
+    {
+      "route": "202",
+      "affected_grid": 1309,
+      "critical_grid": 42,
+      "high_or_critical_grid": 85,
+      "lost_ai_sum": 3279.16,
+      "mean_ltrs": 0.8616,
+      "mean_ai_loss_ratio": 0.1384
+    },
+    {
+      "route": "UL73",
+      "affected_grid": 1217,
+      "critical_grid": 30,
+      "high_or_critical_grid": 85,
+      "lost_ai_sum": 4030.141,
+      "mean_ltrs": 0.9058,
+      "mean_ai_loss_ratio": 0.0942
+    },
+    {
+      "route": "SL8",
+      "affected_grid": 3162,
+      "critical_grid": 23,
+      "high_or_critical_grid": 84,
+      "lost_ai_sum": 8710.854,
+      "mean_ltrs": 0.9093,
+      "mean_ai_loss_ratio": 0.0907
+    },
+    {
+      "route": "325",
+      "affected_grid": 1062,
+      "critical_grid": 29,
+      "high_or_critical_grid": 83,
+      "lost_ai_sum": 2951.353,
+      "mean_ltrs": 0.9001,
+      "mean_ai_loss_ratio": 0.0999
+    },
+    {
+      "route": "98",
+      "affected_grid": 1104,
+      "critical_grid": 23,
+      "high_or_critical_grid": 83,
+      "lost_ai_sum": 3138.004,
+      "mean_ltrs": 0.9384,
+      "mean_ai_loss_ratio": 0.0616
+    },
+    {
+      "route": "E9",
+      "affected_grid": 1493,
+      "critical_grid": 20,
+      "high_or_critical_grid": 83,
+      "lost_ai_sum": 5340.452,
+      "mean_ltrs": 0.8827,
+      "mean_ai_loss_ratio": 0.1173
+    },
+    {
+      "route": "385",
+      "affected_grid": 598,
+      "critical_grid": 10,
+      "high_or_critical_grid": 82,
+      "lost_ai_sum": 1796.945,
+      "mean_ltrs": 0.8102,
+      "mean_ai_loss_ratio": 0.1898
+    },
+    {
+      "route": "N63",
+      "affected_grid": 1533,
+      "critical_grid": 0,
+      "high_or_critical_grid": 82,
+      "lost_ai_sum": 4365.987,
+      "mean_ltrs": 0.9218,
+      "mean_ai_loss_ratio": 0.0782
+    },
+    {
+      "route": "Y13",
+      "affected_grid": 2470,
+      "critical_grid": 32,
+      "high_or_critical_grid": 81,
+      "lost_ai_sum": 6839.415,
+      "mean_ltrs": 0.9207,
+      "mean_ai_loss_ratio": 0.0793
+    },
+    {
+      "route": "175",
+      "affected_grid": 1217,
+      "critical_grid": 25,
+      "high_or_critical_grid": 80,
+      "lost_ai_sum": 3423.838,
+      "mean_ltrs": 0.8848,
+      "mean_ai_loss_ratio": 0.1152
+    },
+    {
+      "route": "281_Special/School",
+      "affected_grid": 1088,
+      "critical_grid": 17,
+      "high_or_critical_grid": 80,
+      "lost_ai_sum": 3840.409,
+      "mean_ltrs": 0.8458,
+      "mean_ai_loss_ratio": 0.1542
+    },
+    {
+      "route": "484",
+      "affected_grid": 984,
+      "critical_grid": 17,
+      "high_or_critical_grid": 80,
+      "lost_ai_sum": 2877.98,
+      "mean_ltrs": 0.8893,
+      "mean_ai_loss_ratio": 0.1107
+    },
+    {
+      "route": "122",
+      "affected_grid": 1705,
+      "critical_grid": 14,
+      "high_or_critical_grid": 80,
+      "lost_ai_sum": 4408.88,
+      "mean_ltrs": 0.8751,
+      "mean_ai_loss_ratio": 0.1249
+    },
+    {
+      "route": "483",
+      "affected_grid": 1542,
+      "critical_grid": 44,
+      "high_or_critical_grid": 78,
+      "lost_ai_sum": 4223.604,
+      "mean_ltrs": 0.9144,
+      "mean_ai_loss_ratio": 0.0856
+    },
+    {
+      "route": "Y218",
+      "affected_grid": 1203,
+      "critical_grid": 3,
+      "high_or_critical_grid": 77,
+      "lost_ai_sum": 4128.505,
+      "mean_ltrs": 0.9089,
+      "mean_ai_loss_ratio": 0.0911
+    },
+    {
+      "route": "247",
+      "affected_grid": 1146,
+      "critical_grid": 36,
+      "high_or_critical_grid": 76,
+      "lost_ai_sum": 3193.42,
+      "mean_ltrs": 0.8613,
+      "mean_ai_loss_ratio": 0.1387
+    },
+    {
+      "route": "393",
+      "affected_grid": 1127,
+      "critical_grid": 17,
+      "high_or_critical_grid": 76,
+      "lost_ai_sum": 3708.879,
+      "mean_ltrs": 0.8997,
+      "mean_ai_loss_ratio": 0.1003
+    },
+    {
+      "route": "639",
+      "affected_grid": 998,
+      "critical_grid": 6,
+      "high_or_critical_grid": 75,
+      "lost_ai_sum": 3176.119,
+      "mean_ltrs": 0.863,
+      "mean_ai_loss_ratio": 0.137
+    },
+    {
+      "route": "672",
+      "affected_grid": 425,
+      "critical_grid": 40,
+      "high_or_critical_grid": 74,
+      "lost_ai_sum": 1297.347,
+      "mean_ltrs": 0.8394,
+      "mean_ai_loss_ratio": 0.1606
+    },
+    {
+      "route": "D6",
+      "affected_grid": 1271,
+      "critical_grid": 3,
+      "high_or_critical_grid": 73,
+      "lost_ai_sum": 4735.328,
+      "mean_ltrs": 0.8546,
+      "mean_ai_loss_ratio": 0.1454
+    },
+    {
+      "route": "322",
+      "affected_grid": 959,
+      "critical_grid": 9,
+      "high_or_critical_grid": 72,
+      "lost_ai_sum": 3074.741,
+      "mean_ltrs": 0.8995,
+      "mean_ai_loss_ratio": 0.1005
+    },
+    {
+      "route": "318",
+      "affected_grid": 784,
+      "critical_grid": 29,
+      "high_or_critical_grid": 70,
+      "lost_ai_sum": 2845.88,
+      "mean_ltrs": 0.8844,
+      "mean_ai_loss_ratio": 0.1156
+    },
+    {
+      "route": "465",
+      "affected_grid": 710,
+      "critical_grid": 69,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 1955.47,
+      "mean_ltrs": 0.8918,
+      "mean_ai_loss_ratio": 0.1082
+    },
+    {
+      "route": "214",
+      "affected_grid": 962,
+      "critical_grid": 35,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 2789.353,
+      "mean_ltrs": 0.9183,
+      "mean_ai_loss_ratio": 0.0817
+    },
+    {
+      "route": "220",
+      "affected_grid": 1144,
+      "critical_grid": 21,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 3733.264,
+      "mean_ltrs": 0.922,
+      "mean_ai_loss_ratio": 0.078
+    },
+    {
+      "route": "316",
+      "affected_grid": 1001,
+      "critical_grid": 1,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 3557.32,
+      "mean_ltrs": 0.9042,
+      "mean_ai_loss_ratio": 0.0958
+    },
+    {
+      "route": "W7",
+      "affected_grid": 825,
+      "critical_grid": 1,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 2687.631,
+      "mean_ltrs": 0.8785,
+      "mean_ai_loss_ratio": 0.1215
+    },
+    {
+      "route": "339",
+      "affected_grid": 1074,
+      "critical_grid": 0,
+      "high_or_critical_grid": 69,
+      "lost_ai_sum": 3679.624,
+      "mean_ltrs": 0.8673,
+      "mean_ai_loss_ratio": 0.1327
+    },
+    {
+      "route": "243",
+      "affected_grid": 1682,
+      "critical_grid": 29,
+      "high_or_critical_grid": 68,
+      "lost_ai_sum": 4494.929,
+      "mean_ltrs": 0.9358,
+      "mean_ai_loss_ratio": 0.0642
+    },
+    {
+      "route": "487",
+      "affected_grid": 1171,
+      "critical_grid": 7,
+      "high_or_critical_grid": 68,
+      "lost_ai_sum": 3543.174,
+      "mean_ltrs": 0.8809,
+      "mean_ai_loss_ratio": 0.1191
+    },
+    {
+      "route": "486",
+      "affected_grid": 1342,
+      "critical_grid": 44,
+      "high_or_critical_grid": 66,
+      "lost_ai_sum": 3115.095,
+      "mean_ltrs": 0.8528,
+      "mean_ai_loss_ratio": 0.1472
+    },
+    {
+      "route": "467",
+      "affected_grid": 329,
+      "critical_grid": 3,
+      "high_or_critical_grid": 66,
+      "lost_ai_sum": 1276.061,
+      "mean_ltrs": 0.7397,
+      "mean_ai_loss_ratio": 0.2603
+    },
+    {
+      "route": "424",
+      "affected_grid": 900,
+      "critical_grid": 6,
+      "high_or_critical_grid": 64,
+      "lost_ai_sum": 3262.54,
+      "mean_ltrs": 0.8939,
+      "mean_ai_loss_ratio": 0.1061
+    },
+    {
+      "route": "H22",
+      "affected_grid": 1087,
+      "critical_grid": 4,
+      "high_or_critical_grid": 64,
+      "lost_ai_sum": 3674.317,
+      "mean_ltrs": 0.8649,
+      "mean_ai_loss_ratio": 0.1351
+    },
+    {
+      "route": "679",
+      "affected_grid": 1260,
+      "critical_grid": 0,
+      "high_or_critical_grid": 64,
+      "lost_ai_sum": 3281.221,
+      "mean_ltrs": 0.8823,
+      "mean_ai_loss_ratio": 0.1177
+    },
+    {
+      "route": "349",
+      "affected_grid": 961,
+      "critical_grid": 0,
+      "high_or_critical_grid": 63,
+      "lost_ai_sum": 2550.379,
+      "mean_ltrs": 0.9245,
+      "mean_ai_loss_ratio": 0.0755
+    },
+    {
+      "route": "UL46",
+      "affected_grid": 566,
+      "critical_grid": 0,
+      "high_or_critical_grid": 63,
+      "lost_ai_sum": 2394.775,
+      "mean_ltrs": 0.7936,
+      "mean_ai_loss_ratio": 0.2064
+    },
+    {
+      "route": "337",
+      "affected_grid": 1030,
+      "critical_grid": 0,
+      "high_or_critical_grid": 62,
+      "lost_ai_sum": 3231.479,
+      "mean_ltrs": 0.8779,
+      "mean_ai_loss_ratio": 0.1221
+    },
+    {
+      "route": "241",
+      "affected_grid": 834,
+      "critical_grid": 0,
+      "high_or_critical_grid": 61,
+      "lost_ai_sum": 2615.565,
+      "mean_ltrs": 0.8948,
+      "mean_ai_loss_ratio": 0.1052
+    },
+    {
+      "route": "242",
+      "affected_grid": 864,
+      "critical_grid": 0,
+      "high_or_critical_grid": 61,
+      "lost_ai_sum": 2576.612,
+      "mean_ltrs": 0.9314,
+      "mean_ai_loss_ratio": 0.0686
+    },
+    {
+      "route": "464",
+      "affected_grid": 472,
+      "critical_grid": 21,
+      "high_or_critical_grid": 60,
+      "lost_ai_sum": 1232.131,
+      "mean_ltrs": 0.8288,
+      "mean_ai_loss_ratio": 0.1712
+    },
+    {
+      "route": "UL6",
+      "affected_grid": 1966,
+      "critical_grid": 7,
+      "high_or_critical_grid": 59,
+      "lost_ai_sum": 6579.856,
+      "mean_ltrs": 0.8663,
+      "mean_ai_loss_ratio": 0.1337
+    },
+    {
+      "route": "134",
+      "affected_grid": 1237,
+      "critical_grid": 0,
+      "high_or_critical_grid": 58,
+      "lost_ai_sum": 3439.154,
+      "mean_ltrs": 0.9191,
+      "mean_ai_loss_ratio": 0.0809
+    },
+    {
+      "route": "474",
+      "affected_grid": 1160,
+      "critical_grid": 0,
+      "high_or_critical_grid": 58,
+      "lost_ai_sum": 3239.201,
+      "mean_ltrs": 0.8894,
+      "mean_ai_loss_ratio": 0.1106
+    },
+    {
+      "route": "689",
+      "affected_grid": 606,
+      "critical_grid": 0,
+      "high_or_critical_grid": 58,
+      "lost_ai_sum": 1969.739,
+      "mean_ltrs": 0.9201,
+      "mean_ai_loss_ratio": 0.0799
+    },
+    {
+      "route": "379",
+      "affected_grid": 294,
+      "critical_grid": 43,
+      "high_or_critical_grid": 57,
+      "lost_ai_sum": 850.044,
+      "mean_ltrs": 0.7817,
+      "mean_ai_loss_ratio": 0.2183
+    },
+    {
+      "route": "631",
+      "affected_grid": 233,
+      "critical_grid": 34,
+      "high_or_critical_grid": 56,
+      "lost_ai_sum": 679.667,
+      "mean_ltrs": 0.8944,
+      "mean_ai_loss_ratio": 0.1056
+    },
+    {
+      "route": "136",
+      "affected_grid": 1630,
+      "critical_grid": 11,
+      "high_or_critical_grid": 56,
+      "lost_ai_sum": 3982.771,
+      "mean_ltrs": 0.9215,
+      "mean_ai_loss_ratio": 0.0785
+    },
+    {
+      "route": "317",
+      "affected_grid": 645,
+      "critical_grid": 0,
+      "high_or_critical_grid": 56,
+      "lost_ai_sum": 2121.999,
+      "mean_ltrs": 0.8716,
+      "mean_ai_loss_ratio": 0.1284
+    },
+    {
+      "route": "UL4",
+      "affected_grid": 1858,
+      "critical_grid": 18,
+      "high_or_critical_grid": 55,
+      "lost_ai_sum": 7231.368,
+      "mean_ltrs": 0.8786,
+      "mean_ai_loss_ratio": 0.1214
+    },
+    {
+      "route": "95",
+      "affected_grid": 1391,
+      "critical_grid": 0,
+      "high_or_critical_grid": 55,
+      "lost_ai_sum": 4493.498,
+      "mean_ltrs": 0.8931,
+      "mean_ai_loss_ratio": 0.1069
+    },
+    {
+      "route": "UL18",
+      "affected_grid": 2037,
+      "critical_grid": 0,
+      "high_or_critical_grid": 54,
+      "lost_ai_sum": 8377.858,
+      "mean_ltrs": 0.8506,
+      "mean_ai_loss_ratio": 0.1494
+    },
+    {
+      "route": "N343",
+      "affected_grid": 1355,
+      "critical_grid": 0,
+      "high_or_critical_grid": 54,
+      "lost_ai_sum": 4728.564,
+      "mean_ltrs": 0.9199,
+      "mean_ai_loss_ratio": 0.0801
+    },
+    {
+      "route": "N83",
+      "affected_grid": 1903,
+      "critical_grid": 0,
+      "high_or_critical_grid": 53,
+      "lost_ai_sum": 5852.362,
+      "mean_ltrs": 0.9116,
+      "mean_ai_loss_ratio": 0.0884
+    },
+    {
+      "route": "N25",
+      "affected_grid": 1837,
+      "critical_grid": 0,
+      "high_or_critical_grid": 53,
+      "lost_ai_sum": 5620.553,
+      "mean_ltrs": 0.9239,
+      "mean_ai_loss_ratio": 0.0761
+    },
+    {
+      "route": "304",
+      "affected_grid": 824,
+      "critical_grid": 7,
+      "high_or_critical_grid": 52,
+      "lost_ai_sum": 2228.718,
+      "mean_ltrs": 0.8948,
+      "mean_ai_loss_ratio": 0.1052
+    },
+    {
+      "route": "N5",
+      "affected_grid": 2062,
+      "critical_grid": 0,
+      "high_or_critical_grid": 52,
+      "lost_ai_sum": 5799.773,
+      "mean_ltrs": 0.9208,
+      "mean_ai_loss_ratio": 0.0792
+    },
+    {
+      "route": "197",
+      "affected_grid": 1474,
+      "critical_grid": 14,
+      "high_or_critical_grid": 51,
+      "lost_ai_sum": 3733.338,
+      "mean_ltrs": 0.9126,
+      "mean_ai_loss_ratio": 0.0874
+    },
+    {
+      "route": "TR2",
+      "affected_grid": 1540,
+      "critical_grid": 8,
+      "high_or_critical_grid": 51,
+      "lost_ai_sum": 5190.178,
+      "mean_ltrs": 0.8916,
+      "mean_ai_loss_ratio": 0.1084
+    },
+    {
+      "route": "130",
+      "affected_grid": 1252,
+      "critical_grid": 0,
+      "high_or_critical_grid": 51,
+      "lost_ai_sum": 3619.555,
+      "mean_ltrs": 0.8568,
+      "mean_ai_loss_ratio": 0.1432
+    },
+    {
+      "route": "632",
+      "affected_grid": 975,
+      "critical_grid": 0,
+      "high_or_critical_grid": 49,
+      "lost_ai_sum": 3058.362,
+      "mean_ltrs": 0.8913,
+      "mean_ai_loss_ratio": 0.1087
+    },
+    {
+      "route": "N72",
+      "affected_grid": 1194,
+      "critical_grid": 22,
+      "high_or_critical_grid": 48,
+      "lost_ai_sum": 2828.158,
+      "mean_ltrs": 0.937,
+      "mean_ai_loss_ratio": 0.063
+    },
+    {
+      "route": "390",
+      "affected_grid": 1154,
+      "critical_grid": 19,
+      "high_or_critical_grid": 48,
+      "lost_ai_sum": 3070.557,
+      "mean_ltrs": 0.9489,
+      "mean_ai_loss_ratio": 0.0511
+    },
+    {
+      "route": "6",
+      "affected_grid": 1087,
+      "critical_grid": 8,
+      "high_or_critical_grid": 48,
+      "lost_ai_sum": 2794.047,
+      "mean_ltrs": 0.9427,
+      "mean_ai_loss_ratio": 0.0573
+    },
+    {
+      "route": "237",
+      "affected_grid": 1394,
+      "critical_grid": 17,
+      "high_or_critical_grid": 47,
+      "lost_ai_sum": 4855.78,
+      "mean_ltrs": 0.9091,
+      "mean_ai_loss_ratio": 0.0909
+    },
+    {
+      "route": "UL67",
+      "affected_grid": 1777,
+      "critical_grid": 0,
+      "high_or_critical_grid": 47,
+      "lost_ai_sum": 4891.989,
+      "mean_ltrs": 0.8777,
+      "mean_ai_loss_ratio": 0.1223
+    },
+    {
+      "route": "344",
+      "affected_grid": 1051,
+      "critical_grid": 9,
+      "high_or_critical_grid": 46,
+      "lost_ai_sum": 3151.109,
+      "mean_ltrs": 0.9264,
+      "mean_ai_loss_ratio": 0.0736
+    },
+    {
+      "route": "UL39",
+      "affected_grid": 319,
+      "critical_grid": 0,
+      "high_or_critical_grid": 46,
+      "lost_ai_sum": 1012.154,
+      "mean_ltrs": 0.7833,
+      "mean_ai_loss_ratio": 0.2167
+    },
+    {
+      "route": "106",
+      "affected_grid": 1000,
+      "critical_grid": 22,
+      "high_or_critical_grid": 45,
+      "lost_ai_sum": 2673.164,
+      "mean_ltrs": 0.9323,
+      "mean_ai_loss_ratio": 0.0677
+    },
+    {
+      "route": "663",
+      "affected_grid": 514,
+      "critical_grid": 0,
+      "high_or_critical_grid": 45,
+      "lost_ai_sum": 1195.039,
+      "mean_ltrs": 0.8851,
+      "mean_ai_loss_ratio": 0.1149
+    },
+    {
+      "route": "196_Special/School",
+      "affected_grid": 2315,
+      "critical_grid": 19,
+      "high_or_critical_grid": 44,
+      "lost_ai_sum": 7041.323,
+      "mean_ltrs": 0.8974,
+      "mean_ai_loss_ratio": 0.1026
+    },
+    {
+      "route": "110",
+      "affected_grid": 1789,
+      "critical_grid": 0,
+      "high_or_critical_grid": 44,
+      "lost_ai_sum": 5363.011,
+      "mean_ltrs": 0.9139,
+      "mean_ai_loss_ratio": 0.0861
+    },
+    {
+      "route": "97",
+      "affected_grid": 1281,
+      "critical_grid": 14,
+      "high_or_critical_grid": 43,
+      "lost_ai_sum": 3302.707,
+      "mean_ltrs": 0.8867,
+      "mean_ai_loss_ratio": 0.1133
+    },
+    {
+      "route": "N7",
+      "affected_grid": 2263,
+      "critical_grid": 13,
+      "high_or_critical_grid": 43,
+      "lost_ai_sum": 7803.647,
+      "mean_ltrs": 0.9169,
+      "mean_ai_loss_ratio": 0.0831
+    },
+    {
+      "route": "388",
+      "affected_grid": 989,
+      "critical_grid": 8,
+      "high_or_critical_grid": 43,
+      "lost_ai_sum": 2606.381,
+      "mean_ltrs": 0.9349,
+      "mean_ai_loss_ratio": 0.0651
+    },
+    {
+      "route": "42",
+      "affected_grid": 1065,
+      "critical_grid": 0,
+      "high_or_critical_grid": 43,
+      "lost_ai_sum": 3074.002,
+      "mean_ltrs": 0.9129,
+      "mean_ai_loss_ratio": 0.0871
+    },
+    {
+      "route": "138",
+      "affected_grid": 627,
+      "critical_grid": 28,
+      "high_or_critical_grid": 42,
+      "lost_ai_sum": 1603.015,
+      "mean_ltrs": 0.9063,
+      "mean_ai_loss_ratio": 0.0937
+    },
+    {
+      "route": "Y28",
+      "affected_grid": 1579,
+      "critical_grid": 21,
+      "high_or_critical_grid": 42,
+      "lost_ai_sum": 5411.466,
+      "mean_ltrs": 0.9149,
+      "mean_ai_loss_ratio": 0.0851
+    },
+    {
+      "route": "249",
+      "affected_grid": 1291,
+      "critical_grid": 18,
+      "high_or_critical_grid": 41,
+      "lost_ai_sum": 3461.414,
+      "mean_ltrs": 0.886,
+      "mean_ai_loss_ratio": 0.114
+    },
+    {
+      "route": "176",
+      "affected_grid": 1560,
+      "critical_grid": 0,
+      "high_or_critical_grid": 41,
+      "lost_ai_sum": 4037.265,
+      "mean_ltrs": 0.9379,
+      "mean_ai_loss_ratio": 0.0621
+    },
+    {
+      "route": "33",
+      "affected_grid": 1181,
+      "critical_grid": 0,
+      "high_or_critical_grid": 41,
+      "lost_ai_sum": 3352.765,
+      "mean_ltrs": 0.8724,
+      "mean_ai_loss_ratio": 0.1276
+    },
+    {
+      "route": "104",
+      "affected_grid": 678,
+      "critical_grid": 9,
+      "high_or_critical_grid": 40,
+      "lost_ai_sum": 2046.834,
+      "mean_ltrs": 0.8942,
+      "mean_ai_loss_ratio": 0.1058
+    },
+    {
+      "route": "UL44",
+      "affected_grid": 318,
+      "critical_grid": 0,
+      "high_or_critical_grid": 40,
+      "lost_ai_sum": 926.995,
+      "mean_ltrs": 0.8009,
+      "mean_ai_loss_ratio": 0.1991
+    },
+    {
+      "route": "681",
+      "affected_grid": 1006,
+      "critical_grid": 38,
+      "high_or_critical_grid": 39,
+      "lost_ai_sum": 2394.912,
+      "mean_ltrs": 0.9076,
+      "mean_ai_loss_ratio": 0.0924
+    },
+    {
+      "route": "153",
+      "affected_grid": 771,
+      "critical_grid": 3,
+      "high_or_critical_grid": 39,
+      "lost_ai_sum": 2330.476,
+      "mean_ltrs": 0.9283,
+      "mean_ai_loss_ratio": 0.0717
+    },
+    {
+      "route": "UL96",
+      "affected_grid": 2399,
+      "critical_grid": 6,
+      "high_or_critical_grid": 38,
+      "lost_ai_sum": 5648.52,
+      "mean_ltrs": 0.8875,
+      "mean_ai_loss_ratio": 0.1125
+    },
+    {
+      "route": "N109",
+      "affected_grid": 1815,
+      "critical_grid": 0,
+      "high_or_critical_grid": 38,
+      "lost_ai_sum": 4177.594,
+      "mean_ltrs": 0.9455,
+      "mean_ai_loss_ratio": 0.0545
+    },
+    {
+      "route": "UL56",
+      "affected_grid": 514,
+      "critical_grid": 0,
+      "high_or_critical_grid": 38,
+      "lost_ai_sum": 1442.805,
+      "mean_ltrs": 0.8843,
+      "mean_ai_loss_ratio": 0.1157
+    },
+    {
+      "route": "187",
+      "affected_grid": 1119,
+      "critical_grid": 8,
+      "high_or_critical_grid": 37,
+      "lost_ai_sum": 3604.738,
+      "mean_ltrs": 0.8995,
+      "mean_ai_loss_ratio": 0.1005
+    },
+    {
+      "route": "40",
+      "affected_grid": 996,
+      "critical_grid": 0,
+      "high_or_critical_grid": 37,
+      "lost_ai_sum": 3112.509,
+      "mean_ltrs": 0.9224,
+      "mean_ai_loss_ratio": 0.0776
+    },
+    {
+      "route": "24",
+      "affected_grid": 1000,
+      "critical_grid": 0,
+      "high_or_critical_grid": 37,
+      "lost_ai_sum": 2890.658,
+      "mean_ltrs": 0.9379,
+      "mean_ai_loss_ratio": 0.0621
+    },
+    {
+      "route": "C3",
+      "affected_grid": 635,
+      "critical_grid": 16,
+      "high_or_critical_grid": 36,
+      "lost_ai_sum": 1863.481,
+      "mean_ltrs": 0.9228,
+      "mean_ai_loss_ratio": 0.0772
+    },
+    {
+      "route": "41",
+      "affected_grid": 822,
+      "critical_grid": 0,
+      "high_or_critical_grid": 36,
+      "lost_ai_sum": 2622.392,
+      "mean_ltrs": 0.9047,
+      "mean_ai_loss_ratio": 0.0953
+    },
+    {
+      "route": "327",
+      "affected_grid": 287,
+      "critical_grid": 2,
+      "high_or_critical_grid": 35,
+      "lost_ai_sum": 1022.135,
+      "mean_ltrs": 0.828,
+      "mean_ai_loss_ratio": 0.172
+    },
+    {
+      "route": "N140",
+      "affected_grid": 1821,
+      "critical_grid": 0,
+      "high_or_critical_grid": 35,
+      "lost_ai_sum": 4606.998,
+      "mean_ltrs": 0.9032,
+      "mean_ai_loss_ratio": 0.0968
+    },
+    {
+      "route": "218",
+      "affected_grid": 791,
+      "critical_grid": 0,
+      "high_or_critical_grid": 34,
+      "lost_ai_sum": 2695.398,
+      "mean_ltrs": 0.9181,
+      "mean_ai_loss_ratio": 0.0819
+    },
+    {
+      "route": "687",
+      "affected_grid": 691,
+      "critical_grid": 0,
+      "high_or_critical_grid": 34,
+      "lost_ai_sum": 2037.619,
+      "mean_ltrs": 0.8758,
+      "mean_ai_loss_ratio": 0.1242
+    },
+    {
+      "route": "78",
+      "affected_grid": 1000,
+      "critical_grid": 0,
+      "high_or_critical_grid": 33,
+      "lost_ai_sum": 2810.605,
+      "mean_ltrs": 0.9209,
+      "mean_ai_loss_ratio": 0.0791
+    },
+    {
+      "route": "UL8",
+      "affected_grid": 1465,
+      "critical_grid": 0,
+      "high_or_critical_grid": 32,
+      "lost_ai_sum": 4304.726,
+      "mean_ltrs": 0.9153,
+      "mean_ai_loss_ratio": 0.0847
+    },
+    {
+      "route": "272",
+      "affected_grid": 798,
+      "critical_grid": 0,
+      "high_or_critical_grid": 32,
+      "lost_ai_sum": 2475.379,
+      "mean_ltrs": 0.9212,
+      "mean_ai_loss_ratio": 0.0788
+    },
+    {
+      "route": "Y18",
+      "affected_grid": 2247,
+      "critical_grid": 21,
+      "high_or_critical_grid": 31,
+      "lost_ai_sum": 6403.04,
+      "mean_ltrs": 0.9197,
+      "mean_ai_loss_ratio": 0.0803
+    },
+    {
+      "route": "253",
+      "affected_grid": 1192,
+      "critical_grid": 0,
+      "high_or_critical_grid": 31,
+      "lost_ai_sum": 3136.962,
+      "mean_ltrs": 0.9403,
+      "mean_ai_loss_ratio": 0.0597
+    },
+    {
+      "route": "667",
+      "affected_grid": 658,
+      "critical_grid": 22,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 1585.33,
+      "mean_ltrs": 0.9136,
+      "mean_ai_loss_ratio": 0.0864
+    },
+    {
+      "route": "Y148",
+      "affected_grid": 2236,
+      "critical_grid": 21,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 6955.652,
+      "mean_ltrs": 0.9377,
+      "mean_ai_loss_ratio": 0.0623
+    },
+    {
+      "route": "Y316",
+      "affected_grid": 1260,
+      "critical_grid": 10,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 3971.336,
+      "mean_ltrs": 0.8977,
+      "mean_ai_loss_ratio": 0.1023
+    },
+    {
+      "route": "287",
+      "affected_grid": 1086,
+      "critical_grid": 8,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 2717.941,
+      "mean_ltrs": 0.8666,
+      "mean_ai_loss_ratio": 0.1334
+    },
+    {
+      "route": "143",
+      "affected_grid": 1156,
+      "critical_grid": 3,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 3408.472,
+      "mean_ltrs": 0.9083,
+      "mean_ai_loss_ratio": 0.0917
+    },
+    {
+      "route": "452",
+      "affected_grid": 1263,
+      "critical_grid": 0,
+      "high_or_critical_grid": 30,
+      "lost_ai_sum": 3476.534,
+      "mean_ltrs": 0.9158,
+      "mean_ai_loss_ratio": 0.0842
+    },
+    {
+      "route": "76",
+      "affected_grid": 1460,
+      "critical_grid": 0,
+      "high_or_critical_grid": 29,
+      "lost_ai_sum": 3848.909,
+      "mean_ltrs": 0.9405,
+      "mean_ai_loss_ratio": 0.0595
+    },
+    {
+      "route": "697",
+      "affected_grid": 1073,
+      "critical_grid": 0,
+      "high_or_critical_grid": 29,
+      "lost_ai_sum": 2988.063,
+      "mean_ltrs": 0.8565,
+      "mean_ai_loss_ratio": 0.1435
+    },
+    {
+      "route": "E1",
+      "affected_grid": 864,
+      "critical_grid": 0,
+      "high_or_critical_grid": 29,
+      "lost_ai_sum": 2226.143,
+      "mean_ltrs": 0.9296,
+      "mean_ai_loss_ratio": 0.0704
+    },
+    {
+      "route": "618",
+      "affected_grid": 607,
+      "critical_grid": 25,
+      "high_or_critical_grid": 28,
+      "lost_ai_sum": 1544.44,
+      "mean_ltrs": 0.8687,
+      "mean_ai_loss_ratio": 0.1313
+    },
+    {
+      "route": "8",
+      "affected_grid": 1044,
+      "critical_grid": 0,
+      "high_or_critical_grid": 28,
+      "lost_ai_sum": 3344.363,
+      "mean_ltrs": 0.9293,
+      "mean_ai_loss_ratio": 0.0707
+    },
+    {
+      "route": "488",
+      "affected_grid": 857,
+      "critical_grid": 12,
+      "high_or_critical_grid": 27,
+      "lost_ai_sum": 2460.843,
+      "mean_ltrs": 0.9169,
+      "mean_ai_loss_ratio": 0.0831
+    },
+    {
+      "route": "UL50",
+      "affected_grid": 1656,
+      "critical_grid": 0,
+      "high_or_critical_grid": 27,
+      "lost_ai_sum": 3975.362,
+      "mean_ltrs": 0.9202,
+      "mean_ai_loss_ratio": 0.0798
+    },
+    {
+      "route": "Y7X",
+      "affected_grid": 1164,
+      "critical_grid": 0,
+      "high_or_critical_grid": 27,
+      "lost_ai_sum": 3356.142,
+      "mean_ltrs": 0.9313,
+      "mean_ai_loss_ratio": 0.0687
+    },
+    {
+      "route": "UL42",
+      "affected_grid": 1978,
+      "critical_grid": 0,
+      "high_or_critical_grid": 26,
+      "lost_ai_sum": 7287.191,
+      "mean_ltrs": 0.9027,
+      "mean_ai_loss_ratio": 0.0973
+    },
+    {
+      "route": "394",
+      "affected_grid": 733,
+      "critical_grid": 0,
+      "high_or_critical_grid": 26,
+      "lost_ai_sum": 2325.307,
+      "mean_ltrs": 0.9182,
+      "mean_ai_loss_ratio": 0.0818
+    },
+    {
+      "route": "35",
+      "affected_grid": 1384,
+      "critical_grid": 1,
+      "high_or_critical_grid": 25,
+      "lost_ai_sum": 3620.729,
+      "mean_ltrs": 0.9405,
+      "mean_ai_loss_ratio": 0.0595
+    },
+    {
+      "route": "204",
+      "affected_grid": 1292,
+      "critical_grid": 0,
+      "high_or_critical_grid": 25,
+      "lost_ai_sum": 3338.621,
+      "mean_ltrs": 0.8923,
+      "mean_ai_loss_ratio": 0.1077
+    },
+    {
+      "route": "378",
+      "affected_grid": 444,
+      "critical_grid": 0,
+      "high_or_critical_grid": 25,
+      "lost_ai_sum": 1662.679,
+      "mean_ltrs": 0.8488,
+      "mean_ai_loss_ratio": 0.1512
+    },
+    {
+      "route": "12",
+      "affected_grid": 1269,
+      "critical_grid": 0,
+      "high_or_critical_grid": 24,
+      "lost_ai_sum": 3908.643,
+      "mean_ltrs": 0.9367,
+      "mean_ai_loss_ratio": 0.0633
+    },
+    {
+      "route": "31",
+      "affected_grid": 1022,
+      "critical_grid": 0,
+      "high_or_critical_grid": 24,
+      "lost_ai_sum": 2761.101,
+      "mean_ltrs": 0.9434,
+      "mean_ai_loss_ratio": 0.0566
+    },
+    {
+      "route": "328_Special/School",
+      "affected_grid": 1860,
+      "critical_grid": 0,
+      "high_or_critical_grid": 23,
+      "lost_ai_sum": 6544.863,
+      "mean_ltrs": 0.9102,
+      "mean_ai_loss_ratio": 0.0898
+    },
+    {
+      "route": "389",
+      "affected_grid": 259,
+      "critical_grid": 10,
+      "high_or_critical_grid": 22,
+      "lost_ai_sum": 735.798,
+      "mean_ltrs": 0.884,
+      "mean_ai_loss_ratio": 0.116
+    },
+    {
+      "route": "173",
+      "affected_grid": 1305,
+      "critical_grid": 2,
+      "high_or_critical_grid": 22,
+      "lost_ai_sum": 2953.966,
+      "mean_ltrs": 0.8764,
+      "mean_ai_loss_ratio": 0.1236
+    },
+    {
+      "route": "Y295",
+      "affected_grid": 1285,
+      "critical_grid": 1,
+      "high_or_critical_grid": 22,
+      "lost_ai_sum": 4073.216,
+      "mean_ltrs": 0.922,
+      "mean_ai_loss_ratio": 0.078
+    },
+    {
+      "route": "381",
+      "affected_grid": 1088,
+      "critical_grid": 0,
+      "high_or_critical_grid": 22,
+      "lost_ai_sum": 3559.195,
+      "mean_ltrs": 0.897,
+      "mean_ai_loss_ratio": 0.103
+    },
+    {
+      "route": "139",
+      "affected_grid": 1244,
+      "critical_grid": 1,
+      "high_or_critical_grid": 21,
+      "lost_ai_sum": 3329.253,
+      "mean_ltrs": 0.9473,
+      "mean_ai_loss_ratio": 0.0527
+    },
+    {
+      "route": "236",
+      "affected_grid": 1015,
+      "critical_grid": 0,
+      "high_or_critical_grid": 21,
+      "lost_ai_sum": 3270.039,
+      "mean_ltrs": 0.9194,
+      "mean_ai_loss_ratio": 0.0806
+    },
+    {
+      "route": "277",
+      "affected_grid": 1078,
+      "critical_grid": 0,
+      "high_or_critical_grid": 21,
+      "lost_ai_sum": 3253.951,
+      "mean_ltrs": 0.9071,
+      "mean_ai_loss_ratio": 0.0929
+    },
+    {
+      "route": "262",
+      "affected_grid": 825,
+      "critical_grid": 0,
+      "high_or_critical_grid": 21,
+      "lost_ai_sum": 2003.645,
+      "mean_ltrs": 0.9082,
+      "mean_ai_loss_ratio": 0.0918
+    },
+    {
+      "route": "268",
+      "affected_grid": 602,
+      "critical_grid": 0,
+      "high_or_critical_grid": 20,
+      "lost_ai_sum": 1780.866,
+      "mean_ltrs": 0.8986,
+      "mean_ai_loss_ratio": 0.1014
+    },
+    {
+      "route": "132",
+      "affected_grid": 1553,
+      "critical_grid": 0,
+      "high_or_critical_grid": 19,
+      "lost_ai_sum": 3901.49,
+      "mean_ltrs": 0.856,
+      "mean_ai_loss_ratio": 0.144
+    },
+    {
+      "route": "209",
+      "affected_grid": 315,
+      "critical_grid": 0,
+      "high_or_critical_grid": 18,
+      "lost_ai_sum": 807.819,
+      "mean_ltrs": 0.8356,
+      "mean_ai_loss_ratio": 0.1644
+    },
+    {
+      "route": "649",
+      "affected_grid": 702,
+      "critical_grid": 13,
+      "high_or_critical_grid": 17,
+      "lost_ai_sum": 1671.422,
+      "mean_ltrs": 0.9046,
+      "mean_ai_loss_ratio": 0.0954
+    },
+    {
+      "route": "UL70_Special/School",
+      "affected_grid": 1939,
+      "critical_grid": 2,
+      "high_or_critical_grid": 17,
+      "lost_ai_sum": 4956.856,
+      "mean_ltrs": 0.9328,
+      "mean_ai_loss_ratio": 0.0672
+    },
+    {
+      "route": "N31",
+      "affected_grid": 1744,
+      "critical_grid": 0,
+      "high_or_critical_grid": 17,
+      "lost_ai_sum": 4929.017,
+      "mean_ltrs": 0.93,
+      "mean_ai_loss_ratio": 0.07
+    },
+    {
+      "route": "1",
+      "affected_grid": 1434,
+      "critical_grid": 0,
+      "high_or_critical_grid": 17,
+      "lost_ai_sum": 3774.804,
+      "mean_ltrs": 0.9423,
+      "mean_ai_loss_ratio": 0.0577
+    },
+    {
+      "route": "K1_Special/School",
+      "affected_grid": 993,
+      "critical_grid": 0,
+      "high_or_critical_grid": 16,
+      "lost_ai_sum": 2496.582,
+      "mean_ltrs": 0.8433,
+      "mean_ai_loss_ratio": 0.1567
+    },
+    {
+      "route": "419",
+      "affected_grid": 912,
+      "critical_grid": 0,
+      "high_or_critical_grid": 15,
+      "lost_ai_sum": 2385.627,
+      "mean_ltrs": 0.8724,
+      "mean_ai_loss_ratio": 0.1276
+    },
+    {
+      "route": "E2",
+      "affected_grid": 1502,
+      "critical_grid": 0,
+      "high_or_critical_grid": 14,
+      "lost_ai_sum": 3978.253,
+      "mean_ltrs": 0.9166,
+      "mean_ai_loss_ratio": 0.0834
+    },
+    {
+      "route": "427",
+      "affected_grid": 1011,
+      "critical_grid": 0,
+      "high_or_critical_grid": 14,
+      "lost_ai_sum": 3564.146,
+      "mean_ltrs": 0.8603,
+      "mean_ai_loss_ratio": 0.1397
+    },
+    {
+      "route": "299",
+      "affected_grid": 895,
+      "critical_grid": 0,
+      "high_or_critical_grid": 13,
+      "lost_ai_sum": 2170.864,
+      "mean_ltrs": 0.8942,
+      "mean_ai_loss_ratio": 0.1058
+    },
+    {
+      "route": "406",
+      "affected_grid": 543,
+      "critical_grid": 0,
+      "high_or_critical_grid": 13,
+      "lost_ai_sum": 1381.697,
+      "mean_ltrs": 0.9186,
+      "mean_ai_loss_ratio": 0.0814
+    },
+    {
+      "route": "Y414",
+      "affected_grid": 1291,
+      "critical_grid": 5,
+      "high_or_critical_grid": 12,
+      "lost_ai_sum": 3729.501,
+      "mean_ltrs": 0.9363,
+      "mean_ai_loss_ratio": 0.0637
+    },
+    {
+      "route": "N91",
+      "affected_grid": 2172,
+      "critical_grid": 0,
+      "high_or_critical_grid": 12,
+      "lost_ai_sum": 7355.789,
+      "mean_ltrs": 0.9043,
+      "mean_ai_loss_ratio": 0.0957
+    },
+    {
+      "route": "473",
+      "affected_grid": 732,
+      "critical_grid": 0,
+      "high_or_critical_grid": 12,
+      "lost_ai_sum": 2097.627,
+      "mean_ltrs": 0.9006,
+      "mean_ai_loss_ratio": 0.0994
+    },
+    {
+      "route": "UL72",
+      "affected_grid": 1865,
+      "critical_grid": 0,
+      "high_or_critical_grid": 11,
+      "lost_ai_sum": 4871.821,
+      "mean_ltrs": 0.9395,
+      "mean_ai_loss_ratio": 0.0605
+    },
+    {
+      "route": "155",
+      "affected_grid": 1095,
+      "critical_grid": 0,
+      "high_or_critical_grid": 11,
+      "lost_ai_sum": 2995.386,
+      "mean_ltrs": 0.9188,
+      "mean_ai_loss_ratio": 0.0812
+    },
+    {
+      "route": "432",
+      "affected_grid": 849,
+      "critical_grid": 0,
+      "high_or_critical_grid": 11,
+      "lost_ai_sum": 2126.087,
+      "mean_ltrs": 0.9205,
+      "mean_ai_loss_ratio": 0.0795
+    },
+    {
+      "route": "411",
+      "affected_grid": 316,
+      "critical_grid": 0,
+      "high_or_critical_grid": 11,
+      "lost_ai_sum": 788.0,
+      "mean_ltrs": 0.8971,
+      "mean_ai_loss_ratio": 0.1029
+    },
+    {
+      "route": "4",
+      "affected_grid": 1089,
+      "critical_grid": 2,
+      "high_or_critical_grid": 10,
+      "lost_ai_sum": 2939.475,
+      "mean_ltrs": 0.9315,
+      "mean_ai_loss_ratio": 0.0685
+    },
+    {
+      "route": "UL87",
+      "affected_grid": 2382,
+      "critical_grid": 1,
+      "high_or_critical_grid": 10,
+      "lost_ai_sum": 5863.977,
+      "mean_ltrs": 0.9046,
+      "mean_ai_loss_ratio": 0.0954
+    },
+    {
+      "route": "140",
+      "affected_grid": 1443,
+      "critical_grid": 0,
+      "high_or_critical_grid": 10,
+      "lost_ai_sum": 4228.692,
+      "mean_ltrs": 0.8932,
+      "mean_ai_loss_ratio": 0.1068
+    },
+    {
+      "route": "237_Special/School",
+      "affected_grid": 1209,
+      "critical_grid": 0,
+      "high_or_critical_grid": 10,
+      "lost_ai_sum": 3441.552,
+      "mean_ltrs": 0.9301,
+      "mean_ai_loss_ratio": 0.0699
+    },
+    {
+      "route": "UL68",
+      "affected_grid": 1475,
+      "critical_grid": 0,
+      "high_or_critical_grid": 9,
+      "lost_ai_sum": 6244.685,
+      "mean_ltrs": 0.8583,
+      "mean_ai_loss_ratio": 0.1417
+    },
+    {
+      "route": "N11",
+      "affected_grid": 2048,
+      "critical_grid": 0,
+      "high_or_critical_grid": 9,
+      "lost_ai_sum": 5920.545,
+      "mean_ltrs": 0.9357,
+      "mean_ai_loss_ratio": 0.0643
+    },
+    {
+      "route": "Y70",
+      "affected_grid": 1768,
+      "critical_grid": 0,
+      "high_or_critical_grid": 9,
+      "lost_ai_sum": 5291.081,
+      "mean_ltrs": 0.9256,
+      "mean_ai_loss_ratio": 0.0744
+    },
+    {
+      "route": "21",
+      "affected_grid": 1598,
+      "critical_grid": 0,
+      "high_or_critical_grid": 9,
+      "lost_ai_sum": 3949.884,
+      "mean_ltrs": 0.9336,
+      "mean_ai_loss_ratio": 0.0664
+    },
+    {
+      "route": "662",
+      "affected_grid": 657,
+      "critical_grid": 0,
+      "high_or_critical_grid": 9,
+      "lost_ai_sum": 2080.805,
+      "mean_ltrs": 0.8607,
+      "mean_ai_loss_ratio": 0.1393
+    },
+    {
+      "route": "N74",
+      "affected_grid": 1423,
+      "critical_grid": 0,
+      "high_or_critical_grid": 8,
+      "lost_ai_sum": 3612.348,
+      "mean_ltrs": 0.941,
+      "mean_ai_loss_ratio": 0.059
+    },
+    {
+      "route": "616",
+      "affected_grid": 1035,
+      "critical_grid": 0,
+      "high_or_critical_grid": 7,
+      "lost_ai_sum": 2739.48,
+      "mean_ltrs": 0.8747,
+      "mean_ai_loss_ratio": 0.1253
+    },
+    {
+      "route": "17",
+      "affected_grid": 899,
+      "critical_grid": 0,
+      "high_or_critical_grid": 7,
+      "lost_ai_sum": 2239.987,
+      "mean_ltrs": 0.9409,
+      "mean_ai_loss_ratio": 0.0591
+    },
+    {
+      "route": "634",
+      "affected_grid": 947,
+      "critical_grid": 0,
+      "high_or_critical_grid": 7,
+      "lost_ai_sum": 2175.766,
+      "mean_ltrs": 0.8929,
+      "mean_ai_loss_ratio": 0.1071
+    },
+    {
+      "route": "UL66",
+      "affected_grid": 3163,
+      "critical_grid": 1,
+      "high_or_critical_grid": 6,
+      "lost_ai_sum": 9340.93,
+      "mean_ltrs": 0.915,
+      "mean_ai_loss_ratio": 0.085
+    },
+    {
+      "route": "UL91",
+      "affected_grid": 1692,
+      "critical_grid": 0,
+      "high_or_critical_grid": 5,
+      "lost_ai_sum": 5011.105,
+      "mean_ltrs": 0.9286,
+      "mean_ai_loss_ratio": 0.0714
+    },
+    {
+      "route": "5",
+      "affected_grid": 1682,
+      "critical_grid": 0,
+      "high_or_critical_grid": 5,
+      "lost_ai_sum": 4241.733,
+      "mean_ltrs": 0.9134,
+      "mean_ai_loss_ratio": 0.0866
+    },
+    {
+      "route": "345",
+      "affected_grid": 1408,
+      "critical_grid": 0,
+      "high_or_critical_grid": 5,
+      "lost_ai_sum": 3740.774,
+      "mean_ltrs": 0.921,
+      "mean_ai_loss_ratio": 0.079
+    },
+    {
+      "route": "295",
+      "affected_grid": 1126,
+      "critical_grid": 0,
+      "high_or_critical_grid": 5,
+      "lost_ai_sum": 2761.902,
+      "mean_ltrs": 0.9407,
+      "mean_ai_loss_ratio": 0.0593
+    },
+    {
+      "route": "652",
+      "affected_grid": 1077,
+      "critical_grid": 0,
+      "high_or_critical_grid": 5,
+      "lost_ai_sum": 2609.26,
+      "mean_ltrs": 0.8413,
+      "mean_ai_loss_ratio": 0.1587
+    },
+    {
+      "route": "UL43",
+      "affected_grid": 1374,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 4550.078,
+      "mean_ltrs": 0.8916,
+      "mean_ai_loss_ratio": 0.1084
+    },
+    {
+      "route": "211",
+      "affected_grid": 899,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 2390.914,
+      "mean_ltrs": 0.9339,
+      "mean_ai_loss_ratio": 0.0661
+    },
+    {
+      "route": "UL19_Special/School",
+      "affected_grid": 865,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 2338.623,
+      "mean_ltrs": 0.9229,
+      "mean_ai_loss_ratio": 0.0771
+    },
+    {
+      "route": "UL22",
+      "affected_grid": 473,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 1679.938,
+      "mean_ltrs": 0.8904,
+      "mean_ai_loss_ratio": 0.1096
+    },
+    {
+      "route": "650",
+      "affected_grid": 640,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 1459.235,
+      "mean_ltrs": 0.9143,
+      "mean_ai_loss_ratio": 0.0857
+    },
+    {
+      "route": "418",
+      "affected_grid": 558,
+      "critical_grid": 0,
+      "high_or_critical_grid": 4,
+      "lost_ai_sum": 1271.913,
+      "mean_ltrs": 0.9255,
+      "mean_ai_loss_ratio": 0.0745
+    },
+    {
+      "route": "266",
+      "affected_grid": 1090,
+      "critical_grid": 0,
+      "high_or_critical_grid": 3,
+      "lost_ai_sum": 3203.527,
+      "mean_ltrs": 0.9074,
+      "mean_ai_loss_ratio": 0.0926
+    },
+    {
+      "route": "15",
+      "affected_grid": 980,
+      "critical_grid": 0,
+      "high_or_critical_grid": 3,
+      "lost_ai_sum": 2778.8,
+      "mean_ltrs": 0.9319,
+      "mean_ai_loss_ratio": 0.0681
+    },
+    {
+      "route": "476",
+      "affected_grid": 1179,
+      "critical_grid": 0,
+      "high_or_critical_grid": 3,
+      "lost_ai_sum": 2723.096,
+      "mean_ltrs": 0.9356,
+      "mean_ai_loss_ratio": 0.0644
+    },
+    {
+      "route": "E7_Special/School",
+      "affected_grid": 2089,
+      "critical_grid": 0,
+      "high_or_critical_grid": 2,
+      "lost_ai_sum": 4892.887,
+      "mean_ltrs": 0.915,
+      "mean_ai_loss_ratio": 0.085
+    },
+    {
+      "route": "Y23",
+      "affected_grid": 1330,
+      "critical_grid": 0,
+      "high_or_critical_grid": 2,
+      "lost_ai_sum": 3944.165,
+      "mean_ltrs": 0.9504,
+      "mean_ai_loss_ratio": 0.0496
+    },
+    {
+      "route": "172",
+      "affected_grid": 1165,
+      "critical_grid": 0,
+      "high_or_critical_grid": 2,
+      "lost_ai_sum": 3532.856,
+      "mean_ltrs": 0.9267,
+      "mean_ai_loss_ratio": 0.0733
+    },
+    {
+      "route": "UL89",
+      "affected_grid": 728,
+      "critical_grid": 0,
+      "high_or_critical_grid": 2,
+      "lost_ai_sum": 2020.013,
+      "mean_ltrs": 0.9003,
+      "mean_ai_loss_ratio": 0.0997
+    },
+    {
+      "route": "UL81_Special/School",
+      "affected_grid": 202,
+      "critical_grid": 0,
+      "high_or_critical_grid": 2,
+      "lost_ai_sum": 382.238,
+      "mean_ltrs": 0.9298,
+      "mean_ai_loss_ratio": 0.0702
+    },
+    {
+      "route": "Y94",
+      "affected_grid": 1808,
+      "critical_grid": 0,
+      "high_or_critical_grid": 1,
+      "lost_ai_sum": 6039.687,
+      "mean_ltrs": 0.9367,
+      "mean_ai_loss_ratio": 0.0633
+    },
+    {
+      "route": "N253",
+      "affected_grid": 1841,
+      "critical_grid": 0,
+      "high_or_critical_grid": 1,
+      "lost_ai_sum": 4537.176,
+      "mean_ltrs": 0.9444,
+      "mean_ai_loss_ratio": 0.0556
+    },
+    {
+      "route": "231",
+      "affected_grid": 989,
+      "critical_grid": 0,
+      "high_or_critical_grid": 1,
+      "lost_ai_sum": 2843.734,
+      "mean_ltrs": 0.8976,
+      "mean_ai_loss_ratio": 0.1024
+    },
+    {
+      "route": "Y7N",
+      "affected_grid": 3570,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 8537.646,
+      "mean_ltrs": 0.9396,
+      "mean_ai_loss_ratio": 0.0604
+    },
+    {
+      "route": "UL65",
+      "affected_grid": 3531,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 8317.588,
+      "mean_ltrs": 0.9283,
+      "mean_ai_loss_ratio": 0.0717
+    },
+    {
+      "route": "N68",
+      "affected_grid": 2739,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 6534.748,
+      "mean_ltrs": 0.9351,
+      "mean_ai_loss_ratio": 0.0649
+    },
+    {
+      "route": "N207",
+      "affected_grid": 2740,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 6235.889,
+      "mean_ltrs": 0.948,
+      "mean_ai_loss_ratio": 0.052
+    },
+    {
+      "route": "N279",
+      "affected_grid": 2155,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 5932.391,
+      "mean_ltrs": 0.934,
+      "mean_ai_loss_ratio": 0.066
+    },
+    {
+      "route": "N20",
+      "affected_grid": 2156,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 5647.225,
+      "mean_ltrs": 0.9332,
+      "mean_ai_loss_ratio": 0.0668
+    },
+    {
+      "route": "T4",
+      "affected_grid": 2204,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 5093.781,
+      "mean_ltrs": 0.9164,
+      "mean_ai_loss_ratio": 0.0836
+    },
+    {
+      "route": "18",
+      "affected_grid": 1454,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4891.425,
+      "mean_ltrs": 0.9152,
+      "mean_ai_loss_ratio": 0.0848
+    },
+    {
+      "route": "UL38_Special/School",
+      "affected_grid": 2072,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4810.912,
+      "mean_ltrs": 0.9435,
+      "mean_ai_loss_ratio": 0.0565
+    },
+    {
+      "route": "N22",
+      "affected_grid": 1988,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4800.793,
+      "mean_ltrs": 0.9327,
+      "mean_ai_loss_ratio": 0.0673
+    },
+    {
+      "route": "N86",
+      "affected_grid": 2044,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4772.132,
+      "mean_ltrs": 0.9095,
+      "mean_ai_loss_ratio": 0.0905
+    },
+    {
+      "route": "T1",
+      "affected_grid": 2206,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4609.878,
+      "mean_ltrs": 0.9244,
+      "mean_ai_loss_ratio": 0.0756
+    },
+    {
+      "route": "UL21",
+      "affected_grid": 1959,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4554.995,
+      "mean_ltrs": 0.9387,
+      "mean_ai_loss_ratio": 0.0613
+    },
+    {
+      "route": "UL30",
+      "affected_grid": 1738,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4447.028,
+      "mean_ltrs": 0.9144,
+      "mean_ai_loss_ratio": 0.0856
+    },
+    {
+      "route": "86",
+      "affected_grid": 1459,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4434.047,
+      "mean_ltrs": 0.9042,
+      "mean_ai_loss_ratio": 0.0958
+    },
+    {
+      "route": "196",
+      "affected_grid": 1459,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4328.604,
+      "mean_ltrs": 0.9156,
+      "mean_ai_loss_ratio": 0.0844
+    },
+    {
+      "route": "149",
+      "affected_grid": 1497,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4233.094,
+      "mean_ltrs": 0.9332,
+      "mean_ai_loss_ratio": 0.0668
+    },
+    {
+      "route": "N41",
+      "affected_grid": 1590,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4096.93,
+      "mean_ltrs": 0.9408,
+      "mean_ai_loss_ratio": 0.0592
+    },
+    {
+      "route": "401",
+      "affected_grid": 988,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4076.374,
+      "mean_ltrs": 0.755,
+      "mean_ai_loss_ratio": 0.245
+    },
+    {
+      "route": "N28",
+      "affected_grid": 1716,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4043.608,
+      "mean_ltrs": 0.9421,
+      "mean_ai_loss_ratio": 0.0579
+    },
+    {
+      "route": "468",
+      "affected_grid": 1748,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4032.314,
+      "mean_ltrs": 0.9398,
+      "mean_ai_loss_ratio": 0.0602
+    },
+    {
+      "route": "148",
+      "affected_grid": 1433,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4028.011,
+      "mean_ltrs": 0.9513,
+      "mean_ai_loss_ratio": 0.0487
+    },
+    {
+      "route": "Y7",
+      "affected_grid": 1584,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 4001.855,
+      "mean_ltrs": 0.9458,
+      "mean_ai_loss_ratio": 0.0542
+    },
+    {
+      "route": "N155",
+      "affected_grid": 1717,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3984.684,
+      "mean_ltrs": 0.9403,
+      "mean_ai_loss_ratio": 0.0597
+    },
+    {
+      "route": "UL94_Special/School",
+      "affected_grid": 1742,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3975.182,
+      "mean_ltrs": 0.9485,
+      "mean_ai_loss_ratio": 0.0515
+    },
+    {
+      "route": "460",
+      "affected_grid": 1051,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3953.925,
+      "mean_ltrs": 0.8839,
+      "mean_ai_loss_ratio": 0.1161
+    },
+    {
+      "route": "UL30_Special/School",
+      "affected_grid": 1738,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3926.052,
+      "mean_ltrs": 0.9244,
+      "mean_ai_loss_ratio": 0.0756
+    },
+    {
+      "route": "UL23",
+      "affected_grid": 1132,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3887.879,
+      "mean_ltrs": 0.9048,
+      "mean_ai_loss_ratio": 0.0952
+    },
+    {
+      "route": "N137",
+      "affected_grid": 1658,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3779.427,
+      "mean_ltrs": 0.9373,
+      "mean_ai_loss_ratio": 0.0627
+    },
+    {
+      "route": "N32",
+      "affected_grid": 1664,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3687.493,
+      "mean_ltrs": 0.9406,
+      "mean_ai_loss_ratio": 0.0594
+    },
+    {
+      "route": "328",
+      "affected_grid": 1208,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3664.785,
+      "mean_ltrs": 0.932,
+      "mean_ai_loss_ratio": 0.068
+    },
+    {
+      "route": "55",
+      "affected_grid": 1502,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3642.858,
+      "mean_ltrs": 0.9414,
+      "mean_ai_loss_ratio": 0.0586
+    },
+    {
+      "route": "N19",
+      "affected_grid": 1598,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3613.726,
+      "mean_ltrs": 0.9504,
+      "mean_ai_loss_ratio": 0.0496
+    },
+    {
+      "route": "UL80",
+      "affected_grid": 1475,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3606.149,
+      "mean_ltrs": 0.9182,
+      "mean_ai_loss_ratio": 0.0818
+    },
+    {
+      "route": "113",
+      "affected_grid": 1683,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3595.434,
+      "mean_ltrs": 0.9261,
+      "mean_ai_loss_ratio": 0.0739
+    },
+    {
+      "route": "13",
+      "affected_grid": 1568,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3522.532,
+      "mean_ltrs": 0.9459,
+      "mean_ai_loss_ratio": 0.0541
+    },
+    {
+      "route": "207",
+      "affected_grid": 1366,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3479.199,
+      "mean_ltrs": 0.9398,
+      "mean_ai_loss_ratio": 0.0602
+    },
+    {
+      "route": "N266",
+      "affected_grid": 1475,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3460.722,
+      "mean_ltrs": 0.9338,
+      "mean_ai_loss_ratio": 0.0662
+    },
+    {
+      "route": "N33",
+      "affected_grid": 1516,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3434.402,
+      "mean_ltrs": 0.9252,
+      "mean_ai_loss_ratio": 0.0748
+    },
+    {
+      "route": "28",
+      "affected_grid": 1179,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3415.703,
+      "mean_ltrs": 0.931,
+      "mean_ai_loss_ratio": 0.069
+    },
+    {
+      "route": "43",
+      "affected_grid": 1520,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3413.314,
+      "mean_ltrs": 0.9384,
+      "mean_ai_loss_ratio": 0.0616
+    },
+    {
+      "route": "425",
+      "affected_grid": 1442,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3388.156,
+      "mean_ltrs": 0.9269,
+      "mean_ai_loss_ratio": 0.0731
+    },
+    {
+      "route": "N277",
+      "affected_grid": 1399,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3341.101,
+      "mean_ltrs": 0.9309,
+      "mean_ai_loss_ratio": 0.0691
+    },
+    {
+      "route": "Y18_Special/School",
+      "affected_grid": 1406,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3337.221,
+      "mean_ltrs": 0.9369,
+      "mean_ai_loss_ratio": 0.0631
+    },
+    {
+      "route": "453",
+      "affected_grid": 1387,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3332.388,
+      "mean_ltrs": 0.9502,
+      "mean_ai_loss_ratio": 0.0498
+    },
+    {
+      "route": "68",
+      "affected_grid": 1308,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3313.177,
+      "mean_ltrs": 0.9471,
+      "mean_ai_loss_ratio": 0.0529
+    },
+    {
+      "route": "Y23_Special/School",
+      "affected_grid": 1317,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3286.918,
+      "mean_ltrs": 0.9579,
+      "mean_ai_loss_ratio": 0.0421
+    },
+    {
+      "route": "171",
+      "affected_grid": 1398,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3190.021,
+      "mean_ltrs": 0.9321,
+      "mean_ai_loss_ratio": 0.0679
+    },
+    {
+      "route": "19",
+      "affected_grid": 1381,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3146.577,
+      "mean_ltrs": 0.9524,
+      "mean_ai_loss_ratio": 0.0476
+    },
+    {
+      "route": "65",
+      "affected_grid": 1356,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3144.126,
+      "mean_ltrs": 0.9214,
+      "mean_ai_loss_ratio": 0.0786
+    },
+    {
+      "route": "N381",
+      "affected_grid": 1209,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3128.204,
+      "mean_ltrs": 0.9258,
+      "mean_ai_loss_ratio": 0.0742
+    },
+    {
+      "route": "279",
+      "affected_grid": 1347,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3104.415,
+      "mean_ltrs": 0.9296,
+      "mean_ai_loss_ratio": 0.0704
+    },
+    {
+      "route": "30",
+      "affected_grid": 1296,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3095.924,
+      "mean_ltrs": 0.9502,
+      "mean_ai_loss_ratio": 0.0498
+    },
+    {
+      "route": "29",
+      "affected_grid": 1179,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3060.992,
+      "mean_ltrs": 0.9473,
+      "mean_ai_loss_ratio": 0.0527
+    },
+    {
+      "route": "267",
+      "affected_grid": 1292,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3040.7,
+      "mean_ltrs": 0.9351,
+      "mean_ai_loss_ratio": 0.0649
+    },
+    {
+      "route": "254",
+      "affected_grid": 1326,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3020.63,
+      "mean_ltrs": 0.9455,
+      "mean_ai_loss_ratio": 0.0545
+    },
+    {
+      "route": "14",
+      "affected_grid": 1179,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3016.997,
+      "mean_ltrs": 0.9512,
+      "mean_ai_loss_ratio": 0.0488
+    },
+    {
+      "route": "94",
+      "affected_grid": 1137,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3008.407,
+      "mean_ltrs": 0.9535,
+      "mean_ai_loss_ratio": 0.0465
+    },
+    {
+      "route": "3",
+      "affected_grid": 1267,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3002.667,
+      "mean_ltrs": 0.9348,
+      "mean_ai_loss_ratio": 0.0652
+    },
+    {
+      "route": "210",
+      "affected_grid": 1087,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 3001.725,
+      "mean_ltrs": 0.9102,
+      "mean_ai_loss_ratio": 0.0898
+    },
+    {
+      "route": "343",
+      "affected_grid": 1238,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2996.307,
+      "mean_ltrs": 0.9327,
+      "mean_ai_loss_ratio": 0.0673
+    },
+    {
+      "route": "Y148_Special/School",
+      "affected_grid": 1250,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2994.808,
+      "mean_ltrs": 0.9544,
+      "mean_ai_loss_ratio": 0.0456
+    },
+    {
+      "route": "133",
+      "affected_grid": 1319,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2990.279,
+      "mean_ltrs": 0.9491,
+      "mean_ai_loss_ratio": 0.0509
+    },
+    {
+      "route": "26",
+      "affected_grid": 1187,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2972.868,
+      "mean_ltrs": 0.9505,
+      "mean_ai_loss_ratio": 0.0495
+    },
+    {
+      "route": "N263",
+      "affected_grid": 1296,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2970.909,
+      "mean_ltrs": 0.9359,
+      "mean_ai_loss_ratio": 0.0641
+    },
+    {
+      "route": "9",
+      "affected_grid": 925,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2969.5,
+      "mean_ltrs": 0.9432,
+      "mean_ai_loss_ratio": 0.0568
+    },
+    {
+      "route": "69",
+      "affected_grid": 1012,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2967.667,
+      "mean_ltrs": 0.906,
+      "mean_ai_loss_ratio": 0.094
+    },
+    {
+      "route": "83",
+      "affected_grid": 1262,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2957.887,
+      "mean_ltrs": 0.9259,
+      "mean_ai_loss_ratio": 0.0741
+    },
+    {
+      "route": "N27",
+      "affected_grid": 1169,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2897.771,
+      "mean_ltrs": 0.951,
+      "mean_ai_loss_ratio": 0.049
+    },
+    {
+      "route": "38",
+      "affected_grid": 1262,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2897.43,
+      "mean_ltrs": 0.9573,
+      "mean_ai_loss_ratio": 0.0427
+    },
+    {
+      "route": "N250",
+      "affected_grid": 1256,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2877.906,
+      "mean_ltrs": 0.9318,
+      "mean_ai_loss_ratio": 0.0682
+    },
+    {
+      "route": "653",
+      "affected_grid": 1208,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2827.909,
+      "mean_ltrs": 0.9201,
+      "mean_ai_loss_ratio": 0.0799
+    },
+    {
+      "route": "N242",
+      "affected_grid": 1188,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2810.68,
+      "mean_ltrs": 0.9528,
+      "mean_ai_loss_ratio": 0.0472
+    },
+    {
+      "route": "259",
+      "affected_grid": 1216,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2746.236,
+      "mean_ltrs": 0.9455,
+      "mean_ai_loss_ratio": 0.0545
+    },
+    {
+      "route": "137",
+      "affected_grid": 1000,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2692.557,
+      "mean_ltrs": 0.9305,
+      "mean_ai_loss_ratio": 0.0695
+    },
+    {
+      "route": "74",
+      "affected_grid": 1185,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2672.037,
+      "mean_ltrs": 0.9535,
+      "mean_ai_loss_ratio": 0.0465
+    },
+    {
+      "route": "32",
+      "affected_grid": 1092,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2645.646,
+      "mean_ltrs": 0.9171,
+      "mean_ai_loss_ratio": 0.0829
+    },
+    {
+      "route": "T1_Special/School",
+      "affected_grid": 1227,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2620.637,
+      "mean_ltrs": 0.935,
+      "mean_ai_loss_ratio": 0.065
+    },
+    {
+      "route": "683",
+      "affected_grid": 1152,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2618.209,
+      "mean_ltrs": 0.9271,
+      "mean_ai_loss_ratio": 0.0729
+    },
+    {
+      "route": "415",
+      "affected_grid": 897,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2604.904,
+      "mean_ltrs": 0.9305,
+      "mean_ai_loss_ratio": 0.0695
+    },
+    {
+      "route": "UL58_Special/School",
+      "affected_grid": 1131,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2539.558,
+      "mean_ltrs": 0.9254,
+      "mean_ai_loss_ratio": 0.0746
+    },
+    {
+      "route": "310",
+      "affected_grid": 1104,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2530.786,
+      "mean_ltrs": 0.9324,
+      "mean_ai_loss_ratio": 0.0676
+    },
+    {
+      "route": "59",
+      "affected_grid": 1065,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2518.051,
+      "mean_ltrs": 0.9511,
+      "mean_ai_loss_ratio": 0.0489
+    },
+    {
+      "route": "629",
+      "affected_grid": 1125,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2501.493,
+      "mean_ltrs": 0.8929,
+      "mean_ai_loss_ratio": 0.1071
+    },
+    {
+      "route": "C1",
+      "affected_grid": 832,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2480.21,
+      "mean_ltrs": 0.9398,
+      "mean_ai_loss_ratio": 0.0602
+    },
+    {
+      "route": "49",
+      "affected_grid": 1010,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2444.734,
+      "mean_ltrs": 0.9398,
+      "mean_ai_loss_ratio": 0.0602
+    },
+    {
+      "route": "109",
+      "affected_grid": 1097,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2421.93,
+      "mean_ltrs": 0.9366,
+      "mean_ai_loss_ratio": 0.0634
+    },
+    {
+      "route": "217",
+      "affected_grid": 1109,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2394.463,
+      "mean_ltrs": 0.9091,
+      "mean_ai_loss_ratio": 0.0909
+    },
+    {
+      "route": "363",
+      "affected_grid": 1059,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2375.359,
+      "mean_ltrs": 0.9333,
+      "mean_ai_loss_ratio": 0.0667
+    },
+    {
+      "route": "91",
+      "affected_grid": 1041,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2370.276,
+      "mean_ltrs": 0.951,
+      "mean_ai_loss_ratio": 0.049
+    },
+    {
+      "route": "UL9_Special/School",
+      "affected_grid": 1016,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2303.376,
+      "mean_ltrs": 0.9478,
+      "mean_ai_loss_ratio": 0.0522
+    },
+    {
+      "route": "126",
+      "affected_grid": 886,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2290.825,
+      "mean_ltrs": 0.9028,
+      "mean_ai_loss_ratio": 0.0972
+    },
+    {
+      "route": "Y94_Special/School",
+      "affected_grid": 991,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2222.328,
+      "mean_ltrs": 0.9579,
+      "mean_ai_loss_ratio": 0.0421
+    },
+    {
+      "route": "238",
+      "affected_grid": 805,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2177.155,
+      "mean_ltrs": 0.9275,
+      "mean_ai_loss_ratio": 0.0725
+    },
+    {
+      "route": "73",
+      "affected_grid": 968,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2175.425,
+      "mean_ltrs": 0.9485,
+      "mean_ai_loss_ratio": 0.0515
+    },
+    {
+      "route": "11",
+      "affected_grid": 784,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2090.272,
+      "mean_ltrs": 0.9415,
+      "mean_ai_loss_ratio": 0.0585
+    },
+    {
+      "route": "257",
+      "affected_grid": 856,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2056.92,
+      "mean_ltrs": 0.9128,
+      "mean_ai_loss_ratio": 0.0872
+    },
+    {
+      "route": "671",
+      "affected_grid": 871,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2053.103,
+      "mean_ltrs": 0.9017,
+      "mean_ai_loss_ratio": 0.0983
+    },
+    {
+      "route": "39",
+      "affected_grid": 888,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2028.855,
+      "mean_ltrs": 0.9236,
+      "mean_ai_loss_ratio": 0.0764
+    },
+    {
+      "route": "617",
+      "affected_grid": 977,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 2000.089,
+      "mean_ltrs": 0.9151,
+      "mean_ai_loss_ratio": 0.0849
+    },
+    {
+      "route": "627",
+      "affected_grid": 928,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1996.422,
+      "mean_ltrs": 0.8333,
+      "mean_ai_loss_ratio": 0.1667
+    },
+    {
+      "route": "71",
+      "affected_grid": 754,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1767.304,
+      "mean_ltrs": 0.9075,
+      "mean_ai_loss_ratio": 0.0925
+    },
+    {
+      "route": "624",
+      "affected_grid": 675,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1566.621,
+      "mean_ltrs": 0.8989,
+      "mean_ai_loss_ratio": 0.1011
+    },
+    {
+      "route": "645",
+      "affected_grid": 584,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1419.204,
+      "mean_ltrs": 0.9378,
+      "mean_ai_loss_ratio": 0.0622
+    },
+    {
+      "route": "R5",
+      "affected_grid": 659,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1397.904,
+      "mean_ltrs": 0.8351,
+      "mean_ai_loss_ratio": 0.1649
+    },
+    {
+      "route": "72",
+      "affected_grid": 552,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1351.245,
+      "mean_ltrs": 0.9497,
+      "mean_ai_loss_ratio": 0.0503
+    },
+    {
+      "route": "Y328_Special/School",
+      "affected_grid": 599,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1334.936,
+      "mean_ltrs": 0.9427,
+      "mean_ai_loss_ratio": 0.0573
+    },
+    {
+      "route": "396",
+      "affected_grid": 611,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1309.764,
+      "mean_ltrs": 0.9148,
+      "mean_ai_loss_ratio": 0.0852
+    },
+    {
+      "route": "Z999",
+      "affected_grid": 354,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 1306.369,
+      "mean_ltrs": 0.9284,
+      "mean_ai_loss_ratio": 0.0716
+    },
+    {
+      "route": "DL11",
+      "affected_grid": 342,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 736.066,
+      "mean_ltrs": 0.9507,
+      "mean_ai_loss_ratio": 0.0493
+    },
+    {
+      "route": "UL11",
+      "affected_grid": 356,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 707.707,
+      "mean_ltrs": 0.9552,
+      "mean_ai_loss_ratio": 0.0448
+    },
+    {
+      "route": "UL88_Special/School",
+      "affected_grid": 193,
+      "critical_grid": 0,
+      "high_or_critical_grid": 0,
+      "lost_ai_sum": 316.401,
+      "mean_ltrs": 0.9668,
+      "mean_ai_loss_ratio": 0.0332
+    }
+  ]
+}

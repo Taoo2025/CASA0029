@@ -1,0 +1,4906 @@
+{
+  "method": {
+    "source": "OSM network Dijkstra walking times",
+    "walking_speed_kmh": 4.8,
+    "thresholds_min": {
+      "high": 8,
+      "medium": 12
+    },
+    "route_cancellation_rule": "A stop remains available when at least one non-cancelled route still serves it.",
+    "distance_note": "Uses precomputed stop walking times in data_chunks. These are based on the current project data."
+  },
+  "coverage": {
+    "lsoa_count": 4994,
+    "routes_count": 543,
+    "baseline_12min_accessible_lsoa": 4827
+  },
+  "single_route_impacts": [
+    {
+      "route": "191",
+      "affected_lsoa": 123,
+      "affected_accessible_lsoa": 119,
+      "lost_12min_access_lsoa": 11,
+      "worsened_class_lsoa": 17,
+      "mean_delay_min": 5.9,
+      "retention_ratio": 0.9076
+    },
+    {
+      "route": "99",
+      "affected_lsoa": 157,
+      "affected_accessible_lsoa": 150,
+      "lost_12min_access_lsoa": 9,
+      "worsened_class_lsoa": 18,
+      "mean_delay_min": 6.49,
+      "retention_ratio": 0.94
+    },
+    {
+      "route": "H12",
+      "affected_lsoa": 144,
+      "affected_accessible_lsoa": 135,
+      "lost_12min_access_lsoa": 9,
+      "worsened_class_lsoa": 15,
+      "mean_delay_min": 7.94,
+      "retention_ratio": 0.9333
+    },
+    {
+      "route": "51",
+      "affected_lsoa": 185,
+      "affected_accessible_lsoa": 168,
+      "lost_12min_access_lsoa": 9,
+      "worsened_class_lsoa": 11,
+      "mean_delay_min": 9.17,
+      "retention_ratio": 0.9464
+    },
+    {
+      "route": "116",
+      "affected_lsoa": 87,
+      "affected_accessible_lsoa": 87,
+      "lost_12min_access_lsoa": 9,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 12.62,
+      "retention_ratio": 0.8966
+    },
+    {
+      "route": "131",
+      "affected_lsoa": 197,
+      "affected_accessible_lsoa": 190,
+      "lost_12min_access_lsoa": 8,
+      "worsened_class_lsoa": 17,
+      "mean_delay_min": 6.83,
+      "retention_ratio": 0.9579
+    },
+    {
+      "route": "114",
+      "affected_lsoa": 239,
+      "affected_accessible_lsoa": 231,
+      "lost_12min_access_lsoa": 7,
+      "worsened_class_lsoa": 13,
+      "mean_delay_min": 4.67,
+      "retention_ratio": 0.9697
+    },
+    {
+      "route": "221",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 210,
+      "lost_12min_access_lsoa": 7,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 7.19,
+      "retention_ratio": 0.9667
+    },
+    {
+      "route": "208",
+      "affected_lsoa": 202,
+      "affected_accessible_lsoa": 194,
+      "lost_12min_access_lsoa": 7,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 8.56,
+      "retention_ratio": 0.9639
+    },
+    {
+      "route": "407",
+      "affected_lsoa": 191,
+      "affected_accessible_lsoa": 188,
+      "lost_12min_access_lsoa": 7,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 7.54,
+      "retention_ratio": 0.9628
+    },
+    {
+      "route": "111",
+      "affected_lsoa": 182,
+      "affected_accessible_lsoa": 177,
+      "lost_12min_access_lsoa": 6,
+      "worsened_class_lsoa": 7,
+      "mean_delay_min": 5.22,
+      "retention_ratio": 0.9661
+    },
+    {
+      "route": "W16",
+      "affected_lsoa": 146,
+      "affected_accessible_lsoa": 145,
+      "lost_12min_access_lsoa": 5,
+      "worsened_class_lsoa": 11,
+      "mean_delay_min": 4.98,
+      "retention_ratio": 0.9655
+    },
+    {
+      "route": "154",
+      "affected_lsoa": 215,
+      "affected_accessible_lsoa": 213,
+      "lost_12min_access_lsoa": 5,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 4.47,
+      "retention_ratio": 0.9765
+    },
+    {
+      "route": "89",
+      "affected_lsoa": 215,
+      "affected_accessible_lsoa": 211,
+      "lost_12min_access_lsoa": 5,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 4.05,
+      "retention_ratio": 0.9763
+    },
+    {
+      "route": "248",
+      "affected_lsoa": 89,
+      "affected_accessible_lsoa": 85,
+      "lost_12min_access_lsoa": 5,
+      "worsened_class_lsoa": 6,
+      "mean_delay_min": 9.66,
+      "retention_ratio": 0.9412
+    },
+    {
+      "route": "282",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 171,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 11,
+      "mean_delay_min": 5.54,
+      "retention_ratio": 0.9766
+    },
+    {
+      "route": "60",
+      "affected_lsoa": 207,
+      "affected_accessible_lsoa": 203,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 8,
+      "mean_delay_min": 4.17,
+      "retention_ratio": 0.9803
+    },
+    {
+      "route": "184",
+      "affected_lsoa": 175,
+      "affected_accessible_lsoa": 174,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 8,
+      "mean_delay_min": 6.38,
+      "retention_ratio": 0.977
+    },
+    {
+      "route": "162",
+      "affected_lsoa": 151,
+      "affected_accessible_lsoa": 148,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 8,
+      "mean_delay_min": 5.46,
+      "retention_ratio": 0.973
+    },
+    {
+      "route": "R9_Special/School",
+      "affected_lsoa": 37,
+      "affected_accessible_lsoa": 33,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 6,
+      "mean_delay_min": 11.96,
+      "retention_ratio": 0.8788
+    },
+    {
+      "route": "127",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 185,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.17,
+      "retention_ratio": 0.9784
+    },
+    {
+      "route": "434",
+      "affected_lsoa": 51,
+      "affected_accessible_lsoa": 47,
+      "lost_12min_access_lsoa": 4,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 7.36,
+      "retention_ratio": 0.9149
+    },
+    {
+      "route": "319",
+      "affected_lsoa": 246,
+      "affected_accessible_lsoa": 244,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 5.89,
+      "retention_ratio": 0.9877
+    },
+    {
+      "route": "158",
+      "affected_lsoa": 180,
+      "affected_accessible_lsoa": 178,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 8,
+      "mean_delay_min": 4.34,
+      "retention_ratio": 0.9831
+    },
+    {
+      "route": "371",
+      "affected_lsoa": 94,
+      "affected_accessible_lsoa": 91,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 8,
+      "mean_delay_min": 4.74,
+      "retention_ratio": 0.967
+    },
+    {
+      "route": "403",
+      "affected_lsoa": 93,
+      "affected_accessible_lsoa": 92,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 6,
+      "mean_delay_min": 3.99,
+      "retention_ratio": 0.9674
+    },
+    {
+      "route": "121",
+      "affected_lsoa": 213,
+      "affected_accessible_lsoa": 212,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 10.12,
+      "retention_ratio": 0.9858
+    },
+    {
+      "route": "198",
+      "affected_lsoa": 150,
+      "affected_accessible_lsoa": 150,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 8.02,
+      "retention_ratio": 0.98
+    },
+    {
+      "route": "U1",
+      "affected_lsoa": 86,
+      "affected_accessible_lsoa": 81,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 4.97,
+      "retention_ratio": 0.963
+    },
+    {
+      "route": "S1",
+      "affected_lsoa": 171,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 2.6,
+      "retention_ratio": 0.9822
+    },
+    {
+      "route": "174",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 146,
+      "lost_12min_access_lsoa": 3,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.29,
+      "retention_ratio": 0.9795
+    },
+    {
+      "route": "K2",
+      "affected_lsoa": 97,
+      "affected_accessible_lsoa": 93,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 7,
+      "mean_delay_min": 5.52,
+      "retention_ratio": 0.9785
+    },
+    {
+      "route": "264",
+      "affected_lsoa": 186,
+      "affected_accessible_lsoa": 183,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 2.36,
+      "retention_ratio": 0.9891
+    },
+    {
+      "route": "101",
+      "affected_lsoa": 165,
+      "affected_accessible_lsoa": 165,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 6.44,
+      "retention_ratio": 0.9879
+    },
+    {
+      "route": "315",
+      "affected_lsoa": 154,
+      "affected_accessible_lsoa": 153,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.98,
+      "retention_ratio": 0.9869
+    },
+    {
+      "route": "213",
+      "affected_lsoa": 153,
+      "affected_accessible_lsoa": 144,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 4.44,
+      "retention_ratio": 0.9861
+    },
+    {
+      "route": "696",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 143,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 4.62,
+      "retention_ratio": 0.986
+    },
+    {
+      "route": "222",
+      "affected_lsoa": 126,
+      "affected_accessible_lsoa": 126,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 4.39,
+      "retention_ratio": 0.9841
+    },
+    {
+      "route": "R2",
+      "affected_lsoa": 52,
+      "affected_accessible_lsoa": 45,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 5.72,
+      "retention_ratio": 0.9556
+    },
+    {
+      "route": "358_Special/School",
+      "affected_lsoa": 196,
+      "affected_accessible_lsoa": 189,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 9.83,
+      "retention_ratio": 0.9894
+    },
+    {
+      "route": "EL1",
+      "affected_lsoa": 115,
+      "affected_accessible_lsoa": 115,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 7.42,
+      "retention_ratio": 0.9826
+    },
+    {
+      "route": "433",
+      "affected_lsoa": 97,
+      "affected_accessible_lsoa": 97,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 6.74,
+      "retention_ratio": 0.9794
+    },
+    {
+      "route": "233",
+      "affected_lsoa": 84,
+      "affected_accessible_lsoa": 77,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 8.18,
+      "retention_ratio": 0.974
+    },
+    {
+      "route": "313",
+      "affected_lsoa": 98,
+      "affected_accessible_lsoa": 94,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 5.77,
+      "retention_ratio": 0.9787
+    },
+    {
+      "route": "256",
+      "affected_lsoa": 85,
+      "affected_accessible_lsoa": 83,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 10.67,
+      "retention_ratio": 0.9759
+    },
+    {
+      "route": "107",
+      "affected_lsoa": 83,
+      "affected_accessible_lsoa": 76,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 8.64,
+      "retention_ratio": 0.9737
+    },
+    {
+      "route": "651",
+      "affected_lsoa": 64,
+      "affected_accessible_lsoa": 64,
+      "lost_12min_access_lsoa": 2,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 5.27,
+      "retention_ratio": 0.9688
+    },
+    {
+      "route": "422",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 187,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 9,
+      "mean_delay_min": 4.84,
+      "retention_ratio": 0.9947
+    },
+    {
+      "route": "UL7",
+      "affected_lsoa": 263,
+      "affected_accessible_lsoa": 263,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 7,
+      "mean_delay_min": 4.86,
+      "retention_ratio": 0.9962
+    },
+    {
+      "route": "309",
+      "affected_lsoa": 164,
+      "affected_accessible_lsoa": 164,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 7,
+      "mean_delay_min": 4.37,
+      "retention_ratio": 0.9939
+    },
+    {
+      "route": "245",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 190,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 6,
+      "mean_delay_min": 3.99,
+      "retention_ratio": 0.9947
+    },
+    {
+      "route": "177",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 234,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 3.25,
+      "retention_ratio": 0.9957
+    },
+    {
+      "route": "169",
+      "affected_lsoa": 156,
+      "affected_accessible_lsoa": 151,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.41,
+      "retention_ratio": 0.9934
+    },
+    {
+      "route": "336",
+      "affected_lsoa": 136,
+      "affected_accessible_lsoa": 135,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.35,
+      "retention_ratio": 0.9926
+    },
+    {
+      "route": "S2",
+      "affected_lsoa": 101,
+      "affected_accessible_lsoa": 100,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 5.27,
+      "retention_ratio": 0.99
+    },
+    {
+      "route": "276",
+      "affected_lsoa": 289,
+      "affected_accessible_lsoa": 289,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 6.1,
+      "retention_ratio": 0.9965
+    },
+    {
+      "route": "145",
+      "affected_lsoa": 257,
+      "affected_accessible_lsoa": 256,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 3.77,
+      "retention_ratio": 0.9961
+    },
+    {
+      "route": "W3",
+      "affected_lsoa": 210,
+      "affected_accessible_lsoa": 210,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 3.56,
+      "retention_ratio": 0.9952
+    },
+    {
+      "route": "H28",
+      "affected_lsoa": 138,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 3.76,
+      "retention_ratio": 0.9926
+    },
+    {
+      "route": "193",
+      "affected_lsoa": 95,
+      "affected_accessible_lsoa": 93,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 5.46,
+      "retention_ratio": 0.9892
+    },
+    {
+      "route": "UL19",
+      "affected_lsoa": 279,
+      "affected_accessible_lsoa": 272,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 5.72,
+      "retention_ratio": 0.9963
+    },
+    {
+      "route": "297",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 5.7,
+      "retention_ratio": 0.9952
+    },
+    {
+      "route": "147",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.76,
+      "retention_ratio": 0.9952
+    },
+    {
+      "route": "440",
+      "affected_lsoa": 158,
+      "affected_accessible_lsoa": 155,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.35,
+      "retention_ratio": 0.9935
+    },
+    {
+      "route": "UL27",
+      "affected_lsoa": 150,
+      "affected_accessible_lsoa": 147,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.34,
+      "retention_ratio": 0.9932
+    },
+    {
+      "route": "613",
+      "affected_lsoa": 140,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.28,
+      "retention_ratio": 0.9926
+    },
+    {
+      "route": "117",
+      "affected_lsoa": 115,
+      "affected_accessible_lsoa": 113,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.32,
+      "retention_ratio": 0.9912
+    },
+    {
+      "route": "54",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 5.15,
+      "retention_ratio": 0.9957
+    },
+    {
+      "route": "483",
+      "affected_lsoa": 231,
+      "affected_accessible_lsoa": 228,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.38,
+      "retention_ratio": 0.9956
+    },
+    {
+      "route": "493",
+      "affected_lsoa": 216,
+      "affected_accessible_lsoa": 210,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.23,
+      "retention_ratio": 0.9952
+    },
+    {
+      "route": "202",
+      "affected_lsoa": 198,
+      "affected_accessible_lsoa": 198,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.45,
+      "retention_ratio": 0.9949
+    },
+    {
+      "route": "325",
+      "affected_lsoa": 197,
+      "affected_accessible_lsoa": 196,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.5,
+      "retention_ratio": 0.9949
+    },
+    {
+      "route": "380",
+      "affected_lsoa": 159,
+      "affected_accessible_lsoa": 158,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.42,
+      "retention_ratio": 0.9937
+    },
+    {
+      "route": "312",
+      "affected_lsoa": 139,
+      "affected_accessible_lsoa": 137,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 6.53,
+      "retention_ratio": 0.9927
+    },
+    {
+      "route": "103",
+      "affected_lsoa": 129,
+      "affected_accessible_lsoa": 129,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.65,
+      "retention_ratio": 0.9922
+    },
+    {
+      "route": "293",
+      "affected_lsoa": 86,
+      "affected_accessible_lsoa": 81,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.42,
+      "retention_ratio": 0.9877
+    },
+    {
+      "route": "672",
+      "affected_lsoa": 71,
+      "affected_accessible_lsoa": 70,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.7,
+      "retention_ratio": 0.9857
+    },
+    {
+      "route": "195",
+      "affected_lsoa": 177,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.03,
+      "retention_ratio": 0.9942
+    },
+    {
+      "route": "119",
+      "affected_lsoa": 160,
+      "affected_accessible_lsoa": 159,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.85,
+      "retention_ratio": 0.9937
+    },
+    {
+      "route": "EL2",
+      "affected_lsoa": 155,
+      "affected_accessible_lsoa": 155,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 9.3,
+      "retention_ratio": 0.9935
+    },
+    {
+      "route": "481",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 146,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.47,
+      "retention_ratio": 0.9932
+    },
+    {
+      "route": "466",
+      "affected_lsoa": 145,
+      "affected_accessible_lsoa": 141,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 5.6,
+      "retention_ratio": 0.9929
+    },
+    {
+      "route": "H32",
+      "affected_lsoa": 121,
+      "affected_accessible_lsoa": 120,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.7,
+      "retention_ratio": 0.9917
+    },
+    {
+      "route": "601",
+      "affected_lsoa": 98,
+      "affected_accessible_lsoa": 89,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 7.2,
+      "retention_ratio": 0.9888
+    },
+    {
+      "route": "465",
+      "affected_lsoa": 75,
+      "affected_accessible_lsoa": 75,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 6.1,
+      "retention_ratio": 0.9867
+    },
+    {
+      "route": "372",
+      "affected_lsoa": 62,
+      "affected_accessible_lsoa": 62,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 7.45,
+      "retention_ratio": 0.9839
+    },
+    {
+      "route": "375",
+      "affected_lsoa": 61,
+      "affected_accessible_lsoa": 61,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 17.6,
+      "retention_ratio": 0.9836
+    },
+    {
+      "route": "U3",
+      "affected_lsoa": 58,
+      "affected_accessible_lsoa": 57,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.3,
+      "retention_ratio": 0.9825
+    },
+    {
+      "route": "399",
+      "affected_lsoa": 24,
+      "affected_accessible_lsoa": 24,
+      "lost_12min_access_lsoa": 1,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 9.7,
+      "retention_ratio": 0.9583
+    },
+    {
+      "route": "386",
+      "affected_lsoa": 171,
+      "affected_accessible_lsoa": 171,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.91,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "164",
+      "affected_lsoa": 156,
+      "affected_accessible_lsoa": 152,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 5,
+      "mean_delay_min": 4.12,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E10",
+      "affected_lsoa": 144,
+      "affected_accessible_lsoa": 143,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 3.44,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "B15",
+      "affected_lsoa": 140,
+      "affected_accessible_lsoa": 138,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 4.02,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "B13",
+      "affected_lsoa": 99,
+      "affected_accessible_lsoa": 92,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 4,
+      "mean_delay_min": 3.81,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N73",
+      "affected_lsoa": 319,
+      "affected_accessible_lsoa": 318,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.34,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "34",
+      "affected_lsoa": 257,
+      "affected_accessible_lsoa": 252,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.26,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "98",
+      "affected_lsoa": 194,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.31,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "450",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 189,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "D3",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 189,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 2.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "281",
+      "affected_lsoa": 185,
+      "affected_accessible_lsoa": 185,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.78,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "367",
+      "affected_lsoa": 174,
+      "affected_accessible_lsoa": 174,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.32,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "179",
+      "affected_lsoa": 171,
+      "affected_accessible_lsoa": 164,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "120",
+      "affected_lsoa": 165,
+      "affected_accessible_lsoa": 162,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.33,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "307",
+      "affected_lsoa": 141,
+      "affected_accessible_lsoa": 139,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "413",
+      "affected_lsoa": 126,
+      "affected_accessible_lsoa": 122,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 2.11,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "377",
+      "affected_lsoa": 105,
+      "affected_accessible_lsoa": 105,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 3.72,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "U5",
+      "affected_lsoa": 84,
+      "affected_accessible_lsoa": 84,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 3,
+      "mean_delay_min": 4.08,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "50",
+      "affected_lsoa": 290,
+      "affected_accessible_lsoa": 290,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.63,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "106",
+      "affected_lsoa": 252,
+      "affected_accessible_lsoa": 251,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.01,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "197",
+      "affected_lsoa": 233,
+      "affected_accessible_lsoa": 233,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.01,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "P4",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 214,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "93",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 201,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "66",
+      "affected_lsoa": 197,
+      "affected_accessible_lsoa": 196,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.02,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "199",
+      "affected_lsoa": 180,
+      "affected_accessible_lsoa": 180,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.64,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "79",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 172,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.77,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "62",
+      "affected_lsoa": 174,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.94,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "153",
+      "affected_lsoa": 165,
+      "affected_accessible_lsoa": 165,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 1.95,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "284",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 146,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.86,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "64",
+      "affected_lsoa": 137,
+      "affected_accessible_lsoa": 137,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.46,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "462",
+      "affected_lsoa": 120,
+      "affected_accessible_lsoa": 117,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.04,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "621",
+      "affected_lsoa": 119,
+      "affected_accessible_lsoa": 119,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 3.63,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "398",
+      "affected_lsoa": 117,
+      "affected_accessible_lsoa": 113,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 2.78,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "H11",
+      "affected_lsoa": 97,
+      "affected_accessible_lsoa": 94,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.93,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL48",
+      "affected_lsoa": 63,
+      "affected_accessible_lsoa": 62,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 2,
+      "mean_delay_min": 4.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N171",
+      "affected_lsoa": 308,
+      "affected_accessible_lsoa": 308,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "35",
+      "affected_lsoa": 307,
+      "affected_accessible_lsoa": 306,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "341",
+      "affected_lsoa": 294,
+      "affected_accessible_lsoa": 293,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.09,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "333",
+      "affected_lsoa": 276,
+      "affected_accessible_lsoa": 276,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL2",
+      "affected_lsoa": 276,
+      "affected_accessible_lsoa": 271,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.55,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "220",
+      "affected_lsoa": 265,
+      "affected_accessible_lsoa": 262,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.15,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "110_Special/School",
+      "affected_lsoa": 261,
+      "affected_accessible_lsoa": 260,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.6,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "75",
+      "affected_lsoa": 256,
+      "affected_accessible_lsoa": 256,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.25,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "128",
+      "affected_lsoa": 247,
+      "affected_accessible_lsoa": 243,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.67,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "393",
+      "affected_lsoa": 243,
+      "affected_accessible_lsoa": 241,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "453",
+      "affected_lsoa": 237,
+      "affected_accessible_lsoa": 236,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.22,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "344",
+      "affected_lsoa": 212,
+      "affected_accessible_lsoa": 211,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.43,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL8",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 211,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.92,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "6",
+      "affected_lsoa": 201,
+      "affected_accessible_lsoa": 201,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "322",
+      "affected_lsoa": 198,
+      "affected_accessible_lsoa": 198,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.05,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "140",
+      "affected_lsoa": 196,
+      "affected_accessible_lsoa": 190,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "204",
+      "affected_lsoa": 192,
+      "affected_accessible_lsoa": 192,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.9,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "390",
+      "affected_lsoa": 191,
+      "affected_accessible_lsoa": 191,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.82,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "135",
+      "affected_lsoa": 184,
+      "affected_accessible_lsoa": 184,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.17,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "430",
+      "affected_lsoa": 182,
+      "affected_accessible_lsoa": 181,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.03,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "97",
+      "affected_lsoa": 176,
+      "affected_accessible_lsoa": 175,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.57,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "234",
+      "affected_lsoa": 171,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 5.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "143",
+      "affected_lsoa": 162,
+      "affected_accessible_lsoa": 162,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.98,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "424",
+      "affected_lsoa": 154,
+      "affected_accessible_lsoa": 154,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.59,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "356",
+      "affected_lsoa": 152,
+      "affected_accessible_lsoa": 152,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.67,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "261",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 146,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "318",
+      "affected_lsoa": 145,
+      "affected_accessible_lsoa": 144,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.33,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E9",
+      "affected_lsoa": 145,
+      "affected_accessible_lsoa": 144,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "124",
+      "affected_lsoa": 142,
+      "affected_accessible_lsoa": 141,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.18,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "105",
+      "affected_lsoa": 141,
+      "affected_accessible_lsoa": 139,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.78,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL5",
+      "affected_lsoa": 141,
+      "affected_accessible_lsoa": 140,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "354",
+      "affected_lsoa": 124,
+      "affected_accessible_lsoa": 124,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 5.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "H22",
+      "affected_lsoa": 118,
+      "affected_accessible_lsoa": 117,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.32,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "681",
+      "affected_lsoa": 116,
+      "affected_accessible_lsoa": 116,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 7.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "642",
+      "affected_lsoa": 113,
+      "affected_accessible_lsoa": 112,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.78,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "395",
+      "affected_lsoa": 112,
+      "affected_accessible_lsoa": 112,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.32,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "252",
+      "affected_lsoa": 111,
+      "affected_accessible_lsoa": 110,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.25,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "R68",
+      "affected_lsoa": 106,
+      "affected_accessible_lsoa": 105,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E11",
+      "affected_lsoa": 105,
+      "affected_accessible_lsoa": 105,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.82,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "K1",
+      "affected_lsoa": 105,
+      "affected_accessible_lsoa": 100,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.03,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "626",
+      "affected_lsoa": 96,
+      "affected_accessible_lsoa": 94,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 2.35,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "635",
+      "affected_lsoa": 94,
+      "affected_accessible_lsoa": 92,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "401_Special/School",
+      "affected_lsoa": 90,
+      "affected_accessible_lsoa": 86,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "U4",
+      "affected_lsoa": 89,
+      "affected_accessible_lsoa": 89,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 4.85,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "439",
+      "affected_lsoa": 74,
+      "affected_accessible_lsoa": 71,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 1.92,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "246",
+      "affected_lsoa": 68,
+      "affected_accessible_lsoa": 63,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 1,
+      "mean_delay_min": 3.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N68",
+      "affected_lsoa": 391,
+      "affected_accessible_lsoa": 387,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N28",
+      "affected_lsoa": 389,
+      "affected_accessible_lsoa": 386,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N207",
+      "affected_lsoa": 383,
+      "affected_accessible_lsoa": 381,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL65",
+      "affected_lsoa": 378,
+      "affected_accessible_lsoa": 374,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N31",
+      "affected_lsoa": 376,
+      "affected_accessible_lsoa": 374,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N253",
+      "affected_lsoa": 375,
+      "affected_accessible_lsoa": 373,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL66",
+      "affected_lsoa": 370,
+      "affected_accessible_lsoa": 367,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N8",
+      "affected_lsoa": 354,
+      "affected_accessible_lsoa": 352,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N55",
+      "affected_lsoa": 349,
+      "affected_accessible_lsoa": 342,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y7N",
+      "affected_lsoa": 344,
+      "affected_accessible_lsoa": 343,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "21",
+      "affected_lsoa": 343,
+      "affected_accessible_lsoa": 343,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N25",
+      "affected_lsoa": 343,
+      "affected_accessible_lsoa": 343,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N279",
+      "affected_lsoa": 342,
+      "affected_accessible_lsoa": 338,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N109",
+      "affected_lsoa": 341,
+      "affected_accessible_lsoa": 341,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N29",
+      "affected_lsoa": 337,
+      "affected_accessible_lsoa": 336,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL6",
+      "affected_lsoa": 334,
+      "affected_accessible_lsoa": 334,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N21",
+      "affected_lsoa": 333,
+      "affected_accessible_lsoa": 323,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N3",
+      "affected_lsoa": 332,
+      "affected_accessible_lsoa": 332,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "425",
+      "affected_lsoa": 331,
+      "affected_accessible_lsoa": 331,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "468",
+      "affected_lsoa": 329,
+      "affected_accessible_lsoa": 329,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N7",
+      "affected_lsoa": 329,
+      "affected_accessible_lsoa": 328,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.48,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N155",
+      "affected_lsoa": 326,
+      "affected_accessible_lsoa": 324,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N11",
+      "affected_lsoa": 324,
+      "affected_accessible_lsoa": 324,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "243",
+      "affected_lsoa": 318,
+      "affected_accessible_lsoa": 317,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.58,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N91",
+      "affected_lsoa": 314,
+      "affected_accessible_lsoa": 314,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N86",
+      "affected_lsoa": 312,
+      "affected_accessible_lsoa": 312,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL3",
+      "affected_lsoa": 309,
+      "affected_accessible_lsoa": 309,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "5",
+      "affected_lsoa": 307,
+      "affected_accessible_lsoa": 307,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "149",
+      "affected_lsoa": 303,
+      "affected_accessible_lsoa": 300,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "254",
+      "affected_lsoa": 300,
+      "affected_accessible_lsoa": 299,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "345",
+      "affected_lsoa": 300,
+      "affected_accessible_lsoa": 300,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "196",
+      "affected_lsoa": 298,
+      "affected_accessible_lsoa": 298,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "196_Special/School",
+      "affected_lsoa": 298,
+      "affected_accessible_lsoa": 298,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N277",
+      "affected_lsoa": 298,
+      "affected_accessible_lsoa": 298,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N41",
+      "affected_lsoa": 298,
+      "affected_accessible_lsoa": 297,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL8",
+      "affected_lsoa": 296,
+      "affected_accessible_lsoa": 294,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N19",
+      "affected_lsoa": 295,
+      "affected_accessible_lsoa": 294,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "28",
+      "affected_lsoa": 293,
+      "affected_accessible_lsoa": 291,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N32",
+      "affected_lsoa": 293,
+      "affected_accessible_lsoa": 293,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "136",
+      "affected_lsoa": 292,
+      "affected_accessible_lsoa": 292,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.05,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "53",
+      "affected_lsoa": 290,
+      "affected_accessible_lsoa": 290,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.23,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL53",
+      "affected_lsoa": 290,
+      "affected_accessible_lsoa": 290,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.16,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL24",
+      "affected_lsoa": 288,
+      "affected_accessible_lsoa": 288,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "328",
+      "affected_lsoa": 286,
+      "affected_accessible_lsoa": 286,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "328_Special/School",
+      "affected_lsoa": 286,
+      "affected_accessible_lsoa": 286,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL16",
+      "affected_lsoa": 285,
+      "affected_accessible_lsoa": 285,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "43",
+      "affected_lsoa": 284,
+      "affected_accessible_lsoa": 284,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "86",
+      "affected_lsoa": 282,
+      "affected_accessible_lsoa": 282,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "148",
+      "affected_lsoa": 281,
+      "affected_accessible_lsoa": 281,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL92",
+      "affected_lsoa": 281,
+      "affected_accessible_lsoa": 278,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y148",
+      "affected_lsoa": 280,
+      "affected_accessible_lsoa": 280,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL42",
+      "affected_lsoa": 279,
+      "affected_accessible_lsoa": 278,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL21",
+      "affected_lsoa": 278,
+      "affected_accessible_lsoa": 277,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "55",
+      "affected_lsoa": 277,
+      "affected_accessible_lsoa": 276,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL70_Special/School",
+      "affected_lsoa": 277,
+      "affected_accessible_lsoa": 276,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "157",
+      "affected_lsoa": 276,
+      "affected_accessible_lsoa": 275,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "253",
+      "affected_lsoa": 276,
+      "affected_accessible_lsoa": 274,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N63",
+      "affected_lsoa": 273,
+      "affected_accessible_lsoa": 273,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N83",
+      "affected_lsoa": 269,
+      "affected_accessible_lsoa": 266,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "133",
+      "affected_lsoa": 268,
+      "affected_accessible_lsoa": 268,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N5",
+      "affected_lsoa": 268,
+      "affected_accessible_lsoa": 267,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "171",
+      "affected_lsoa": 267,
+      "affected_accessible_lsoa": 267,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N137",
+      "affected_lsoa": 267,
+      "affected_accessible_lsoa": 267,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N20",
+      "affected_lsoa": 267,
+      "affected_accessible_lsoa": 264,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "295",
+      "affected_lsoa": 266,
+      "affected_accessible_lsoa": 265,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "259",
+      "affected_lsoa": 264,
+      "affected_accessible_lsoa": 262,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N250",
+      "affected_lsoa": 264,
+      "affected_accessible_lsoa": 264,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N22",
+      "affected_lsoa": 261,
+      "affected_accessible_lsoa": 261,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.15,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "110",
+      "affected_lsoa": 259,
+      "affected_accessible_lsoa": 258,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "155",
+      "affected_lsoa": 258,
+      "affected_accessible_lsoa": 257,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "18",
+      "affected_lsoa": 257,
+      "affected_accessible_lsoa": 253,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "56",
+      "affected_lsoa": 256,
+      "affected_accessible_lsoa": 255,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.25,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N27",
+      "affected_lsoa": 256,
+      "affected_accessible_lsoa": 255,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "249",
+      "affected_lsoa": 255,
+      "affected_accessible_lsoa": 255,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N266",
+      "affected_lsoa": 255,
+      "affected_accessible_lsoa": 252,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "122",
+      "affected_lsoa": 254,
+      "affected_accessible_lsoa": 254,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.28,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "250",
+      "affected_lsoa": 254,
+      "affected_accessible_lsoa": 254,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "30",
+      "affected_lsoa": 254,
+      "affected_accessible_lsoa": 253,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "476",
+      "affected_lsoa": 254,
+      "affected_accessible_lsoa": 253,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "452",
+      "affected_lsoa": 253,
+      "affected_accessible_lsoa": 253,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y18",
+      "affected_lsoa": 253,
+      "affected_accessible_lsoa": 249,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y28",
+      "affected_lsoa": 253,
+      "affected_accessible_lsoa": 251,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "207",
+      "affected_lsoa": 252,
+      "affected_accessible_lsoa": 250,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "109",
+      "affected_lsoa": 251,
+      "affected_accessible_lsoa": 251,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "19",
+      "affected_lsoa": 251,
+      "affected_accessible_lsoa": 251,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "76",
+      "affected_lsoa": 251,
+      "affected_accessible_lsoa": 250,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.27,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "31",
+      "affected_lsoa": 250,
+      "affected_accessible_lsoa": 249,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N263",
+      "affected_lsoa": 250,
+      "affected_accessible_lsoa": 249,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "263",
+      "affected_lsoa": 249,
+      "affected_accessible_lsoa": 247,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N113",
+      "affected_lsoa": 248,
+      "affected_accessible_lsoa": 243,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL38_Special/School",
+      "affected_lsoa": 246,
+      "affected_accessible_lsoa": 246,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL1",
+      "affected_lsoa": 244,
+      "affected_accessible_lsoa": 239,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "1",
+      "affected_lsoa": 242,
+      "affected_accessible_lsoa": 241,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.07,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "102",
+      "affected_lsoa": 242,
+      "affected_accessible_lsoa": 240,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.67,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "T2",
+      "affected_lsoa": 242,
+      "affected_accessible_lsoa": 239,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "13",
+      "affected_lsoa": 241,
+      "affected_accessible_lsoa": 239,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y13",
+      "affected_lsoa": 241,
+      "affected_accessible_lsoa": 239,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "113",
+      "affected_lsoa": 240,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "29",
+      "affected_lsoa": 236,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "343",
+      "affected_lsoa": 236,
+      "affected_accessible_lsoa": 236,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "38",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "68",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL41",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 233,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL94_Special/School",
+      "affected_lsoa": 235,
+      "affected_accessible_lsoa": 235,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "277",
+      "affected_lsoa": 233,
+      "affected_accessible_lsoa": 233,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "3",
+      "affected_lsoa": 233,
+      "affected_accessible_lsoa": 233,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "176",
+      "affected_lsoa": 231,
+      "affected_accessible_lsoa": 231,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "156",
+      "affected_lsoa": 229,
+      "affected_accessible_lsoa": 225,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.37,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N74",
+      "affected_lsoa": 229,
+      "affected_accessible_lsoa": 228,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "236",
+      "affected_lsoa": 228,
+      "affected_accessible_lsoa": 228,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.09,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL63",
+      "affected_lsoa": 228,
+      "affected_accessible_lsoa": 228,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL26",
+      "affected_lsoa": 226,
+      "affected_accessible_lsoa": 222,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL6",
+      "affected_lsoa": 225,
+      "affected_accessible_lsoa": 221,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "183",
+      "affected_lsoa": 224,
+      "affected_accessible_lsoa": 222,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "415",
+      "affected_lsoa": 224,
+      "affected_accessible_lsoa": 224,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "237",
+      "affected_lsoa": 223,
+      "affected_accessible_lsoa": 222,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.25,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "49",
+      "affected_lsoa": 221,
+      "affected_accessible_lsoa": 220,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.85,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N551",
+      "affected_lsoa": 219,
+      "affected_accessible_lsoa": 218,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.42,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "T3",
+      "affected_lsoa": 219,
+      "affected_accessible_lsoa": 216,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "316",
+      "affected_lsoa": 218,
+      "affected_accessible_lsoa": 218,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "95",
+      "affected_lsoa": 217,
+      "affected_accessible_lsoa": 216,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N72",
+      "affected_lsoa": 217,
+      "affected_accessible_lsoa": 214,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N33",
+      "affected_lsoa": 216,
+      "affected_accessible_lsoa": 215,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "32",
+      "affected_lsoa": 215,
+      "affected_accessible_lsoa": 215,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL10",
+      "affected_lsoa": 215,
+      "affected_accessible_lsoa": 212,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y70",
+      "affected_lsoa": 215,
+      "affected_accessible_lsoa": 215,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.9,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "134",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 212,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "279",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 211,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "4",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 214,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N343",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 214,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL87",
+      "affected_lsoa": 214,
+      "affected_accessible_lsoa": 213,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL25",
+      "affected_lsoa": 213,
+      "affected_accessible_lsoa": 210,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "172",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 211,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "187",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 207,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.77,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "T1",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "T4",
+      "affected_lsoa": 211,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "69",
+      "affected_lsoa": 210,
+      "affected_accessible_lsoa": 210,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL17",
+      "affected_lsoa": 210,
+      "affected_accessible_lsoa": 202,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "310",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "339",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 209,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y295",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y52_Special/School",
+      "affected_lsoa": 209,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "363",
+      "affected_lsoa": 208,
+      "affected_accessible_lsoa": 208,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL30",
+      "affected_lsoa": 207,
+      "affected_accessible_lsoa": 204,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL30_Special/School",
+      "affected_lsoa": 207,
+      "affected_accessible_lsoa": 204,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL4",
+      "affected_lsoa": 207,
+      "affected_accessible_lsoa": 206,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y452",
+      "affected_lsoa": 206,
+      "affected_accessible_lsoa": 206,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "74",
+      "affected_lsoa": 205,
+      "affected_accessible_lsoa": 205,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL72",
+      "affected_lsoa": 205,
+      "affected_accessible_lsoa": 205,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "679",
+      "affected_lsoa": 204,
+      "affected_accessible_lsoa": 197,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N140",
+      "affected_lsoa": 204,
+      "affected_accessible_lsoa": 197,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL68",
+      "affected_lsoa": 204,
+      "affected_accessible_lsoa": 204,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL80",
+      "affected_lsoa": 204,
+      "affected_accessible_lsoa": 204,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "42",
+      "affected_lsoa": 203,
+      "affected_accessible_lsoa": 203,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.22,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "73",
+      "affected_lsoa": 203,
+      "affected_accessible_lsoa": 203,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N242",
+      "affected_lsoa": 203,
+      "affected_accessible_lsoa": 203,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "267",
+      "affected_lsoa": 202,
+      "affected_accessible_lsoa": 202,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N65",
+      "affected_lsoa": 202,
+      "affected_accessible_lsoa": 201,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "211",
+      "affected_lsoa": 201,
+      "affected_accessible_lsoa": 201,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "12",
+      "affected_lsoa": 199,
+      "affected_accessible_lsoa": 199,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "78",
+      "affected_lsoa": 199,
+      "affected_accessible_lsoa": 199,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "59",
+      "affected_lsoa": 198,
+      "affected_accessible_lsoa": 198,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL96",
+      "affected_lsoa": 198,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "150",
+      "affected_lsoa": 196,
+      "affected_accessible_lsoa": 194,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "217",
+      "affected_lsoa": 196,
+      "affected_accessible_lsoa": 196,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "C11",
+      "affected_lsoa": 196,
+      "affected_accessible_lsoa": 195,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.33,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "617",
+      "affected_lsoa": 195,
+      "affected_accessible_lsoa": 195,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "337",
+      "affected_lsoa": 194,
+      "affected_accessible_lsoa": 192,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "14",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "231",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "94",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL35",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 192,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL57",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 191,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.37,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y94",
+      "affected_lsoa": 193,
+      "affected_accessible_lsoa": 193,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "632",
+      "affected_lsoa": 190,
+      "affected_accessible_lsoa": 190,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "214",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 188,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "242",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 189,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.93,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "417",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 189,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL5",
+      "affected_lsoa": 189,
+      "affected_accessible_lsoa": 188,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL18",
+      "affected_lsoa": 188,
+      "affected_accessible_lsoa": 185,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "238",
+      "affected_lsoa": 187,
+      "affected_accessible_lsoa": 187,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "41",
+      "affected_lsoa": 187,
+      "affected_accessible_lsoa": 186,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.15,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "280",
+      "affected_lsoa": 186,
+      "affected_accessible_lsoa": 184,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.56,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "484",
+      "affected_lsoa": 186,
+      "affected_accessible_lsoa": 186,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.9,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL86",
+      "affected_lsoa": 186,
+      "affected_accessible_lsoa": 182,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "388",
+      "affected_lsoa": 185,
+      "affected_accessible_lsoa": 185,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "173",
+      "affected_lsoa": 184,
+      "affected_accessible_lsoa": 183,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "91",
+      "affected_lsoa": 184,
+      "affected_accessible_lsoa": 184,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "137",
+      "affected_lsoa": 183,
+      "affected_accessible_lsoa": 183,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL64",
+      "affected_lsoa": 182,
+      "affected_accessible_lsoa": 179,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL91",
+      "affected_lsoa": 182,
+      "affected_accessible_lsoa": 182,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "474",
+      "affected_lsoa": 181,
+      "affected_accessible_lsoa": 180,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.85,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E3",
+      "affected_lsoa": 181,
+      "affected_accessible_lsoa": 180,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "83",
+      "affected_lsoa": 180,
+      "affected_accessible_lsoa": 179,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL50",
+      "affected_lsoa": 180,
+      "affected_accessible_lsoa": 178,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "210",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 178,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "26",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 178,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "444",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 174,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.73,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "488",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 178,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.72,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "C3",
+      "affected_lsoa": 178,
+      "affected_accessible_lsoa": 177,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "629",
+      "affected_lsoa": 177,
+      "affected_accessible_lsoa": 177,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y7",
+      "affected_lsoa": 177,
+      "affected_accessible_lsoa": 177,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "139",
+      "affected_lsoa": 176,
+      "affected_accessible_lsoa": 175,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.74,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "653",
+      "affected_lsoa": 176,
+      "affected_accessible_lsoa": 176,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL58",
+      "affected_lsoa": 176,
+      "affected_accessible_lsoa": 174,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "C1",
+      "affected_lsoa": 175,
+      "affected_accessible_lsoa": 175,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "296",
+      "affected_lsoa": 174,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "D6",
+      "affected_lsoa": 174,
+      "affected_accessible_lsoa": 174,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.23,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E7_Special/School",
+      "affected_lsoa": 174,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "17",
+      "affected_lsoa": 173,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.75,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "432",
+      "affected_lsoa": 173,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y18_Special/School",
+      "affected_lsoa": 173,
+      "affected_accessible_lsoa": 170,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y316",
+      "affected_lsoa": 173,
+      "affected_accessible_lsoa": 173,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "349",
+      "affected_lsoa": 172,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "40",
+      "affected_lsoa": 172,
+      "affected_accessible_lsoa": 172,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E7",
+      "affected_lsoa": 172,
+      "affected_accessible_lsoa": 168,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL43",
+      "affected_lsoa": 172,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "266",
+      "affected_lsoa": 171,
+      "affected_accessible_lsoa": 168,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "394",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 170,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.65,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "65",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "683",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 169,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "8",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 170,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "C10",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 170,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.53,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "P12",
+      "affected_lsoa": 170,
+      "affected_accessible_lsoa": 170,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.04,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "673",
+      "affected_lsoa": 169,
+      "affected_accessible_lsoa": 168,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "300",
+      "affected_lsoa": 168,
+      "affected_accessible_lsoa": 167,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "460",
+      "affected_lsoa": 168,
+      "affected_accessible_lsoa": 166,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "487",
+      "affected_lsoa": 168,
+      "affected_accessible_lsoa": 165,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SL9",
+      "affected_lsoa": 168,
+      "affected_accessible_lsoa": 166,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL23",
+      "affected_lsoa": 168,
+      "affected_accessible_lsoa": 168,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "39",
+      "affected_lsoa": 167,
+      "affected_accessible_lsoa": 164,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "15",
+      "affected_lsoa": 162,
+      "affected_accessible_lsoa": 162,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "255",
+      "affected_lsoa": 162,
+      "affected_accessible_lsoa": 162,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.05,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "257",
+      "affected_lsoa": 162,
+      "affected_accessible_lsoa": 162,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "304",
+      "affected_lsoa": 162,
+      "affected_accessible_lsoa": 161,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "639",
+      "affected_lsoa": 160,
+      "affected_accessible_lsoa": 156,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.15,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "N381",
+      "affected_lsoa": 160,
+      "affected_accessible_lsoa": 160,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL82",
+      "affected_lsoa": 160,
+      "affected_accessible_lsoa": 158,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "286",
+      "affected_lsoa": 159,
+      "affected_accessible_lsoa": 153,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E8",
+      "affected_lsoa": 159,
+      "affected_accessible_lsoa": 157,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "289",
+      "affected_lsoa": 158,
+      "affected_accessible_lsoa": 157,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.07,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "486",
+      "affected_lsoa": 158,
+      "affected_accessible_lsoa": 157,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y148_Special/School",
+      "affected_lsoa": 157,
+      "affected_accessible_lsoa": 157,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL15",
+      "affected_lsoa": 156,
+      "affected_accessible_lsoa": 148,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL28",
+      "affected_lsoa": 156,
+      "affected_accessible_lsoa": 156,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y7X",
+      "affected_lsoa": 156,
+      "affected_accessible_lsoa": 156,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "132",
+      "affected_lsoa": 155,
+      "affected_accessible_lsoa": 145,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "104",
+      "affected_lsoa": 153,
+      "affected_accessible_lsoa": 153,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.87,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL55",
+      "affected_lsoa": 153,
+      "affected_accessible_lsoa": 148,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.83,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "24",
+      "affected_lsoa": 152,
+      "affected_accessible_lsoa": 151,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.94,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "11",
+      "affected_lsoa": 150,
+      "affected_accessible_lsoa": 150,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "381",
+      "affected_lsoa": 150,
+      "affected_accessible_lsoa": 150,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y414",
+      "affected_lsoa": 150,
+      "affected_accessible_lsoa": 150,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "218",
+      "affected_lsoa": 149,
+      "affected_accessible_lsoa": 149,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "241",
+      "affected_lsoa": 148,
+      "affected_accessible_lsoa": 147,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.65,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "473",
+      "affected_lsoa": 148,
+      "affected_accessible_lsoa": 147,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "237_Special/School",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 147,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y218",
+      "affected_lsoa": 147,
+      "affected_accessible_lsoa": 147,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "9",
+      "affected_lsoa": 146,
+      "affected_accessible_lsoa": 146,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "161",
+      "affected_lsoa": 145,
+      "affected_accessible_lsoa": 142,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "603",
+      "affected_lsoa": 143,
+      "affected_accessible_lsoa": 143,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "678",
+      "affected_lsoa": 142,
+      "affected_accessible_lsoa": 141,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.43,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "W13",
+      "affected_lsoa": 142,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL67",
+      "affected_lsoa": 140,
+      "affected_accessible_lsoa": 139,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y94_Special/School",
+      "affected_lsoa": 138,
+      "affected_accessible_lsoa": 138,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "175",
+      "affected_lsoa": 137,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 5.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "262",
+      "affected_lsoa": 137,
+      "affected_accessible_lsoa": 137,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL9_Special/School",
+      "affected_lsoa": 137,
+      "affected_accessible_lsoa": 137,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "130",
+      "affected_lsoa": 136,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.55,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "272",
+      "affected_lsoa": 136,
+      "affected_accessible_lsoa": 136,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.17,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "616",
+      "affected_lsoa": 136,
+      "affected_accessible_lsoa": 134,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "320",
+      "affected_lsoa": 135,
+      "affected_accessible_lsoa": 131,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "72",
+      "affected_lsoa": 134,
+      "affected_accessible_lsoa": 134,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "340",
+      "affected_lsoa": 132,
+      "affected_accessible_lsoa": 125,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "660",
+      "affected_lsoa": 132,
+      "affected_accessible_lsoa": 132,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.53,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E2",
+      "affected_lsoa": 131,
+      "affected_accessible_lsoa": 131,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "TR2",
+      "affected_lsoa": 131,
+      "affected_accessible_lsoa": 131,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y23",
+      "affected_lsoa": 131,
+      "affected_accessible_lsoa": 131,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "W6",
+      "affected_lsoa": 129,
+      "affected_accessible_lsoa": 127,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.25,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "638_Special/School",
+      "affected_lsoa": 128,
+      "affected_accessible_lsoa": 123,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "625",
+      "affected_lsoa": 127,
+      "affected_accessible_lsoa": 120,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "627",
+      "affected_lsoa": 127,
+      "affected_accessible_lsoa": 122,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "W5",
+      "affected_lsoa": 127,
+      "affected_accessible_lsoa": 127,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.06,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL19_Special/School",
+      "affected_lsoa": 126,
+      "affected_accessible_lsoa": 125,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "287",
+      "affected_lsoa": 125,
+      "affected_accessible_lsoa": 124,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "299",
+      "affected_lsoa": 125,
+      "affected_accessible_lsoa": 125,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "33",
+      "affected_lsoa": 125,
+      "affected_accessible_lsoa": 124,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y23_Special/School",
+      "affected_lsoa": 125,
+      "affected_accessible_lsoa": 125,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "227",
+      "affected_lsoa": 124,
+      "affected_accessible_lsoa": 124,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "365",
+      "affected_lsoa": 124,
+      "affected_accessible_lsoa": 123,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.95,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "W7",
+      "affected_lsoa": 122,
+      "affected_accessible_lsoa": 122,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.24,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "C10_Special/School",
+      "affected_lsoa": 121,
+      "affected_accessible_lsoa": 121,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "396",
+      "affected_lsoa": 120,
+      "affected_accessible_lsoa": 120,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "427",
+      "affected_lsoa": 120,
+      "affected_accessible_lsoa": 119,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL58_Special/School",
+      "affected_lsoa": 120,
+      "affected_accessible_lsoa": 120,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "667",
+      "affected_lsoa": 119,
+      "affected_accessible_lsoa": 113,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 6.53,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "T1_Special/School",
+      "affected_lsoa": 119,
+      "affected_accessible_lsoa": 118,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Y328_Special/School",
+      "affected_lsoa": 117,
+      "affected_accessible_lsoa": 117,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "658",
+      "affected_lsoa": 116,
+      "affected_accessible_lsoa": 116,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 6.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL73",
+      "affected_lsoa": 116,
+      "affected_accessible_lsoa": 116,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "533",
+      "affected_lsoa": 114,
+      "affected_accessible_lsoa": 114,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "698",
+      "affected_lsoa": 113,
+      "affected_accessible_lsoa": 112,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "634",
+      "affected_lsoa": 112,
+      "affected_accessible_lsoa": 110,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "126",
+      "affected_lsoa": 111,
+      "affected_accessible_lsoa": 110,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "268",
+      "affected_lsoa": 111,
+      "affected_accessible_lsoa": 111,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "663",
+      "affected_lsoa": 111,
+      "affected_accessible_lsoa": 110,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "165",
+      "affected_lsoa": 110,
+      "affected_accessible_lsoa": 110,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "640",
+      "affected_lsoa": 110,
+      "affected_accessible_lsoa": 104,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "687",
+      "affected_lsoa": 110,
+      "affected_accessible_lsoa": 109,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "247",
+      "affected_lsoa": 109,
+      "affected_accessible_lsoa": 107,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "419",
+      "affected_lsoa": 109,
+      "affected_accessible_lsoa": 106,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "TR5",
+      "affected_lsoa": 108,
+      "affected_accessible_lsoa": 108,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "215",
+      "affected_lsoa": 105,
+      "affected_accessible_lsoa": 104,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "281_Special/School",
+      "affected_lsoa": 105,
+      "affected_accessible_lsoa": 104,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "697",
+      "affected_lsoa": 103,
+      "affected_accessible_lsoa": 101,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "R70",
+      "affected_lsoa": 102,
+      "affected_accessible_lsoa": 99,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.13,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "E1",
+      "affected_lsoa": 101,
+      "affected_accessible_lsoa": 100,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.93,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "689",
+      "affected_lsoa": 100,
+      "affected_accessible_lsoa": 100,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL89",
+      "affected_lsoa": 96,
+      "affected_accessible_lsoa": 96,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "645",
+      "affected_lsoa": 93,
+      "affected_accessible_lsoa": 93,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "H20",
+      "affected_lsoa": 92,
+      "affected_accessible_lsoa": 92,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "496",
+      "affected_lsoa": 91,
+      "affected_accessible_lsoa": 90,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.72,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "624",
+      "affected_lsoa": 91,
+      "affected_accessible_lsoa": 90,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "401",
+      "affected_lsoa": 90,
+      "affected_accessible_lsoa": 86,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "405",
+      "affected_lsoa": 89,
+      "affected_accessible_lsoa": 87,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.6,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "U7",
+      "affected_lsoa": 88,
+      "affected_accessible_lsoa": 86,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.85,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL11",
+      "affected_lsoa": 88,
+      "affected_accessible_lsoa": 88,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "DL11",
+      "affected_lsoa": 86,
+      "affected_accessible_lsoa": 86,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "362",
+      "affected_lsoa": 84,
+      "affected_accessible_lsoa": 83,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "291",
+      "affected_lsoa": 83,
+      "affected_accessible_lsoa": 83,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.7,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "649",
+      "affected_lsoa": 83,
+      "affected_accessible_lsoa": 83,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "650",
+      "affected_lsoa": 83,
+      "affected_accessible_lsoa": 83,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "298",
+      "affected_lsoa": 81,
+      "affected_accessible_lsoa": 81,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "498",
+      "affected_lsoa": 81,
+      "affected_accessible_lsoa": 80,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "H3",
+      "affected_lsoa": 81,
+      "affected_accessible_lsoa": 81,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "418",
+      "affected_lsoa": 80,
+      "affected_accessible_lsoa": 80,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "699",
+      "affected_lsoa": 80,
+      "affected_accessible_lsoa": 80,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "378",
+      "affected_lsoa": 79,
+      "affected_accessible_lsoa": 79,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "671",
+      "affected_lsoa": 79,
+      "affected_accessible_lsoa": 78,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "618",
+      "affected_lsoa": 78,
+      "affected_accessible_lsoa": 77,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "317",
+      "affected_lsoa": 77,
+      "affected_accessible_lsoa": 77,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "406",
+      "affected_lsoa": 77,
+      "affected_accessible_lsoa": 77,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "662",
+      "affected_lsoa": 74,
+      "affected_accessible_lsoa": 73,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL46",
+      "affected_lsoa": 74,
+      "affected_accessible_lsoa": 74,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.92,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "71",
+      "affected_lsoa": 73,
+      "affected_accessible_lsoa": 73,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "K1_Special/School",
+      "affected_lsoa": 71,
+      "affected_accessible_lsoa": 66,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "652",
+      "affected_lsoa": 70,
+      "affected_accessible_lsoa": 67,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.9,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "656",
+      "affected_lsoa": 69,
+      "affected_accessible_lsoa": 68,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.4,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "350",
+      "affected_lsoa": 68,
+      "affected_accessible_lsoa": 68,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 4.2,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL22",
+      "affected_lsoa": 67,
+      "affected_accessible_lsoa": 67,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL56",
+      "affected_lsoa": 67,
+      "affected_accessible_lsoa": 67,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "313_Special/School",
+      "affected_lsoa": 65,
+      "affected_accessible_lsoa": 64,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "385",
+      "affected_lsoa": 64,
+      "affected_accessible_lsoa": 62,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.6,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "138",
+      "affected_lsoa": 58,
+      "affected_accessible_lsoa": 57,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.43,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "146",
+      "affected_lsoa": 53,
+      "affected_accessible_lsoa": 50,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.3,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "SCS",
+      "affected_lsoa": 53,
+      "affected_accessible_lsoa": 53,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.5,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "209",
+      "affected_lsoa": 51,
+      "affected_accessible_lsoa": 51,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "411",
+      "affected_lsoa": 45,
+      "affected_accessible_lsoa": 45,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "631",
+      "affected_lsoa": 39,
+      "affected_accessible_lsoa": 39,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "R10",
+      "affected_lsoa": 38,
+      "affected_accessible_lsoa": 33,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "R5",
+      "affected_lsoa": 38,
+      "affected_accessible_lsoa": 33,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL81_Special/School",
+      "affected_lsoa": 38,
+      "affected_accessible_lsoa": 37,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL88_Special/School",
+      "affected_lsoa": 38,
+      "affected_accessible_lsoa": 38,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "389",
+      "affected_lsoa": 32,
+      "affected_accessible_lsoa": 30,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 1.45,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "327",
+      "affected_lsoa": 31,
+      "affected_accessible_lsoa": 31,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.55,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "467",
+      "affected_lsoa": 28,
+      "affected_accessible_lsoa": 28,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "685",
+      "affected_lsoa": 28,
+      "affected_accessible_lsoa": 27,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL83",
+      "affected_lsoa": 27,
+      "affected_accessible_lsoa": 25,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 3.0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "Z999",
+      "affected_lsoa": 26,
+      "affected_accessible_lsoa": 26,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "379",
+      "affected_lsoa": 24,
+      "affected_accessible_lsoa": 23,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 2.8,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "464",
+      "affected_lsoa": 22,
+      "affected_accessible_lsoa": 20,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL39",
+      "affected_lsoa": 14,
+      "affected_accessible_lsoa": 12,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0.1,
+      "retention_ratio": 1.0
+    },
+    {
+      "route": "UL44",
+      "affected_lsoa": 14,
+      "affected_accessible_lsoa": 12,
+      "lost_12min_access_lsoa": 0,
+      "worsened_class_lsoa": 0,
+      "mean_delay_min": 0,
+      "retention_ratio": 1.0
+    }
+  ]
+}

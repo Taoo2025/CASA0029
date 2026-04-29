@@ -1,0 +1,167 @@
+{
+  "Barking & Dagenham": {
+    "lsoa_url": "DATA/LSOA_by_borough/barking_and_dagenham.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/barking_and_dagenham.json",
+    "lsoa_count": 96
+  },
+  "Barnet": {
+    "lsoa_url": "DATA/LSOA_by_borough/barnet.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/barnet.json",
+    "lsoa_count": 192
+  },
+  "Bexley": {
+    "lsoa_url": "DATA/LSOA_by_borough/bexley.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/bexley.json",
+    "lsoa_count": 139
+  },
+  "Brent": {
+    "lsoa_url": "DATA/LSOA_by_borough/brent.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/brent.json",
+    "lsoa_count": 154
+  },
+  "Bromley": {
+    "lsoa_url": "DATA/LSOA_by_borough/bromley.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/bromley.json",
+    "lsoa_count": 179
+  },
+  "Camden": {
+    "lsoa_url": "DATA/LSOA_by_borough/camden.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/camden.json",
+    "lsoa_count": 110
+  },
+  "City of London": {
+    "lsoa_url": "DATA/LSOA_by_borough/city_of_london.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/city_of_london.json",
+    "lsoa_count": 3
+  },
+  "Croydon": {
+    "lsoa_url": "DATA/LSOA_by_borough/croydon.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/croydon.json",
+    "lsoa_count": 230
+  },
+  "Ealing": {
+    "lsoa_url": "DATA/LSOA_by_borough/ealing.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/ealing.json",
+    "lsoa_count": 171
+  },
+  "Enfield": {
+    "lsoa_url": "DATA/LSOA_by_borough/enfield.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/enfield.json",
+    "lsoa_count": 175
+  },
+  "Greenwich": {
+    "lsoa_url": "DATA/LSOA_by_borough/greenwich.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/greenwich.json",
+    "lsoa_count": 162
+  },
+  "Hackney": {
+    "lsoa_url": "DATA/LSOA_by_borough/hackney.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/hackney.json",
+    "lsoa_count": 118
+  },
+  "Hammersmith & Fulham": {
+    "lsoa_url": "DATA/LSOA_by_borough/hammersmith_and_fulham.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/hammersmith_and_fulham.json",
+    "lsoa_count": 99
+  },
+  "Haringey": {
+    "lsoa_url": "DATA/LSOA_by_borough/haringey.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/haringey.json",
+    "lsoa_count": 161
+  },
+  "Harrow": {
+    "lsoa_url": "DATA/LSOA_by_borough/harrow.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/harrow.json",
+    "lsoa_count": 144
+  },
+  "Havering": {
+    "lsoa_url": "DATA/LSOA_by_borough/havering.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/havering.json",
+    "lsoa_count": 165
+  },
+  "Hillingdon": {
+    "lsoa_url": "DATA/LSOA_by_borough/hillingdon.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/hillingdon.json",
+    "lsoa_count": 174
+  },
+  "Hounslow": {
+    "lsoa_url": "DATA/LSOA_by_borough/hounslow.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/hounslow.json",
+    "lsoa_count": 153
+  },
+  "Islington": {
+    "lsoa_url": "DATA/LSOA_by_borough/islington.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/islington.json",
+    "lsoa_count": 157
+  },
+  "Kensington & Chelsea": {
+    "lsoa_url": "DATA/LSOA_by_borough/kensington_and_chelsea.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/kensington_and_chelsea.json",
+    "lsoa_count": 94
+  },
+  "Kingston upon Thames": {
+    "lsoa_url": "DATA/LSOA_by_borough/kingston_upon_thames.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/kingston_upon_thames.json",
+    "lsoa_count": 86
+  },
+  "Lambeth": {
+    "lsoa_url": "DATA/LSOA_by_borough/lambeth.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/lambeth.json",
+    "lsoa_count": 150
+  },
+  "Lewisham": {
+    "lsoa_url": "DATA/LSOA_by_borough/lewisham.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/lewisham.json",
+    "lsoa_count": 194
+  },
+  "Merton": {
+    "lsoa_url": "DATA/LSOA_by_borough/merton.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/merton.json",
+    "lsoa_count": 115
+  },
+  "Newham": {
+    "lsoa_url": "DATA/LSOA_by_borough/newham.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/newham.json",
+    "lsoa_count": 176
+  },
+  "Redbridge": {
+    "lsoa_url": "DATA/LSOA_by_borough/redbridge.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/redbridge.json",
+    "lsoa_count": 169
+  },
+  "Richmond upon Thames": {
+    "lsoa_url": "DATA/LSOA_by_borough/richmond_upon_thames.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/richmond_upon_thames.json",
+    "lsoa_count": 142
+  },
+  "Southwark": {
+    "lsoa_url": "DATA/LSOA_by_borough/southwark.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/southwark.json",
+    "lsoa_count": 202
+  },
+  "Sutton": {
+    "lsoa_url": "DATA/LSOA_by_borough/sutton.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/sutton.json",
+    "lsoa_count": 141
+  },
+  "Tower Hamlets": {
+    "lsoa_url": "DATA/LSOA_by_borough/tower_hamlets.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/tower_hamlets.json",
+    "lsoa_count": 188
+  },
+  "Waltham Forest": {
+    "lsoa_url": "DATA/LSOA_by_borough/waltham_forest.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/waltham_forest.json",
+    "lsoa_count": 175
+  },
+  "Wandsworth": {
+    "lsoa_url": "DATA/LSOA_by_borough/wandsworth.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/wandsworth.json",
+    "lsoa_count": 214
+  },
+  "Westminster": {
+    "lsoa_url": "DATA/LSOA_by_borough/westminster.geojson",
+    "summary_url": "DATA/LSOA_summary_by_borough/westminster.json",
+    "lsoa_count": 166
+  }
+}

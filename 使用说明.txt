@@ -1,0 +1,103 @@
+伦敦公共交通韧性评估系统 - 使用说明
+London Public Transport Resilience Assessment System
+
+=== 快速开始 ===
+
+1. 启动本地 HTTP 服务器（必须）
+   
+   选项 A：运行启动脚本（Windows）
+   - 双击 "启动地图.bat"
+   
+   选项 B：手动启动（跨平台）
+   - 打开命令行进入本文件夹
+   - 运行：python -m http.server 8090 --bind 127.0.0.1
+   
+   选项 C：使用 Python 3 内置服务器
+   - 运行：python3 -m http.server 8090
+
+2. 打开浏览器
+   - 访问 http://127.0.0.1:8090/London_PTAL_Accessibility_Map.html
+   - 地图应该在 8-10 秒内完全加载
+
+=== 文件夹结构 ===
+
+本文件夹包含以下必需文件：
+
+主文件：
+  ✓ London_PTAL_Accessibility_Map.html - 主地图应用（2800+ 行）
+
+地理数据：
+  ✓ London_Stops_With_Routes.geojson - 所有伦敦公交停靠站
+  ✓ route_lines.geojson - 公交/轨道线路
+  ✓ London_LSOA_Centroids.geojson - LSOA 区域中心点
+
+数据配置：
+  ✓ data_manifest_osm_network.json - 行走数据清单
+  ✓ grid_ai_manifest_osm_network.json - 网格 AI 清单
+  ✓ grid_resilience_summary_osm_network.json - 网格韧性汇总
+  ✓ route_grid_impacts_osm_network.json - 路线对网格的影响
+  ✓ resilience_summary_osm_network.json - 整体韧性汇总
+  ✓ bus_routes_detailed.json - 公交线路详情
+
+DATA 文件夹：
+  ✓ LSOA_simplified.geojson - 简化的 LSOA 多边形（2.88 MB）
+  ✓ grid_to_lsoa.json - 网格到 LSOA 的映射
+  ✓ PTAL_2023_Grid_100mx100m_Data.geojson - 100m 网格基础数据
+
+data_chunks_osm_network 文件夹（33 个 json 文件）：
+  - 按伦敦行政区划分的行走数据块
+  - 用于快速加载特定地区的可达性数据
+
+grid_ai_chunks_osm_network 文件夹（64 个 json 文件）：
+  - 网格级别的 AI 计算结果分批存储
+  - 支持网格选择后的即时分析
+
+=== 功能说明 ===
+
+✓ 取消交通线 - 选择一条或多条路线进行中断模拟
+✓ 比较视图 - 左侧基线 vs 右侧中断后的影响
+✓ 网格分析 - 点击地图选择 100m 网格单元查看详细统计
+✓ 行走范围 - 显示所选网格范围内的公交/地铁站数量
+✓ LSOA/网格缩放 - 自动根据缩放级别显示/隐藏对应图层
+
+=== 数据来源 ===
+
+- TFL Open Data（伦敦公共交通官方数据）
+- ONS Local Authority Boundaries（英国国家统计局边界数据）
+- OpenStreetMap Network（开源地图数据）
+
+=== 系统需求 ===
+
+- 现代浏览器（Chrome、Firefox、Safari、Edge）
+- Python 3.6+ （用于启动 HTTP 服务器）
+- 网络连接（Mapbox GL JS 库和地图样式加载）
+- 显存至少 512 MB（大量地理数据渲染）
+
+=== 故障排除 ===
+
+问题：页面加载缓慢或显示空白
+解决：确认 HTTP 服务器已启动，检查浏览器控制台是否有错误
+
+问题：数据加载失败（"Cannot fetch ... from file://"）
+解决：必须通过 HTTP 服务器访问，不支持 file:// 协议
+
+问题：地图无法显示交通线或站点
+解决：等待加载完成（显示"All stops layer added"消息）
+
+问题：Mapbox token 错误
+解决：确保网络连接正常，token 已在 HTML 中配置
+
+=== 技术细节 ===
+
+- Mapbox GL JS v3.17.0 - 地图渲染
+- 矢量瓦片 + GeoJSON 混合方案
+- 预计算的行走时间数据（OSM 网络 Dijkstra）
+- 网格级别的 AI 韧性评分
+
+=== 作者 ===
+
+Group 17 - CASA UCL
+
+=== 许可证 ===
+
+数据使用遵循相应来源的许可证（TFL、ONS、OSM）
