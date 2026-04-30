@@ -432,6 +432,121 @@ section.slide.hero { padding-top: 100px; }
 }
 @media (max-width: 700px) { .act-map iframe { height: 420px; } }
 
+/* ============== TOP 5 ROUTES — feature analysis ============== */
+.top5-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 38px;
+}
+.top5-row {
+    display: grid;
+    grid-template-columns: 56px 130px 1fr 1.6fr;
+    gap: 22px;
+    align-items: center;
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 24px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.top5-row:hover {
+    transform: translateX(4px);
+    border-color: rgba(184,118,92,0.30);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.32);
+}
+@media (max-width: 900px) {
+    .top5-row { grid-template-columns: 1fr; gap: 10px; padding: 18px 20px; }
+}
+.top5-row .rk {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 600;
+    color: var(--terracotta);
+    letter-spacing: 0.04em;
+}
+.top5-row .rt {
+    font-family: 'Fraunces', serif;
+    font-size: 30px; font-weight: 500;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+    display: inline-flex; align-items: center; gap: 8px;
+    line-height: 1;
+}
+.top5-row .rt .badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px; font-weight: 700;
+    background: rgba(159,174,157,0.18);
+    color: var(--sage);
+    padding: 3px 7px; border-radius: 5px;
+    letter-spacing: 0.10em;
+}
+.top5-row .ar {
+    font-size: 13px; color: var(--fg-1);
+    font-style: italic;
+    line-height: 1.5;
+}
+.bar-grid {
+    display: grid;
+    grid-template-columns: minmax(150px, max-content) 1fr;
+    gap: 8px 16px;
+    align-items: center;
+}
+.bar-label {
+    font-size: 11.5px;
+    color: var(--fg-2);
+    letter-spacing: 0.04em;
+}
+.bar-track {
+    position: relative;
+    height: 18px;
+    background: rgba(0,0,0,0.28);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--sage-pale));
+    border-radius: 6px 0 0 6px;
+    transition: width 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.bar-fill.alt   { background: linear-gradient(90deg, var(--clay), var(--rose)); }
+.bar-fill.warm  { background: linear-gradient(90deg, var(--terracotta), var(--clay)); }
+.bar-val {
+    position: absolute;
+    top: 50%; right: 10px;
+    transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px; font-weight: 600;
+    color: var(--paper);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.top5-legend {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 18px;
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    font-size: 12px; color: var(--fg-2);
+}
+.top5-legend .sw {
+    display: inline-block;
+    width: 14px; height: 8px; border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.top5-legend .sw.sage  { background: var(--sage); }
+.top5-legend .sw.clay  { background: var(--clay); }
+.top5-legend .sw.terra { background: var(--terracotta); }
+.top5-legend .src { margin-left: auto; }
+.top5-legend code {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(236,230,218,0.06);
+    padding: 2px 6px; border-radius: 4px;
+    color: var(--fg-1);
+}
+
 /* ============== CTA buttons ============== */
 .cta-buttons {
     display: flex; gap: 14px; flex-wrap: wrap;
@@ -771,7 +886,7 @@ footer a:hover { color: var(--paper); }
     <a href="#concept">Concept</a>
     <a href="#question">Question</a>
     <a href="#story">Story</a>
-    <a href="#network">Network Map</a>
+    <a href="#findings">Top 5</a>
     <a href="#methodology">Methodology</a>
     <a href="#about">About</a>
     <a class="launch" href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Fullscreen ↗</a>
@@ -912,13 +1027,6 @@ footer a:hover { color: var(--paper); }
                     <p>Most of London is white. That is not a rendering glitch — it is the finding. Bus 99's impact is highly localised. But where it lands, it lands hard: Bexley LSOAs lose 18.4&nbsp;% of accessibility on average, with individual cells dropping above 30&nbsp;%.</p>
                     <p>This is the spatial signature of single-route dependency. A neighbourhood doesn't have to be remote to be brittle — it has to be served by routes that don't have parallel substitutes. Bexley's eastern corridor is exactly that.</p>
                 </div>
-                <div class="act-map">
-                    <div class="bar">
-                        <span>Live demo · <span class="scenario">Route 99 cancelled</span></span>
-                        <a href="London_PTAL_Accessibility_Map.html?cancel=99&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
-                    </div>
-                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=99&panel=closed&legend=hidden" loading="lazy" title="Route 99 cancellation scenario" allow="fullscreen"></iframe>
-                </div>
             </article>
 
             <article class="act-card">
@@ -931,13 +1039,6 @@ footer a:hover { color: var(--paper); }
                     <p>Switch the disruption to bus R2 and the map rotates south. Bromley LSOAs absorb the largest borough-level loss (6.3&nbsp;%), but the affected area is much wider than route 99's footprint.</p>
                     <p>This is the trade-off between depth and spread. R2 affects more grids but each grid loses less, on average. From a planner's perspective, R2 is a "broad fragility" route; route 99 is a "sharp fragility" route. Both demand attention but require different responses.</p>
                     <p>The same 543-route engine that lets us swap from 99 to R2 in this narrative powers the Network Map tool. There, you can cancel any combination of routes and watch the whole map recompute live.</p>
-                </div>
-                <div class="act-map">
-                    <div class="bar">
-                        <span>Live demo · <span class="scenario">Route R2 cancelled</span></span>
-                        <a href="London_PTAL_Accessibility_Map.html?cancel=R2&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
-                    </div>
-                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=R2&panel=closed&legend=hidden" loading="lazy" title="Route R2 cancellation scenario" allow="fullscreen"></iframe>
                 </div>
             </article>
 
@@ -952,43 +1053,120 @@ footer a:hover { color: var(--paper); }
                     <p>These are the LSOAs where 685 is essentially the only viable bus route. There is no parallel service to absorb the shock. The OSM-Dijkstra walker can't find alternative stops within the 2,400&nbsp;m walking budget.</p>
                     <p>Three routes. Three spatial signatures. Wide-shallow, medium-medium, narrow-deep. The full data has 540 more routes — and many of them follow these three patterns. That is the structural vulnerability map of London's surface transport.</p>
                 </div>
-                <div class="act-map">
-                    <div class="bar">
-                        <span>Live demo · <span class="scenario">Route 685 cancelled</span></span>
-                        <a href="London_PTAL_Accessibility_Map.html?cancel=685&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
-                    </div>
-                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=685&panel=closed&legend=hidden" loading="lazy" title="Route 685 cancellation scenario" allow="fullscreen"></iframe>
-                </div>
             </article>
 
         </div>
         <div class="cta-buttons">
-            <a href="#network" class="primary">Run your own scenarios ↓</a>
-            <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="secondary">Open in new tab ↗</a>
+            <a href="#findings" class="primary">See the top 5 most fragile routes ↓</a>
+            <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="secondary">Open the full Network Map ↗</a>
         </div>
     </div>
 </section>
 
-<!-- ============== NETWORK MAP (embedded) ============== -->
-<section class="slide" id="network" data-label="Network Map">
+<!-- ============== FINDINGS · TOP 5 VULNERABLE ROUTES ============== -->
+<section class="slide" id="findings" data-label="Top 5 routes">
     <div class="slide-inner wide reveal">
-        <div class="eyebrow">The interactive tool</div>
-        <h2>Cancel any route. <em>Watch London change.</em></h2>
+        <div class="eyebrow">Feature analysis</div>
+        <h2>The five routes whose <em>cancellation</em> hurts London most</h2>
         <div class="body">
-            <p>The Network Map below is the analytical core of the project — every grid cell, every route, every metric you read about above is live here. Click <strong>Analysis</strong> in the map to open controls, search any route, cancel it, and compare baseline vs disrupted side by side.</p>
+            <p>
+                Across all 498 regular London routes (school and special services excluded), these five strip the most neighbourhoods below the 12-minute walking-access threshold when cancelled. Every winner is an <strong>outer-London bus</strong> — places where parallel substitutes are scarce.
+            </p>
         </div>
-        <div class="map-embed-wrap">
-            <div class="map-embed-bar">
-                <span class="dots"><span></span><span></span><span></span></span>
-                <span class="title">London_PTAL_Accessibility_Map.html · 543 routes · 159,451 grid cells</span>
-                <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
-            </div>
-            <iframe
-                class="map-embed-frame"
-                src="London_PTAL_Accessibility_Map.html"
-                title="London Transport Resilience — Network Map"
-                loading="lazy"
-                allow="fullscreen; clipboard-read; clipboard-write"></iframe>
+
+        <div class="top5-wrap reveal-stagger">
+
+            <article class="top5-row">
+                <div class="rk">01</div>
+                <div class="rt">191<span class="badge">BUS</span></div>
+                <div class="ar">Brimsdown — Edmonton Green</div>
+                <div class="bar-wrap">
+                    <div class="bar-grid">
+                        <div class="bar-label">LSOAs losing 12-min</div>
+                        <div class="bar-track"><div class="bar-fill" style="width:100%"></div><span class="bar-val">11</span></div>
+                        <div class="bar-label">LSOAs affected</div>
+                        <div class="bar-track"><div class="bar-fill alt" style="width:51.5%"></div><span class="bar-val">123</span></div>
+                        <div class="bar-label">Mean delay (min)</div>
+                        <div class="bar-track"><div class="bar-fill warm" style="width:46.8%"></div><span class="bar-val">5.9</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="top5-row">
+                <div class="rk">02</div>
+                <div class="rt">99<span class="badge">BUS</span></div>
+                <div class="ar">Woolwich — Bexleyheath</div>
+                <div class="bar-wrap">
+                    <div class="bar-grid">
+                        <div class="bar-label">LSOAs losing 12-min</div>
+                        <div class="bar-track"><div class="bar-fill" style="width:81.8%"></div><span class="bar-val">9</span></div>
+                        <div class="bar-label">LSOAs affected</div>
+                        <div class="bar-track"><div class="bar-fill alt" style="width:65.7%"></div><span class="bar-val">157</span></div>
+                        <div class="bar-label">Mean delay (min)</div>
+                        <div class="bar-track"><div class="bar-fill warm" style="width:51.5%"></div><span class="bar-val">6.5</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="top5-row">
+                <div class="rk">03</div>
+                <div class="rt">H12<span class="badge">BUS</span></div>
+                <div class="ar">Stanmore — South Harrow</div>
+                <div class="bar-wrap">
+                    <div class="bar-grid">
+                        <div class="bar-label">LSOAs losing 12-min</div>
+                        <div class="bar-track"><div class="bar-fill" style="width:81.8%"></div><span class="bar-val">9</span></div>
+                        <div class="bar-label">LSOAs affected</div>
+                        <div class="bar-track"><div class="bar-fill alt" style="width:60.3%"></div><span class="bar-val">144</span></div>
+                        <div class="bar-label">Mean delay (min)</div>
+                        <div class="bar-track"><div class="bar-fill warm" style="width:62.9%"></div><span class="bar-val">7.9</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="top5-row">
+                <div class="rk">04</div>
+                <div class="rt">51<span class="badge">BUS</span></div>
+                <div class="ar">Woolwich — Orpington</div>
+                <div class="bar-wrap">
+                    <div class="bar-grid">
+                        <div class="bar-label">LSOAs losing 12-min</div>
+                        <div class="bar-track"><div class="bar-fill" style="width:81.8%"></div><span class="bar-val">9</span></div>
+                        <div class="bar-label">LSOAs affected</div>
+                        <div class="bar-track"><div class="bar-fill alt" style="width:77.4%"></div><span class="bar-val">185</span></div>
+                        <div class="bar-label">Mean delay (min)</div>
+                        <div class="bar-track"><div class="bar-fill warm" style="width:72.8%"></div><span class="bar-val">9.2</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="top5-row">
+                <div class="rk">05</div>
+                <div class="rt">116<span class="badge">BUS</span></div>
+                <div class="ar">Hounslow — Ashford Hospital</div>
+                <div class="bar-wrap">
+                    <div class="bar-grid">
+                        <div class="bar-label">LSOAs losing 12-min</div>
+                        <div class="bar-track"><div class="bar-fill" style="width:81.8%"></div><span class="bar-val">9</span></div>
+                        <div class="bar-label">LSOAs affected</div>
+                        <div class="bar-track"><div class="bar-fill alt" style="width:36.4%"></div><span class="bar-val">87</span></div>
+                        <div class="bar-label">Mean delay (min)</div>
+                        <div class="bar-track"><div class="bar-fill warm" style="width:100%"></div><span class="bar-val">12.6</span></div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="top5-legend">
+            <span><span class="sw sage"></span> LSOAs losing 12-min walking access</span>
+            <span><span class="sw clay"></span> LSOAs affected (any loss)</span>
+            <span><span class="sw terra"></span> Mean walking delay</span>
+            <span class="src">Source: <code>resilience_summary_osm_network.json</code> · 498 regular routes</span>
+        </div>
+
+        <div class="cta-buttons" style="margin-top:36px;">
+            <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="primary">Cancel any of these in the live map ↗</a>
         </div>
     </div>
 </section>
