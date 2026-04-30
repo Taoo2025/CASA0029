@@ -315,6 +315,15 @@ section.slide.hero { padding-top: 100px; }
 .concept-card p {
     font-size: 14px; color: var(--fg-1); line-height: 1.7; margin: 0;
 }
+.concept-card p.footnote {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-size: 12.5px;
+    color: var(--fg-2);
+    line-height: 1.6;
+}
+.concept-card p.footnote strong { color: var(--clay); font-weight: 600; }
 
 /* ============== RESEARCH QUESTION ============== */
 .rq-card {
@@ -943,6 +952,7 @@ footer a:hover { color: var(--paper); }
                 <div class="ix">01</div>
                 <h3>543 routes, one engine</h3>
                 <p>The full LTRS analysis covers every Tube line, every Overground branch, the Elizabeth Line, DLR, Tramlink, and 540+ bus routes. Cancel any one — or any combination — and the impact is recomputed live, cell by cell, for the whole catchment.</p>
+                <p class="footnote"><em>TfL lists 600+ active bus routes in London; for resilience scoring we exclude <strong>night buses</strong> and <strong>temporary / replacement</strong> services, leaving the 543 regular daytime routes that define everyday accessibility.</em></p>
             </article>
 
             <article class="concept-card warm">
