@@ -3965,17 +3965,42 @@
             return state.gridChunks[chunkName][String(gridId)] || null;
         }
 
-        function disruptedGridAI(record) {
+        function disruptedGridAI(record, gridId) {
             const contributors = record.contributors || [];
             const baselineAI = Number(record.baseline_ai || 0);
-            const disruptedAI = contributors
-                .filter(item => !state.cancelledRoutes.has(routeBase(item.route)))
-                .reduce((sum, item) => sum + Number(item.ai_contribution || 0), 0);
+
+            // Prefer the authoritative route_grid_loss table (same data source the
+            // disruption map paints with). Falls back to contributor-derived loss
+            // when the impact table has no entry for this grid/route combination.
+            let lostAI = 0;
+            let usedAuthoritative = false;
+            if (gridId != null && state.routeGridImpacts && state.routeGridImpacts.route_grid_loss) {
+                const lossByRoute = state.routeGridImpacts.route_grid_loss;
+                const gridKey = String(gridId);
+                for (const route of state.cancelledRoutes) {
+                    const routeLosses = lossByRoute[route];
+                    if (routeLosses && routeLosses[gridKey] != null) {
+                        lostAI += Number(routeLosses[gridKey]) || 0;
+                        usedAuthoritative = true;
+                    }
+                }
+            }
+
+            if (!usedAuthoritative) {
+                lostAI = contributors
+                    .filter(item => state.cancelledRoutes.has(routeBase(item.route)))
+                    .reduce((sum, item) => sum + Number(item.ai_contribution || 0), 0);
+            }
+
+            if (lostAI < 0) lostAI = 0;
+            if (lostAI > baselineAI) lostAI = baselineAI;
+            const disruptedAI = baselineAI - lostAI;
+
             return {
                 baselineAI,
                 disruptedAI,
                 ltrs: baselineAI > 0 ? disruptedAI / baselineAI : 1,
-                lostAI: baselineAI - disruptedAI,
+                lostAI,
                 lostContributors: contributors.filter(item => state.cancelledRoutes.has(routeBase(item.route))),
                 remainingContributors: contributors.filter(item => !state.cancelledRoutes.has(routeBase(item.route))),
             };
@@ -4019,10 +4044,30 @@
                 return;
             }
 
-            const result = disruptedGridAI(record);
+            const result = disruptedGridAI(record, gridId);
             const retained = result.ltrs >= 0.8;
             const ltrsPercent = Math.round(result.ltrs * 100);
-            const topLost = result.lostContributors.slice(0, 3).map(item => item.route).join(", ") || "none";
+            // Prefer route names actually present in this grid's contributors;
+            // otherwise list cancelled routes that contribute loss via the
+            // authoritative impact table (e.g., rail or distant bus lines).
+            let topLost;
+            let lostCount;
+            if (result.lostContributors.length) {
+                topLost = result.lostContributors.slice(0, 3).map(item => item.route).join(", ");
+                lostCount = result.lostContributors.length;
+            } else if (result.lostAI > 0 && state.routeGridImpacts && state.routeGridImpacts.route_grid_loss) {
+                const lossByRoute = state.routeGridImpacts.route_grid_loss;
+                const gridKey = String(gridId);
+                const impacting = [...state.cancelledRoutes].filter(r => {
+                    const rl = lossByRoute[r];
+                    return rl && Number(rl[gridKey] || 0) > 0;
+                });
+                topLost = impacting.slice(0, 3).join(", ") || "none";
+                lostCount = impacting.length;
+            } else {
+                topLost = "none";
+                lostCount = 0;
+            }
             const topRemaining = result.remainingContributors[0];
 
             document.getElementById("baseline-class").innerHTML = `<span class="badge neutral">${result.baselineAI.toFixed(2)}</span>`;
@@ -4031,7 +4076,7 @@
             document.getElementById("local-resilience").textContent = `${ltrsPercent}%`;
             document.getElementById("scenario-retention").textContent = `${ltrsPercent}%`;
             document.getElementById("scenario-retention-note").textContent = retained ? "This grid remains resilient." : "This grid becomes vulnerable.";
-            document.getElementById("scenario-lost").textContent = result.lostContributors.length;
+            document.getElementById("scenario-lost").textContent = lostCount;
             document.getElementById("scenario-lost-note").textContent = `Lost route contributors: ${topLost}.`;
             document.getElementById("analysis-note").textContent = `Grid ${gridId}: top remaining alternative is ${topRemaining ? `${topRemaining.route} at ${topRemaining.stop_name}` : "none"}.`;
             document.getElementById("scenario-note").textContent = `Baseline AI ${result.baselineAI.toFixed(2)} -> disrupted AI ${result.disruptedAI.toFixed(2)}. Method: ${record.method}.`;
