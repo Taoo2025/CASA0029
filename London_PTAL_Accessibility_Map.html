@@ -162,28 +162,67 @@
             position: absolute;
             z-index: 12;
             top: auto;
-            bottom: 18px;
+            bottom: 22px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 8px;
+            gap: 6px;
             padding: 6px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(23, 32, 38, 0.08);
-            box-shadow: var(--shadow);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border: 1px solid rgba(23, 32, 38, 0.06);
+            box-shadow: 0 10px 30px rgba(19, 32, 45, 0.18), 0 2px 6px rgba(19, 32, 45, 0.08);
+            transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease;
+        }
+
+        .map-toolbar:hover {
+            box-shadow: 0 14px 38px rgba(19, 32, 45, 0.22), 0 3px 8px rgba(19, 32, 45, 0.10);
         }
 
         .map-toolbar button {
             min-height: 34px;
-            padding: 7px 10px;
+            padding: 7px 14px;
             white-space: nowrap;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--ink);
+            font-weight: 500;
+            transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+        }
+
+        .map-toolbar button:hover {
+            background: rgba(15, 111, 182, 0.08);
+            color: var(--blue);
+            transform: translateY(-1px);
+        }
+
+        .map-toolbar button:active {
+            transform: translateY(0);
         }
 
         .map-toolbar button[aria-pressed="true"] {
-            border-color: var(--ink);
+            border-color: transparent;
             background: var(--ink);
             color: #fff;
+            box-shadow: 0 4px 14px rgba(23, 32, 38, 0.28);
+        }
+
+        .map-toolbar button[aria-pressed="true"]:hover {
+            background: #2b3a44;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .map-toolbar button.danger {
+            color: var(--red);
+        }
+
+        .map-toolbar button.danger:hover {
+            background: rgba(180, 35, 42, 0.08);
+            color: var(--red);
         }
 
         .controls {
@@ -193,11 +232,14 @@
             max-height: calc(100vh - 36px);
             overflow: hidden;
             padding: 0;
-            transition: transform 180ms ease, opacity 180ms ease;
+            transform: translateX(0);
+            opacity: 1;
+            transition: transform 320ms cubic-bezier(.2,.7,.2,1), opacity 240ms cubic-bezier(.2,.7,.2,1), box-shadow 240ms ease;
+            will-change: transform, opacity;
         }
 
         body.panel-collapsed .controls {
-            transform: translateX(calc(100% + 28px));
+            transform: translateX(calc(100% + 36px));
             opacity: 0;
             pointer-events: none;
         }
@@ -625,8 +667,13 @@
 
         body.legend-collapsed .legend {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(16px) scale(0.98);
             pointer-events: none;
+        }
+
+        .legend {
+            transition: opacity 240ms cubic-bezier(.2,.7,.2,1), transform 240ms cubic-bezier(.2,.7,.2,1) !important;
+            will-change: transform, opacity;
         }
 
         .legend h2 {
@@ -785,7 +832,7 @@
         }
     </style>
 </head>
-<body>
+<body class="panel-collapsed">
     <div id="map"></div>
     <div id="map-compare"></div>
     <div id="split-divider" title="Drag to compare baseline (left) vs disrupted (right)"></div>
@@ -810,7 +857,7 @@
     <div id="hover-card" class="hover-card"></div>
 
     <nav class="map-toolbar" aria-label="Map tools">
-        <button id="analysis-toggle" aria-pressed="true" onclick="toggleAnalysisPanel()">Analysis</button>
+        <button id="analysis-toggle" aria-pressed="false" onclick="toggleAnalysisPanel()">Analysis</button>
         <button id="legend-toggle" aria-pressed="true" onclick="toggleLegendPanel()">Legend</button>
         <button onclick="zoomToSelectedFeature()">Zoom to selection</button>
         <button class="danger" onclick="clearCancelledRoutes()">Reset routes</button>
