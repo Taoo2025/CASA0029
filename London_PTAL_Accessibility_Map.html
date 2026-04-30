@@ -142,6 +142,50 @@
             left: 18px;
             width: min(520px, calc(100vw - 430px));
             padding: 14px 16px;
+            transition: width 260ms cubic-bezier(.2,.7,.2,1),
+                        padding 260ms cubic-bezier(.2,.7,.2,1);
+        }
+
+        .brand-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .brand-toggle {
+            flex: 0 0 auto;
+            width: 26px;
+            height: 26px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 260ms cubic-bezier(.2,.7,.2,1), background 160ms ease;
+        }
+        .brand-toggle:hover { background: #f1f5f8; }
+        .brand-toggle .chev {
+            display: inline-block;
+            transition: transform 260ms cubic-bezier(.2,.7,.2,1);
+        }
+
+        body.brand-collapsed .brand {
+            width: 44px;
+            padding: 9px;
+        }
+        body.brand-collapsed .brand h1,
+        body.brand-collapsed .brand p {
+            display: none;
+        }
+        body.brand-collapsed .brand-toggle .chev {
+            transform: rotate(180deg);
         }
 
         .brand h1 {
@@ -864,7 +908,15 @@
     </nav>
 
     <section class="panel brand">
-        <h1>London Public Transport Resilience</h1>
+        <div class="brand-head">
+            <h1>London Public Transport Resilience</h1>
+            <button class="brand-toggle" type="button"
+                    aria-label="Collapse intro panel"
+                    title="Collapse / expand intro"
+                    onclick="toggleBrandPanel()">
+                <span class="chev">&#x276E;</span>
+            </button>
+        </div>
         <p>London Public Transport Resilience Assessment System. Data sources: TFL Open Data, ONS Local Authority Boundaries (LAD UK©). Map design: Group 17. Data coverage: London local authorities.</p>
     </section>
 
@@ -1185,6 +1237,23 @@
                 if (state.compareMap) state.compareMap.resize();
             }, 220);
         }
+
+        function toggleBrandPanel(force) {
+            const nextCollapsed = typeof force === "boolean"
+                ? !force
+                : !document.body.classList.contains("brand-collapsed");
+            document.body.classList.toggle("brand-collapsed", nextCollapsed);
+            const btn = document.querySelector(".brand-toggle");
+            if (btn) {
+                btn.setAttribute("aria-label",
+                    nextCollapsed ? "Expand intro panel" : "Collapse intro panel");
+            }
+            setTimeout(() => {
+                if (window.map) map.resize();
+                if (state.compareMap) state.compareMap.resize();
+            }, 280);
+        }
+        window.toggleBrandPanel = toggleBrandPanel;
 
         function toggleLegendPanel(force) {
             const nextCollapsed = typeof force === "boolean"
@@ -1788,22 +1857,32 @@
                 style: "mapbox://styles/taosiyan2/cmoiw5ty8000x01sh87do0hhe",
                 center: map.getCenter(),
                 zoom: map.getZoom(),
+                bearing: map.getBearing(),
+                pitch: map.getPitch(),
                 minZoom: 7,
                 maxZoom: 16,
-                pitch: 0,
-                bearing: 0,
                 interactive: false,
-                attributionControl: false
+                attributionControl: false,
+                preserveDrawingBuffer: false,
+                fadeDuration: 0
             });
             state.compareMap = compareMap;
 
             compareMap.on("load", () => {
-                // Safety: re-sync center/zoom in case layout shifted during load.
-                compareMap.jumpTo({
-                    center: map.getCenter(),
-                    zoom: map.getZoom(),
-                    bearing: map.getBearing(),
-                    pitch: map.getPitch()
+                // Force a clean two-step alignment: resize first (so the canvas
+                // matches its container exactly), then jump to the main map's
+                // current camera. Without the resize, the compare canvas may
+                // have been sized while the container was still 0×0 (during
+                // panel transitions or iframe layout), causing a small
+                // pixel-level offset from the baseline map.
+                compareMap.resize();
+                requestAnimationFrame(() => {
+                    compareMap.jumpTo({
+                        center: map.getCenter(),
+                        zoom: map.getZoom(),
+                        bearing: map.getBearing(),
+                        pitch: map.getPitch()
+                    });
                 });
                 try {
                     // Compare map: NO baseline PTAL colours. The LSOA and Grid
@@ -2027,6 +2106,23 @@
             const dropLegend = document.getElementById("ai-drop-legend");
             if (dropLegend) dropLegend.style.display = active ? "block" : "none";
             if (active) {
+                // Re-align compareMap to the main map every time we enter
+                // compare-mode: the compare canvas was clipped out of view,
+                // so its previous resize observer events may have been
+                // suppressed. Without this, the right side of the splitter
+                // can appear shifted by a pixel or two relative to the left.
+                if (state.compareMap) {
+                    const cm = state.compareMap;
+                    requestAnimationFrame(() => {
+                        cm.resize();
+                        cm.jumpTo({
+                            center: map.getCenter(),
+                            zoom: map.getZoom(),
+                            bearing: map.getBearing(),
+                            pitch: map.getPitch()
+                        });
+                    });
+                }
                 applyDisruptionToCompareMap();
             } else {
                 clearDisruptionColors();
