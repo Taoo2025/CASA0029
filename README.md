@@ -1,112 +1,101 @@
 # London PTAL Resilience Map
 
-Interactive web application for analyzing public transport accessibility resilience in London.https://taoo2025.github.io/CASA0029/
+Interactive web application for exploring public-transport accessibility resilience in London.
+
+**Live site:** https://taoo2025.github.io/CASA0029/
+
+The Mapbox access token is already embedded in the page — **no token setup is required**. Just open the live link, or run locally with the steps below.
 
 ## Features
 
-- Cancel one or more transport routes and see real-time impact
-- Recalculate accessibility using AI (Accessibility Index)
-- Compare baseline vs disrupted scenarios side-by-side
-- 100m grid cell analysis with route-specific impacts
-- LSOA context layer
-- Route-by-route impact visualization
-- White→Red disruption heatmap (white: minimal, red: critical)
+- Cancel one or more bus / rail routes and see the real-time impact on accessibility
+- AI-recomputed accessibility index after each disruption
+- Side-by-side comparison of baseline vs disrupted scenarios
+- 100 m grid analysis with route-specific impacts
+- LSOA context layer (PTAL bands)
+- Route-by-route impact visualisation
+- White → red disruption heat-map (white = minimal, red = critical)
 
-## Quick Start
+## Run locally
 
-### Step 1: Get Mapbox Token
-- Sign up free at https://account.mapbox.com/auth/signup/
-- Copy your access token
-
-### Step 2: Setup
-```bash
-cd E:\CASA\CASA0029_UDV\HTML
-git pull  # Get latest code
-```
-
-### Step 3: Edit Token in HTML
-Open `London_PTAL_Accessibility_Map.html` and find line ~771:
-```javascript
-mapboxgl.accessToken = 'YOUR_MAPBOX_TOKEN_HERE';
-```
-Replace with your actual token from step 1.
-
-### Step 4: Run Local Server
-```bash
+```powershell
+git clone https://github.com/Taoo2025/CASA0029.git
+cd CASA0029
 python -m http.server 8080
 ```
-Then open: `http://localhost:8080/London_PTAL_Accessibility_Map.html`
 
+Then open http://localhost:8080/ — the root `index.html` redirects straight to the interactive map.
 
-## Data Files
+For the full PMTiles experience (HTTP Range support) use the bundled server instead:
 
-- `route_grid_impacts_osm_network.json` - 540 routes impact data
-- `grid_ai_chunks_osm_network/` - 64 grid batches (242 MB)
-- `data_chunks_osm_network/` - 33 borough chunks (122 MB)
-- `London_Stops_With_Routes.geojson` - 27,553 transit stops
-- `route_lines.geojson` - 438 route geometries
+```powershell
+python serve_range.py
+```
 
-## Browser Compatibility
+## URL presets (embedding & deep links)
 
-- Chrome/Edge (recommended)
-- Firefox
-- Safari 14+
+The map page reads these query parameters so you can deep-link or embed it cleanly:
 
-## File Structure
+| Param | Effect |
+|---|---|
+| `?cancel=191,99,H12` | Pre-cancel a comma-separated list of route IDs |
+| `?panel=collapsed` | Start with the brand panel collapsed |
+| `?legend=hidden` | Start with the legend hidden |
+| `?embed=1` | Hide chrome for embedding inside an `<iframe>` |
+
+## Project layout
 
 ```
 .
-├── London_PTAL_Accessibility_Map.html  # Main application
-├── serve_range.py                       # Local server (supports range requests)
-├── *.json                               # Manifest and summary data
-├── *.geojson                            # Geographic data
-├── grid_ai_chunks_osm_network/          # Grid AI batches
-├── data_chunks_osm_network/             # Borough network data
-└── DATA/                                # Base grid layer
+├── index.html                          # Redirects to the map
+├── London_PTAL_Accessibility_Map.html  # Main interactive map
+├── story.html                          # Narrative companion page
+├── serve_range.py                      # Local server with HTTP Range support
+├── data_calculating/                   # Python pipeline + lightweight raw inputs
+├── data_chunks_osm_network/            # 33 borough network chunks
+├── grid_ai_chunks_osm_network/         # 64 grid AI batches
+├── DATA/                               # Base grid layer + LSOA index
+├── *.json                              # Manifests, summaries, route impacts
+├── *.geojson                           # Stops, route lines, LSOA centroids
+└── roundel/                            # UI assets
 ```
 
-## Performance Notes
+## Data inputs (runtime)
 
-- Initial load: ~2-5 seconds (map visible with progress indicator)
-- Route impact data: ~8 seconds (lazy-loaded, 12 MB)
-- Grid calculations: Real-time (~100ms per route change)
+| File | Purpose |
+|---|---|
+| `route_grid_impacts_osm_network.json` | ~540 routes × grid-cell impact matrix |
+| `grid_ai_chunks_osm_network/` | Grid AI summary batches |
+| `data_chunks_osm_network/` | Per-borough network data |
+| `London_Stops_With_Routes.geojson` | ~27 k transit stops with route lists |
+| `route_lines.geojson` | ~438 route geometries |
+| `lsoa_ptal.pmtiles` (optional) | Vector tileset for the LSOA layer |
 
-## Optimization
+The Python pipeline that produced these files lives in [`data_calculating/`](data_calculating/) — see its README for script roles, regeneration order and links to external open datasets (TfL Open Data, ONS, Geofabrik OSM).
 
-For better performance with large datasets, consider:
-- PMTiles conversion (see `convert_to_pmtiles.py`)
-- Using `serve_range.py` for better HTTP streaming
+## Performance notes
 
-See [ZOOM_FIX_GUIDE.md](ZOOM_FIX_GUIDE.md) for detailed options.
+- Initial map paint: ~2–5 s (progress indicator shown)
+- Route impact data: lazy-loaded (~12 MB, ~8 s on first interaction)
+- Grid recalculation on a route cancellation: ~100 ms
+
+## Browser compatibility
+
+- Chrome / Edge (recommended)
+- Firefox
+- Safari 14+
 
 ## Troubleshooting
 
-### Map won't load
-- Make sure Mapbox token is filled in (line ~771)
-- Check browser console (F12) for errors
-- Try incognito mode to clear cache
+**Map is blank** — open DevTools (F12) and check the Console; usually a network error fetching one of the JSON files. Hard-refresh with Ctrl+Shift+R to bypass cache.
 
-### Grid data disappears at certain zoom levels
-**Status:** ✅ Fixed in latest version
-- Grid is now visible at zoom levels 7-16
-- Grid outlines appear from zoom 10+
-- See [SOLUTION_SUMMARY.md](SOLUTION_SUMMARY.md) for technical details
+**Grid invisible at some zooms** — fixed; the grid layer is enabled at zoom 7–16, with outlines from zoom 10.
 
-### Map loading slowly
-- Initial load with full data takes 2-5 seconds
-- Try clearing browser cache
-- Consider PMTiles conversion for faster rendering
+**Slow loading on the first visit** — the impact matrix is lazy-loaded the first time you cancel a route; subsequent interactions are instant.
 
-## Documentation
+## License & attribution
 
-- `SOLUTION_SUMMARY.md` - Complete fix summary
-- `ZOOM_FIX_GUIDE.md` - Zoom level troubleshooting
-- `QUICK_REFERENCE.md` - Quick test commands
-
-## License
-
-CASA project - University of London
-
----
-
-**Need help?** Check GitHub Issues or contact the project team.
+- Code: CASA0029 group project, UCL.
+- Map base tiles © Mapbox, © OpenStreetMap contributors.
+- Transport data: *Powered by TfL Open Data*, contains OS data © Crown copyright and database rights.
+- Boundaries © ONS / © Crown copyright and database right.
