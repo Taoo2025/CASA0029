@@ -958,7 +958,7 @@ footer a:hover { color: var(--paper); }
             <article class="concept-card warm">
                 <div class="ix">02</div>
                 <h3>OSM Dijkstra walking, not Euclidean circles</h3>
-                <p>Walking accessibility isn't a straight-line distance. We compute it on the actual OpenStreetMap road and footpath network using Dijkstra shortest-path, with a 4.8 km/h walking speed and a 2,400 m budget. Buildings, dead-ends, river crossings — they all matter.</p>
+                <p>Walking accessibility isn't a straight-line distance. We compute it on the actual OpenStreetMap road and footpath network using Dijkstra shortest-path, with a 4.8&nbsp;km/h walking speed and TfL PTAL catchment radii of <strong>640&nbsp;m for bus stops</strong> and <strong>960&nbsp;m for rail-based stops</strong>. Buildings, dead-ends, river crossings &mdash; they all matter.</p>
             </article>
 
             <article class="concept-card warm">
@@ -981,7 +981,7 @@ footer a:hover { color: var(--paper); }
             </blockquote>
             <div class="rq-body">
                 <p>
-                    London's surface transport is celebrated for its density. But density is unevenly distributed. Inner boroughs can lose a route and still have multiple alternatives within a 10-minute walk. Some outer and mid-ring areas depend on a single corridor — and when it fails, the OSM walking-network walker can't find anything else inside its 2,400&nbsp;m budget.
+                    London's surface transport is celebrated for its density. But density is unevenly distributed. Inner boroughs can lose a route and still have multiple alternatives within a 10-minute walk. Some outer and mid-ring areas depend on a single corridor &mdash; and when it fails, the OSM walking-network walker can't find another bus stop inside the 640&nbsp;m bus catchment or another rail entrance inside the 960&nbsp;m rail catchment.
                 </p>
                 <p>
                     We operationalise this as a <strong>cancel-and-recompute stress test</strong>: for each of 543 routes, we delete it from the network, rerun the Dijkstra walker for every affected 100&nbsp;m grid cell, and aggregate the loss back to neighbourhoods. The resulting map shows not who has good transport, but <strong>whose transport is brittle</strong>.
@@ -1158,7 +1158,7 @@ footer a:hover { color: var(--paper); }
             </ul>
 
             <h3 id="m-ai">4. Recomputing baseline AI on the OSM walking network</h3>
-            <p>For each 100&nbsp;m grid cell <code>g</code>, we run a <strong>Dijkstra shortest-path</strong> walk on the OSM road and footpath network from the cell centroid. Walking speed is fixed at 4.8&nbsp;km/h (80&nbsp;m/min); the maximum walking budget is 2,400&nbsp;m (corresponding to ~30&nbsp;min). Every NaPTAN stop reachable inside the budget contributes to the AI:</p>
+            <p>For each 100&nbsp;m grid cell <code>g</code>, we run a <strong>Dijkstra shortest-path</strong> walk on the OSM road and footpath network from the cell centroid. Walking speed is fixed at 4.8&nbsp;km/h (80&nbsp;m/min). Following TfL's PTAL methodology, the catchment radius is mode-specific: <strong>640&nbsp;m</strong> (~8&nbsp;min walk) for bus stops and <strong>960&nbsp;m</strong> (~12&nbsp;min walk) for rail-based stops (Tube, Overground, Elizabeth Line, DLR, National Rail, Tramlink). Every NaPTAN stop reachable inside its mode-specific catchment contributes to the AI:</p>
             <div class="formula">AI(g) = Σ  f(s) · w( walk(g, s) )      for s ∈ reachable(g)</div>
             <p>where <code>f(s)</code> is the service frequency at stop <code>s</code>, <code>walk(g, s)</code> is the shortest-path walking time, and <code>w(·)</code> is the standard PTAL distance decay. The result is mathematically equivalent to TfL's PTAL calculation but uses the OSM network instead of straight-line distance — meaning a river, a railway cutting or a missing footpath actually counts.</p>
 
@@ -1198,7 +1198,7 @@ footer a:hover { color: var(--paper); }
             <h3 id="m-limitations">9. Limitations</h3>
             <ul>
                 <li><strong>Static, single-step.</strong> We do not model recovery time, cascading effects (a cancelled route may overload its alternatives), or capacity-constrained crowding.</li>
-                <li><strong>Walking only.</strong> The 2,400&nbsp;m / 30&nbsp;min budget captures walking access; cycling and micro-mobility are not yet integrated. A future version will add cycle network density.</li>
+                <li><strong>Walking only.</strong> The 640&nbsp;m / 960&nbsp;m PTAL catchments capture walking access only; cycling and micro-mobility are not yet integrated. A future version will add cycle network density.</li>
                 <li><strong>Mode-mix simplification.</strong> A "stop" is treated as a stop regardless of whether the underlying service is a bus, tube, or Overground. Real reliability and service-frequency differences are folded into the AI weight but not separately visualised.</li>
                 <li><strong>Modifiable Areal Unit Problem.</strong> LSOA-level aggregations smooth out grid-cell heterogeneity. The 100&nbsp;m grid view in the Network Map preserves it.</li>
                 <li><strong>Population is a flat 1,700 per LSOA</strong> in the exposure metric until ONS mid-year estimates are joined.</li>
@@ -1308,7 +1308,7 @@ footer a:hover { color: var(--paper); }
         <div class="contrib-table">
             <div class="contrib-row head"><span>Layer</span><span>Dataset</span><span>Used for</span></div>
             <div class="contrib-row"><strong>Network</strong><span>NaPTAN (Department for Transport)</span><span>27,553 transit stops across Greater London. Bus, Tube, DLR, Overground, Elizabeth, Tramlink. Each stop carries route-membership metadata. Driver of the entire LTRS engine.</span></div>
-            <div class="contrib-row"><strong>Network</strong><span>OSM walking network</span><span>OpenStreetMap road and footpath graph for Greater London. Used by the Dijkstra walker (4.8 km/h, 2,400 m budget) to compute realistic walking time from any 100 m grid centroid to each NaPTAN stop.</span></div>
+            <div class="contrib-row"><strong>Network</strong><span>OSM walking network</span><span>OpenStreetMap road and footpath graph for Greater London. Used by the Dijkstra walker (4.8&nbsp;km/h; 640&nbsp;m bus / 960&nbsp;m rail PTAL catchments) to compute realistic walking time from any 100&nbsp;m grid centroid to each NaPTAN stop.</span></div>
             <div class="contrib-row"><strong>Baseline</strong><span>PTAL 2023 — 100 m grid (TfL WebCAT)</span><span>159,451 grid cells covering Greater London. Used as a sanity-check reference for the recomputed AI scores.</span></div>
             <div class="contrib-row"><strong>Routes</strong><span>TfL line and route geometry</span><span>Tube, Overground, Elizabeth, DLR, Tramlink + 540+ bus routes (route_lines.geojson). Drives both the visual route layer and the route-cancel logic.</span></div>
             <div class="contrib-row"><strong>Geometry</strong><span>ONS LSOA 2021 boundaries</span><span>4,994 Lower Super Output Areas across Greater London. Spatial unit for the LSOA-scale narrative views.</span></div>

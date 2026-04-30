@@ -1,0 +1,18 @@
+{
+  "nodes": 2068802,
+  "edges": 2304795,
+  "coverage": {
+    "stops": 27553,
+    "lsoa": 4994
+  },
+  "walking_parameters": {
+    "speed_kmh": 4.8,
+    "speed_m_per_min": 80,
+    "formula": "walking_time_min = network_distance_m / 80"
+  },
+  "notes": [
+    "Network graph built from OSM shapefile",
+    "Distances calculated using Dijkstra shortest path",
+    "Haversine formula used for coordinate conversion"
+  ]
+}

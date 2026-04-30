@@ -1,0 +1,107 @@
+[
+  {
+    "id": "Bakerloo",
+    "name": "Bakerloo",
+    "type": "Underground",
+    "color": "#8C4729",
+    "station_count": 26
+  },
+  {
+    "id": "Central",
+    "name": "Central",
+    "type": "Underground",
+    "color": "#E21836",
+    "station_count": 49
+  },
+  {
+    "id": "Circle",
+    "name": "Circle",
+    "type": "Underground",
+    "color": "#FFD300",
+    "station_count": 35
+  },
+  {
+    "id": "District",
+    "name": "District",
+    "type": "Underground",
+    "color": "#00A651",
+    "station_count": 60
+  },
+  {
+    "id": "Hammersmith & City",
+    "name": "Hammersmith & City",
+    "type": "Underground",
+    "color": "#DA291C",
+    "station_count": 30
+  },
+  {
+    "id": "Jubilee",
+    "name": "Jubilee",
+    "type": "Underground",
+    "color": "#6A8CC1",
+    "station_count": 27
+  },
+  {
+    "id": "Metropolitan",
+    "name": "Metropolitan",
+    "type": "Underground",
+    "color": "#9B0056",
+    "station_count": 34
+  },
+  {
+    "id": "Northern",
+    "name": "Northern",
+    "type": "Underground",
+    "color": "#000000",
+    "station_count": 52
+  },
+  {
+    "id": "Piccadilly",
+    "name": "Piccadilly",
+    "type": "Underground",
+    "color": "#0019A8",
+    "station_count": 53
+  },
+  {
+    "id": "Victoria",
+    "name": "Victoria",
+    "type": "Underground",
+    "color": "#0099DD",
+    "station_count": 16
+  },
+  {
+    "id": "Waterloo & City",
+    "name": "Waterloo & City",
+    "type": "Underground",
+    "color": "#64C5EB",
+    "station_count": 2
+  },
+  {
+    "id": "Overground",
+    "name": "Overground",
+    "type": "Overground",
+    "color": "#EE7E0A",
+    "station_count": 112
+  },
+  {
+    "id": "Elizabeth Line",
+    "name": "Elizabeth Line",
+    "type": "Elizabeth Line",
+    "color": "#7156CC",
+    "station_count": 41
+  },
+  {
+    "id": "Tramlink",
+    "name": "Tramlink",
+    "type": "Tramlink",
+    "color": "#66CC00",
+    "station_count": 39
+  },
+  {
+    "id": "DLR",
+    "name": "DLR",
+    "type": "DLR",
+    "color": "#00A3E0",
+    "station_count": 45
+  }
+]

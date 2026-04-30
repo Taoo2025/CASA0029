@@ -1,0 +1,30 @@
+{
+  "stops": {
+    "total": 27553,
+    "geojson_file": "London_Stops_With_Routes.geojson",
+    "properties": [
+      "ATCOCode",
+      "StopName",
+      "routes",
+      "route_count"
+    ]
+  },
+  "lsoa": {
+    "total": 4994,
+    "geojson_file": "London_LSOA_Centroids.geojson",
+    "properties": [
+      "LSOA_CODE",
+      "LSOA_NAME",
+      "LAD_NAME"
+    ]
+  },
+  "walking": {
+    "speed_kmh": 4.8,
+    "speed_m_per_min": 80,
+    "formula": "walking_time_min = distance_m / 80"
+  },
+  "osm": {
+    "status": "ready_to_load",
+    "note": "OSM network will be loaded client-side or via OSRM API"
+  }
+}
