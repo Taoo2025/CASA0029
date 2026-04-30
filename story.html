@@ -4,24 +4,35 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>London Transport Resilience — A Visual Story</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root {
-    --bg-0: #0b0d12;
-    --bg-1: #11141b;
-    --bg-2: #171b24;
-    --fg-0: #f4f6fb;
-    --fg-1: #c8cdd9;
-    --fg-2: #8a90a0;
-    --accent: #ff5a5f;
-    --accent-2: #ffb547;
-    --good: #16a34a;
-    --warn: #d97706;
-    --bad: #dc2626;
-    --line: rgba(255,255,255,0.08);
-    --card: rgba(255,255,255,0.04);
+    --bg-0: #07120c;
+    --bg-1: #0c1a13;
+    --bg-2: #11241b;
+    --fg-0: #f1f8f4;
+    --fg-1: #c5d6cc;
+    --fg-2: #7b8d83;
+
+    --green-900: #052e1c;
+    --green-700: #0f6b3f;
+    --green-600: #16a34a;
+    --green-500: #1fb866;
+    --green-400: #34d399;
+    --green-300: #6ee7b7;
+    --green-200: #a7f3d0;
+    --lime: #c5f06b;
+
+    --warn: #fbbf24;
+    --bad:  #f87171;
+
+    --line: rgba(167, 243, 208, 0.10);
+    --line-strong: rgba(167, 243, 208, 0.22);
+    --card: rgba(167, 243, 208, 0.04);
+    --card-strong: rgba(167, 243, 208, 0.07);
 }
+
 * { box-sizing: border-box; }
 html, body {
     margin: 0; padding: 0;
@@ -34,371 +45,639 @@ html, body {
 }
 body {
     scroll-behavior: smooth;
+    background:
+        radial-gradient(1200px 800px at 80% -10%, rgba(31,184,102,0.16), transparent 60%),
+        radial-gradient(900px 700px at -10% 30%, rgba(16,107,63,0.18), transparent 60%),
+        radial-gradient(1100px 800px at 50% 110%, rgba(110,231,183,0.10), transparent 60%),
+        var(--bg-0);
 }
+::selection { background: rgba(52,211,153,0.35); color: white; }
 
-/* ===== Top progress bar ===== */
 #progress {
     position: fixed; top: 0; left: 0; right: 0;
-    height: 3px; background: rgba(255,255,255,0.06);
+    height: 3px; background: rgba(255,255,255,0.04);
     z-index: 1000;
 }
 #progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--green-700), var(--green-400), var(--lime));
     transition: width 0.15s ease-out;
+    box-shadow: 0 0 12px rgba(52,211,153,0.5);
 }
 
-/* ===== Top nav bar ===== */
 #topnav {
     position: fixed; top: 14px; left: 24px;
     z-index: 999;
     display: flex; align-items: center; gap: 14px;
-    background: rgba(11,13,18,0.65);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid var(--line);
-    padding: 10px 16px;
+    background: rgba(7,18,12,0.7);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--line-strong);
+    padding: 9px 16px 9px 14px;
     border-radius: 999px;
     font-size: 13px;
     color: var(--fg-1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
-#topnav .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+#topnav .logo {
+    width: 24px; height: 24px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--green-400), var(--green-700));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bg-0); font-weight: 800; font-size: 13px;
+    box-shadow: 0 0 12px rgba(52,211,153,0.4);
+}
 #topnav strong { color: var(--fg-0); font-weight: 600; }
 #topnav a {
     color: var(--fg-1); text-decoration: none;
-    padding: 4px 10px; border-radius: 999px;
+    padding: 5px 12px; border-radius: 999px;
     transition: background 0.2s, color 0.2s;
+    font-weight: 500;
 }
-#topnav a:hover { background: rgba(255,255,255,0.08); color: var(--fg-0); }
+#topnav a:hover { background: rgba(167,243,208,0.1); color: var(--green-300); }
+#topnav .launch {
+    background: linear-gradient(135deg, var(--green-600), var(--green-500));
+    color: white;
+    padding: 6px 14px;
+    font-weight: 600;
+}
+#topnav .launch:hover { color: white; filter: brightness(1.1); }
 
-/* ===== Right side dot nav ===== */
 #sidenav {
-    position: fixed; top: 50%; right: 24px;
+    position: fixed; top: 50%; right: 22px;
     transform: translateY(-50%);
     z-index: 999;
     display: flex; flex-direction: column; gap: 14px;
 }
 #sidenav button {
     background: transparent; border: none; cursor: pointer;
-    width: 36px; height: 14px;
+    width: 40px; height: 14px;
     display: flex; align-items: center; justify-content: flex-end;
-    padding: 0;
+    padding: 0; position: relative;
 }
 #sidenav .pip {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    transition: all 0.25s;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: rgba(167,243,208,0.25);
+    transition: all 0.25s cubic-bezier(.5,0,.2,1.4);
 }
-#sidenav button:hover .pip { background: var(--fg-1); transform: scale(1.2); }
+#sidenav button:hover .pip { background: var(--green-300); transform: scale(1.3); }
 #sidenav button.active .pip {
-    background: var(--accent);
-    width: 22px; border-radius: 5px;
+    background: var(--green-400);
+    width: 24px; border-radius: 5px;
+    box-shadow: 0 0 12px rgba(52,211,153,0.6);
 }
 #sidenav .label {
-    position: absolute; right: 28px; top: 50%; transform: translateY(-50%) translateX(8px);
-    background: rgba(0,0,0,0.85);
+    position: absolute; right: 22px; top: 50%; transform: translateY(-50%) translateX(8px);
+    background: rgba(7,18,12,0.95);
+    border: 1px solid var(--line-strong);
     color: var(--fg-0);
-    font-size: 11px; padding: 4px 10px; border-radius: 6px;
+    font-size: 11px; padding: 5px 10px; border-radius: 6px;
     white-space: nowrap;
     opacity: 0; pointer-events: none;
     transition: opacity 0.2s, transform 0.2s;
+    font-weight: 500;
 }
 #sidenav button:hover .label { opacity: 1; transform: translateY(-50%) translateX(0); }
 
-/* ===== Sections ===== */
 section.slide {
     min-height: 100vh;
-    padding: 100px 8vw 80px;
+    padding: 110px 8vw 90px;
     display: flex; flex-direction: column; justify-content: center;
     position: relative;
-    border-bottom: 1px solid var(--line);
 }
-section.slide.hero { padding-top: 60px; }
-section.slide.full { padding: 80px 0 0; }
+section.slide.hero { padding-top: 80px; }
+section.slide.full { padding: 90px 0 0; }
 
-/* ===== Hero ===== */
+.slide-inner { max-width: 1240px; margin: 0 auto; width: 100%; }
+.slide-inner.wide { max-width: 1380px; }
+
+.eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--green-300);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.eyebrow::before {
+    content: ''; width: 22px; height: 2px;
+    background: var(--green-400);
+    border-radius: 2px;
+}
+.slide h2 {
+    font-size: clamp(34px, 4.4vw, 60px);
+    font-weight: 700; line-height: 1.08;
+    margin: 0 0 28px; letter-spacing: -0.025em;
+}
+.slide h2 .accent {
+    background: linear-gradient(135deg, var(--green-300), var(--lime));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.slide .body {
+    font-size: clamp(15px, 1.1vw, 17px);
+    color: var(--fg-1); line-height: 1.75;
+    max-width: 720px;
+}
+.slide .body p { margin: 0 0 16px; }
+.slide .body p:last-child { margin-bottom: 0; }
+
 .hero-inner {
-    max-width: 1200px; margin: 0 auto; width: 100%;
-    text-align: center;
+    max-width: 1240px; margin: 0 auto; width: 100%;
+    text-align: center; position: relative;
 }
 .hero-eyebrow {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(255,90,95,0.12);
-    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 18px;
+    background: rgba(52,211,153,0.10);
+    color: var(--green-300);
+    border: 1px solid rgba(52,211,153,0.25);
     border-radius: 999px;
     font-size: 12px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 24px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 28px;
+}
+.hero-eyebrow .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green-400);
+    box-shadow: 0 0 0 0 rgba(52,211,153,0.6);
+    animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52,211,153,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(52,211,153,0); }
+    100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
 }
 .hero h1 {
-    font-size: clamp(40px, 6.4vw, 92px);
+    font-size: clamp(42px, 7vw, 100px);
     font-weight: 800;
-    line-height: 1.05;
-    margin: 0 0 24px;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #ffffff 0%, #ffd9b8 60%, var(--accent) 100%);
+    line-height: 1.02;
+    margin: 0 0 28px;
+    letter-spacing: -0.035em;
+}
+.hero h1 .grad {
+    background: linear-gradient(135deg, #ffffff 0%, var(--green-200) 35%, var(--green-400) 70%, var(--lime) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 .hero .lede {
-    font-size: clamp(16px, 1.4vw, 20px);
-    color: var(--fg-1); max-width: 720px; margin: 0 auto 40px;
-    line-height: 1.6;
+    font-size: clamp(16px, 1.35vw, 20px);
+    color: var(--fg-1); max-width: 760px; margin: 0 auto 48px;
+    line-height: 1.65;
 }
 .hero-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-    max-width: 880px; margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 18px;
+    max-width: 960px; margin: 0 auto;
 }
 .hero-stat {
-    background: var(--card);
+    background: linear-gradient(140deg, var(--card-strong), var(--card));
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px 18px;
+    border-radius: 18px;
+    padding: 24px 20px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.hero-stat:hover {
+    transform: translateY(-3px);
+    border-color: rgba(52,211,153,0.4);
+    box-shadow: 0 12px 30px rgba(52,211,153,0.15);
 }
 .hero-stat .num {
-    font-size: 32px; font-weight: 700;
-    color: var(--accent-2);
+    font-size: 34px; font-weight: 700;
+    background: linear-gradient(135deg, var(--green-200), var(--lime));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.02em;
 }
-.hero-stat .lbl { font-size: 12px; color: var(--fg-2); margin-top: 6px; }
+.hero-stat .lbl {
+    font-size: 12px; color: var(--fg-2); margin-top: 6px;
+    font-weight: 500; letter-spacing: 0.04em;
+}
 
 .scroll-cue {
-    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-    color: var(--fg-2); font-size: 12px; letter-spacing: 0.2em;
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    color: var(--fg-2); font-size: 11px; letter-spacing: 0.25em;
     text-transform: uppercase;
-    animation: bounce 2.2s ease-in-out infinite;
+    animation: bounce 2.4s ease-in-out infinite;
+    font-weight: 500;
 }
 @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
     50% { transform: translate(-50%, 8px); opacity: 1; }
 }
 
-/* ===== Generic slide ===== */
-.slide-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
-.eyebrow {
-    color: var(--accent);
-    font-size: 12px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    margin-bottom: 14px;
-}
-.slide h2 {
-    font-size: clamp(32px, 4vw, 56px);
-    font-weight: 700; line-height: 1.1;
-    margin: 0 0 24px; letter-spacing: -0.02em;
-}
-.slide .body {
-    font-size: clamp(15px, 1.15vw, 18px);
-    color: var(--fg-1); line-height: 1.7;
-    max-width: 720px;
-}
-.slide .body p { margin: 0 0 16px; }
-
-/* Two-column layout */
 .two-col {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 64px; align-items: center;
 }
-@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 960px) { .two-col { grid-template-columns: 1fr; gap: 36px; } }
 
-/* ===== Method steps ===== */
+.compare-card {
+    background: linear-gradient(140deg, var(--bg-2), var(--bg-1));
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.compare-card h3 { font-size: 17px; font-weight: 600; margin: 0 0 4px; }
+.compare-card .sub { font-size: 12px; color: var(--fg-2); margin-bottom: 22px; }
+.compare-row { display: flex; gap: 14px; }
+.compare-tile {
+    flex: 1; padding: 20px; border-radius: 12px;
+    border-left: 3px solid;
+    background: rgba(255,255,255,0.02);
+}
+.compare-tile.left { border-color: var(--green-400); }
+.compare-tile.right { border-color: var(--warn); }
+.compare-tile .tag {
+    font-size: 11px; letter-spacing: 0.18em; font-weight: 700;
+    text-transform: uppercase;
+}
+.compare-tile.left .tag { color: var(--green-400); }
+.compare-tile.right .tag { color: var(--warn); }
+.compare-tile .copy {
+    font-size: 13px; color: var(--fg-1); margin-top: 8px; line-height: 1.55;
+}
+.compare-tile .formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--green-200);
+    margin-top: 10px;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 10px; border-radius: 6px;
+    display: inline-block;
+}
+
 .method-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
-    margin-top: 40px;
+    margin-top: 48px;
 }
-@media (max-width: 900px) { .method-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 1100px) { .method-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .method-grid { grid-template-columns: 1fr; } }
 .method-card {
-    background: var(--card);
+    background: linear-gradient(160deg, var(--card-strong), var(--card));
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 24px 20px;
+    border-radius: 18px;
+    padding: 26px 22px;
     position: relative;
-    transition: transform 0.3s, border-color 0.3s;
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.3s, box-shadow 0.3s;
 }
-.method-card:hover { transform: translateY(-4px); border-color: rgba(255,90,95,0.4); }
+.method-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(52,211,153,0.10), transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+}
+.method-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(52,211,153,0.35);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(52,211,153,0.2);
+}
+.method-card:hover::before { opacity: 1; }
 .method-card .step {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 600;
-    color: var(--accent); letter-spacing: 0.1em;
-    margin-bottom: 10px;
+    color: var(--green-400); letter-spacing: 0.12em;
+    margin-bottom: 12px; position: relative;
 }
-.method-card h3 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
-.method-card p { font-size: 13px; color: var(--fg-2); line-height: 1.55; margin: 0; }
+.method-card h3 {
+    font-size: 17px; font-weight: 600;
+    margin: 0 0 12px; position: relative;
+    letter-spacing: -0.01em;
+}
+.method-card p {
+    font-size: 13px; color: var(--fg-1); line-height: 1.6;
+    margin: 0; position: relative;
+}
+.method-card code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--green-300);
+    background: rgba(52,211,153,0.08);
+    padding: 1px 6px; border-radius: 4px;
+}
 
-/* ===== Module / map embed ===== */
-.module-frame {
-    width: 100%; height: 78vh;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--bg-2);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+.pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 36px;
     position: relative;
 }
-.module-frame iframe {
-    width: 100%; height: 100%;
-    border: none;
-    display: block;
+@media (max-width: 1100px) { .pipeline { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .pipeline { grid-template-columns: 1fr; } }
+.pipe-step {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 16px;
+    transition: all 0.3s;
 }
+.pipe-step:hover {
+    border-color: rgba(52,211,153,0.35);
+    transform: translateY(-3px);
+}
+.pipe-step .ix {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--green-700), var(--green-500));
+    color: white;
+    font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+}
+.pipe-step h4 { font-size: 14px; font-weight: 600; margin: 0 0 8px; }
+.pipe-step p { font-size: 12px; color: var(--fg-2); line-height: 1.55; margin: 0; }
+.pipe-step code {
+    display: block; margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--green-300);
+    background: rgba(0,0,0,0.3);
+    padding: 5px 7px; border-radius: 4px;
+    word-break: break-all;
+}
+
+.module-frame {
+    width: 100%; height: 80vh;
+    border: 1px solid var(--line-strong);
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--bg-2);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(52,211,153,0.08),
+                inset 0 0 100px rgba(0,0,0,0.3);
+    position: relative;
+}
+.module-frame iframe { width: 100%; height: 100%; border: none; display: block; }
 .module-frame .placeholder {
     position: absolute; inset: 0;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 16px;
+    gap: 18px;
     color: var(--fg-2); font-size: 14px;
     text-align: center; padding: 24px;
+    background:
+        radial-gradient(circle at center, rgba(52,211,153,0.08), transparent 70%),
+        var(--bg-2);
 }
+.module-frame .placeholder .icon { font-size: 48px; filter: grayscale(0.3); }
 .module-frame .placeholder button {
-    background: var(--accent); color: white; border: none;
-    padding: 12px 24px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-500));
+    color: white; border: none;
+    padding: 13px 28px; border-radius: 10px;
     font-size: 14px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(31,184,102,0.4);
+    transition: transform 0.2s;
 }
+.module-frame .placeholder button:hover { transform: translateY(-2px); }
+
 .module-controls {
     display: flex; gap: 10px; flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 .module-controls a, .module-controls button {
-    background: rgba(255,255,255,0.06);
+    background: var(--card-strong);
     color: var(--fg-0);
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 11px 20px;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 13px; font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
 }
 .module-controls a:hover, .module-controls button:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: var(--accent);
+    background: rgba(52,211,153,0.1);
+    border-color: var(--green-500);
+    color: var(--green-300);
 }
 .module-controls .primary {
-    background: var(--accent); border-color: var(--accent);
+    background: linear-gradient(135deg, var(--green-600), var(--green-500));
+    border-color: var(--green-500);
+    color: white;
+    box-shadow: 0 6px 20px rgba(31,184,102,0.3);
 }
-.module-controls .primary:hover { background: #ff7378; }
+.module-controls .primary:hover {
+    background: linear-gradient(135deg, var(--green-500), var(--green-400));
+    color: white;
+}
 
-/* ===== Charts ===== */
+.module-tips {
+    margin-top: 16px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+}
+.module-tips .tip {
+    font-size: 12px; color: var(--fg-2);
+    background: var(--card); padding: 6px 12px;
+    border: 1px solid var(--line); border-radius: 999px;
+}
+.module-tips .tip strong { color: var(--green-300); font-weight: 600; }
+
 .chart-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 32px;
+    gap: 22px;
+    margin-top: 38px;
 }
-@media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .chart-grid { grid-template-columns: 1fr; } }
 .chart-card {
-    background: var(--card);
+    background: linear-gradient(160deg, var(--card-strong), var(--card));
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 18px;
+    padding: 26px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-.chart-card h3 {
-    font-size: 16px; font-weight: 600; margin: 0 0 6px;
+.chart-card:hover {
+    border-color: rgba(52,211,153,0.25);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
-.chart-card .sub {
-    font-size: 12px; color: var(--fg-2); margin-bottom: 18px;
-}
+.chart-card h3 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+.chart-card .sub { font-size: 12px; color: var(--fg-2); margin-bottom: 18px; line-height: 1.5; }
 .chart-wrap { position: relative; height: 320px; }
 .chart-card.full { grid-column: 1 / -1; }
 
-/* ===== Findings / takeaways ===== */
+.defs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+}
+@media (max-width: 1000px) { .defs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .defs { grid-template-columns: 1fr; } }
+.def {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.def:hover { border-color: rgba(52,211,153,0.3); transform: translateY(-3px); }
+.def .term {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600;
+    color: var(--green-300);
+    margin-bottom: 10px;
+}
+.def .formula {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--lime);
+    background: rgba(0,0,0,0.35);
+    padding: 8px 10px; border-radius: 6px;
+    margin-bottom: 12px;
+    display: block; overflow-x: auto;
+}
+.def .desc {
+    font-size: 13px; color: var(--fg-1); line-height: 1.6;
+}
+
 .takeaways {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 40px;
+    gap: 22px;
+    margin-top: 44px;
 }
-@media (max-width: 900px) { .takeaways { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .takeaways { grid-template-columns: 1fr; } }
 .takeaway {
-    background: linear-gradient(140deg, var(--bg-2), var(--bg-1));
+    background: linear-gradient(160deg, var(--bg-2), var(--bg-1));
     border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 28px 24px;
+    border-radius: 20px;
+    padding: 32px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s, border-color 0.3s, box-shadow 0.3s;
+}
+.takeaway::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-400), var(--lime));
+    opacity: 0.7;
+}
+.takeaway:hover {
+    transform: translateY(-6px);
+    border-color: rgba(52,211,153,0.35);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
 }
 .takeaway .num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--accent); letter-spacing: 0.15em; font-weight: 600;
-    margin-bottom: 12px;
+    font-size: 11px; color: var(--green-400);
+    letter-spacing: 0.18em; font-weight: 600;
+    margin-bottom: 14px;
 }
-.takeaway h3 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
-.takeaway p { font-size: 14px; color: var(--fg-1); line-height: 1.6; margin: 0; }
+.takeaway h3 {
+    font-size: 19px; font-weight: 600; margin: 0 0 12px;
+    letter-spacing: -0.01em; line-height: 1.3;
+}
+.takeaway p {
+    font-size: 14px; color: var(--fg-1); line-height: 1.65; margin: 0;
+}
+.takeaway .stat {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px dashed var(--line-strong);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--green-300);
+    letter-spacing: 0.05em;
+}
 
-/* ===== Final CTA ===== */
 .cta-card {
-    background: linear-gradient(140deg, rgba(255,90,95,0.18), rgba(255,181,71,0.12));
-    border: 1px solid rgba(255,90,95,0.3);
-    border-radius: 24px;
-    padding: 56px 48px;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(52,211,153,0.18), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(197,240,107,0.10), transparent 55%),
+        linear-gradient(135deg, var(--bg-2), var(--bg-1));
+    border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 28px;
+    padding: 64px 52px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
-.cta-card h2 { margin-bottom: 16px; }
-.cta-card .body { margin: 0 auto 30px; }
+.cta-card .eyebrow { justify-content: center; }
+.cta-card h2 { margin-bottom: 18px; }
+.cta-card .body { margin: 0 auto 36px; }
 .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .cta-buttons a {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px; border-radius: 999px;
+    padding: 15px 30px; border-radius: 999px;
     text-decoration: none; font-size: 15px; font-weight: 600;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 .cta-buttons a:hover { transform: translateY(-2px); }
-.cta-buttons .primary { background: var(--accent); color: white; }
+.cta-buttons .primary {
+    background: linear-gradient(135deg, var(--green-500), var(--green-400));
+    color: var(--bg-0);
+    box-shadow: 0 12px 32px rgba(52,211,153,0.4);
+}
+.cta-buttons .primary:hover { box-shadow: 0 18px 44px rgba(52,211,153,0.55); }
 .cta-buttons .secondary {
     background: transparent; color: var(--fg-0);
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
 }
+.cta-buttons .secondary:hover { border-color: var(--green-400); color: var(--green-300); }
 
-/* ===== Reveal animations ===== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(34px);
+    transition: opacity 0.85s cubic-bezier(.2,.7,.2,1), transform 0.85s cubic-bezier(.2,.7,.2,1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-stagger > * {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
 }
 .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
 .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
-.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.15s; }
-.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.25s; }
-.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
-.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.45s; }
-.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.55s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.13s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.21s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.29s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.37s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.45s; }
+.reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.53s; }
+.reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.61s; }
+.reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.69s; }
+.reveal-stagger.visible > *:nth-child(10) { transition-delay: 0.77s; }
+.reveal-stagger.visible > *:nth-child(11) { transition-delay: 0.85s; }
 
-/* ===== Footer ===== */
 footer {
-    padding: 40px 8vw;
+    padding: 50px 8vw;
     text-align: center;
     color: var(--fg-2);
     font-size: 12px;
     border-top: 1px solid var(--line);
+    background: var(--bg-1);
+    line-height: 1.8;
 }
-footer a { color: var(--fg-1); text-decoration: none; }
-footer a:hover { color: var(--accent); }
+footer a { color: var(--fg-1); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--green-300); }
 
-/* ===== Inline highlight ===== */
-.hl { color: var(--accent-2); font-weight: 600; }
-.hl-r { color: var(--accent); font-weight: 600; }
+.hl { color: var(--lime); font-weight: 600; }
+.hl-g { color: var(--green-300); font-weight: 600; }
 code.inline {
     font-family: 'JetBrains Mono', monospace;
-    background: rgba(255,255,255,0.08);
-    padding: 2px 6px; border-radius: 4px;
+    background: rgba(52,211,153,0.10);
+    color: var(--green-200);
+    padding: 2px 7px; border-radius: 5px;
     font-size: 0.88em;
+    border: 1px solid rgba(52,211,153,0.15);
 }
 
 @media (max-width: 700px) {
     #sidenav { display: none; }
     #topnav { left: 12px; right: 12px; padding: 8px 12px; gap: 8px; }
-    #topnav a { padding: 4px 6px; font-size: 12px; }
-    section.slide { padding: 90px 6vw 60px; }
+    #topnav a { padding: 4px 8px; font-size: 12px; }
+    #topnav strong { display: none; }
+    section.slide { padding: 100px 6vw 70px; }
+    .cta-card { padding: 44px 24px; }
 }
 </style>
 </head>
@@ -407,9 +686,12 @@ code.inline {
 <div id="progress"><div id="progress-bar"></div></div>
 
 <nav id="topnav">
-    <span class="dot"></span>
+    <span class="logo">L</span>
     <strong>London Transport Resilience</strong>
-    <a href="London_PTAL_Accessibility_Map.html">Open Full App →</a>
+    <a href="#method">Method</a>
+    <a href="#data">Data</a>
+    <a href="#findings">Findings</a>
+    <a class="launch" href="London_PTAL_Accessibility_Map.html">Launch App →</a>
 </nav>
 
 <nav id="sidenav"></nav>
@@ -417,22 +699,25 @@ code.inline {
 <!-- ============== HERO ============== -->
 <section class="slide hero" id="hero" data-label="Intro">
     <div class="hero-inner reveal">
-        <div class="hero-eyebrow">CASA0029 · Urban Data Visualisation</div>
-        <h1>When a route goes dark,<br/>where does London hurt?</h1>
+        <div class="hero-eyebrow"><span class="pulse"></span>CASA0029 · Urban Data Visualisation</div>
+        <h1>
+            When a route goes dark,<br/>
+            <span class="grad">where does London hurt?</span>
+        </h1>
         <p class="lede">
-            An interactive visual investigation of London's surface and rail
-            transport network — measuring how single-route disruptions
-            ripple through walking-time accessibility, and which neighbourhoods
-            lose the most.
+            An interactive resilience model for London's surface and rail transport network.
+            We compute a walking-time Accessibility Index for every 100 m grid cell,
+            then simulate cancelling each of 543 routes — and show which neighbourhoods lose the most.
         </p>
         <div class="hero-stats reveal-stagger">
+            <div class="hero-stat"><div class="num">159,451</div><div class="lbl">100 m grid cells</div></div>
             <div class="hero-stat"><div class="num">4,994</div><div class="lbl">LSOAs analysed</div></div>
             <div class="hero-stat"><div class="num">543</div><div class="lbl">Routes simulated</div></div>
-            <div class="hero-stat"><div class="num">100m</div><div class="lbl">Grid resolution</div></div>
+            <div class="hero-stat"><div class="num">27,553</div><div class="lbl">TfL stops</div></div>
             <div class="hero-stat"><div class="num">4.8 km/h</div><div class="lbl">Walking speed</div></div>
         </div>
     </div>
-    <div class="scroll-cue">Scroll ↓</div>
+    <div class="scroll-cue">Scroll to explore ↓</div>
 </section>
 
 <!-- ============== PROBLEM ============== -->
@@ -440,43 +725,44 @@ code.inline {
     <div class="slide-inner two-col">
         <div class="reveal">
             <div class="eyebrow">Chapter 01 · Context</div>
-            <h2>Accessibility is fragile.</h2>
+            <h2>PTAL tells you the snapshot.<br/><span class="accent">It can't tell you the stress test.</span></h2>
             <div class="body">
                 <p>
-                    Transport for London publishes the <span class="hl">PTAL</span>
-                    index — a static measure of how well a place is served by
-                    public transport. But PTAL describes a perfect world:
+                    Transport for London publishes the <span class="hl">Public Transport Accessibility Level (PTAL)</span> —
+                    a static index combining stop frequencies and walking times. It maps London on a normal Wednesday,
                     every line running, every stop reachable.
                 </p>
                 <p>
-                    Real disruptions — strikes, signal failures, route
-                    cancellations — happen weekly. PTAL says nothing about
-                    them. Yet the same household can wake up in
-                    <span class="hl">PTAL 6</span> and find themselves stranded
-                    in <span class="hl-r">PTAL 2</span> by lunchtime.
+                    Real disruptions happen weekly. A signal failure, an industrial action,
+                    a single route cancellation can drop a household from
+                    <span class="hl-g">PTAL 6</span> at breakfast to
+                    <span style="color:var(--bad);font-weight:600">PTAL 2</span> at lunch.
+                    PTAL has nothing to say about it.
                 </p>
                 <p>
-                    We need a measure that asks: <em>after a route is cut,
-                    how much accessibility actually remains?</em>
+                    This project adds the missing layer: <em>after a route is cut,
+                    how much accessibility actually remains — and where?</em>
                 </p>
             </div>
         </div>
         <div class="reveal">
-            <div class="chart-card">
-                <h3>The static vs. the dynamic view</h3>
-                <div class="sub">PTAL gives you the snapshot; LTRS gives you the stress test.</div>
-                <div style="display:flex; gap:14px; margin-top:18px;">
-                    <div style="flex:1; padding:18px; background:rgba(22,163,74,0.1); border-left:3px solid var(--good); border-radius:8px;">
-                        <div style="font-size:11px; letter-spacing:0.15em; color:var(--good); font-weight:600;">PTAL</div>
-                        <div style="font-size:13px; color:var(--fg-1); margin-top:6px; line-height:1.5;">
-                            Static. Frequencies × walking time. Tells you what an area looks like on a normal Wednesday.
+            <div class="compare-card">
+                <h3>Static index vs. dynamic resilience</h3>
+                <div class="sub">Two complementary lenses on the same network.</div>
+                <div class="compare-row">
+                    <div class="compare-tile left">
+                        <div class="tag">PTAL · Baseline</div>
+                        <div class="copy">
+                            Frequency-weighted walking access to nearby stops at full service.
                         </div>
+                        <div class="formula">AI = Σ (rank_w · decay · 10)</div>
                     </div>
-                    <div style="flex:1; padding:18px; background:rgba(255,90,95,0.1); border-left:3px solid var(--accent); border-radius:8px;">
-                        <div style="font-size:11px; letter-spacing:0.15em; color:var(--accent); font-weight:600;">LTRS</div>
-                        <div style="font-size:13px; color:var(--fg-1); margin-top:6px; line-height:1.5;">
-                            Local Transport Resilience Score. Asks: when route X dies, what fraction of accessibility survives?
+                    <div class="compare-tile right">
+                        <div class="tag">LTRS · Resilience</div>
+                        <div class="copy">
+                            Fraction of AI surviving when a chosen route is removed from the graph.
                         </div>
+                        <div class="formula">LTRS = AI_dis / AI_base</div>
                     </div>
                 </div>
             </div>
@@ -484,166 +770,308 @@ code.inline {
     </div>
 </section>
 
-<!-- ============== METHODOLOGY ============== -->
+<!-- ============== METHODOLOGY OVERVIEW ============== -->
 <section class="slide" id="method" data-label="Methodology">
     <div class="slide-inner reveal">
         <div class="eyebrow">Chapter 02 · Method</div>
-        <h2>How we score resilience.</h2>
+        <h2>Four data layers, <span class="accent">one live equation.</span></h2>
         <div class="body">
             <p>
-                Four data layers feed a single live equation. Cancel a route
-                and every downstream metric — grid AI, LSOA reachability,
-                LTRS — recomputes in the browser.
+                Cancel a route in the browser and every downstream metric — grid AI, LSOA reachability,
+                LTRS classification, the disruption colour map — recomputes against pre-built impact
+                tables in &lt; 100 ms.
             </p>
         </div>
         <div class="method-grid reveal-stagger">
             <div class="method-card">
-                <div class="step">STEP 01</div>
-                <h3>Build the network</h3>
-                <p>OSM walking graph + every TfL stop (bus / tube / DLR / Overground / Elizabeth / National Rail), each tagged with the routes that serve it.</p>
+                <div class="step">STEP 01 · INGEST</div>
+                <h3>Build the unified network</h3>
+                <p>
+                    Merge TfL NAPTAN bus, Tube, DLR, Elizabeth Line, Overground and Tramlink stop
+                    datasets into <code>27,553</code> de-duplicated stops, each tagged with the routes
+                    that serve it via KDTree spatial joins.
+                </p>
             </div>
             <div class="method-card">
-                <div class="step">STEP 02</div>
-                <h3>Compute baseline AI</h3>
-                <p>For each 100 m grid cell, run Dijkstra walking times to nearby stops, weight by line frequencies — classic PTAL-style Accessibility Index.</p>
+                <div class="step">STEP 02 · GRAPH</div>
+                <h3>OSM walking Dijkstra</h3>
+                <p>
+                    Filter Greater London OSM roads to walkable classes (footway, residential,
+                    tertiary…), reproject to <code>EPSG:27700</code>, snap stops & grid centroids,
+                    run Dijkstra to compute true walking times — not Euclidean fudge.
+                </p>
             </div>
             <div class="method-card">
-                <div class="step">STEP 03</div>
-                <h3>Simulate cancellations</h3>
-                <p>Drop a route from the graph. A stop survives only if ≥ 1 of its remaining routes is still active. Recompute AI.</p>
+                <div class="step">STEP 03 · BASELINE AI</div>
+                <h3>PTAL-style decay model</h3>
+                <p>
+                    For each 100 m cell: query stops within <code>1200 m</code>, apply impedance
+                    <code>max(0, 1 − d/c)</code> with <code>640 m</code> bus / <code>960 m</code> rail
+                    catchment, weight by route rank (1.0 / 0.5), accumulate per-route contributions.
+                </p>
             </div>
             <div class="method-card">
-                <div class="step">STEP 04</div>
-                <h3>Derive LTRS</h3>
-                <p>LTRS = disrupted AI / baseline AI. ≥ 80 % = resilient. < 50 % = vulnerable. Map it, compare it, drill into it.</p>
+                <div class="step">STEP 04 · IMPACT MATRIX</div>
+                <h3>Pre-compute every cancellation</h3>
+                <p>
+                    Aggregate per-route AI loss across all 159,451 grids into a sparse
+                    <code>route × grid</code> impact table. Cancel any combination in the UI;
+                    LTRS becomes an arithmetic lookup, not a re-simulation.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============== MODULE 1: PTAL Baseline ============== -->
-<section class="slide full" id="module-ptal" data-label="Map: Baseline">
-    <div class="slide-inner" style="padding: 0 8vw;">
+<!-- ============== PIPELINE ============== -->
+<section class="slide" id="pipeline" data-label="Pipeline">
+    <div class="slide-inner wide reveal">
+        <div class="eyebrow">Chapter 03 · Pipeline</div>
+        <h2>From raw shapefiles <span class="accent">to a click-fast browser app.</span></h2>
+        <div class="body">
+            <p>
+                Ten Python scripts produce the static JSON the website consumes. The heaviest computation —
+                159 k Dijkstra forests, 543 cancellation simulations — happens once, offline. Everything
+                you see in the live map is a thin lookup.
+            </p>
+        </div>
+        <div class="pipeline reveal-stagger">
+            <div class="pipe-step">
+                <div class="ix">1</div>
+                <h4>Unify stops</h4>
+                <p>Merge TfL stop datasets, tag each with route lists.</p>
+                <code>process_walking_accessibility.py</code>
+            </div>
+            <div class="pipe-step">
+                <div class="ix">2</div>
+                <h4>OSM walk times</h4>
+                <p>33 borough chunks of LSOA→stop Dijkstra times.</p>
+                <code>precompute_osm_network_walking_times.py</code>
+            </div>
+            <div class="pipe-step">
+                <div class="ix">3</div>
+                <h4>Grid AI batch</h4>
+                <p>64 batches × 2,500 grids — baseline AI + contributors.</p>
+                <code>precompute_grid_osm_ai.py</code>
+            </div>
+            <div class="pipe-step">
+                <div class="ix">4</div>
+                <h4>Route impact matrix</h4>
+                <p>Sparse route × grid AI-loss table for instant lookup.</p>
+                <code>build_route_grid_impacts.py</code>
+            </div>
+            <div class="pipe-step">
+                <div class="ix">5</div>
+                <h4>Resilience summary</h4>
+                <p>LTRS classification per route; charts on this page read it.</p>
+                <code>calculate_grid_resilience_summary.py</code>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== METRIC DEFINITIONS ============== -->
+<section class="slide" id="metrics" data-label="Metrics">
+    <div class="slide-inner reveal">
+        <div class="eyebrow">Chapter 04 · Definitions</div>
+        <h2>The metrics, <span class="accent">precisely.</span></h2>
+        <div class="body">
+            <p>Every number in the live app maps to one of these definitions.</p>
+        </div>
+        <div class="defs reveal-stagger">
+            <div class="def">
+                <div class="term">Baseline AI</div>
+                <div class="formula">Σ rank_w · max(0, 1 − d/c) · 10</div>
+                <div class="desc">
+                    PTAL-style accessibility index per 100 m cell. Sum over reachable stops × routes,
+                    weighted by walking distance and rank within mode.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">Disrupted AI</div>
+                <div class="formula">AI_base − Σ AI_loss(r) , r ∈ cancelled</div>
+                <div class="desc">
+                    Same cell after removing every contribution from the cancelled routes — drawn
+                    directly from the pre-computed impact table.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">LTRS</div>
+                <div class="formula">AI_dis / AI_base ∈ [0, 1]</div>
+                <div class="desc">
+                    Local Transport Resilience Score. <span class="hl-g">≥ 0.8 resilient</span>,
+                    0.6–0.8 moderate, 0.3–0.6 high impact,
+                    <span style="color:var(--bad);font-weight:600">&lt; 0.3 critical</span>.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">Mean delay (min)</div>
+                <div class="formula">avg Δ walk-min to nearest stop</div>
+                <div class="desc">
+                    How much further you must walk after the cancellation, averaged across LSOAs
+                    where the route was previously the closest option.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">Lost 12-min access</div>
+                <div class="formula">count: base ≤ 12 ∧ disrupted &gt; 12</div>
+                <div class="desc">
+                    The hard cliff: LSOAs that fall off the standard 12-minute walking-access threshold
+                    purely because of this route's removal.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">Retention ratio</div>
+                <div class="formula">(affected − lost) / affected</div>
+                <div class="desc">
+                    Of the LSOAs whose nearest stop was on this route, what fraction still meet the
+                    12-minute threshold via an alternative service.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== MODULE 1 ============== -->
+<section class="slide full" id="module-ptal" data-label="Map · Baseline">
+    <div class="slide-inner wide" style="padding: 0 8vw;">
         <div class="reveal" style="margin-bottom: 28px;">
-            <div class="eyebrow">Chapter 03 · Live Map</div>
-            <h2>Module · The static baseline.</h2>
+            <div class="eyebrow">Chapter 05 · Live Map</div>
+            <h2>Module · <span class="accent">London as PTAL sees it.</span></h2>
             <div class="body">
                 <p>
-                    First: London as PTAL sees it today. Hue encodes the
-                    Accessibility Index from low (purple) to very high
-                    (yellow). Click any 100 m grid cell to expose its raw
-                    contribution table.
+                    Every 100 m grid cell coloured by its baseline Accessibility Index — purple
+                    (poor) to yellow (excellent). Click any cell to expose its raw contribution
+                    table: which routes serve it, from which stops, with what AI weight.
                 </p>
             </div>
             <div class="module-controls" style="margin-top:18px;">
                 <button class="primary" onclick="loadModule('m1')">▶ Load interactive map</button>
                 <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open in new tab ↗</a>
             </div>
+            <div class="module-tips">
+                <span class="tip"><strong>Tip:</strong> Toggle Grid / LSOA layers from the right panel.</span>
+                <span class="tip"><strong>Search:</strong> Try a borough or postcode in the search box.</span>
+            </div>
         </div>
         <div class="module-frame" id="m1" data-src="London_PTAL_Accessibility_Map.html">
             <div class="placeholder">
-                <div style="font-size: 40px; opacity:0.5;">🗺️</div>
-                <div>Interactive map will load on demand to keep this story snappy.</div>
+                <div class="icon">🗺️</div>
+                <div>The interactive map loads on demand to keep this page snappy.</div>
                 <button onclick="loadModule('m1')">Load map now</button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============== MODULE 2: Disruption Compare ============== -->
-<section class="slide full" id="module-disruption" data-label="Map: Disruption">
-    <div class="slide-inner" style="padding: 0 8vw;">
+<!-- ============== MODULE 2 ============== -->
+<section class="slide full" id="module-disruption" data-label="Map · Disruption">
+    <div class="slide-inner wide" style="padding: 0 8vw;">
         <div class="reveal" style="margin-bottom: 28px;">
-            <div class="eyebrow">Chapter 04 · Disruption Mode</div>
-            <h2>Module · Cancel a route, watch the city bleed.</h2>
+            <div class="eyebrow">Chapter 06 · Disruption Mode</div>
+            <h2>Module · <span class="accent">Cancel a route. Watch the city bleed.</span></h2>
             <div class="body">
                 <p>
-                    Pick a bus or rail route from the right panel and toggle
-                    <em>Cancel</em>. The split-screen view paints a baseline
-                    on the left and the disrupted state on the right —
-                    grid cells redden in proportion to their AI loss.
+                    Pick any of 543 routes from the right panel. The view splits in two — baseline PTAL
+                    on the left, AI-loss heatmap on the right. Drag the divider to compare. Selected
+                    grids show before/after AI, LTRS and the routes you've stripped from them.
                 </p>
             </div>
             <div class="module-controls" style="margin-top:18px;">
                 <button class="primary" onclick="loadModule('m2')">▶ Load interactive map</button>
                 <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open in new tab ↗</a>
             </div>
+            <div class="module-tips">
+                <span class="tip"><strong>Try:</strong> Cancel "Central" line, then "Elizabeth".</span>
+                <span class="tip"><strong>Try:</strong> Cancel bus 25 and watch East London redden.</span>
+                <span class="tip"><strong>Click a grid</strong> for top-route contributions.</span>
+            </div>
         </div>
         <div class="module-frame" id="m2" data-src="London_PTAL_Accessibility_Map.html">
             <div class="placeholder">
-                <div style="font-size: 40px; opacity:0.5;">⚡</div>
-                <div>Same interactive app — try cancelling line "Central" or bus "25" once it loads.</div>
+                <div class="icon">⚡</div>
+                <div>Same interactive app — try cancelling any route once it loads.</div>
                 <button onclick="loadModule('m2')">Load map now</button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============== DATA: Top vulnerable routes ============== -->
+<!-- ============== DATA / CHARTS ============== -->
 <section class="slide" id="data" data-label="Data">
     <div class="slide-inner reveal">
-        <div class="eyebrow">Chapter 05 · Data Stories</div>
-        <h2>What 543 simulated cancellations tell us.</h2>
+        <div class="eyebrow">Chapter 07 · Data Stories</div>
+        <h2>What 543 cancellations <span class="accent">actually look like.</span></h2>
         <div class="body">
             <p>
-                For every route in the network we pre-computed a single-route
-                cancellation scenario. Here's where the pain concentrates.
+                Static charts derived from <code class="inline">resilience_summary_osm_network.json</code> —
+                one row per route, simulating that route alone going offline.
             </p>
         </div>
         <div class="chart-grid">
             <div class="chart-card">
-                <h3>Top 15 routes by lost 12-min access</h3>
-                <div class="sub">Number of LSOAs that fall below the 12-minute walking threshold when this single route is cancelled.</div>
+                <h3>Top 15 routes — LSOAs that lose 12-min access</h3>
+                <div class="sub">
+                    Number of LSOAs that drop below the 12-minute walking-access threshold when
+                    this single route is cancelled.
+                </div>
                 <div class="chart-wrap"><canvas id="chartLost"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3>Top 15 routes by mean delay</h3>
-                <div class="sub">Average extra walking time (minutes) imposed on affected LSOAs.</div>
+                <h3>Top 15 routes — mean walking delay</h3>
+                <div class="sub">
+                    Average extra walking time (minutes) imposed on affected LSOAs to reach the
+                    nearest still-served stop.
+                </div>
                 <div class="chart-wrap"><canvas id="chartDelay"></canvas></div>
             </div>
             <div class="chart-card full">
                 <h3>Retention vs. mean delay — every route</h3>
-                <div class="sub">Bottom-left = catastrophic (low retention, high delay). Top-right = robust system. Bubble size = LSOAs affected.</div>
-                <div class="chart-wrap" style="height:380px;"><canvas id="chartScatter"></canvas></div>
+                <div class="sub">
+                    Bottom-left = catastrophic (low retention, high delay). Top-right = robust system.
+                    Bubble size = LSOAs affected. Hover for the route ID.
+                </div>
+                <div class="chart-wrap" style="height:400px;"><canvas id="chartScatter"></canvas></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============== TAKEAWAYS ============== -->
+<!-- ============== FINDINGS ============== -->
 <section class="slide" id="findings" data-label="Findings">
     <div class="slide-inner reveal">
-        <div class="eyebrow">Chapter 06 · What we learned</div>
-        <h2>Three things you can't see in PTAL.</h2>
+        <div class="eyebrow">Chapter 08 · What we learned</div>
+        <h2>Three things <span class="accent">PTAL alone won't show you.</span></h2>
         <div class="takeaways reveal-stagger">
             <div class="takeaway">
                 <div class="num">FINDING 01</div>
                 <h3>Vulnerability ≠ centrality.</h3>
                 <p>
-                    The most "damaging" cancellations aren't always
-                    Tube lines. Several outer-London bus routes —
-                    where alternatives are sparse — strip access for
-                    more LSOAs than a Zone 1 Tube line ever would.
+                    The most damaging cancellations aren't always Tube lines. Several outer-London
+                    bus routes — where a cell has no second-best alternative within 1.2 km —
+                    strip 12-minute access from <em>more LSOAs</em> than any Zone 1 Tube line.
                 </p>
+                <div class="stat">routes 191, 99, H12 · 110+ LSOAs each</div>
             </div>
             <div class="takeaway">
                 <div class="num">FINDING 02</div>
                 <h3>Resilience is granular.</h3>
                 <p>
-                    Two adjacent 100 m grid cells can score 100 % and
-                    35 % LTRS for the same disruption. Aggregating to
-                    LSOA hides the cliff edges where vulnerability lives.
+                    Two adjacent 100 m grid cells can score 100 % and 35 % LTRS for the same
+                    disruption. Aggregating to LSOA averages out the cliff edges where
+                    vulnerability actually lives — the 100 m grid is essential.
                 </p>
+                <div class="stat">122,315 grids with non-zero baseline AI</div>
             </div>
             <div class="takeaway">
                 <div class="num">FINDING 03</div>
                 <h3>The Hub Paradox.</h3>
                 <p>
-                    Areas with high PTAL often have abundant alternatives,
-                    so they absorb cancellations gracefully. Medium-PTAL
-                    edges of the city — single-route dependents — pay
-                    the steepest resilience cost.
+                    Inner London absorbs cancellations gracefully — multiple overlapping routes
+                    cushion every cell. The pain concentrates in medium-PTAL outer zones
+                    (Croydon, Sutton, Barking, Newham) where households depend on a single line.
                 </p>
+                <div class="stat">96.7 % LSOAs reach a stop in ≤ 12 min at baseline</div>
             </div>
         </div>
     </div>
@@ -653,13 +1081,13 @@ code.inline {
 <section class="slide" id="cta" data-label="Try it">
     <div class="slide-inner reveal">
         <div class="cta-card">
-            <div class="eyebrow" style="text-align:center;">Now your turn</div>
-            <h2>Open the full app and break the network.</h2>
+            <div class="eyebrow">Now your turn</div>
+            <h2>Open the full app. <span class="accent">Break the network.</span></h2>
             <div class="body" style="text-align:center;">
                 <p>
-                    Cancel a route. Click a grid. Compare boroughs.
-                    Every metric on screen is computed live in your browser
-                    against the same OSM walking network used in this study.
+                    Cancel any route or combination. Click a grid. Compare boroughs. Every metric
+                    you see is computed live in your browser against the same OSM walking network
+                    used in this study.
                 </p>
             </div>
             <div class="cta-buttons">
@@ -671,16 +1099,19 @@ code.inline {
 </section>
 
 <footer>
-    CASA0029 Urban Data Visualisation · UCL · 2025/26 ·
-    Built with Mapbox GL JS, Chart.js and OpenStreetMap walking networks ·
+    CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
+    Built with Mapbox GL JS, Chart.js, NetworkX, GeoPandas — data from
+    <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>,
+    <a href="https://tfl.gov.uk/info-for/open-data-users/" target="_blank" rel="noopener">TfL Open Data</a> &
+    <a href="https://www.ons.gov.uk/" target="_blank" rel="noopener">ONS</a> ·
     <a href="https://github.com/Taoo2025/CASA0029" target="_blank" rel="noopener">GitHub</a>
 </footer>
 
 <script>
-// ============== Side nav ==============
+// Side nav
 const slides = [...document.querySelectorAll('section.slide')];
 const sidenav = document.getElementById('sidenav');
-slides.forEach((s, i) => {
+slides.forEach((s) => {
     const btn = document.createElement('button');
     btn.title = s.dataset.label || s.id;
     btn.innerHTML = `<span class="label">${btn.title}</span><span class="pip"></span>`;
@@ -689,7 +1120,6 @@ slides.forEach((s, i) => {
 });
 const navButtons = [...sidenav.querySelectorAll('button')];
 
-// ============== Progress + active nav ==============
 const progressBar = document.getElementById('progress-bar');
 function onScroll() {
     const sc = window.scrollY;
@@ -703,13 +1133,11 @@ function onScroll() {
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-// ============== Reveal on intersect ==============
 const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.15});
+}, {threshold: 0.12});
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 
-// ============== Keyboard nav ==============
 document.addEventListener('keydown', (e) => {
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
     const cur = navButtons.findIndex(b => b.classList.contains('active'));
@@ -719,10 +1147,15 @@ document.addEventListener('keydown', (e) => {
     } else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && cur > 0) {
         e.preventDefault();
         slides[cur - 1].scrollIntoView({behavior:'smooth'});
+    } else if (e.key === 'Home') {
+        e.preventDefault();
+        slides[0].scrollIntoView({behavior:'smooth'});
+    } else if (e.key === 'End') {
+        e.preventDefault();
+        slides[slides.length - 1].scrollIntoView({behavior:'smooth'});
     }
 });
 
-// ============== Lazy iframe loader ==============
 function loadModule(id) {
     const wrap = document.getElementById(id);
     if (!wrap || wrap.dataset.loaded === '1') return;
@@ -730,16 +1163,15 @@ function loadModule(id) {
     wrap.innerHTML = `<iframe src="${src}" loading="lazy" allow="geolocation"></iframe>`;
     wrap.dataset.loaded = '1';
 }
-// Auto-load when scrolled near
 const moduleIO = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) loadModule(e.target.id); });
 }, {rootMargin: '300px'});
 document.querySelectorAll('.module-frame').forEach(m => moduleIO.observe(m));
 
-// ============== Charts ==============
-Chart.defaults.color = '#c8cdd9';
+// Charts
+Chart.defaults.color = '#c5d6cc';
 Chart.defaults.font.family = 'Inter, sans-serif';
-Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.borderColor = 'rgba(167,243,208,0.06)';
 
 let chartsBuilt = false;
 async function buildCharts() {
@@ -750,15 +1182,16 @@ async function buildCharts() {
         summary = await fetch('resilience_summary_osm_network.json').then(r => r.json());
     } catch (err) {
         console.error('Failed to load summary', err);
+        document.querySelectorAll('.chart-wrap').forEach(w => {
+            w.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--fg-2);font-size:13px;">Open through HTTP server to load chart data.</div>';
+        });
         return;
     }
     const all = (summary.single_route_impacts || []).filter(r => Number(r.affected_lsoa) > 0);
+    const grid = { color: 'rgba(167,243,208,0.06)' };
+    const tickColor = '#7b8d83';
+    const labelColor = '#c5d6cc';
 
-    const accent = '#ff5a5f';
-    const accent2 = '#ffb547';
-    const grid = { color: 'rgba(255,255,255,0.06)' };
-
-    // -- Lost access bar
     const topLost = [...all].sort((a, b) => b.lost_12min_access_lsoa - a.lost_12min_access_lsoa).slice(0, 15);
     new Chart(document.getElementById('chartLost'), {
         type: 'bar',
@@ -767,8 +1200,16 @@ async function buildCharts() {
             datasets: [{
                 label: 'LSOAs losing 12-min access',
                 data: topLost.map(r => r.lost_12min_access_lsoa),
-                backgroundColor: accent,
-                borderRadius: 4,
+                backgroundColor: (ctx) => {
+                    const c = ctx.chart.ctx.createLinearGradient(0, 0, ctx.chart.width, 0);
+                    c.addColorStop(0, 'rgba(110,231,183,0.4)');
+                    c.addColorStop(1, 'rgba(31,184,102,0.95)');
+                    return c;
+                },
+                borderColor: '#34d399',
+                borderWidth: 1,
+                borderRadius: 6,
+                hoverBackgroundColor: '#c5f06b',
             }]
         },
         options: {
@@ -776,13 +1217,12 @@ async function buildCharts() {
             responsive: true, maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                x: { grid, ticks: { color: '#8a90a0' } },
-                y: { grid: { display: false }, ticks: { color: '#c8cdd9', font: { weight: 600 } } }
+                x: { grid, ticks: { color: tickColor }, beginAtZero: true },
+                y: { grid: { display: false }, ticks: { color: labelColor, font: { weight: 600 } } }
             }
         }
     });
 
-    // -- Mean delay bar
     const topDelay = [...all].sort((a, b) => b.mean_delay_min - a.mean_delay_min).slice(0, 15);
     new Chart(document.getElementById('chartDelay'), {
         type: 'bar',
@@ -791,8 +1231,16 @@ async function buildCharts() {
             datasets: [{
                 label: 'Mean delay (min)',
                 data: topDelay.map(r => r.mean_delay_min),
-                backgroundColor: accent2,
-                borderRadius: 4,
+                backgroundColor: (ctx) => {
+                    const c = ctx.chart.ctx.createLinearGradient(0, 0, ctx.chart.width, 0);
+                    c.addColorStop(0, 'rgba(197,240,107,0.4)');
+                    c.addColorStop(1, 'rgba(251,191,36,0.95)');
+                    return c;
+                },
+                borderColor: '#c5f06b',
+                borderWidth: 1,
+                borderRadius: 6,
+                hoverBackgroundColor: '#fbbf24',
             }]
         },
         options: {
@@ -800,49 +1248,54 @@ async function buildCharts() {
             responsive: true, maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                x: { grid, ticks: { color: '#8a90a0' } },
-                y: { grid: { display: false }, ticks: { color: '#c8cdd9', font: { weight: 600 } } }
+                x: { grid, ticks: { color: tickColor }, beginAtZero: true },
+                y: { grid: { display: false }, ticks: { color: labelColor, font: { weight: 600 } } }
             }
         }
     });
 
-    // -- Scatter retention vs delay
     const scatterData = all.map(r => ({
         x: Number(r.mean_delay_min) || 0,
         y: (Number(r.retention_ratio) || 0) * 100,
-        r: Math.max(2, Math.min(16, Math.sqrt(r.affected_lsoa || 0) * 0.7)),
-        label: r.route
+        r: Math.max(2, Math.min(18, Math.sqrt(r.affected_lsoa || 0) * 0.7)),
+        label: r.route,
+        affected: r.affected_lsoa
     }));
     new Chart(document.getElementById('chartScatter'), {
         type: 'bubble',
         data: { datasets: [{
             label: 'Routes',
             data: scatterData,
-            backgroundColor: 'rgba(255,90,95,0.55)',
-            borderColor: 'rgba(255,90,95,0.9)',
-            borderWidth: 1,
+            backgroundColor: 'rgba(52,211,153,0.55)',
+            borderColor: 'rgba(110,231,183,0.95)',
+            borderWidth: 1.2,
+            hoverBackgroundColor: 'rgba(197,240,107,0.85)',
         }] },
         options: {
             responsive: true, maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
                 tooltip: {
+                    backgroundColor: 'rgba(7,18,12,0.95)',
+                    borderColor: 'rgba(52,211,153,0.4)',
+                    borderWidth: 1,
+                    padding: 12,
                     callbacks: {
                         label: (ctx) => {
                             const d = ctx.raw;
-                            return `${d.label}: ${d.y.toFixed(1)}% retention, ${d.x.toFixed(1)} min delay`;
+                            return `${d.label}: ${d.y.toFixed(1)}% retention · ${d.x.toFixed(1)} min delay · ${d.affected} LSOAs`;
                         }
                     }
                 }
             },
             scales: {
                 x: {
-                    title: { display: true, text: 'Mean delay (minutes)', color: '#c8cdd9' },
-                    grid, ticks: { color: '#8a90a0' }
+                    title: { display: true, text: 'Mean walking delay (minutes)', color: labelColor, font: { weight: 600 } },
+                    grid, ticks: { color: tickColor }
                 },
                 y: {
-                    title: { display: true, text: 'Retention ratio (%)', color: '#c8cdd9' },
-                    grid, ticks: { color: '#8a90a0' },
+                    title: { display: true, text: 'Retention ratio (%)', color: labelColor, font: { weight: 600 } },
+                    grid, ticks: { color: tickColor },
                     suggestedMin: 60, suggestedMax: 100
                 }
             }
