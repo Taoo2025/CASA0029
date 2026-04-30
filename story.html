@@ -3,28 +3,27 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>London Transport Resilience — A Visual Story</title>
+<title>London Transit Immune System — A Visual Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-    /* Morandi palette — muted, research-appropriate */
-    --bg-0: #2b2a28;       /* deep warm charcoal */
+    /* Morandi palette */
+    --bg-0: #2b2a28;
     --bg-1: #34322f;
     --bg-2: #3e3c38;
-    --paper: #ece6da;       /* warm cream */
+    --paper: #ece6da;
     --paper-2: #d8d1c4;
     --ink: #2b2a28;
     --fg-0: #ece6da;
     --fg-1: #c5bfb3;
     --fg-2: #8e887e;
 
-    /* Morandi accents (resilience scale: good → bad) */
-    --sage:        #9fae9d;     /* high resilience */
+    --sage:        #9fae9d;
     --sage-pale:   #c8d1c4;
     --sand:        #cdbfa3;
     --clay:        #c69f87;
     --rose:        #c2918a;
-    --terracotta:  #b8765c;     /* low resilience */
+    --terracotta:  #b8765c;
     --teal:        #819a98;
     --slate:       #8a96a4;
     --ochre:       #c2a26b;
@@ -177,10 +176,11 @@ section.slide.hero { padding-top: 100px; }
 .slide .body {
     font-size: clamp(15px, 1.05vw, 17px);
     color: var(--fg-1); line-height: 1.78;
-    max-width: 720px;
+    max-width: 760px;
 }
 .slide .body p { margin: 0 0 16px; }
 .slide .body p:last-child { margin-bottom: 0; }
+.slide .body strong { color: var(--paper); font-weight: 600; }
 
 /* ============== HERO ============== */
 .hero-inner {
@@ -211,11 +211,11 @@ section.slide.hero { padding-top: 100px; }
 }
 .hero h1 {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(46px, 7.4vw, 104px);
+    font-size: clamp(40px, 6.2vw, 86px);
     font-weight: 500;
     line-height: 1.04;
     margin: 0 0 30px;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.026em;
     color: var(--paper);
 }
 .hero h1 em {
@@ -228,13 +228,13 @@ section.slide.hero { padding-top: 100px; }
 }
 .hero .lede {
     font-size: clamp(16px, 1.25vw, 19px);
-    color: var(--fg-1); max-width: 720px; margin: 0 auto 50px;
+    color: var(--fg-1); max-width: 740px; margin: 0 auto 50px;
     line-height: 1.7;
     font-weight: 300;
 }
 .hero-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 18px;
     max-width: 940px; margin: 0 auto 56px;
 }
@@ -261,33 +261,9 @@ section.slide.hero { padding-top: 100px; }
     font-size: 11.5px; color: var(--fg-2); margin-top: 6px;
     font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
 }
-
-/* mode roundels strip */
-.roundel-strip {
-    display: flex; flex-wrap: wrap; gap: 22px;
-    justify-content: center; align-items: center;
-    margin: 0 auto;
-    padding: 18px 24px;
-    max-width: 760px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-.roundel-strip .label {
-    color: var(--fg-2); font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    font-weight: 600;
-}
-.roundel-strip img {
-    width: 38px; height: 38px;
-    object-fit: contain;
-    filter: brightness(1.1) saturate(0.85);
-    opacity: 0.92;
-    transition: transform 0.3s, opacity 0.3s, filter 0.3s;
-}
-.roundel-strip img:hover {
-    transform: translateY(-3px) scale(1.08);
-    opacity: 1;
-    filter: brightness(1.2) saturate(1);
+.hero-stat .note {
+    font-size: 12px; color: var(--fg-1); margin-top: 8px;
+    line-height: 1.5;
 }
 
 .scroll-cue {
@@ -302,147 +278,114 @@ section.slide.hero { padding-top: 100px; }
     50% { transform: translate(-50%, 8px); opacity: 1; }
 }
 
-/* ============== BACKGROUND ============== */
-.two-col {
+/* ============== CONCEPT CARDS ============== */
+.concept-grid {
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 64px; align-items: center;
-}
-@media (max-width: 960px) { .two-col { grid-template-columns: 1fr; gap: 36px; } }
-
-.compare-card {
-    background: var(--card-2);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
-.compare-card h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 19px; font-weight: 500; margin: 0 0 6px;
-    color: var(--paper);
-}
-.compare-card .sub { font-size: 12px; color: var(--fg-2); margin-bottom: 22px; }
-.compare-row { display: flex; gap: 14px; }
-@media (max-width: 520px) { .compare-row { flex-direction: column; } }
-.compare-tile {
-    flex: 1; padding: 20px; border-radius: 12px;
-    border-left: 3px solid;
-    background: rgba(0,0,0,0.18);
-}
-.compare-tile.left { border-color: var(--sage); }
-.compare-tile.right { border-color: var(--terracotta); }
-.compare-tile .tag {
-    font-size: 11px; letter-spacing: 0.18em; font-weight: 600;
-    text-transform: uppercase;
-}
-.compare-tile.left .tag { color: var(--sage); }
-.compare-tile.right .tag { color: var(--terracotta); }
-.compare-tile .copy {
-    font-size: 13.5px; color: var(--fg-1); margin-top: 10px; line-height: 1.6;
-}
-
-/* ============== METRICS / FORMULAS ============== */
-.metric-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
     margin-top: 42px;
 }
-.metric {
-    display: grid;
-    grid-template-columns: 70px 1fr 1.2fr;
-    gap: 28px;
-    align-items: center;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 26px 28px;
-    transition: border-color 0.3s, background 0.3s;
-}
-.metric:hover {
-    border-color: rgba(159, 174, 157, 0.35);
-    background: var(--card-2);
-}
-@media (max-width: 820px) {
-    .metric { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
-}
-.metric .num {
-    font-family: 'Fraunces', serif;
-    font-size: 56px; font-weight: 400;
-    color: var(--clay);
-    line-height: 0.9;
-    text-align: left;
-    letter-spacing: -0.04em;
-}
-.metric h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 500;
-    margin: 0 0 8px;
-    color: var(--paper);
-    letter-spacing: -0.01em;
-}
-.metric .formula {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    color: var(--sage);
-    background: rgba(0,0,0,0.28);
-    padding: 10px 14px;
-    border-radius: 8px;
-    display: inline-block;
-    border: 1px solid rgba(159,174,157,0.20);
-    letter-spacing: 0;
-}
-.metric .desc {
-    font-size: 14px;
-    color: var(--fg-1);
-    line-height: 1.65;
-}
-.metric .desc strong { color: var(--paper); font-weight: 600; }
-.metric .desc .hi { color: var(--clay); font-weight: 600; }
-
-/* ============== HOW TO USE THE MAP ============== */
-.howto {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 42px;
-}
-@media (max-width: 1000px) { .howto { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 540px) { .howto { grid-template-columns: 1fr; } }
-.howto-step {
+@media (max-width: 1000px) { .concept-grid { grid-template-columns: 1fr; } }
+.concept-card {
     background: var(--card-2);
     border: 1px solid var(--line);
+    border-top: 3px solid var(--sage);
     border-radius: 16px;
-    padding: 24px 22px;
+    padding: 28px 26px;
     transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-.howto-step:hover {
+.concept-card.warm { border-top-color: var(--terracotta); }
+.concept-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(194,145,138, 0.35);
-    box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.4);
 }
-.howto-step .ix {
-    width: 34px; height: 34px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--sage), var(--teal));
-    color: var(--ink);
-    font-weight: 700; font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 14px;
-    font-family: 'Fraunces', serif;
+.concept-card .ix {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--fg-2);
+    letter-spacing: 0.2em; margin-bottom: 14px;
 }
-.howto-step h4 {
+.concept-card h3 {
     font-family: 'Fraunces', serif;
-    font-size: 17px; font-weight: 500;
-    margin: 0 0 8px;
+    font-size: 22px; font-weight: 500;
+    margin: 0 0 14px;
     color: var(--paper);
     letter-spacing: -0.01em;
+    line-height: 1.2;
 }
-.howto-step p {
-    font-size: 13px; color: var(--fg-1); line-height: 1.65; margin: 0;
+.concept-card p {
+    font-size: 14px; color: var(--fg-1); line-height: 1.7; margin: 0;
 }
 
+/* ============== RESEARCH QUESTION ============== */
+.rq-card {
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 44px 44px;
+    margin-top: 32px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.32);
+}
+@media (max-width: 700px) { .rq-card { padding: 30px 24px; } }
+.rq-quote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--paper);
+    border-left: 3px solid var(--clay);
+    padding-left: 22px;
+    margin: 0 0 28px;
+    font-style: italic;
+}
+.rq-body p {
+    font-size: 15px; color: var(--fg-1); line-height: 1.78; margin: 0 0 14px;
+}
+.rq-body p:last-child { margin-bottom: 0; }
+.rq-body strong { color: var(--paper); font-weight: 600; }
+
+/* ============== STORY ACTS ============== */
+.act-list { display: flex; flex-direction: column; gap: 22px; margin-top: 38px; }
+.act-card {
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px 36px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+}
+@media (max-width: 700px) { .act-card { padding: 26px 22px; } }
+.act-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: var(--clay);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.act-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 500;
+    margin: 0 0 16px;
+    color: var(--paper);
+    letter-spacing: -0.012em;
+    line-height: 1.22;
+}
+.act-card .caption {
+    font-size: 14px;
+    color: var(--fg-1);
+    background: rgba(0,0,0,0.22);
+    border-left: 2px solid var(--sage);
+    padding: 14px 18px;
+    border-radius: 8px;
+    line-height: 1.7;
+    margin: 0 0 22px;
+}
+.act-card .paras p {
+    font-size: 15px; color: var(--fg-1); line-height: 1.78; margin: 0 0 14px;
+}
+.act-card .paras p:last-child { margin-bottom: 0; }
+.act-card .paras strong { color: var(--paper); font-weight: 600; }
+
+/* ============== CTA buttons ============== */
 .cta-buttons {
     display: flex; gap: 14px; flex-wrap: wrap;
     margin-top: 36px;
@@ -466,123 +409,195 @@ section.slide.hero { padding-top: 100px; }
 }
 .cta-buttons .secondary:hover { border-color: var(--sage); color: var(--sage); }
 
-/* ============== TOP 5 LEADERBOARD ============== */
-.top5-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    margin-top: 42px;
+/* ============== METHODOLOGY (prose) ============== */
+.prose {
+    color: var(--fg-1);
+    font-size: 15px;
+    line-height: 1.78;
+    max-width: 880px;
+    margin-top: 30px;
 }
-@media (max-width: 1100px) { .top5-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 700px) { .top5-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .top5-grid { grid-template-columns: 1fr; } }
-
-.route-card {
-    background: var(--card-2);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px 20px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-.route-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--clay), var(--terracotta));
-    opacity: 0.85;
-}
-.route-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(184, 118, 92, 0.35);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.4);
-}
-.route-card .rank {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 600;
-    color: var(--terracotta);
-    letter-spacing: 0.14em;
-    margin-bottom: 8px;
-}
-.route-card .num {
-    display: inline-flex; align-items: center; gap: 6px;
+.prose h3 {
     font-family: 'Fraunces', serif;
-    font-size: 32px; font-weight: 500;
+    font-size: 24px; font-weight: 500;
     color: var(--paper);
-    line-height: 1;
-    margin-bottom: 4px;
-    letter-spacing: -0.02em;
+    margin: 38px 0 14px;
+    letter-spacing: -0.01em;
 }
-.route-card .num .badge {
-    font-family: 'Inter', sans-serif;
-    font-size: 9.5px; font-weight: 700;
-    background: rgba(159, 174, 157, 0.18);
+.prose h3:first-child { margin-top: 8px; }
+.prose p { margin: 0 0 14px; }
+.prose strong { color: var(--paper); font-weight: 600; }
+.prose em { color: var(--paper-2); font-style: italic; }
+.prose ul, .prose ol {
+    margin: 6px 0 18px; padding-left: 22px;
+}
+.prose li { margin: 0 0 8px; }
+.prose code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: rgba(0,0,0,0.28);
     color: var(--sage);
-    padding: 3px 7px;
-    border-radius: 5px;
-    letter-spacing: 0.10em;
-    margin-left: 4px;
-    line-height: 1;
+    padding: 2px 6px; border-radius: 4px;
 }
-.route-card .area {
-    font-size: 12px; color: var(--fg-2); margin-bottom: 16px;
-    font-style: italic;
-}
-.route-card .stats {
-    display: grid; gap: 10px;
-    border-top: 1px dashed var(--line-strong);
-    padding-top: 14px;
-}
-.route-card .row {
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-size: 12px;
-}
-.route-card .row .lbl { color: var(--fg-2); }
-.route-card .row .val {
+.prose .formula {
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 600; color: var(--paper);
+    font-size: 13.5px;
+    color: var(--sage);
+    background: rgba(0,0,0,0.32);
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(159,174,157,0.20);
+    margin: 12px 0 18px;
+    overflow-x: auto;
+    white-space: pre;
 }
-.route-card .row .val.hl { color: var(--terracotta); }
+.prose-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 12px 0 22px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.prose-table th, .prose-table td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--fg-1);
+}
+.prose-table th {
+    background: rgba(236,230,218,0.05);
+    color: var(--paper);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.prose-table tr:last-child td { border-bottom: 0; }
 
-/* ============== IMPACT MATRIX ============== */
-.matrix-wrap {
-    margin-top: 50px;
+.references {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--fg-1);
+    padding-left: 22px;
+}
+.references li { margin: 0 0 10px; }
+.references em { color: var(--paper-2); }
+
+/* ============== ABOUT ============== */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 32px;
+}
+@media (max-width: 1000px) { .about-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .about-grid { grid-template-columns: 1fr; } }
+.about-card {
     background: var(--card-2);
     border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 32px 28px 28px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.32);
+    border-radius: 14px;
+    padding: 22px 20px;
+    transition: transform 0.3s, border-color 0.3s;
 }
-.matrix-head {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 24px; gap: 24px; flex-wrap: wrap;
+.about-card:hover { transform: translateY(-3px); border-color: rgba(159,174,157,0.35); }
+.about-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-2);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
 }
-.matrix-head h3 {
+.about-card h4 {
     font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 500;
-    margin: 0 0 4px;
+    font-size: 18px; font-weight: 500;
+    margin: 0 0 10px;
     color: var(--paper);
 }
-.matrix-head p {
-    font-size: 12.5px; color: var(--fg-1);
-    margin: 0; max-width: 540px; line-height: 1.6;
-}
-.matrix-legend {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 11px; color: var(--fg-2);
-    letter-spacing: 0.04em;
-}
-.matrix-legend .gradient {
-    width: 140px; height: 8px; border-radius: 4px;
-    background: linear-gradient(90deg, var(--sage-pale), var(--sand), var(--clay), var(--terracotta));
+.about-card p {
+    font-size: 13px; color: var(--fg-1); line-height: 1.65; margin: 0;
 }
 
-.matrix-svg {
-    width: 100%;
-    overflow-x: auto;
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 28px;
 }
-.matrix-svg svg { display: block; min-width: 640px; width: 100%; }
+@media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
+.team-card {
+    display: flex; align-items: flex-start; gap: 18px;
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+}
+.team-avatar {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--sage), var(--clay));
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.team-card .name {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--paper);
+    margin: 0 0 6px;
+}
+.team-card .role {
+    font-size: 13px; color: var(--fg-1); line-height: 1.6; margin: 0;
+}
+
+.contrib-table {
+    margin-top: 28px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+}
+.contrib-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.4fr;
+    gap: 18px;
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--fg-1);
+    border-bottom: 1px solid var(--line);
+    line-height: 1.6;
+}
+.contrib-row:last-child { border-bottom: 0; }
+.contrib-row.head {
+    background: rgba(236,230,218,0.05);
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.contrib-row strong { color: var(--paper); font-weight: 600; }
+@media (max-width: 760px) {
+    .contrib-row { grid-template-columns: 1fr; gap: 6px; }
+    .contrib-row.head { display: none; }
+    .contrib-row strong::before { content: 'Task — '; color: var(--fg-2); }
+}
+
+.tag-strip {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 22px;
+}
+.tag-strip .tag {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(236,230,218,0.06);
+    border: 1px solid var(--line);
+    color: var(--fg-1);
+}
 
 /* ============== CTA ============== */
 .cta-card {
@@ -624,8 +639,6 @@ section.slide.hero { padding-top: 100px; }
 .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.45s; }
 .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.53s; }
 .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.61s; }
-.reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.69s; }
-.reveal-stagger.visible > *:nth-child(10) { transition-delay: 0.77s; }
 
 footer {
     padding: 48px 8vw;
@@ -641,7 +654,7 @@ footer a:hover { color: var(--paper); }
 
 @media (max-width: 700px) {
     #sidenav { display: none; }
-    #topnav { left: 12px; right: 12px; padding: 8px 12px; gap: 8px; }
+    #topnav { left: 12px; right: 12px; padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
     #topnav a { padding: 4px 8px; font-size: 12px; }
     #topnav strong { display: none; }
     section.slide { padding: 100px 6vw 70px; }
@@ -655,12 +668,13 @@ footer a:hover { color: var(--paper); }
 
 <nav id="topnav">
     <span class="logo">L</span>
-    <strong>London Transport Resilience</strong>
-    <a href="#background">Background</a>
-    <a href="#metrics">Metrics</a>
-    <a href="#use">Use the map</a>
-    <a href="#findings">Findings</a>
-    <a class="launch" href="London_PTAL_Accessibility_Map.html">Open map →</a>
+    <strong>London Transit Immune System</strong>
+    <a href="#concept">Concept</a>
+    <a href="#question">Question</a>
+    <a href="#story">Story</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#about">About</a>
+    <a class="launch" href="London_PTAL_Accessibility_Map.html">Open Network Map →</a>
 </nav>
 
 <nav id="sidenav"></nav>
@@ -668,297 +682,363 @@ footer a:hover { color: var(--paper); }
 <!-- ============== HERO ============== -->
 <section class="slide hero" id="hero" data-label="Intro">
     <div class="hero-inner reveal">
-        <div class="hero-eyebrow"><span class="pulse"></span>CASA0029 · Urban Data Visualisation</div>
+        <div class="hero-eyebrow"><span class="pulse"></span>London Transit Immune System</div>
         <h1>
-            When a route goes <em>quiet</em>,<br/>
-            where does London feel it?
+            When London's transport network is disrupted,<br/>
+            <em>who still has a way out?</em>
         </h1>
         <p class="lede">
-            An interactive resilience study of London's surface and rail transport.
-            We measure how much walking access every neighbourhood loses when a single route is cancelled —
-            and surface the places that carry the heaviest burden.
+            A neighbourhood-scale resilience analysis of London's surface transport.
+            We remove one route at a time from the OSM walking network, recompute
+            accessibility for every 100&nbsp;m cell, and ask where the loss
+            concentrates — and where alternatives still hold.
         </p>
         <div class="hero-stats reveal-stagger">
-            <div class="hero-stat"><div class="num">159k</div><div class="lbl">100 m grid cells</div></div>
-            <div class="hero-stat"><div class="num">4,994</div><div class="lbl">LSOAs</div></div>
-            <div class="hero-stat"><div class="num">498</div><div class="lbl">Routes (excl. school)</div></div>
-            <div class="hero-stat"><div class="num">27,553</div><div class="lbl">TfL stops</div></div>
-        </div>
-        <div class="roundel-strip">
-            <span class="label">Modes covered</span>
-            <img src="roundel/330px-Underground.svg.png" alt="Underground" title="London Underground">
-            <img src="roundel/330px-Buses_roundel.svg.png" alt="Buses" title="London Buses">
-            <img src="roundel/330px-DLR_roundel.svg.png" alt="DLR" title="Docklands Light Railway">
-            <img src="roundel/330px-Elizabeth_line_roundel.svg.png" alt="Elizabeth line" title="Elizabeth line">
-            <img src="roundel/330px-London_Overground_logo.svg.png" alt="Overground" title="London Overground">
-            <img src="roundel/330px-Trams_roundel.svg.png" alt="Trams" title="London Trams">
-        </div>
-    </div>
-    <div class="scroll-cue">Scroll to read ↓</div>
-</section>
-
-<!-- ============== BACKGROUND ============== -->
-<section class="slide" id="background" data-label="Background">
-    <div class="slide-inner two-col">
-        <div class="reveal">
-            <div class="eyebrow">Chapter 01 · Background</div>
-            <h2>A snapshot is not <em>a stress test.</em></h2>
-            <div class="body">
-                <p>
-                    Transport for London publishes the <strong>Public Transport Accessibility Level</strong>
-                    (PTAL) — a single score that tells you how reachable a neighbourhood is on a normal
-                    day, when every line is running and every stop is open.
-                </p>
-                <p>
-                    But disruption is the rule, not the exception. A signal failure, a closure or a
-                    cancellation can pull whole streets out of the network in minutes. PTAL has nothing
-                    to say about that.
-                </p>
-                <p>
-                    This project adds the missing layer:
-                    <strong>after a route is cut, how much access is left, and where?</strong>
-                    The result is a resilience score for every 100&nbsp;m square in Greater London.
-                </p>
+            <div class="hero-stat">
+                <div class="num">543</div>
+                <div class="lbl">Routes modelled</div>
+                <div class="note">Tube, Overground, Elizabeth, DLR, Tramlink + 540+ buses</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">159,451</div>
+                <div class="lbl">100 m grid cells</div>
+                <div class="note">Greater London at 100 m × 100 m resolution</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">27,553</div>
+                <div class="lbl">Transit stops indexed</div>
+                <div class="note">NaPTAN points walked via OSM Dijkstra</div>
             </div>
         </div>
-        <div class="reveal">
-            <div class="compare-card">
-                <h3>Two complementary lenses</h3>
-                <div class="sub">PTAL describes the world. Resilience describes what happens when it breaks.</div>
-                <div class="compare-row">
-                    <div class="compare-tile left">
-                        <div class="tag">Baseline</div>
-                        <div class="copy">
-                            How easy is it to reach public transport from this place
-                            <strong>today</strong>, with everything running?
-                        </div>
-                    </div>
-                    <div class="compare-tile right">
-                        <div class="tag">Resilience</div>
-                        <div class="copy">
-                            How much of that access <strong>survives</strong> when a chosen route is
-                            removed from the network?
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="cta-buttons" style="justify-content:center;">
+            <a href="London_PTAL_Accessibility_Map.html" class="primary">Open the LTRS Network Map →</a>
         </div>
     </div>
+    <div class="scroll-cue">Scroll for the story ↓</div>
 </section>
 
-<!-- ============== METRICS / VISUAL FORMULAS ============== -->
-<section class="slide" id="metrics" data-label="Key metrics">
-    <div class="slide-inner reveal">
-        <div class="eyebrow">Chapter 02 · Key metrics</div>
-        <h2>The four numbers <em>worth knowing.</em></h2>
-        <div class="body">
-            <p>
-                Each formula below is written in plain mathematics — no programming, just a recipe.
-                Read the formula on the left, the human translation on the right.
-            </p>
-        </div>
-        <div class="metric-list reveal-stagger">
-
-            <div class="metric">
-                <div class="num">01</div>
-                <div>
-                    <h3>Accessibility Index (AI)</h3>
-                    <div class="formula">AI &nbsp;=&nbsp; Σ ( weight × proximity )</div>
-                </div>
-                <div class="desc">
-                    For each spot we add up every nearby stop, weighing each by
-                    <strong>how close it is</strong> and <strong>how good its service is</strong>.
-                    A high AI means many stops, many lines, all within walking distance.
-                    <em>This is the baseline — life on a normal day.</em>
-                </div>
-            </div>
-
-            <div class="metric">
-                <div class="num">02</div>
-                <div>
-                    <h3>Disrupted Accessibility</h3>
-                    <div class="formula">AI<sub>after</sub> &nbsp;=&nbsp; AI<sub>before</sub> &nbsp;−&nbsp; (loss from cancelled routes)</div>
-                </div>
-                <div class="desc">
-                    When a route is cancelled, every cell that depended on it loses some of its score.
-                    We pre-compute that loss for all 498 routes, so the website can subtract it
-                    <span class="hi">instantly</span> as you click.
-                </div>
-            </div>
-
-            <div class="metric">
-                <div class="num">03</div>
-                <div>
-                    <h3>Resilience Score (LTRS)</h3>
-                    <div class="formula">LTRS &nbsp;=&nbsp; AI<sub>after</sub> ÷ AI<sub>before</sub></div>
-                </div>
-                <div class="desc">
-                    The fraction of access that <strong>remains</strong>. A score close to
-                    <strong>1</strong> means the neighbourhood barely notices.
-                    Below <span class="hi">0.3</span> means a critical loss — the route was nearly the only
-                    thing serving it.
-                </div>
-            </div>
-
-            <div class="metric">
-                <div class="num">04</div>
-                <div>
-                    <h3>Walking delay</h3>
-                    <div class="formula">delay &nbsp;=&nbsp; new walking time &nbsp;−&nbsp; old walking time</div>
-                </div>
-                <div class="desc">
-                    The extra minutes residents must walk to reach the
-                    <strong>next-best stop</strong> after the cancellation. We cap "good access" at
-                    <strong>12 minutes</strong> — the standard threshold in transport planning.
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ============== HOW TO USE THE MAP ============== -->
-<section class="slide" id="use" data-label="Use the map">
+<!-- ============== CONCEPT CARDS ============== -->
+<section class="slide" id="concept" data-label="Concept">
     <div class="slide-inner wide reveal">
-        <div class="eyebrow">Chapter 03 · How to use the map</div>
-        <h2>Four moves to <em>read the city.</em></h2>
+        <div class="eyebrow">What the project actually does</div>
+        <h2>Three things that make LTRS a real <em>resilience tool</em>, not a status map</h2>
+        <div class="concept-grid reveal-stagger">
+
+            <article class="concept-card">
+                <div class="ix">01</div>
+                <h3>543 routes, one engine</h3>
+                <p>The full LTRS analysis covers every Tube line, every Overground branch, the Elizabeth Line, DLR, Tramlink, and 540+ bus routes. Cancel any one — or any combination — and the impact is recomputed live, cell by cell, for the whole catchment.</p>
+            </article>
+
+            <article class="concept-card warm">
+                <div class="ix">02</div>
+                <h3>OSM Dijkstra walking, not Euclidean circles</h3>
+                <p>Walking accessibility isn't a straight-line distance. We compute it on the actual OpenStreetMap road and footpath network using Dijkstra shortest-path, with a 4.8 km/h walking speed and a 2,400 m budget. Buildings, dead-ends, river crossings — they all matter.</p>
+            </article>
+
+            <article class="concept-card warm">
+                <div class="ix">03</div>
+                <h3>Cancel-and-recompute, not pre-baked scenarios</h3>
+                <p>The Network Map tool lets you remove any route or set of routes and see the AI score for every grid cell update in real time. The "before" and "after" maps sit side-by-side under a draggable splitter. This is forensic resilience analysis.</p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============== RESEARCH QUESTION ============== -->
+<section class="slide" id="question" data-label="Research question">
+    <div class="slide-inner reveal">
+        <div class="eyebrow">Research question</div>
+        <div class="rq-card">
+            <blockquote class="rq-quote">
+                How unevenly is transport resilience distributed across London, and how do single-route disruptions expose differences in local substitutability?
+            </blockquote>
+            <div class="rq-body">
+                <p>
+                    London's surface transport is celebrated for its density. But density is unevenly distributed. Inner boroughs can lose a route and still have multiple alternatives within a 10-minute walk. Some outer and mid-ring areas depend on a single corridor — and when it fails, the OSM walking-network walker can't find anything else inside its 2,400&nbsp;m budget.
+                </p>
+                <p>
+                    We operationalise this as a <strong>cancel-and-recompute stress test</strong>: for each of 543 routes, we delete it from the network, rerun the Dijkstra walker for every affected 100&nbsp;m grid cell, and aggregate the loss back to neighbourhoods. The resulting map shows not who has good transport, but <strong>whose transport is brittle</strong>.
+                </p>
+                <p>
+                    The Story below walks through three example routes with very different spatial signatures. The Network Map tool lets you do the same for any route — or combination of routes — at full 100&nbsp;m grid resolution.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== STORY ACTS ============== -->
+<section class="slide" id="story" data-label="Story">
+    <div class="slide-inner wide reveal">
+        <div class="eyebrow">The story · four acts</div>
+        <h2>One baseline, three <em>route cancellations.</em></h2>
         <div class="body">
             <p>
-                The interactive map opens in a new tab. Here is the workflow we suggest —
-                each step takes a single click.
+                Every number in these acts is computed in the same OSM-Dijkstra pipeline that powers the Network Map. Open the map alongside to explore any cell, any route, any combination.
             </p>
         </div>
-        <div class="howto reveal-stagger">
-            <div class="howto-step">
-                <div class="ix">1</div>
-                <h4>Open the analysis panel</h4>
-                <p>The map starts clean. Click <strong>Analysis</strong> at the bottom of the screen to slide
-                in the controls — search routes, browse boroughs, pick scenarios.</p>
-            </div>
-            <div class="howto-step">
-                <div class="ix">2</div>
-                <h4>Read the baseline</h4>
-                <p>Every 100 m cell is shaded by its baseline AI. <strong>Sage</strong> means well-served,
-                <strong>terracotta</strong> means a transport gap. Click any cell to see which routes feed it.</p>
-            </div>
-            <div class="howto-step">
-                <div class="ix">3</div>
-                <h4>Cancel a route</h4>
-                <p>Pick any route from the right panel and tick <strong>Cancel</strong>. The disruption layer
-                appears: red where access is lost, untouched where alternatives exist.</p>
-            </div>
-            <div class="howto-step">
-                <div class="ix">4</div>
-                <h4>Compare side by side</h4>
-                <p>Drag the divider to split the view. Baseline on the left, disrupted on the right.
-                The Selected Grid card on the panel shows exact AI before / after / LTRS.</p>
-            </div>
+        <div class="act-list reveal-stagger">
+
+            <article class="act-card">
+                <div class="act-label">Act I — The uneven baseline</div>
+                <h3>London's accessibility is radically uneven before any disruption</h3>
+                <p class="caption">
+                    Each polygon is a 2021 LSOA, coloured by its baseline accessibility index (AI) — the average AI of all 100&nbsp;m grid cells inside it, computed from the OSM walking network reaching 27,553 transit stops. Inner boroughs glow at AI&nbsp;&gt;&nbsp;50; some outer LSOAs fall below 5.
+                </p>
+                <div class="paras">
+                    <p>London's transport accessibility is not evenly distributed. The baseline AI we compute from the full OSM walking network spans more than two orders of magnitude — from 0.04 in the most isolated LSOAs to 119.7 in the City. That's the substrate any disruption lands on.</p>
+                    <p>This unevenness is not a flaw of the visualisation — it is the central finding. A city where everyone had strong fallback options would be resilient everywhere. London is not that city.</p>
+                    <p>The map here shows the healthy baseline. The next three acts each remove one bus route from the network and re-measure. We start with route 99.</p>
+                </div>
+            </article>
+
+            <article class="act-card">
+                <div class="act-label">Act II — Cancel bus route 99</div>
+                <h3>Route 99 fails: Bexley's accessibility drops by 18% on average</h3>
+                <p class="caption">
+                    Mean accessibility loss after removing route 99 from the OSM walking network. The bus is not a Tube line — but its removal pushes 697 grid cells across south-east London into the "critical" loss band. Mean affected loss: 18.4&nbsp;% in Bexley, 4.8&nbsp;% in Greenwich.
+                </p>
+                <div class="paras">
+                    <p>We remove route 99 — a single London bus — and recompute accessibility for every 100&nbsp;m grid cell on its catchment. Then we average back up to LSOAs. The loss map you see is real: the pipeline ran the OSM-Dijkstra walker on every cell.</p>
+                    <p>Most of London is white. That is not a rendering glitch — it is the finding. Bus 99's impact is highly localised. But where it lands, it lands hard: Bexley LSOAs lose 18.4&nbsp;% of accessibility on average, with individual cells dropping above 30&nbsp;%.</p>
+                    <p>This is the spatial signature of single-route dependency. A neighbourhood doesn't have to be remote to be brittle — it has to be served by routes that don't have parallel substitutes. Bexley's eastern corridor is exactly that.</p>
+                </div>
+            </article>
+
+            <article class="act-card">
+                <div class="act-label">Act III — Cancel bus route R2</div>
+                <h3>Route R2: 1,738 affected grid cells, Bromley loses 6.3%</h3>
+                <p class="caption">
+                    Route R2 has the widest spatial spread of all 543 routes — 1,738 grid cells affected. The geometry shifts south. Where route 99 punched a hole in the east, R2 carves a shallow corridor across south London.
+                </p>
+                <div class="paras">
+                    <p>Switch the disruption to bus R2 and the map rotates south. Bromley LSOAs absorb the largest borough-level loss (6.3&nbsp;%), but the affected area is much wider than route 99's footprint.</p>
+                    <p>This is the trade-off between depth and spread. R2 affects more grids but each grid loses less, on average. From a planner's perspective, R2 is a "broad fragility" route; route 99 is a "sharp fragility" route. Both demand attention but require different responses.</p>
+                    <p>The same 543-route engine that lets us swap from 99 to R2 in this narrative powers the Network Map tool. There, you can cancel any combination of routes and watch the whole map recompute live.</p>
+                </div>
+            </article>
+
+            <article class="act-card">
+                <div class="act-label">Act IV — Cancel bus route 685</div>
+                <h3>Route 685: smaller footprint, deepest local punch</h3>
+                <p class="caption">
+                    Route 685 affects only 329 grid cells — the smallest footprint of our three scenarios. But where it touches, it dominates. Croydon LSOAs along its corridor lose up to 38.6&nbsp;% of mean AI. This is single-line dependency in its purest form.
+                </p>
+                <div class="paras">
+                    <p>Route 685 is the third archetype: small footprint, deep punch. Only Croydon shows up in the borough rankings (1.7&nbsp;% mean), but the LSOAs that depend on it lose almost 40&nbsp;% of their accessibility when it's cancelled.</p>
+                    <p>These are the LSOAs where 685 is essentially the only viable bus route. There is no parallel service to absorb the shock. The OSM-Dijkstra walker can't find alternative stops within the 2,400&nbsp;m walking budget.</p>
+                    <p>Three routes. Three spatial signatures. Wide-shallow, medium-medium, narrow-deep. The full data has 540 more routes — and many of them follow these three patterns. That is the structural vulnerability map of London's surface transport.</p>
+                </div>
+            </article>
+
         </div>
         <div class="cta-buttons">
-            <a href="London_PTAL_Accessibility_Map.html" class="primary">Open the interactive map →</a>
+            <a href="London_PTAL_Accessibility_Map.html" class="primary">Run your own scenarios →</a>
             <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="secondary">Open in new tab ↗</a>
         </div>
     </div>
 </section>
 
-<!-- ============== FINDINGS · TOP 5 + MATRIX ============== -->
-<section class="slide" id="findings" data-label="Findings">
-    <div class="slide-inner wide reveal">
-        <div class="eyebrow">Chapter 04 · Findings</div>
-        <h2>Five routes that <em>matter most.</em></h2>
+<!-- ============== METHODOLOGY ============== -->
+<section class="slide" id="methodology" data-label="Methodology">
+    <div class="slide-inner reveal">
+        <div class="eyebrow">Methodology</div>
+        <h2>How LTRS &amp; the LSOA narrative views are <em>constructed.</em></h2>
         <div class="body">
-            <p>
-                After excluding school and special services, these are the five regular London routes whose
-                cancellation strips the most neighbourhoods below the 12-minute walking-access threshold.
-                Notice how every winner is an <strong>outer-London route</strong> — places where alternatives
-                are scarce.
-            </p>
+            <p>One analytical engine, two presentation layers. Every value below traces back to the same OSM-Dijkstra pipeline that powers the Network Map.</p>
         </div>
 
-        <div class="top5-grid reveal-stagger">
+        <div class="prose">
 
-            <div class="route-card">
-                <div class="rank">RANK 01</div>
-                <div class="num">191<span class="badge">BUS</span></div>
-                <div class="area">Brimsdown — Edmonton Green</div>
-                <div class="stats">
-                    <div class="row"><span class="lbl">LSOAs losing 12-min</span><span class="val hl">11</span></div>
-                    <div class="row"><span class="lbl">LSOAs affected</span><span class="val">123</span></div>
-                    <div class="row"><span class="lbl">Mean delay</span><span class="val">5.9 min</span></div>
-                    <div class="row"><span class="lbl">Retention</span><span class="val">90.8 %</span></div>
-                </div>
-            </div>
+            <h3 id="m-rq">1. Research question</h3>
+            <p>How unevenly is transport resilience distributed across London, and how do single-route disruptions expose differences in local transport substitutability?</p>
 
-            <div class="route-card">
-                <div class="rank">RANK 02</div>
-                <div class="num">99<span class="badge">BUS</span></div>
-                <div class="area">Woolwich — Bexleyheath</div>
-                <div class="stats">
-                    <div class="row"><span class="lbl">LSOAs losing 12-min</span><span class="val hl">9</span></div>
-                    <div class="row"><span class="lbl">LSOAs affected</span><span class="val">157</span></div>
-                    <div class="row"><span class="lbl">Mean delay</span><span class="val">6.5 min</span></div>
-                    <div class="row"><span class="lbl">Retention</span><span class="val">94.0 %</span></div>
-                </div>
-            </div>
+            <h3 id="m-framework">2. Conceptual framework</h3>
+            <p>We adopt a <em>single-step, impact-based</em> definition of resilience: the share of baseline accessibility a place retains when a specific corridor fails (Jenelius, 2010; D'Lima &amp; Medda, 2016). This narrows the broader resilience literature, which spans temporal recovery (Bruneau et al., 2003; Henry &amp; Ramirez-Marquez, 2012) and topological robustness (Derrible &amp; Kennedy, 2010; Cats, 2016), to a measure that is computable from open static data and decomposes naturally to neighbourhoods. The "immune system" framing in the project name is editorial; the technical claim is spatial vulnerability under disruption.</p>
 
-            <div class="route-card">
-                <div class="rank">RANK 03</div>
-                <div class="num">H12<span class="badge">BUS</span></div>
-                <div class="area">Stanmore — South Harrow</div>
-                <div class="stats">
-                    <div class="row"><span class="lbl">LSOAs losing 12-min</span><span class="val hl">9</span></div>
-                    <div class="row"><span class="lbl">LSOAs affected</span><span class="val">144</span></div>
-                    <div class="row"><span class="lbl">Mean delay</span><span class="val">7.9 min</span></div>
-                    <div class="row"><span class="lbl">Retention</span><span class="val">93.3 %</span></div>
-                </div>
-            </div>
+            <h3 id="m-data">3. Data sources</h3>
+            <ul>
+                <li><strong>NaPTAN</strong> (DfT, OGL v3) — 27,553 transit stops across Greater London, with ATCO codes, mode tags and line/route membership.</li>
+                <li><strong>OpenStreetMap walking network</strong> (ODbL) — extracted for Greater London. Used as the routable graph for shortest-path walking time from any 100&nbsp;m grid cell centroid to nearby stops.</li>
+                <li><strong>PTAL 2023 100&nbsp;m grid</strong> (TfL WebCAT) — 159,451 cells covering Greater London. Provides the official PTAL band attribute used as a sanity check against our recomputed AI.</li>
+                <li><strong>TfL line and route geometry</strong> — Tube, Overground, Elizabeth, DLR, Tramlink and 540+ bus routes (route_lines.geojson).</li>
+                <li><strong>ONS LSOA 2021 boundaries</strong> — 4,994 polygons. Spatial unit for the narrative views.</li>
+            </ul>
 
-            <div class="route-card">
-                <div class="rank">RANK 04</div>
-                <div class="num">51<span class="badge">BUS</span></div>
-                <div class="area">Woolwich — Orpington</div>
-                <div class="stats">
-                    <div class="row"><span class="lbl">LSOAs losing 12-min</span><span class="val hl">9</span></div>
-                    <div class="row"><span class="lbl">LSOAs affected</span><span class="val">185</span></div>
-                    <div class="row"><span class="lbl">Mean delay</span><span class="val">9.2 min</span></div>
-                    <div class="row"><span class="lbl">Retention</span><span class="val">94.6 %</span></div>
-                </div>
-            </div>
+            <h3 id="m-ai">4. Recomputing baseline AI on the OSM walking network</h3>
+            <p>For each 100&nbsp;m grid cell <code>g</code>, we run a <strong>Dijkstra shortest-path</strong> walk on the OSM road and footpath network from the cell centroid. Walking speed is fixed at 4.8&nbsp;km/h (80&nbsp;m/min); the maximum walking budget is 2,400&nbsp;m (corresponding to ~30&nbsp;min). Every NaPTAN stop reachable inside the budget contributes to the AI:</p>
+            <div class="formula">AI(g) = Σ  f(s) · w( walk(g, s) )      for s ∈ reachable(g)</div>
+            <p>where <code>f(s)</code> is the service frequency at stop <code>s</code>, <code>walk(g, s)</code> is the shortest-path walking time, and <code>w(·)</code> is the standard PTAL distance decay. The result is mathematically equivalent to TfL's PTAL calculation but uses the OSM network instead of straight-line distance — meaning a river, a railway cutting or a missing footpath actually counts.</p>
 
-            <div class="route-card">
-                <div class="rank">RANK 05</div>
-                <div class="num">116<span class="badge">BUS</span></div>
-                <div class="area">Hounslow — Ashford Hospital</div>
-                <div class="stats">
-                    <div class="row"><span class="lbl">LSOAs losing 12-min</span><span class="val hl">9</span></div>
-                    <div class="row"><span class="lbl">LSOAs affected</span><span class="val">87</span></div>
-                    <div class="row"><span class="lbl">Mean delay</span><span class="val">12.6 min</span></div>
-                    <div class="row"><span class="lbl">Retention</span><span class="val">89.7 %</span></div>
-                </div>
-            </div>
+            <h3 id="m-ltrs">5. The Local Transport Resilience Score (LTRS)</h3>
+            <p>For each grid cell <code>g</code> and each set of cancelled routes <code>R</code>, the disrupted AI is the baseline minus the per-cell losses contributed by removing the routes in <code>R</code>:</p>
+            <div class="formula">AI_disrupted(g, R) = AI_baseline(g) − Σ ΔAI(g, r)   for r ∈ R</div>
+            <p>The LTRS score is then the ratio:</p>
+            <div class="formula">LTRS(g, R) = AI_disrupted(g, R) ÷ AI_baseline(g)     ∈ [0, 1]</div>
+            <p>LTRS = 1 means a cell is unaffected by removing <code>R</code>; LTRS → 0 means total loss. The Network Map's split-screen renders baseline AI on the left and the AI-loss percentage <code>(1 − LTRS)</code> on the right, with a six-step white→burgundy ramp matching the project's diverging palette.</p>
+            <p>The per-route, per-grid loss matrix <code>ΔAI(g, r)</code> is <strong>pre-computed once</strong> across all 543 routes (route_grid_impacts_osm_network.json, ~13&nbsp;MB). At interaction time the tool just sums losses — that's how cancelling 5 routes simultaneously updates 159,000 cells in a few hundred milliseconds.</p>
+
+            <h3 id="m-scenarios">6. The three reference routes</h3>
+            <p>The Story above and the Explorer use three pre-baked routes — <strong>99</strong>, <strong>R2</strong>, and <strong>685</strong> — chosen because they showcase three distinct spatial signatures of single-route failure that recur across the full 543-route data:</p>
+            <table class="prose-table">
+                <thead>
+                    <tr><th>Route</th><th>Affected cells</th><th>Top borough loss</th><th>Signature</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>99</td><td>1,552 (697 critical)</td><td>Bexley, 18.4&nbsp;%</td><td>Sharp, deep punch in east London</td></tr>
+                    <tr><td>R2</td><td>1,738 (542 critical)</td><td>Bromley, 6.3&nbsp;%</td><td>Widest spread of all 543 routes</td></tr>
+                    <tr><td>685</td><td>329 (71 critical)</td><td>Croydon, 1.7&nbsp;%</td><td>Smallest footprint, deepest local impact (38.6&nbsp;% mean AI loss)</td></tr>
+                </tbody>
+            </table>
+            <p>None of these are Tube lines. That is itself a finding — the buses, not the Underground, dominate the top of the spatial vulnerability ranking, because buses lack parallel substitutes in the way Tube lines do.</p>
+
+            <h3 id="m-lsoa">7. From 100&nbsp;m grid to LSOA</h3>
+            <p>For the LSOA-level views in the Story and Explorer, we aggregate grid-cell values back up using the official ONS LSOA 2021 boundaries and the <code>grid_to_lsoa.json</code> mapping (157,940 grid → LSOA assignments produced via point-in-polygon at grid centroid). For LSOA <code>i</code>:</p>
+            <div class="formula">AI_baseline(i) = (1 / |G_i|) · Σ AI_baseline(g)    for g ∈ G_i</div>
+            <div class="formula">loss(i, r)     = (1 / |G_i|) · Σ  ΔAI(g, r) ÷ AI_baseline(g)    for g ∈ G_i</div>
+            <p>The choropleth shown in the Story and the LSOA narrative Explorer is exactly this aggregation — every value traces back to the same grid-level computation that powers the Network Map.</p>
+
+            <h3 id="m-distribution">8. Distributional concentration</h3>
+            <p>To answer "is loss spread evenly or concentrated?" we report the Gini coefficient of the per-LSOA loss distribution:</p>
+            <div class="formula">G = 1 − 2 · ∫₀¹ L(x) dx</div>
+            <p>where <code>L(x)</code> is the Lorenz curve. Values near zero indicate even spread; values near one indicate concentration in a small number of LSOAs. The Explorer renders the Lorenz curve directly so the reader can see the integrand.</p>
+
+            <h3 id="m-limitations">9. Limitations</h3>
+            <ul>
+                <li><strong>Static, single-step.</strong> We do not model recovery time, cascading effects (a cancelled route may overload its alternatives), or capacity-constrained crowding.</li>
+                <li><strong>Walking only.</strong> The 2,400&nbsp;m / 30&nbsp;min budget captures walking access; cycling and micro-mobility are not yet integrated. A future version will add cycle network density.</li>
+                <li><strong>Mode-mix simplification.</strong> A "stop" is treated as a stop regardless of whether the underlying service is a bus, tube, or Overground. Real reliability and service-frequency differences are folded into the AI weight but not separately visualised.</li>
+                <li><strong>Modifiable Areal Unit Problem.</strong> LSOA-level aggregations smooth out grid-cell heterogeneity. The 100&nbsp;m grid view in the Network Map preserves it.</li>
+                <li><strong>Population is a flat 1,700 per LSOA</strong> in the exposure metric until ONS mid-year estimates are joined.</li>
+            </ul>
+
+            <h3 id="m-references">10. References</h3>
+            <ol class="references">
+                <li>Bruneau, M. et al. (2003). A framework to quantitatively assess and enhance the seismic resilience of communities. <em>Earthquake Spectra</em> 19(4): 733–752.</li>
+                <li>Cats, O. (2016). The robustness value of public transport development plans. <em>Journal of Transport Geography</em> 51: 236–246.</li>
+                <li>Chopra, S. S. et al. (2016). A network-based framework for assessing infrastructure resilience: a case study of the London metro system. <em>Journal of the Royal Society Interface</em> 13(118).</li>
+                <li>Cox, A., Prager, F., &amp; Rose, A. (2011). Transportation security and the role of resilience. <em>Transport Policy</em> 18(2): 307–317.</li>
+                <li>Derrible, S. &amp; Kennedy, C. (2010). The complexity and robustness of metro networks. <em>Physica A</em> 389: 3678–3691.</li>
+                <li>D'Lima, M. &amp; Medda, F. (2016). A new measure of resilience: an application to the London Underground. <em>Transportation Research Part A</em> 81: 35–46.</li>
+                <li>Henry, D. &amp; Ramirez-Marquez, J. E. (2012). Generic metrics and quantitative approaches for system resilience as a function of time. <em>Reliability Engineering &amp; System Safety</em> 99: 114–122.</li>
+                <li>Jenelius, E. (2010). Redundancy importance: links as rerouting alternatives during road network disruptions. <em>Procedia Engineering</em> 3: 129–137.</li>
+                <li>Sharma, D., Zhong, C., &amp; Wong, H. (2024). Lockdown lifted: measuring spatial resilience from London's public transport demand recovery. <em>Regional Studies, Regional Science</em> 11.</li>
+                <li>Transport for London (2015–2023). <em>WebCAT / PTAL — Public Transport Accessibility Level</em>. Methodology note and 2023 100&nbsp;m grid release.</li>
+                <li>Department for Transport. <em>NaPTAN — National Public Transport Access Nodes</em>. Open Government Licence v3.</li>
+                <li>OpenStreetMap contributors. <em>OSM walking-network extract for Greater London</em> (2024). Open Database Licence (ODbL).</li>
+            </ol>
 
         </div>
+    </div>
+</section>
 
-        <!-- ============== IMPACT MATRIX ============== -->
-        <div class="matrix-wrap reveal">
-            <div class="matrix-head">
+<!-- ============== ABOUT ============== -->
+<section class="slide" id="about" data-label="About">
+    <div class="slide-inner wide reveal">
+        <div class="eyebrow">About this project</div>
+        <h2>London Transit <em>Immune System</em></h2>
+        <div class="body">
+            <p><em>LTIS</em> is a CASA0029 Group Project (Group 17, 2025/26). Its analytical core is an OSM walking-network Dijkstra model that covers 159,451 grid cells, 27,553 transit stops, and 543 transport routes across Greater London. The Story tells the narrative; the Network Map is the forensic tool. They share one engine.</p>
+        </div>
+
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 36px 0 6px;">Site structure</h3>
+        <div class="body" style="margin:0;"><p>Two parts, one analytical engine. The Story page reads what the Network Map shows.</p></div>
+        <div class="about-grid reveal-stagger">
+            <article class="about-card">
+                <div class="num">01</div>
+                <h4>Story</h4>
+                <p>Editorial scrollytelling that walks through the LTRS findings using three reference routes (99, R2, 685). Backed by the same OSM-Dijkstra grid data, aggregated to LSOA scale.</p>
+            </article>
+            <article class="about-card">
+                <div class="num">02</div>
+                <h4>Network Map</h4>
+                <p>The analytical core: cancel any combination of 543 routes, navigate by postcode or borough, inspect resilience at 100&nbsp;m grid resolution. Built on OSM walking-network Dijkstra.</p>
+            </article>
+            <article class="about-card">
+                <div class="num">03</div>
+                <h4>Methodology</h4>
+                <p>End-to-end documentation of the LTRS pipeline: data sources, AI recomputation on the OSM walking network, scenario formulation, LSOA aggregation, limitations, references.</p>
+            </article>
+            <article class="about-card">
+                <div class="num">04</div>
+                <h4>About</h4>
+                <p>Team split, contributions table, AI tool usage statement, data sources, and tech stack — per CASA0029 marking guidance on transparency.</p>
+            </article>
+        </div>
+
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 44px 0 6px;">Team</h3>
+        <div class="body" style="margin:0;"><p>Two contributors, two distinct roles.</p></div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">ST</div>
                 <div>
-                    <h3>Impact matrix · top 10 routes × four metrics</h3>
-                    <p>
-                        Each row is a route (most disruptive at the top). Each column is one of the
-                        four impact metrics, normalised across the 498 regular routes.
-                        Darker terracotta = larger relative impact.
-                    </p>
-                </div>
-                <div class="matrix-legend">
-                    <span>Low</span>
-                    <span class="gradient"></span>
-                    <span>High</span>
+                    <p class="name">Siyan Tao</p>
+                    <p class="role">Data analysis &amp; modelling — OSM Dijkstra walking-network pipeline; 543-route impact pre-computation; 100&nbsp;m grid LTRS engine; Network Map UI (Mapbox GL JS).</p>
                 </div>
             </div>
-            <div class="matrix-svg" id="matrix-svg"></div>
+            <div class="team-card">
+                <div class="team-avatar">YF</div>
+                <div>
+                    <p class="name">Yuxiang Fan</p>
+                    <p class="role">Web wrapper &amp; visualisation packaging — React + TypeScript + Vite skeleton; design system; scrollytelling; LSOA aggregation views; methodology + about pages; deployment.</p>
+                </div>
+            </div>
         </div>
 
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 44px 0 6px;">Contributions</h3>
+        <div class="body" style="margin:0;"><p>Per CASA0029 marking guidance, each project task is attributed to its major contributor and any AI-tool involvement is itemised.</p></div>
+        <div class="contrib-table">
+            <div class="contrib-row head"><span>Task</span><span>Major contributors</span><span>AI tool usage</span></div>
+            <div class="contrib-row"><strong>Concept development</strong><span>Yuxiang Fan, Siyan Tao</span><span>No AI use</span></div>
+            <div class="contrib-row"><strong>PTAL 2023 acquisition + LSOA / NaPTAN preparation</strong><span>Siyan Tao</span><span>No AI use</span></div>
+            <div class="contrib-row"><strong>OSM walking network extraction + Dijkstra pipeline (4,994 LSOAs × 27,553 stops)</strong><span>Siyan Tao</span><span>No AI use</span></div>
+            <div class="contrib-row"><strong>100 m grid AI baseline + per-route impact pre-computation (543 routes)</strong><span>Siyan Tao</span><span>ChatGPT used to debug edge cases in the loss aggregation</span></div>
+            <div class="contrib-row"><strong>Network Map UI (Mapbox GL, compare mode, route cancel + LSOA / borough panels)</strong><span>Siyan Tao</span><span>ChatGPT used for Mapbox style expression syntax queries</span></div>
+            <div class="contrib-row"><strong>LSOA aggregation pipeline (build_ltis_from_lsoa_summary.py)</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to scaffold the script and Shapely fallback for MultiPolygon edge cases</span></div>
+            <div class="contrib-row"><strong>React skeleton: routing, layout, design tokens, typography</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used for component scaffolding</span></div>
+            <div class="contrib-row"><strong>MapLibre LTIS choropleth + colour ramps + legend</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used for MapLibre layer wiring</span></div>
+            <div class="contrib-row"><strong>Scrollytelling narrative (scrollama + frame data)</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to draft component structure; frame copy refined against real data</span></div>
+            <div class="contrib-row"><strong>Iframe embed of Network Map into the React site</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to plan and execute the integration</span></div>
+            <div class="contrib-row"><strong>Methodology + About + reference list</strong><span>Yuxiang Fan, Siyan Tao</span><span>ChatGPT used for copy-editing the methodology prose; final wording author-reviewed</span></div>
+            <div class="contrib-row"><strong>GitHub deployment workflow + Pages configuration</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to write the deploy.yml workflow</span></div>
+        </div>
+
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 44px 0 6px;">AI tool usage</h3>
+        <div class="body" style="margin:0;"><p>Every AI-assisted artefact was reviewed and edited by the responsible author before being committed.</p></div>
+        <div class="contrib-table">
+            <div class="contrib-row head"><span>Tool</span><span>Purpose</span><span>Review</span></div>
+            <div class="contrib-row"><strong>Anthropic Claude (via Claude Code)</strong><span>Code scaffolding, MapLibre layer wiring, React component structure, design-token CSS drafting, scrollytelling component shape, LSOA aggregation script, deploy.yml workflow, iframe integration of the Network Map. Every artefact was inspected and edited by the author before being committed.</span><span>Author-reviewed before commit</span></div>
+            <div class="contrib-row"><strong>OpenAI ChatGPT</strong><span>Mapbox style-expression syntax during Network Map development; copy-editing of methodology prose; licence-term disambiguation. No analytical findings, methodological choices, citations or final wording were generated by an AI tool without author review.</span><span>Author-reviewed before commit</span></div>
+        </div>
+
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 44px 0 6px;">Data sources</h3>
+        <div class="body" style="margin:0;"><p>All datasets used in this project are publicly available under permissive licences.</p></div>
+        <div class="contrib-table">
+            <div class="contrib-row head"><span>Layer</span><span>Dataset</span><span>Used for</span></div>
+            <div class="contrib-row"><strong>Network</strong><span>NaPTAN (Department for Transport)</span><span>27,553 transit stops across Greater London. Bus, Tube, DLR, Overground, Elizabeth, Tramlink. Each stop carries route-membership metadata. Driver of the entire LTRS engine.</span></div>
+            <div class="contrib-row"><strong>Network</strong><span>OSM walking network</span><span>OpenStreetMap road and footpath graph for Greater London. Used by the Dijkstra walker (4.8 km/h, 2,400 m budget) to compute realistic walking time from any 100 m grid centroid to each NaPTAN stop.</span></div>
+            <div class="contrib-row"><strong>Baseline</strong><span>PTAL 2023 — 100 m grid (TfL WebCAT)</span><span>159,451 grid cells covering Greater London. Used as a sanity-check reference for the recomputed AI scores.</span></div>
+            <div class="contrib-row"><strong>Routes</strong><span>TfL line and route geometry</span><span>Tube, Overground, Elizabeth, DLR, Tramlink + 540+ bus routes (route_lines.geojson). Drives both the visual route layer and the route-cancel logic.</span></div>
+            <div class="contrib-row"><strong>Geometry</strong><span>ONS LSOA 2021 boundaries</span><span>4,994 Lower Super Output Areas across Greater London. Spatial unit for the LSOA-scale narrative views.</span></div>
+            <div class="contrib-row"><strong>Context</strong><span>OpenStreetMap basemaps (CARTO Positron + Mapbox Streets)</span><span>Light raster basemap for the LSOA narrative and editorial basemap for the Network Map (Mapbox).</span></div>
+        </div>
+
+        <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 44px 0 6px;">Tools &amp; technologies</h3>
+        <div class="tag-strip">
+            <span class="tag">Mapbox GL JS</span>
+            <span class="tag">MapLibre GL</span>
+            <span class="tag">d3-geo</span>
+            <span class="tag">d3-shape</span>
+            <span class="tag">scrollama</span>
+            <span class="tag">KaTeX</span>
+            <span class="tag">Python · Shapely</span>
+            <span class="tag">Python · OSMnx / NetworkX (Dijkstra)</span>
+            <span class="tag">PMTiles</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">GitHub Pages</span>
+        </div>
     </div>
 </section>
 
@@ -966,17 +1046,13 @@ footer a:hover { color: var(--paper); }
 <section class="slide" id="cta" data-label="Try it">
     <div class="slide-inner reveal">
         <div class="cta-card">
-            <div class="eyebrow">Now your turn</div>
-            <h2>Open the map. <em>Break the network.</em></h2>
+            <div class="eyebrow">Now you've seen the story</div>
+            <h2>Run your own <em>scenarios.</em></h2>
             <div class="body" style="text-align:center;">
-                <p>
-                    Cancel any route or combination. Click a grid. Compare boroughs. Every metric on this
-                    page is computed live in your browser against the same OSM walking network used in this
-                    study.
-                </p>
+                <p>The Network Map lets you switch route, switch metric, hover any neighbourhood, cancel any combination of routes, and inspect the disrupted accessibility cell by cell.</p>
             </div>
             <div class="cta-buttons">
-                <a href="London_PTAL_Accessibility_Map.html" class="primary">Launch the interactive map →</a>
+                <a href="London_PTAL_Accessibility_Map.html" class="primary">Open the Network Map →</a>
                 <a href="https://github.com/Taoo2025/CASA0029" target="_blank" rel="noopener" class="secondary">View source on GitHub</a>
             </div>
         </div>
@@ -984,10 +1060,10 @@ footer a:hover { color: var(--paper); }
 </section>
 
 <footer>
-    CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
+    London Transit Immune System · CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
     Built with Mapbox GL JS, NetworkX and GeoPandas — data from
     <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>,
-    <a href="https://tfl.gov.uk/info-for/open-data-users/" target="_blank" rel="noopener">TfL Open Data</a> &
+    <a href="https://tfl.gov.uk/info-for/open-data-users/" target="_blank" rel="noopener">TfL Open Data</a> &amp;
     <a href="https://www.ons.gov.uk/" target="_blank" rel="noopener">ONS</a> ·
     <a href="https://github.com/Taoo2025/CASA0029" target="_blank" rel="noopener">GitHub</a>
 </footer>
@@ -1034,108 +1110,6 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key === 'Home') { e.preventDefault(); slides[0].scrollIntoView({behavior:'smooth'}); }
     else if (e.key === 'End') { e.preventDefault(); slides[slides.length-1].scrollIntoView({behavior:'smooth'}); }
 });
-
-/* ===== IMPACT MATRIX (SVG, no external libs) ===== */
-const TOP_ROUTES = [
-    /* curated top 10, school/special excluded — values from resilience_summary_osm_network.json */
-    { route: '191', area: 'Brimsdown – Edmonton',          affected: 123, lost: 11, delay: 5.9,  retention: 0.9076 },
-    { route: '99',  area: 'Woolwich – Bexleyheath',         affected: 157, lost: 9,  delay: 6.49, retention: 0.94   },
-    { route: 'H12', area: 'Stanmore – South Harrow',        affected: 144, lost: 9,  delay: 7.94, retention: 0.9333 },
-    { route: '51',  area: 'Woolwich – Orpington',           affected: 185, lost: 9,  delay: 9.17, retention: 0.9464 },
-    { route: '116', area: 'Hounslow – Ashford Hospital',    affected: 87,  lost: 9,  delay: 12.62,retention: 0.8966 },
-    { route: '131', area: 'Tooting – Kingston',             affected: 197, lost: 8,  delay: 6.83, retention: 0.9579 },
-    { route: '114', area: 'Mill Hill – Ruislip',            affected: 239, lost: 7,  delay: 4.67, retention: 0.9697 },
-    { route: '221', area: 'Edgware – Turnpike Lane',        affected: 214, lost: 7,  delay: 7.19, retention: 0.9667 },
-    { route: '375', area: 'Romford – Passingford Bridge',   affected: 61,  lost: 1,  delay: 17.6, retention: 0.9836 },
-    { route: '121', area: 'Enfield Island – Turnpike Lane', affected: 213, lost: 3,  delay: 10.12,retention: 0.9858 },
-];
-
-const COLS = [
-    { key: 'affected',  label: 'LSOAs affected',           extract: d => d.affected,        norm: 'linear', max: 250 },
-    { key: 'lost',      label: 'Lost 12-min access',       extract: d => d.lost,            norm: 'linear', max: 12  },
-    { key: 'delay',     label: 'Mean delay (min)',         extract: d => d.delay,           norm: 'linear', max: 18  },
-    { key: 'invret',    label: 'Lost retention (1 − ρ)',   extract: d => 1 - d.retention,   norm: 'linear', max: 0.12 },
-];
-
-/* Morandi gradient: pale sage → sand → clay → terracotta */
-function morandiColor(t) {
-    t = Math.max(0, Math.min(1, t));
-    const stops = [
-        { p: 0.00, c: [200, 209, 196] }, // sage-pale
-        { p: 0.40, c: [205, 191, 163] }, // sand
-        { p: 0.75, c: [198, 159, 135] }, // clay
-        { p: 1.00, c: [184, 118,  92] }, // terracotta
-    ];
-    for (let i = 1; i < stops.length; i++) {
-        if (t <= stops[i].p) {
-            const a = stops[i-1], b = stops[i];
-            const k = (t - a.p) / (b.p - a.p);
-            const r = Math.round(a.c[0] + (b.c[0] - a.c[0]) * k);
-            const g = Math.round(a.c[1] + (b.c[1] - a.c[1]) * k);
-            const bl = Math.round(a.c[2] + (b.c[2] - a.c[2]) * k);
-            return `rgb(${r},${g},${bl})`;
-        }
-    }
-    return `rgb(${stops.at(-1).c.join(',')})`;
-}
-
-function renderMatrix() {
-    const host = document.getElementById('matrix-svg');
-    if (!host) return;
-
-    const rowH = 38;
-    const labelW = 140;
-    const headerH = 44;
-    const gap = 6;
-    const colW = 150;
-    const padX = 16;
-
-    const W = labelW + COLS.length * (colW + gap) + padX * 2;
-    const H = headerH + TOP_ROUTES.length * rowH + 28;
-
-    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">`;
-
-    /* column headers */
-    COLS.forEach((c, ci) => {
-        const x = padX + labelW + ci * (colW + gap) + colW / 2;
-        svg += `<text x="${x}" y="${headerH - 16}" text-anchor="middle" fill="#c5bfb3" font-size="11.5" font-weight="600" letter-spacing="0.04em">${c.label}</text>`;
-    });
-
-    /* rows */
-    TOP_ROUTES.forEach((r, ri) => {
-        const y = headerH + ri * rowH;
-
-        /* row label */
-        svg += `<text x="${padX}" y="${y + rowH/2 + 1}" dominant-baseline="middle" fill="#ece6da" font-size="13" font-weight="600">${r.route}</text>`;
-        svg += `<text x="${padX + 44}" y="${y + rowH/2 + 1}" dominant-baseline="middle" fill="#8e887e" font-size="11" font-style="italic">${r.area}</text>`;
-
-        /* cells */
-        COLS.forEach((c, ci) => {
-            const v = c.extract(r);
-            const t = c.norm === 'linear' ? v / c.max : v;
-            const cx = padX + labelW + ci * (colW + gap);
-            const cy = y + 4;
-            const w = colW;
-            const h = rowH - 8;
-            const fill = morandiColor(t);
-            const display = c.key === 'delay' ? v.toFixed(1)
-                          : c.key === 'invret' ? (v * 100).toFixed(1) + '%'
-                          : v.toFixed(0);
-            /* text contrast */
-            const lum = t > 0.6 ? '#2b2a28' : '#2b2a28';
-            svg += `<g><rect x="${cx}" y="${cy}" width="${w}" height="${h}" rx="6" fill="${fill}" opacity="0.92">
-                <title>${r.route} · ${c.label}: ${display}</title>
-            </rect>`;
-            svg += `<text x="${cx + w/2}" y="${cy + h/2 + 1}" dominant-baseline="middle" text-anchor="middle" fill="${lum}" font-size="12.5" font-weight="600" font-family="JetBrains Mono, monospace">${display}</text></g>`;
-        });
-    });
-
-    svg += `</svg>`;
-    host.innerHTML = svg;
-}
-renderMatrix();
-window.addEventListener('resize', () => { /* SVG is responsive via viewBox; no rerender needed */ });
 </script>
-
 </body>
 </html>
