@@ -628,51 +628,6 @@
             border: 1px solid rgba(0, 0, 0, 0.2);
         }
 
-        .info {
-            display: none;
-            right: 420px;
-            bottom: 18px;
-            width: 315px;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .info.active {
-            display: block;
-        }
-
-        .info-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 12px 14px 8px;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .info h2 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .info dl {
-            margin: 0;
-            padding: 12px 14px 14px;
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 6px 8px;
-            font-size: 12px;
-        }
-
-        .info dt {
-            color: var(--muted);
-        }
-
-        .info dd {
-            margin: 0;
-            font-weight: 650;
-        }
-
         .loading {
             position: absolute;
             z-index: 20;
@@ -862,12 +817,16 @@
         </div>
 
         <div class="section">
-            <div class="section-title">Choose 100m Grid</div>
+            <div class="section-title">Navigate to Area</div>
             <div class="search-box">
-                <input id="grid-search" type="text" placeholder="Search GridID or FID" oninput="filterGrid()" onfocus="filterGrid()">
-                <button class="clear-field" title="Clear search" onclick="clearGridSearch()">x</button>
+                <input id="grid-search" type="text" placeholder="Postcode or area name…" oninput="filterLocation()" onfocus="filterLocation()">
+                <button class="clear-field" title="Clear" onclick="clearLocationSearch()">x</button>
             </div>
             <div id="grid-results" class="search-results"></div>
+            <select id="borough-select" onchange="selectBorough(this.value)"
+                style="width:100%;min-height:34px;margin-top:6px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;font:inherit;color:var(--ink);background:#fff;cursor:pointer;">
+                <option value="">— Or choose a London borough —</option>
+            </select>
             <div id="grid-walking-stats" style="margin-top: 12px; padding: 10px; background: #f5f5f5; border-radius: 4px; font-size: 0.9em;"></div>
         </div>
 
@@ -980,16 +939,11 @@
         </div>
     </aside>
 
-    <aside id="info-panel" class="panel info">
-        <div class="info-header">
-            <h2 id="info-title">Area</h2>
-            <button class="panel-close ghost" aria-label="Close area details" title="Close area details" onclick="closeInfoPanel()">x</button>
-        </div>
-        <dl id="info-list"></dl>
-    </aside>
-
     <aside class="panel legend">
-        <h2>PTAL Legend</h2>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <h2 style="margin:0;">PTAL Legend</h2>
+            <button class="panel-close ghost" style="min-width:28px;width:28px;min-height:28px;" title="Hide legend" onclick="toggleLegendPanel(false)">&times;</button>
+        </div>
         <div class="legend-row"><span class="swatch" style="background:#106E80"></span><span>0 - very poor</span></div>
         <div class="legend-row"><span class="swatch" style="background:#317CB7"></span><span>1a</span></div>
         <div class="legend-row"><span class="swatch" style="background:#6DADE1"></span><span>1b</span></div>
@@ -1172,8 +1126,10 @@
         }
 
         function closeInfoPanel() {
-            const panel = document.getElementById("info-panel");
-            if (panel) panel.classList.remove("active");
+            const gc = document.getElementById("grid-popup-card");
+            if (gc) gc.style.display = "none";
+            const lc = document.getElementById("lsoa-popup-card");
+            if (lc) lc.style.display = "none";
         }
 
         function clearGridSearch() {
@@ -1579,6 +1535,8 @@
                 renderTopImpacts();
                 // Pre-populate route list from busRoutes (routeGridImpacts loads async later)
                 populateRouteList();
+                // Populate borough dropdown
+                populateBoroughDropdown();
                 // Hide loading now - map is usable
                 document.getElementById("loading").style.display = "none";
                 const gridCountText = state.grid && state.grid.features ? state.grid.features.length.toLocaleString() : "vector-tile";
@@ -1747,18 +1705,12 @@
             const container = document.getElementById("map-compare");
             if (!container) return;
 
-            // Pin the container to exactly match #map's bounding rect BEFORE
-            // creating the Mapbox instance so the canvas is sized correctly from
-            // the very first frame; no post-load resize needed.
-            const mainRect = map.getContainer().getBoundingClientRect();
+            // Keep the same absolute+inset:0 layout as #map so both canvases
+            // share the exact same pixel origin — avoids sub-pixel seam drift.
             Object.assign(container.style, {
-                position: "fixed",
-                left:   mainRect.left   + "px",
-                top:    mainRect.top    + "px",
-                width:  mainRect.width  + "px",
-                height: mainRect.height + "px",
-                right:  "",
-                bottom: ""
+                position: "absolute",
+                left: "0", top: "0", right: "0", bottom: "0",
+                width: "", height: ""
             });
 
             const compareMap = new mapboxgl.Map({
@@ -1920,12 +1872,6 @@
 
             setupSplitDivider();
             window.addEventListener("resize", () => {
-                // Re-pin the container and update Mapbox canvas size on window resize.
-                const r = map.getContainer().getBoundingClientRect();
-                Object.assign(compareMap.getContainer().style, {
-                    left: r.left + "px", top: r.top + "px",
-                    width: r.width + "px", height: r.height + "px"
-                });
                 compareMap.resize();
             });
         }
@@ -1934,13 +1880,6 @@
         function syncCompareMapBounds() {
             const cm = state.compareMap;
             if (!cm) return;
-            const r = map.getContainer().getBoundingClientRect();
-            Object.assign(cm.getContainer().style, {
-                position: "fixed",
-                left: r.left + "px", top: r.top + "px",
-                width: r.width + "px", height: r.height + "px",
-                right: "", bottom: ""
-            });
             cm.resize();
         }
 
@@ -2256,7 +2195,7 @@
             // When no routes are cancelled, show all stops
             if (cancelled.size === 0) {
                 map.setFilter("all-stops-layer", null);
-                map.setFilter("all-stops-pulse", null);
+                if (map.getLayer("all-stops-pulse")) map.setFilter("all-stops-pulse", null);
                 return;
             }
 
@@ -2283,11 +2222,11 @@
 
             if (hiddenCodes.length === 0) {
                 map.setFilter("all-stops-layer", null);
-                map.setFilter("all-stops-pulse", null);
+                if (map.getLayer("all-stops-pulse")) map.setFilter("all-stops-pulse", null);
             } else {
                 const showFilter = ["!", ["in", ["get", "ATCOCode"], ["literal", hiddenCodes]]];
                 map.setFilter("all-stops-layer", showFilter);
-                map.setFilter("all-stops-pulse", showFilter);
+                if (map.getLayer("all-stops-pulse")) map.setFilter("all-stops-pulse", showFilter);
             }
         }
         let pulseRaf = null;
@@ -2671,8 +2610,6 @@
 
             map.on("click", layerId, (event) => {
                 if (state.scale === "grid" && map.getZoom() >= GRID_DETAIL_ZOOM) return;
-                const props = event.features[0].properties;
-                showFeatureInfo("LSOA", props);
                 selectLSOAArea(event.features[0], event.point); // Pass click point for popup positioning
             });
 
@@ -2914,11 +2851,7 @@
 
             map.on("click", layerId, (event) => {
                 if (map.getZoom() < GRID_DETAIL_ZOOM) return;
-                showFeatureInfo("100m Grid", event.features[0].properties);
-            });
-            map.on("click", layerId, (event) => {
-                if (map.getZoom() < GRID_DETAIL_ZOOM) return;
-                selectGrid(event.features[0]);
+                selectGrid(event.features[0], event.point);
             });
             map.on("mousemove", layerId, (event) => {
                 map.getCanvas().style.cursor = "pointer";
@@ -2990,11 +2923,9 @@
                 if (!feature) return;
                 const kind = inferFeatureKind(feature);
                 if (kind === "grid") {
-                    showFeatureInfo("100m Grid", feature.properties || {});
-                    selectGrid(feature);
+                    selectGrid(feature, event.point);
                 } else if (kind === "lsoa") {
-                    showFeatureInfo("LSOA", feature.properties || {});
-                    selectLSOAArea(feature);
+                    selectLSOAArea(feature, event.point);
                 }
             });
         }
@@ -3050,31 +2981,7 @@
         }
 
         function showFeatureInfo(type, props) {
-            const panel = document.getElementById("info-panel");
-            const title = props.LSOA21NM || props.LSOA_NAME || `Grid ${props.GridID || props.FID || ""}`;
-            document.getElementById("info-title").textContent = title;
-
-            const rows = type === "LSOA"
-                ? [
-                    ["Type", "LSOA"],
-                    ["Code", props.LSOA21CD || props.LSOA_CODE || "-"],
-                    ["Mean PTAL", props.MEAN_PTAL_ || "-"],
-                    ["AI", formatNumber(props.mean_AI || props.MEAN_AI || props.AI)]
-                ]
-                : [
-                    ["Type", "100m Grid"],
-                    ["Grid ID", props.GridID || "-"],
-                    ["PTAL 2023", props.PTAL_2023 || "-"],
-                    ["Bus AI", formatNumber(props.BUS)],
-                    ["LUL AI", formatNumber(props.LUL)],
-                    ["Rail AI", formatNumber(props.RAIL)],
-                    ["Tram AI", formatNumber(props.TRAM)]
-                ];
-
-            document.getElementById("info-list").innerHTML = rows
-                .map(([key, value]) => `<dt>${key}</dt><dd>${value}</dd>`)
-                .join("");
-            panel.classList.add("active");
+            // info-panel removed; data is now shown in floating popup cards
         }
 
         function collectCoordinates(geometry, out = []) {
@@ -3241,30 +3148,34 @@
             return { avgBaseline, avgDisrupted, avgLtrs, count, top3 };
         }
 
-        function updateLsoaSummaryPanel() {
+        function updateLsoaSummaryPanel(clickPoint) {
             const section = document.getElementById("lsoa-summary-section");
             if (!section) return;
 
             const lsoaFeature = state.selectedLSOA;
             if (!lsoaFeature) {
                 section.style.display = "none";
+                const card = document.getElementById("lsoa-popup-card");
+                if (card) card.style.display = "none";
                 return;
             }
 
             const props = lsoaFeature.properties || {};
             const lsoaCode = props.LSOA21CD || props.LSOA_CODE || "";
             const lsoaName = props.LSOA21NM || props.LSOA_NAME || lsoaCode;
+            const borough = props.borough || props.LAD22NM || "";
+            const ptal = props.MEAN_PTAL_ || props.PTAL || "-";
 
             document.getElementById("lsoa-summary-title").textContent = `LSOA: ${lsoaName}`;
             section.style.display = "";
 
-            if (!state.routeGridImpacts || !state.gridToLsoa) {
+            if (!state.lsoaResilienceSummary) {
                 document.getElementById("lsoa-baseline-ai").textContent = "Loading…";
                 document.getElementById("lsoa-disrupted-ai").textContent = "-";
                 document.getElementById("lsoa-ltrs").textContent = "-";
                 document.getElementById("lsoa-grid-count").textContent = "-";
                 document.getElementById("lsoa-top-routes").innerHTML = `<div style="padding:8px;font-size:12px;color:var(--muted)">Route impact data loading…</div>`;
-                document.getElementById("lsoa-summary-note").textContent = "OSM network data has not loaded yet.";
+                document.getElementById("lsoa-summary-note").textContent = "LSOA resilience data has not loaded yet.";
                 return;
             }
 
@@ -3311,6 +3222,71 @@
                 ? "No routes cancelled — showing baseline critical routes."
                 : `With ${state.cancelledRoutes.size} route(s) cancelled: avg LTRS ${ltrsPercent}%.`;
             document.getElementById("lsoa-summary-note").textContent = scenarioNote;
+
+            // Populate and show the floating popup card
+            _showLsoaPopupCard(lsoaCode, lsoaName, borough, ptal, result, ltrsPercent, ltrsColor, clickPoint);
+        }
+
+        function _showLsoaPopupCard(lsoaCode, lsoaName, borough, ptal, result, ltrsPercent, ltrsColor, clickPoint) {
+            const card = document.getElementById("lsoa-popup-card");
+            if (!card) return;
+            // Mutual exclusion: hide grid popup
+            const gridCard = document.getElementById("grid-popup-card");
+            if (gridCard) gridCard.style.display = "none";
+
+            // Count bus and non-bus (rail/tube) routes from pre-loaded summary
+            const rec = state.lsoaResilienceSummary && state.lsoaResilienceSummary[lsoaCode];
+            const busRoutes = rec ? rec.route_impacts.filter(r => r.mode === "bus").length : 0;
+            const railRoutes = rec ? rec.route_impacts.filter(r => r.mode !== "bus").length : 0;
+
+            document.getElementById("lsoa-popup-name").textContent = lsoaName;
+            document.getElementById("lsoa-popup-baseline").textContent = result.avgBaseline.toFixed(2);
+            document.getElementById("lsoa-popup-disrupted").textContent = result.avgDisrupted.toFixed(2);
+            document.getElementById("lsoa-popup-ltrs").innerHTML = `<span style="color:${ltrsColor}">${ltrsPercent}%</span>`;
+            document.getElementById("lsoa-popup-grids").textContent = result.count;
+
+            // Build route count + metadata row
+            const routeBox = document.getElementById("lsoa-popup-routes");
+            let html = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;font-size:12px;border-top:1px solid #eee;padding-top:8px;">
+                <div><span style="color:#666;">Bus routes</span><br><strong>${busRoutes}</strong></div>
+                <div><span style="color:#666;">Rail/Tube routes</span><br><strong>${railRoutes}</strong></div>
+                <div><span style="color:#666;">PTAL score</span><br><strong>${ptal}</strong></div>
+                <div><span style="color:#666;">Borough</span><br><strong style="font-size:11px;">${borough || "-"}</strong></div>
+            </div>`;
+
+            if (result.top3.length > 0) {
+                const maxLoss = result.top3[0].avg_ai_loss;
+                html += `<div style="font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Top Critical Routes</div>`;
+                html += result.top3.map(({ route, mode, avg_ai_loss }) => {
+                    const pct = maxLoss > 0 ? Math.round(avg_ai_loss / maxLoss * 100) : 0;
+                    const cancelled = state.cancelledRoutes.has(route) ? " \u2716" : "";
+                    const info = RAIL_LINE_INFO[route];
+                    const badge = info
+                        ? `<span style="background:${info.color};color:${info.color === '#FFD300' ? '#172026' : '#fff'};padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;">${route}</span>`
+                        : `<span style="background:#e2e8f0;color:#172026;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;">${route}</span>`;
+                    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid #f0f0f0;">
+                        ${badge}
+                        <span style="color:#666;font-size:10px;">\u2206AI ${avg_ai_loss.toFixed(2)}${cancelled}</span>
+                        <span style="font-weight:700;font-size:10px;color:#dc2626;">${pct}%</span>
+                    </div>`;
+                }).join("");
+            }
+            routeBox.innerHTML = html;
+
+            // Position at click point (fixed coordinates relative to viewport)
+            card.style.transform = "";
+            if (clickPoint) {
+                const rect = map.getCanvas().getBoundingClientRect();
+                const x = rect.left + clickPoint.x + 14;
+                const y = rect.top + clickPoint.y + 14;
+                card.style.left = Math.min(x, window.innerWidth - 316) + "px";
+                card.style.top = Math.min(y, window.innerHeight - 320) + "px";
+            } else {
+                card.style.left = "50%";
+                card.style.top = "50%";
+                card.style.transform = "translate(-50%, -50%)";
+            }
+            card.style.display = "block";
         }
 
         function formatNumber(value) {
@@ -3381,33 +3357,135 @@
             box.style.display = "block";
         }
 
-        function filterGrid() {
+        // ----- London borough centres (WGS84) for the borough dropdown -----
+        const LONDON_BOROUGHS = [
+            { name: "Barking and Dagenham",   lng:  0.1293, lat: 51.5362 },
+            { name: "Barnet",                  lng: -0.2047, lat: 51.6252 },
+            { name: "Bexley",                  lng:  0.1382, lat: 51.4549 },
+            { name: "Brent",                   lng: -0.2714, lat: 51.5588 },
+            { name: "Bromley",                 lng:  0.0140, lat: 51.4039 },
+            { name: "Camden",                  lng: -0.1426, lat: 51.5290 },
+            { name: "City of London",          lng: -0.0920, lat: 51.5155 },
+            { name: "Croydon",                 lng: -0.1003, lat: 51.3714 },
+            { name: "Ealing",                  lng: -0.3094, lat: 51.5130 },
+            { name: "Enfield",                 lng: -0.0815, lat: 51.6538 },
+            { name: "Greenwich",               lng:  0.0549, lat: 51.4892 },
+            { name: "Hackney",                 lng: -0.0581, lat: 51.5450 },
+            { name: "Hammersmith and Fulham",  lng: -0.2216, lat: 51.4927 },
+            { name: "Haringey",                lng: -0.1098, lat: 51.5906 },
+            { name: "Harrow",                  lng: -0.3364, lat: 51.5898 },
+            { name: "Havering",                lng:  0.2324, lat: 51.5779 },
+            { name: "Hillingdon",              lng: -0.4476, lat: 51.5441 },
+            { name: "Hounslow",                lng: -0.3673, lat: 51.4746 },
+            { name: "Islington",               lng: -0.1027, lat: 51.5416 },
+            { name: "Kensington and Chelsea",  lng: -0.1932, lat: 51.4991 },
+            { name: "Kingston upon Thames",    lng: -0.3031, lat: 51.4085 },
+            { name: "Lambeth",                 lng: -0.1144, lat: 51.4607 },
+            { name: "Lewisham",                lng: -0.0209, lat: 51.4452 },
+            { name: "Merton",                  lng: -0.1944, lat: 51.4014 },
+            { name: "Newham",                  lng:  0.0333, lat: 51.5255 },
+            { name: "Redbridge",               lng:  0.0831, lat: 51.5590 },
+            { name: "Richmond upon Thames",    lng: -0.3056, lat: 51.4479 },
+            { name: "Southwark",               lng: -0.0680, lat: 51.4837 },
+            { name: "Sutton",                  lng: -0.1619, lat: 51.3618 },
+            { name: "Tower Hamlets",           lng: -0.0234, lat: 51.5099 },
+            { name: "Waltham Forest",          lng: -0.0130, lat: 51.5908 },
+            { name: "Wandsworth",              lng: -0.1924, lat: 51.4567 },
+            { name: "Westminster",             lng: -0.1357, lat: 51.4975 }
+        ];
+
+        function populateBoroughDropdown() {
+            const sel = document.getElementById("borough-select");
+            if (!sel) return;
+            LONDON_BOROUGHS.forEach(b => {
+                const opt = document.createElement("option");
+                opt.value = JSON.stringify({ lng: b.lng, lat: b.lat });
+                opt.textContent = b.name;
+                sel.appendChild(opt);
+            });
+        }
+
+        function selectBorough(valueStr) {
+            if (!valueStr) return;
+            const { lng, lat } = JSON.parse(valueStr);
+            map.flyTo({ center: [lng, lat], zoom: 13.5, duration: 900 });
+            // Reset dropdown back to placeholder after a tick so the option doesn't stay selected
+            setTimeout(() => {
+                const sel = document.getElementById("borough-select");
+                if (sel) sel.value = "";
+            }, 200);
+        }
+
+        // ----- Area / postcode geocoding search -----
+        let _locationSearchTimer = null;
+
+        function filterLocation() {
             const query = document.getElementById("grid-search").value.trim();
             const box = document.getElementById("grid-results");
-            if (!query || !state.grid) {
-                if (query && state.gridSourceMode !== "geojson") {
-                    box.innerHTML = `<div class="result-item">Grid search is disabled in vector-tile mode. Click a grid cell on the map to inspect it.</div>`;
-                    box.style.display = "block";
-                } else {
-                    box.style.display = "none";
-                }
+            if (!query || query.length < 2) {
+                box.style.display = "none";
                 return;
             }
+            clearTimeout(_locationSearchTimer);
+            _locationSearchTimer = setTimeout(async () => {
+                try {
+                    const token = mapboxgl.accessToken;
+                    const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/"
+                        + encodeURIComponent(query)
+                        + ".json?country=gb"
+                        + "&types=place,postcode,district,locality,neighborhood,address"
+                        + "&proximity=-0.1278,51.5074"
+                        + "&bbox=-0.51,51.28,0.33,51.69"
+                        + "&limit=8"
+                        + "&access_token=" + token;
+                    const resp = await fetch(url);
+                    if (!resp.ok) throw new Error("Geocoding HTTP " + resp.status);
+                    const data = await resp.json();
+                    if (!data.features || !data.features.length) {
+                        box.innerHTML = `<div class="result-item">No results found</div>`;
+                        box.style.display = "block";
+                        return;
+                    }
+                    box.innerHTML = data.features.map(f => {
+                        const [lng, lat] = f.center;
+                        const subtitle = f.place_name && f.place_name !== f.text
+                            ? f.place_name.replace(f.text + ", ", "")
+                            : "";
+                        const lngStr = lng.toFixed(5);
+                        const latStr = lat.toFixed(5);
+                        const escapedName = f.text.replace(/'/g, "\\'");
+                        return `<div class="result-item" onclick="selectLocation(${lngStr},${latStr},'${escapedName}')"><strong>${f.text}</strong>`
+                            + (subtitle ? `<br><span style="color:var(--muted);font-size:11px;">${subtitle}</span>` : "")
+                            + `</div>`;
+                    }).join("");
+                    box.style.display = "block";
+                } catch (e) {
+                    console.warn("Geocoding error:", e);
+                }
+            }, 350);
+        }
 
-            const matches = state.grid.features
-                .filter(feature => {
-                    const props = feature.properties;
-                    return String(props.GridID).includes(query) || String(props.FID).includes(query);
-                })
-                .slice(0, 20);
+        function selectLocation(lng, lat, name) {
+            document.getElementById("grid-search").value = name;
+            document.getElementById("grid-results").style.display = "none";
+            map.flyTo({ center: [lng, lat], zoom: Math.max(map.getZoom(), 14.5), duration: 800 });
+            // After the camera settles, auto-select the grid cell under the target point
+            map.once("moveend", () => {
+                if (!map.getLayer("grid-fill")) return;
+                const pt = map.project([lng, lat]);
+                const nearby = map.queryRenderedFeatures(
+                    [[pt.x - 30, pt.y - 30], [pt.x + 30, pt.y + 30]],
+                    { layers: ["grid-fill"] }
+                );
+                if (nearby.length) selectGrid(nearby[0]);
+            });
+        }
 
-            box.innerHTML = matches.length
-                ? matches.map(feature => {
-                    const props = feature.properties;
-                    return `<div class="result-item" onclick="selectGridById('${props.GridID}')"><strong>Grid ${props.GridID}</strong><br>FID ${props.FID}; PTAL ${props.PTAL_2023}; AI ${formatNumber(props.AI)}</div>`;
-                }).join("")
-                : `<div class="result-item">No grid found</div>`;
-            box.style.display = "block";
+        function clearLocationSearch() {
+            const input = document.getElementById("grid-search");
+            const box = document.getElementById("grid-results");
+            if (input) input.value = "";
+            if (box) box.style.display = "none";
         }
 
         function selectGridById(gridId) {
@@ -3505,21 +3583,54 @@
             return inside;
         }
 
-        function selectGrid(feature) {
+        function selectGrid(feature, clickPoint) {
             toggleAnalysisPanel(true);
             state.selectedGrid = feature;
+            state._gridPopupClickPoint = clickPoint || null;
             const props = feature.properties;
             document.getElementById("grid-search").value = `Grid ${props.GridID}`;
             document.getElementById("grid-results").style.display = "none";
             const center = polygonCenter(feature);
             map.flyTo({ center, zoom: Math.max(map.getZoom(), 14.2), duration: 650 });
-            showFeatureInfo("100m Grid", props);
             showSelectionCenter(center, props, "100m Grid");
+            _showGridPopupCard(props, clickPoint);
             
             // Auto-show stops and counts within walking distance
             displayGridWalkingStats(center, props.AI);
             
             runSelectedGridAnalysis();
+        }
+
+        function _showGridPopupCard(props, clickPoint) {
+            const card = document.getElementById("grid-popup-card");
+            if (!card) return;
+            // Mutual exclusion: hide LSOA popup
+            const lsoaCard = document.getElementById("lsoa-popup-card");
+            if (lsoaCard) lsoaCard.style.display = "none";
+            const gridId = props.GridID || props.FID || "-";
+            document.getElementById("grid-popup-title").textContent = `Grid ${gridId}`;
+            document.getElementById("grid-popup-ptal").textContent = props.PTAL_2023 || props.PTAL || "-";
+            document.getElementById("grid-popup-ai").textContent = formatNumber(props.AI);
+            document.getElementById("grid-popup-bus-stops").textContent = "…";
+            document.getElementById("grid-popup-rail-stops").textContent = "…";
+            document.getElementById("grid-popup-baseline").textContent = "-";
+            document.getElementById("grid-popup-disrupted").textContent = "-";
+            document.getElementById("grid-popup-change").textContent = "-";
+            document.getElementById("grid-popup-ltrs").textContent = "-";
+            document.getElementById("grid-popup-note").textContent = "Analyzing…";
+            card.style.transform = "";
+            if (clickPoint) {
+                const rect = map.getCanvas().getBoundingClientRect();
+                const x = rect.left + clickPoint.x + 14;
+                const y = rect.top + clickPoint.y + 14;
+                card.style.left = Math.min(x, window.innerWidth - 316) + "px";
+                card.style.top = Math.min(y, window.innerHeight - 320) + "px";
+            } else {
+                card.style.left = "50%";
+                card.style.top = "50%";
+                card.style.transform = "translate(-50%, -50%)";
+            }
+            card.style.display = "block";
         }
 
         // Display count of bus/rail stops within walking distance + AI value
@@ -3555,6 +3666,11 @@
                     <p>AI: <span class="stat-value">${formatNumber(ai)}</span></p>
                 `;
             }
+            // Also update the floating grid popup
+            const bsEl = document.getElementById("grid-popup-bus-stops");
+            const rsEl = document.getElementById("grid-popup-rail-stops");
+            if (bsEl) bsEl.textContent = busCount;
+            if (rsEl) rsEl.textContent = railCount;
         }
 
         function selectLSOAByCode(code) {
@@ -3571,7 +3687,6 @@
             if (search) search.value = `${props.LSOA_CODE} - ${props.LSOA_NAME}`;
             if (results) results.style.display = "none";
             map.flyTo({ center: [lng, lat], zoom: Math.max(map.getZoom(), GRID_DETAIL_ZOOM + 0.6), duration: 900 });
-            showFeatureInfo("LSOA", props);
             // Highlight LSOA boundary with yellow line
             addLsoaBoundaryHighlight(feature);
             runSelectedAnalysis();
@@ -3860,6 +3975,9 @@
                 updateAIbars(publishedAI, publishedAI);
                 updateScenarioGridOverlay(gridId, 1);
                 clearGridCatchmentLayers();
+                // Update floating popup
+                const noteEl = document.getElementById("grid-popup-note");
+                if (noteEl) noteEl.textContent = "No OSM AI batch data for this grid.";
                 return;
             }
 
@@ -3879,6 +3997,19 @@
             document.getElementById("scenario-lost-note").textContent = `Lost route contributors: ${topLost}.`;
             document.getElementById("analysis-note").textContent = `Grid ${gridId}: top remaining alternative is ${topRemaining ? `${topRemaining.route} at ${topRemaining.stop_name}` : "none"}.`;
             document.getElementById("scenario-note").textContent = `Baseline AI ${result.baselineAI.toFixed(2)} -> disrupted AI ${result.disruptedAI.toFixed(2)}. Method: ${record.method}.`;
+
+            // Update floating grid popup with analysis results
+            const ltrsColor = result.ltrs >= 0.8 ? "#16a34a" : result.ltrs >= 0.5 ? "#d97706" : "#dc2626";
+            const pbEl = document.getElementById("grid-popup-baseline");
+            const pdEl = document.getElementById("grid-popup-disrupted");
+            const pcEl = document.getElementById("grid-popup-change");
+            const plEl = document.getElementById("grid-popup-ltrs");
+            const pnEl = document.getElementById("grid-popup-note");
+            if (pbEl) pbEl.textContent = result.baselineAI.toFixed(2);
+            if (pdEl) pdEl.textContent = result.disruptedAI.toFixed(2);
+            if (pcEl) pcEl.textContent = `-${result.lostAI.toFixed(2)}`;
+            if (plEl) plEl.innerHTML = `<span style="color:${ltrsColor}">${ltrsPercent}%</span>`;
+            if (pnEl) pnEl.textContent = retained ? "Grid is resilient." : `Vulnerable — top lost: ${topLost}.`;
 
             updateAIbars(result.baselineAI, result.disruptedAI);
             updateScenarioGridOverlay(gridId, result.ltrs);
@@ -4031,7 +4162,10 @@
 
         window.switchScale = switchScale;
         window.filterLSOA = filterLSOA;
-        window.filterGrid = filterGrid;
+        window.filterLocation = filterLocation;
+        window.clearLocationSearch = clearLocationSearch;
+        window.selectLocation = selectLocation;
+        window.selectBorough = selectBorough;
         window.selectGridById = selectGridById;
         window.selectLSOAByCode = selectLSOAByCode;
         window.filterRoutes = filterRoutes;
@@ -4049,6 +4183,36 @@
         map.on("load", initialise);
         renderCancelledRoutes();
     </script>
+    <!-- Floating Grid summary card (positioned at click point) -->
+    <div id="grid-popup-card" style="
+        position: fixed; display: none; z-index: 9000;
+        background: #fff; border: 1px solid #ddd; border-radius: 8px;
+        padding: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 13px; max-width: 300px; pointer-events: auto;
+    ">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong id="grid-popup-title" style="font-size: 14px; color: #172026;">Grid</strong>
+            <button onclick="document.getElementById('grid-popup-card').style.display='none';"
+                    style="background: none; border: none; font-size: 16px; cursor: pointer; padding: 0; color: #999;">×</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; font-size: 12px;">
+            <div><span style="color: #666;">PTAL 2023</span><br><strong id="grid-popup-ptal">-</strong></div>
+            <div><span style="color: #666;">Published AI</span><br><strong id="grid-popup-ai">-</strong></div>
+            <div><span style="color: #666;">Bus stops</span><br><strong id="grid-popup-bus-stops">…</strong></div>
+            <div><span style="color: #666;">Rail stops</span><br><strong id="grid-popup-rail-stops">…</strong></div>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 8px; margin-bottom: 6px;">
+            <div style="font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">Scenario Analysis</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+                <div><span style="color: #666;">Baseline AI</span><br><strong id="grid-popup-baseline">-</strong></div>
+                <div><span style="color: #666;">Disrupted AI</span><br><strong id="grid-popup-disrupted">-</strong></div>
+                <div><span style="color: #666;">AI change</span><br><strong id="grid-popup-change">-</strong></div>
+                <div><span style="color: #666;">LTRS</span><br><strong id="grid-popup-ltrs">-</strong></div>
+            </div>
+        </div>
+        <div id="grid-popup-note" style="font-size: 11px; color: #999; margin-top: 4px;"></div>
+    </div>
     <!-- Floating LSOA summary card (positioned at click point) -->
     <div id="lsoa-popup-card" style="
         position: fixed; display: none; z-index: 9000;
