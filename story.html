@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>London Transit Immune System — A Visual Story</title>
+<title>London Transit Resilience System — A Visual Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -891,7 +891,7 @@ footer a:hover { color: var(--paper); }
 
 <nav id="topnav">
     <span class="logo">L</span>
-    <strong>London Transit Immune System</strong>
+    <strong>London Transit Resilience System</strong>
     <a href="#concept">Concept</a>
     <a href="#question">Question</a>
     <a href="#story">Baseline</a>
@@ -906,7 +906,7 @@ footer a:hover { color: var(--paper); }
 <!-- ============== HERO ============== -->
 <section class="slide hero" id="hero" data-label="Intro">
     <div class="hero-inner reveal">
-        <div class="hero-eyebrow"><span class="pulse"></span>London Transit Immune System</div>
+        <div class="hero-eyebrow"><span class="pulse"></span>London Transit Resilience System</div>
         <h1>
             When London's transport network is disrupted,<br/>
             <em>who still has a way out?</em>
@@ -1146,7 +1146,7 @@ footer a:hover { color: var(--paper); }
             <p>How unevenly is transport resilience distributed across London, and how do single-route disruptions expose differences in local transport substitutability?</p>
 
             <h3 id="m-framework">2. Conceptual framework</h3>
-            <p>We adopt a <em>single-step, impact-based</em> definition of resilience: the share of baseline accessibility a place retains when a specific corridor fails (Jenelius, 2010; D'Lima &amp; Medda, 2016). This narrows the broader resilience literature, which spans temporal recovery (Bruneau et al., 2003; Henry &amp; Ramirez-Marquez, 2012) and topological robustness (Derrible &amp; Kennedy, 2010; Cats, 2016), to a measure that is computable from open static data and decomposes naturally to neighbourhoods. The "immune system" framing in the project name is editorial; the technical claim is spatial vulnerability under disruption.</p>
+            <p>We adopt a <em>single-step, impact-based</em> definition of resilience: the share of baseline accessibility a place retains when a specific corridor fails (Jenelius, 2010; D'Lima &amp; Medda, 2016). This narrows the broader resilience literature, which spans temporal recovery (Bruneau et al., 2003; Henry &amp; Ramirez-Marquez, 2012) and topological robustness (Derrible &amp; Kennedy, 2010; Cats, 2016), to a measure that is computable from open static data and decomposes naturally to neighbourhoods. The technical claim of the project is spatial vulnerability under disruption.</p>
 
             <h3 id="m-data">3. Data sources</h3>
             <ul>
@@ -1228,9 +1228,9 @@ footer a:hover { color: var(--paper); }
 <section class="slide" id="about" data-label="About">
     <div class="slide-inner wide reveal">
         <div class="eyebrow">About this project</div>
-        <h2>London Transit <em>Immune System</em></h2>
+        <h2>London Transit <em>Resilience System</em></h2>
         <div class="body">
-            <p><em>LTIS</em> is a CASA0029 Group Project (Group 17, 2025/26). Its analytical core is an OSM walking-network Dijkstra model that covers 159,451 grid cells, 27,553 transit stops, and 543 transport routes across Greater London. The Story tells the narrative; the Network Map is the forensic tool. They share one engine.</p>
+            <p><em>LTRS</em> is a CASA0029 Group Project (Group 17, 2025/26). Its analytical core is an OSM walking-network Dijkstra model that covers 159,451 grid cells, 27,553 transit stops, and 543 transport routes across Greater London. The Story tells the narrative; the Network Map is the forensic tool. They share one engine.</p>
         </div>
 
         <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; color:var(--paper); margin: 36px 0 6px;">Site structure</h3>
@@ -1286,9 +1286,9 @@ footer a:hover { color: var(--paper); }
             <div class="contrib-row"><strong>OSM walking network extraction + Dijkstra pipeline (4,994 LSOAs × 27,553 stops)</strong><span>Siyan Tao</span><span>No AI use</span></div>
             <div class="contrib-row"><strong>100 m grid AI baseline + per-route impact pre-computation (543 routes)</strong><span>Siyan Tao</span><span>ChatGPT used to debug edge cases in the loss aggregation</span></div>
             <div class="contrib-row"><strong>Network Map UI (Mapbox GL, compare mode, route cancel + LSOA / borough panels)</strong><span>Siyan Tao</span><span>ChatGPT used for Mapbox style expression syntax queries</span></div>
-            <div class="contrib-row"><strong>LSOA aggregation pipeline (build_ltis_from_lsoa_summary.py)</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to scaffold the script and Shapely fallback for MultiPolygon edge cases</span></div>
+            <div class="contrib-row"><strong>LSOA aggregation pipeline (build_ltrs_from_lsoa_summary.py)</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to scaffold the script and Shapely fallback for MultiPolygon edge cases</span></div>
             <div class="contrib-row"><strong>React skeleton: routing, layout, design tokens, typography</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used for component scaffolding</span></div>
-            <div class="contrib-row"><strong>MapLibre LTIS choropleth + colour ramps + legend</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used for MapLibre layer wiring</span></div>
+            <div class="contrib-row"><strong>MapLibre LTRS choropleth + colour ramps + legend</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used for MapLibre layer wiring</span></div>
             <div class="contrib-row"><strong>Scrollytelling narrative (scrollama + frame data)</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to draft component structure; frame copy refined against real data</span></div>
             <div class="contrib-row"><strong>Iframe embed of Network Map into the React site</strong><span>Yuxiang Fan</span><span>Anthropic Claude (via Claude Code) used to plan and execute the integration</span></div>
             <div class="contrib-row"><strong>Methodology + About + reference list</strong><span>Yuxiang Fan, Siyan Tao</span><span>ChatGPT used for copy-editing the methodology prose; final wording author-reviewed</span></div>
@@ -1350,7 +1350,7 @@ footer a:hover { color: var(--paper); }
 </section>
 
 <footer>
-    London Transit Immune System · CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
+    London Transit Resilience System · CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
     Built with Mapbox GL JS, NetworkX and GeoPandas — data from
     <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>,
     <a href="https://tfl.gov.uk/info-for/open-data-users/" target="_blank" rel="noopener">TfL Open Data</a> &amp;
