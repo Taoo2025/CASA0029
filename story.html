@@ -652,6 +652,58 @@ footer {
 footer a { color: var(--fg-1); text-decoration: none; transition: color 0.2s; }
 footer a:hover { color: var(--paper); }
 
+/* ============== EMBEDDED MAP ============== */
+.map-embed-wrap {
+    margin-top: 36px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    position: relative;
+}
+.map-embed-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px;
+    background: rgba(43,42,40,0.9);
+    border-bottom: 1px solid var(--line);
+    font-size: 12px; color: var(--fg-1);
+    gap: 14px; flex-wrap: wrap;
+}
+.map-embed-bar .dots { display: inline-flex; gap: 6px; align-items: center; }
+.map-embed-bar .dots span {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(236,230,218,0.18);
+}
+.map-embed-bar .dots span:nth-child(1) { background: var(--rose); }
+.map-embed-bar .dots span:nth-child(2) { background: var(--ochre); }
+.map-embed-bar .dots span:nth-child(3) { background: var(--sage); }
+.map-embed-bar .title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em;
+    color: var(--fg-2); text-transform: uppercase;
+}
+.map-embed-bar a {
+    color: var(--paper);
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    padding: 5px 12px; border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
+}
+.map-embed-bar a:hover { background: rgba(236,230,218,0.08); border-color: var(--sage); }
+.map-embed-frame {
+    width: 100%;
+    height: 78vh;
+    min-height: 620px;
+    border: 0;
+    display: block;
+    background: var(--bg-0);
+}
+@media (max-width: 700px) {
+    .map-embed-frame { height: 70vh; min-height: 480px; }
+}
+
 @media (max-width: 700px) {
     #sidenav { display: none; }
     #topnav { left: 12px; right: 12px; padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
@@ -672,9 +724,10 @@ footer a:hover { color: var(--paper); }
     <a href="#concept">Concept</a>
     <a href="#question">Question</a>
     <a href="#story">Story</a>
+    <a href="#network">Network Map</a>
     <a href="#methodology">Methodology</a>
     <a href="#about">About</a>
-    <a class="launch" href="London_PTAL_Accessibility_Map.html">Open Network Map →</a>
+    <a class="launch" href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Fullscreen ↗</a>
 </nav>
 
 <nav id="sidenav"></nav>
@@ -835,8 +888,32 @@ footer a:hover { color: var(--paper); }
 
         </div>
         <div class="cta-buttons">
-            <a href="London_PTAL_Accessibility_Map.html" class="primary">Run your own scenarios →</a>
+            <a href="#network" class="primary">Run your own scenarios ↓</a>
             <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="secondary">Open in new tab ↗</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============== NETWORK MAP (embedded) ============== -->
+<section class="slide" id="network" data-label="Network Map">
+    <div class="slide-inner wide reveal">
+        <div class="eyebrow">The interactive tool</div>
+        <h2>Cancel any route. <em>Watch London change.</em></h2>
+        <div class="body">
+            <p>The Network Map below is the analytical core of the project — every grid cell, every route, every metric you read about above is live here. Click <strong>Analysis</strong> in the map to open controls, search any route, cancel it, and compare baseline vs disrupted side by side.</p>
+        </div>
+        <div class="map-embed-wrap">
+            <div class="map-embed-bar">
+                <span class="dots"><span></span><span></span><span></span></span>
+                <span class="title">London_PTAL_Accessibility_Map.html · 543 routes · 159,451 grid cells</span>
+                <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
+            </div>
+            <iframe
+                class="map-embed-frame"
+                src="London_PTAL_Accessibility_Map.html"
+                title="London Transport Resilience — Network Map"
+                loading="lazy"
+                allow="fullscreen; clipboard-read; clipboard-write"></iframe>
         </div>
     </div>
 </section>
