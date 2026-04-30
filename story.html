@@ -385,6 +385,53 @@ section.slide.hero { padding-top: 100px; }
 .act-card .paras p:last-child { margin-bottom: 0; }
 .act-card .paras strong { color: var(--paper); font-weight: 600; }
 
+/* embedded scenario mini-map inside each Act card */
+.act-map {
+    margin-top: 22px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+    position: relative;
+}
+.act-map .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(43,42,40,0.9);
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    color: var(--fg-2);
+    text-transform: uppercase;
+    gap: 12px; flex-wrap: wrap;
+}
+.act-map .bar .scenario {
+    color: var(--clay);
+    font-weight: 600;
+}
+.act-map .bar a {
+    color: var(--paper);
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-family: 'Inter', sans-serif;
+}
+.act-map .bar a:hover { background: rgba(236,230,218,0.08); border-color: var(--sage); }
+.act-map iframe {
+    width: 100%;
+    height: 540px;
+    border: 0;
+    display: block;
+    background: var(--bg-0);
+}
+@media (max-width: 700px) { .act-map iframe { height: 420px; } }
+
 /* ============== CTA buttons ============== */
 .cta-buttons {
     display: flex; gap: 14px; flex-wrap: wrap;
@@ -845,6 +892,13 @@ footer a:hover { color: var(--paper); }
                     <p>This unevenness is not a flaw of the visualisation — it is the central finding. A city where everyone had strong fallback options would be resilient everywhere. London is not that city.</p>
                     <p>The map here shows the healthy baseline. The next three acts each remove one bus route from the network and re-measure. We start with route 99.</p>
                 </div>
+                <div class="act-map">
+                    <div class="bar">
+                        <span>Live demo · <span class="scenario">Baseline (no routes cancelled)</span></span>
+                        <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
+                    </div>
+                    <iframe src="London_PTAL_Accessibility_Map.html?panel=closed&legend=hidden" loading="lazy" title="Baseline accessibility map" allow="fullscreen"></iframe>
+                </div>
             </article>
 
             <article class="act-card">
@@ -857,6 +911,13 @@ footer a:hover { color: var(--paper); }
                     <p>We remove route 99 — a single London bus — and recompute accessibility for every 100&nbsp;m grid cell on its catchment. Then we average back up to LSOAs. The loss map you see is real: the pipeline ran the OSM-Dijkstra walker on every cell.</p>
                     <p>Most of London is white. That is not a rendering glitch — it is the finding. Bus 99's impact is highly localised. But where it lands, it lands hard: Bexley LSOAs lose 18.4&nbsp;% of accessibility on average, with individual cells dropping above 30&nbsp;%.</p>
                     <p>This is the spatial signature of single-route dependency. A neighbourhood doesn't have to be remote to be brittle — it has to be served by routes that don't have parallel substitutes. Bexley's eastern corridor is exactly that.</p>
+                </div>
+                <div class="act-map">
+                    <div class="bar">
+                        <span>Live demo · <span class="scenario">Route 99 cancelled</span></span>
+                        <a href="London_PTAL_Accessibility_Map.html?cancel=99&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
+                    </div>
+                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=99&panel=closed&legend=hidden" loading="lazy" title="Route 99 cancellation scenario" allow="fullscreen"></iframe>
                 </div>
             </article>
 
@@ -871,6 +932,13 @@ footer a:hover { color: var(--paper); }
                     <p>This is the trade-off between depth and spread. R2 affects more grids but each grid loses less, on average. From a planner's perspective, R2 is a "broad fragility" route; route 99 is a "sharp fragility" route. Both demand attention but require different responses.</p>
                     <p>The same 543-route engine that lets us swap from 99 to R2 in this narrative powers the Network Map tool. There, you can cancel any combination of routes and watch the whole map recompute live.</p>
                 </div>
+                <div class="act-map">
+                    <div class="bar">
+                        <span>Live demo · <span class="scenario">Route R2 cancelled</span></span>
+                        <a href="London_PTAL_Accessibility_Map.html?cancel=R2&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
+                    </div>
+                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=R2&panel=closed&legend=hidden" loading="lazy" title="Route R2 cancellation scenario" allow="fullscreen"></iframe>
+                </div>
             </article>
 
             <article class="act-card">
@@ -883,6 +951,13 @@ footer a:hover { color: var(--paper); }
                     <p>Route 685 is the third archetype: small footprint, deep punch. Only Croydon shows up in the borough rankings (1.7&nbsp;% mean), but the LSOAs that depend on it lose almost 40&nbsp;% of their accessibility when it's cancelled.</p>
                     <p>These are the LSOAs where 685 is essentially the only viable bus route. There is no parallel service to absorb the shock. The OSM-Dijkstra walker can't find alternative stops within the 2,400&nbsp;m walking budget.</p>
                     <p>Three routes. Three spatial signatures. Wide-shallow, medium-medium, narrow-deep. The full data has 540 more routes — and many of them follow these three patterns. That is the structural vulnerability map of London's surface transport.</p>
+                </div>
+                <div class="act-map">
+                    <div class="bar">
+                        <span>Live demo · <span class="scenario">Route 685 cancelled</span></span>
+                        <a href="London_PTAL_Accessibility_Map.html?cancel=685&panel=open" target="_blank" rel="noopener">Open fullscreen ↗</a>
+                    </div>
+                    <iframe src="London_PTAL_Accessibility_Map.html?cancel=685&panel=closed&legend=hidden" loading="lazy" title="Route 685 cancellation scenario" allow="fullscreen"></iframe>
                 </div>
             </article>
 

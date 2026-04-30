@@ -1724,6 +1724,7 @@
                     state.routeGridImpacts = result.data;
                     console.log(`Route impacts loaded: ${Object.keys(state.routeGridImpacts.route_grid_loss || {}).length} routes, ${Object.keys(state.routeGridImpacts.baseline_ai || {}).length} grids.`);
                     populateRouteList();
+                    try { applyURLPresets(); } catch (e) { console.warn("applyURLPresets failed", e); }
                 } else {
                     console.warn("route_grid_impacts file not available; full-map comparison disabled.");
                 }
@@ -4309,6 +4310,44 @@
         window.updateStopVisibilityFilter = updateStopVisibilityFilter;
         window.runSelectedAnalysis = runSelectedAnalysis;
         window.runSelectedGridAnalysis = runSelectedGridAnalysis;
+
+        // Apply URL query params so the page can be linked with a preset scenario.
+        // Supported params:
+        //   ?cancel=99,R2,685  — comma-separated route IDs to cancel on load
+        //   ?panel=open|closed — open or close the analysis panel
+        //   ?legend=hidden     — hide the legend (useful inside iframes)
+        //   ?embed=1           — hide non-essential chrome for embedded use
+        function applyURLPresets() {
+            const params = new URLSearchParams(window.location.search);
+            const cancel = params.get("cancel");
+            if (cancel) {
+                const known = state.routeGridImpacts && state.routeGridImpacts.route_grid_loss
+                    ? new Set(Object.keys(state.routeGridImpacts.route_grid_loss))
+                    : null;
+                cancel.split(",").map(s => s.trim()).filter(Boolean).forEach(routeId => {
+                    if (state.cancelledRoutes.has(routeId)) return;
+                    if (known && !known.has(routeId)) {
+                        console.warn(`Preset cancel: route '${routeId}' not in dataset, skipping.`);
+                        return;
+                    }
+                    addCancelledRoute(routeId);
+                });
+            }
+            const panel = params.get("panel");
+            if (panel === "open") toggleAnalysisPanel(true);
+            else if (panel === "closed") toggleAnalysisPanel(false);
+            const legend = params.get("legend");
+            if (legend === "hidden") {
+                const lp = document.getElementById("legend-panel");
+                if (lp) lp.style.display = "none";
+                const lt = document.getElementById("legend-toggle");
+                if (lt) lt.setAttribute("aria-pressed", "false");
+            }
+            if (params.get("embed") === "1") {
+                document.body.classList.add("embedded");
+            }
+        }
+        window.applyURLPresets = applyURLPresets;
 
         map.on("load", initialise);
         renderCancelledRoutes();
