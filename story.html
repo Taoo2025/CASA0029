@@ -894,7 +894,7 @@ footer a:hover { color: var(--paper); }
     <strong>London Transit Immune System</strong>
     <a href="#concept">Concept</a>
     <a href="#question">Question</a>
-    <a href="#story">Story</a>
+    <a href="#story">Baseline</a>
     <a href="#findings">Top 5</a>
     <a href="#methodology">Methodology</a>
     <a href="#about">About</a>
@@ -994,79 +994,29 @@ footer a:hover { color: var(--paper); }
     </div>
 </section>
 
-<!-- ============== STORY ACTS ============== -->
-<section class="slide" id="story" data-label="Story">
+<!-- ============== STORY · BASELINE + LIVE MAP ============== -->
+<section class="slide" id="story" data-label="Baseline">
     <div class="slide-inner wide reveal">
-        <div class="eyebrow">The story · four acts</div>
-        <h2>One baseline, three <em>route cancellations.</em></h2>
+        <div class="eyebrow">The baseline</div>
+        <h2>London's accessibility is <em>radically uneven</em> before any disruption</h2>
         <div class="body">
             <p>
-                Every number in these acts is computed in the same OSM-Dijkstra pipeline that powers the Network Map. Open the map alongside to explore any cell, any route, any combination.
+                Each polygon in the live map below is a 2021 LSOA, coloured by its baseline Accessibility Index (AI) — the average AI of all 100&nbsp;m grid cells inside it, computed from the OSM walking network reaching 27,553 transit stops. Inner boroughs glow at AI&nbsp;&gt;&nbsp;50; some outer LSOAs fall below 5. <strong>This unevenness is not a flaw of the visualisation — it is the central finding.</strong> A city where everyone had strong fallback options would be resilient everywhere. London is not that city.
+            </p>
+            <p>
+                The interactive map is the analytical core: open the <strong>Analysis</strong> panel, search any route, cancel it, and the whole grid recomputes side-by-side. Every number in the next section's Top-5 ranking is produced by this same engine.
             </p>
         </div>
-        <div class="act-list reveal-stagger">
 
-            <article class="act-card">
-                <div class="act-label">Act I — The uneven baseline</div>
-                <h3>London's accessibility is radically uneven before any disruption</h3>
-                <p class="caption">
-                    Each polygon is a 2021 LSOA, coloured by its baseline accessibility index (AI) — the average AI of all 100&nbsp;m grid cells inside it, computed from the OSM walking network reaching 27,553 transit stops. Inner boroughs glow at AI&nbsp;&gt;&nbsp;50; some outer LSOAs fall below 5.
-                </p>
-                <div class="paras">
-                    <p>London's transport accessibility is not evenly distributed. The baseline AI we compute from the full OSM walking network spans more than two orders of magnitude — from 0.04 in the most isolated LSOAs to 119.7 in the City. That's the substrate any disruption lands on.</p>
-                    <p>This unevenness is not a flaw of the visualisation — it is the central finding. A city where everyone had strong fallback options would be resilient everywhere. London is not that city.</p>
-                    <p>The map here shows the healthy baseline. The next three acts each remove one bus route from the network and re-measure. We start with route 99.</p>
-                </div>
-                <div class="act-map">
-                    <div class="bar">
-                        <span>Live demo · <span class="scenario">Baseline (no routes cancelled)</span></span>
-                        <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
-                    </div>
-                    <iframe src="London_PTAL_Accessibility_Map.html?panel=closed&legend=hidden" loading="lazy" title="Baseline accessibility map" allow="fullscreen"></iframe>
-                </div>
-            </article>
-
-            <article class="act-card">
-                <div class="act-label">Act II — Cancel bus route 99</div>
-                <h3>Route 99 fails: Bexley's accessibility drops by 18% on average</h3>
-                <p class="caption">
-                    Mean accessibility loss after removing route 99 from the OSM walking network. The bus is not a Tube line — but its removal pushes 697 grid cells across south-east London into the "critical" loss band. Mean affected loss: 18.4&nbsp;% in Bexley, 4.8&nbsp;% in Greenwich.
-                </p>
-                <div class="paras">
-                    <p>We remove route 99 — a single London bus — and recompute accessibility for every 100&nbsp;m grid cell on its catchment. Then we average back up to LSOAs. The loss map you see is real: the pipeline ran the OSM-Dijkstra walker on every cell.</p>
-                    <p>Most of London is white. That is not a rendering glitch — it is the finding. Bus 99's impact is highly localised. But where it lands, it lands hard: Bexley LSOAs lose 18.4&nbsp;% of accessibility on average, with individual cells dropping above 30&nbsp;%.</p>
-                    <p>This is the spatial signature of single-route dependency. A neighbourhood doesn't have to be remote to be brittle — it has to be served by routes that don't have parallel substitutes. Bexley's eastern corridor is exactly that.</p>
-                </div>
-            </article>
-
-            <article class="act-card">
-                <div class="act-label">Act III — Cancel bus route R2</div>
-                <h3>Route R2: 1,738 affected grid cells, Bromley loses 6.3%</h3>
-                <p class="caption">
-                    Route R2 has the widest spatial spread of all 543 routes — 1,738 grid cells affected. The geometry shifts south. Where route 99 punched a hole in the east, R2 carves a shallow corridor across south London.
-                </p>
-                <div class="paras">
-                    <p>Switch the disruption to bus R2 and the map rotates south. Bromley LSOAs absorb the largest borough-level loss (6.3&nbsp;%), but the affected area is much wider than route 99's footprint.</p>
-                    <p>This is the trade-off between depth and spread. R2 affects more grids but each grid loses less, on average. From a planner's perspective, R2 is a "broad fragility" route; route 99 is a "sharp fragility" route. Both demand attention but require different responses.</p>
-                    <p>The same 543-route engine that lets us swap from 99 to R2 in this narrative powers the Network Map tool. There, you can cancel any combination of routes and watch the whole map recompute live.</p>
-                </div>
-            </article>
-
-            <article class="act-card">
-                <div class="act-label">Act IV — Cancel bus route 685</div>
-                <h3>Route 685: smaller footprint, deepest local punch</h3>
-                <p class="caption">
-                    Route 685 affects only 329 grid cells — the smallest footprint of our three scenarios. But where it touches, it dominates. Croydon LSOAs along its corridor lose up to 38.6&nbsp;% of mean AI. This is single-line dependency in its purest form.
-                </p>
-                <div class="paras">
-                    <p>Route 685 is the third archetype: small footprint, deep punch. Only Croydon shows up in the borough rankings (1.7&nbsp;% mean), but the LSOAs that depend on it lose almost 40&nbsp;% of their accessibility when it's cancelled.</p>
-                    <p>These are the LSOAs where 685 is essentially the only viable bus route. There is no parallel service to absorb the shock. The OSM-Dijkstra walker can't find alternative stops within the 2,400&nbsp;m walking budget.</p>
-                    <p>Three routes. Three spatial signatures. Wide-shallow, medium-medium, narrow-deep. The full data has 540 more routes — and many of them follow these three patterns. That is the structural vulnerability map of London's surface transport.</p>
-                </div>
-            </article>
-
+        <div class="act-map" style="margin-top:32px;">
+            <div class="bar">
+                <span>Live · <span class="scenario">Baseline (no routes cancelled) · 543 routes · 159,451 grid cells</span></span>
+                <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
+            </div>
+            <iframe src="London_PTAL_Accessibility_Map.html?panel=closed&legend=hidden" loading="lazy" title="Baseline accessibility map" allow="fullscreen"></iframe>
         </div>
-        <div class="cta-buttons">
+
+        <div class="cta-buttons" style="margin-top:32px;">
             <a href="#findings" class="primary">See the top 5 most fragile routes ↓</a>
             <a href="London_PTAL_Accessibility_Map.html" target="_blank" rel="noopener" class="secondary">Open the full Network Map ↗</a>
         </div>
