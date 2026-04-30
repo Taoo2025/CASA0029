@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>London Transport Resilience — A Visual Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root {
     --bg-0: #07120c;
@@ -997,41 +996,96 @@ code.inline {
     </div>
 </section>
 
-<!-- ============== DATA / CHARTS ============== -->
+<!-- ============== DATA · KEY METRICS & ALGORITHMS ============== -->
 <section class="slide" id="data" data-label="Data">
     <div class="slide-inner reveal">
-        <div class="eyebrow">Chapter 07 · Data Stories</div>
-        <h2>What 543 cancellations <span class="accent">actually look like.</span></h2>
+        <div class="eyebrow">Chapter 07 · Key Metrics & Algorithms</div>
+        <h2>The numbers we compute, <span class="accent">and how.</span></h2>
         <div class="body">
             <p>
-                Static charts derived from <code class="inline">resilience_summary_osm_network.json</code> —
-                one row per route, simulating that route alone going offline.
+                Every figure on the live map traces back to one of these formulas. All distances are
+                true OSM walking metres; all weights follow the TfL PTAL convention.
             </p>
         </div>
-        <div class="chart-grid">
-            <div class="chart-card">
-                <h3>Top 15 routes — LSOAs that lose 12-min access</h3>
-                <div class="sub">
-                    Number of LSOAs that drop below the 12-minute walking-access threshold when
-                    this single route is cancelled.
+        <div class="defs reveal-stagger" style="margin-top:42px;">
+            <div class="def">
+                <div class="term">① Walking impedance</div>
+                <div class="formula">w(d, c) = max(0, 1 − d / c)</div>
+                <div class="desc">
+                    Linear decay over walking distance <code class="inline">d</code> with mode-specific
+                    catchment <code class="inline">c</code>: <span class="hl-g">640 m</span> bus,
+                    <span class="hl-g">960 m</span> rail. Beyond <code class="inline">c</code> the stop
+                    contributes nothing.
                 </div>
-                <div class="chart-wrap"><canvas id="chartLost"></canvas></div>
             </div>
-            <div class="chart-card">
-                <h3>Top 15 routes — mean walking delay</h3>
-                <div class="sub">
-                    Average extra walking time (minutes) imposed on affected LSOAs to reach the
-                    nearest still-served stop.
+            <div class="def">
+                <div class="term">② Stop weight</div>
+                <div class="formula">SW = rank_w · w(d, c) · 10</div>
+                <div class="desc">
+                    Per-stop accessibility contribution. <code class="inline">rank_w = 1.0</code> for the
+                    closest stop of a mode, <code class="inline">0.5</code> otherwise. The ×10 is the
+                    TfL PTAL scaling.
                 </div>
-                <div class="chart-wrap"><canvas id="chartDelay"></canvas></div>
             </div>
-            <div class="chart-card full">
-                <h3>Retention vs. mean delay — every route</h3>
-                <div class="sub">
-                    Bottom-left = catastrophic (low retention, high delay). Top-right = robust system.
-                    Bubble size = LSOAs affected. Hover for the route ID.
+            <div class="def">
+                <div class="term">③ Baseline AI</div>
+                <div class="formula">AI_base = Σ_routes Σ_stops SW</div>
+                <div class="desc">
+                    Sum of stop weights over all routes serving stops within
+                    <code class="inline">1200 m</code> of the cell centroid. Computed once per
+                    100 m grid cell and stored on disk.
                 </div>
-                <div class="chart-wrap" style="height:400px;"><canvas id="chartScatter"></canvas></div>
+            </div>
+            <div class="def">
+                <div class="term">④ Disrupted AI</div>
+                <div class="formula">AI_dis = AI_base − Σ_{r ∈ C} ΔAI_r</div>
+                <div class="desc">
+                    For cancelled set <code class="inline">C</code>, subtract each route's pre-computed
+                    contribution <code class="inline">ΔAI_r</code> from the sparse
+                    <code class="inline">route × grid</code> impact table.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">⑤ LTRS</div>
+                <div class="formula">LTRS = AI_dis / AI_base ∈ [0, 1]</div>
+                <div class="desc">
+                    Local Transport Resilience Score. Thresholds:
+                    <span class="hl-g">≥ 0.8 resilient</span>, 0.6–0.8 moderate, 0.3–0.6 high impact,
+                    <span style="color:var(--bad);font-weight:600">&lt; 0.3 critical</span>.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">⑥ Walking time</div>
+                <div class="formula">t_walk = d_OSM / v ,  v = 4.8 km/h</div>
+                <div class="desc">
+                    OSM Dijkstra shortest-path distance divided by a constant pedestrian speed.
+                    The 12-minute access threshold is <code class="inline">t_walk ≤ 12 min</code>.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">⑦ Mean delay</div>
+                <div class="formula">Δt̄ = mean( t_dis − t_base )_{LSOA ∈ A}</div>
+                <div class="desc">
+                    Average extra walking time across the LSOA set <code class="inline">A</code> whose
+                    nearest stop was on a cancelled route — i.e. the only LSOAs whose travel time
+                    actually changes.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">⑧ Lost 12-min access</div>
+                <div class="formula">N_lost = | { L : t_base ≤ 12 ∧ t_dis &gt; 12 } |</div>
+                <div class="desc">
+                    Hard cliff metric — count of LSOAs that <em>used to</em> reach a stop within
+                    12 minutes but no longer can after the cancellation.
+                </div>
+            </div>
+            <div class="def">
+                <div class="term">⑨ Retention ratio</div>
+                <div class="formula">ρ = (|A| − N_lost) / |A|</div>
+                <div class="desc">
+                    Of the LSOAs touched by a cancellation, the share that still meets the 12-minute
+                    threshold via an alternative service. Higher = more redundancy.
+                </div>
             </div>
         </div>
     </div>
@@ -1100,7 +1154,7 @@ code.inline {
 
 <footer>
     CASA0029 Urban Data Visualisation · UCL · 2025/26<br/>
-    Built with Mapbox GL JS, Chart.js, NetworkX, GeoPandas — data from
+    Built with Mapbox GL JS, NetworkX, GeoPandas — data from
     <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>,
     <a href="https://tfl.gov.uk/info-for/open-data-users/" target="_blank" rel="noopener">TfL Open Data</a> &
     <a href="https://www.ons.gov.uk/" target="_blank" rel="noopener">ONS</a> ·
@@ -1167,145 +1221,6 @@ const moduleIO = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) loadModule(e.target.id); });
 }, {rootMargin: '300px'});
 document.querySelectorAll('.module-frame').forEach(m => moduleIO.observe(m));
-
-// Charts
-Chart.defaults.color = '#c5d6cc';
-Chart.defaults.font.family = 'Inter, sans-serif';
-Chart.defaults.borderColor = 'rgba(167,243,208,0.06)';
-
-let chartsBuilt = false;
-async function buildCharts() {
-    if (chartsBuilt) return;
-    chartsBuilt = true;
-    let summary;
-    try {
-        summary = await fetch('resilience_summary_osm_network.json').then(r => r.json());
-    } catch (err) {
-        console.error('Failed to load summary', err);
-        document.querySelectorAll('.chart-wrap').forEach(w => {
-            w.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--fg-2);font-size:13px;">Open through HTTP server to load chart data.</div>';
-        });
-        return;
-    }
-    const all = (summary.single_route_impacts || []).filter(r => Number(r.affected_lsoa) > 0);
-    const grid = { color: 'rgba(167,243,208,0.06)' };
-    const tickColor = '#7b8d83';
-    const labelColor = '#c5d6cc';
-
-    const topLost = [...all].sort((a, b) => b.lost_12min_access_lsoa - a.lost_12min_access_lsoa).slice(0, 15);
-    new Chart(document.getElementById('chartLost'), {
-        type: 'bar',
-        data: {
-            labels: topLost.map(r => r.route),
-            datasets: [{
-                label: 'LSOAs losing 12-min access',
-                data: topLost.map(r => r.lost_12min_access_lsoa),
-                backgroundColor: (ctx) => {
-                    const c = ctx.chart.ctx.createLinearGradient(0, 0, ctx.chart.width, 0);
-                    c.addColorStop(0, 'rgba(110,231,183,0.4)');
-                    c.addColorStop(1, 'rgba(31,184,102,0.95)');
-                    return c;
-                },
-                borderColor: '#34d399',
-                borderWidth: 1,
-                borderRadius: 6,
-                hoverBackgroundColor: '#c5f06b',
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid, ticks: { color: tickColor }, beginAtZero: true },
-                y: { grid: { display: false }, ticks: { color: labelColor, font: { weight: 600 } } }
-            }
-        }
-    });
-
-    const topDelay = [...all].sort((a, b) => b.mean_delay_min - a.mean_delay_min).slice(0, 15);
-    new Chart(document.getElementById('chartDelay'), {
-        type: 'bar',
-        data: {
-            labels: topDelay.map(r => r.route),
-            datasets: [{
-                label: 'Mean delay (min)',
-                data: topDelay.map(r => r.mean_delay_min),
-                backgroundColor: (ctx) => {
-                    const c = ctx.chart.ctx.createLinearGradient(0, 0, ctx.chart.width, 0);
-                    c.addColorStop(0, 'rgba(197,240,107,0.4)');
-                    c.addColorStop(1, 'rgba(251,191,36,0.95)');
-                    return c;
-                },
-                borderColor: '#c5f06b',
-                borderWidth: 1,
-                borderRadius: 6,
-                hoverBackgroundColor: '#fbbf24',
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid, ticks: { color: tickColor }, beginAtZero: true },
-                y: { grid: { display: false }, ticks: { color: labelColor, font: { weight: 600 } } }
-            }
-        }
-    });
-
-    const scatterData = all.map(r => ({
-        x: Number(r.mean_delay_min) || 0,
-        y: (Number(r.retention_ratio) || 0) * 100,
-        r: Math.max(2, Math.min(18, Math.sqrt(r.affected_lsoa || 0) * 0.7)),
-        label: r.route,
-        affected: r.affected_lsoa
-    }));
-    new Chart(document.getElementById('chartScatter'), {
-        type: 'bubble',
-        data: { datasets: [{
-            label: 'Routes',
-            data: scatterData,
-            backgroundColor: 'rgba(52,211,153,0.55)',
-            borderColor: 'rgba(110,231,183,0.95)',
-            borderWidth: 1.2,
-            hoverBackgroundColor: 'rgba(197,240,107,0.85)',
-        }] },
-        options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    backgroundColor: 'rgba(7,18,12,0.95)',
-                    borderColor: 'rgba(52,211,153,0.4)',
-                    borderWidth: 1,
-                    padding: 12,
-                    callbacks: {
-                        label: (ctx) => {
-                            const d = ctx.raw;
-                            return `${d.label}: ${d.y.toFixed(1)}% retention · ${d.x.toFixed(1)} min delay · ${d.affected} LSOAs`;
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    title: { display: true, text: 'Mean walking delay (minutes)', color: labelColor, font: { weight: 600 } },
-                    grid, ticks: { color: tickColor }
-                },
-                y: {
-                    title: { display: true, text: 'Retention ratio (%)', color: labelColor, font: { weight: 600 } },
-                    grid, ticks: { color: tickColor },
-                    suggestedMin: 60, suggestedMax: 100
-                }
-            }
-        }
-    });
-}
-const chartIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) buildCharts(); });
-}, {rootMargin: '200px'});
-chartIO.observe(document.getElementById('data'));
 </script>
 
 </body>
