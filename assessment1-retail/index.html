@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>UK Retail Analysis - Mapbox</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" rel="stylesheet">
+    <link href="mapbox_map_styles.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="close-button-container" style="display: none;"></div>
+
+<div class="map-legend">
+    <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="toggleLegend()">
+        <h3 style="margin: 0;">Distribution of Retail Formats and Convenience Store Ratio Interactive Map 2025</h3>
+        <span id="legend-toggle-icon" style="font-size: 18px;">▼</span>
+    </div>
+    <p style="font-size: 11px; color: #999; margin: 6px 0 0 0; line-height: 1.4;">Distribution of Retailers with Convenience Stores, Convenience store % per administrative district, UK. Data source: <a href="https://geolytix.com/blog/supermarket-retail-points/" target="_blank" style="color: #0066cc; text-decoration: none; border-bottom: 1px solid #0066cc;">Geolytix Retail Points</a>, <a href="https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-may-2024-boundaries-uk-bgc-2/about" target="_blank" style="color: #0066cc; text-decoration: none; border-bottom: 1px solid #0066cc;">ONS Local Authority Boundaries (LAD UK©)</a>. Map Design: SiYan Tao. Data scale: local authority in UK.</p>
+    <div id="legend-content" style="display: none;">
+        <div id="brand-legend" style="margin: 12px 0; font-size: 12px;">
+            <!-- Legend populated from mapbox layers -->
+        </div>
+    </div>
+</div>
+
+<div class="map-overlay">
+    <div id="map-controls">
+        <button id="toggle-convenience-ratio" class="control-btn">Click to Check Percent of Convenience store</button>
+    </div>
+    <div id="info-panel">
+    </div>
+    <canvas id="brand-chart" style="display: none; max-height: 300px; margin-top: 15px;"></canvas>
+</div>
+
+<script>
+    // Toggle Legend Visibility
+    function toggleLegend() {
+        var legendContent = document.getElementById('legend-content');
+        var toggleIcon = document.getElementById('legend-toggle-icon');
+        
+        if (legendContent.style.display === 'none') {
+            legendContent.style.display = 'block';
+            toggleIcon.textContent = '▲';
+        } else {
+            legendContent.style.display = 'none';
+            toggleIcon.textContent = '▼';
+        }
+    }
+    
+    // Mapbox Configuration
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGFvc2l5YW4yIiwiYSI6ImNta3BhZ3hiaTBldTEzaHNhaDh3OWRuNmQifQ.HQ0e8XGJ1PY4KJ2Ev41mwg';
+
+    // Initialize Map
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/taosiyan2/cmld087n5002u01r3f4zscuu5',
+        center: [-1.5, 52.5],
+        zoom: 6,
+        hash: true
+    });
+
+    // Add Map Controls
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
+    map.dragRotate.disable();
+    map.touchZoomRotate.disableRotation();
+
+    map.on('load', function() {
+        console.log('Map loaded successfully!');
+        
+        // List all available layers
+        var allLayers = map.getStyle().layers;
+        console.log('=== ALL LAYERS IN STYLE ===');
+        allLayers.forEach(function(layer, index) {
+            console.log((index + 1) + '. ' + layer.id + ' (source: ' + layer.source + ')');
+        });
+        console.log('Total layers:', allLayers.length);
+        console.log('=============================');
+        
+        // Hide uk-lad-aggregated layer by default (before button click)
+        if (map.getLayer('uk-lad-aggregated-bk9zs3')) {
+            map.setLayoutProperty('uk-lad-aggregated-bk9zs3', 'visibility', 'none');
+            console.log('✓ Hidden uk-lad-aggregated-bk9zs3 layer by default');
+        }
+        
+        var retailLayerId = null;
+        var ladLayerId = null;
+        
+        // Find retail layer and LAD layer
+        var allLayers = map.getStyle().layers.map(l => l.id);
+        console.log('All available layers:', allLayers);
+        
+        // Set specific layer IDs
+        retailLayerId = 'uk-retailer';
+        ladLayerId = 'local-authority-districts-may-5b7ieq';
+        
+        // Verify layers exist
+        if (!allLayers.includes(retailLayerId)) {
+            console.warn('Retail layer "' + retailLayerId + '" not found. Available layers:', allLayers);
+            // Fallback: search for layer containing 'retail'
+            var fallbackRetail = allLayers.find(l => l.toLowerCase().includes('retail'));
+            if (fallbackRetail) {
+                retailLayerId = fallbackRetail;
+                console.log('Using fallback retail layer:', retailLayerId);
+            }
+        }
+        
+        if (!allLayers.includes(ladLayerId)) {
+            console.warn('LAD layer "' + ladLayerId + '" not found. Available layers:', allLayers);
+            // Fallback: search for layer containing 'authority' or 'lad'
+            var fallbackLad = allLayers.find(l => l.toLowerCase().includes('authority') || l.toLowerCase().includes('lad'));
+            if (fallbackLad) {
+                ladLayerId = fallbackLad;
+                console.log('Using fallback LAD layer:', ladLayerId);
+            }
+        }
+        
+        console.log('Using retail layer:', retailLayerId);
+        console.log('Using LAD layer:', ladLayerId);
+        
+        // Generate legend from map layers
+        if (retailLayerId) {
+            var legendHTML = '';
+            
+            // Color map for brand types
+            var brandTypeColorMap = {
+                'waitrose superstore': 'rgb(80, 114, 39)',
+                'waitrose convenience': 'hsl(83, 32%, 73%)',
+                'tesco superstore': 'rgb(0, 83, 158)',
+                'tesco convenience': 'hsl(203, 70%, 69%)',
+                'sainsburys superstore': 'rgb(209, 94, 0)',
+                'sainsburys convenience': 'rgb(255, 194, 122)',
+                'asda superstore': 'rgb(43, 146, 38)',
+                'asda convenience': 'hsl(113, 54%, 74%)',
+                'morrisons superstore': 'rgb(139, 141, 68)',
+                'morrisons convenience': 'hsl(52, 95%, 51%)',
+                'marks and spencer convenience': 'rgb(176, 176, 176)',
+                'marks and spencer superstore': 'rgb(0, 0, 0)'
+            };
+            
+            // Create legend from predefined brand types
+            var allBrandTypes = [
+                'tesco superstore',
+                'tesco convenience',
+                'sainsburys superstore',
+                'sainsburys convenience',
+                'asda superstore',
+                'asda convenience',
+                'morrisons superstore',
+                'morrisons convenience',
+                'waitrose superstore',
+                'waitrose convenience',
+                'marks and spencer superstore',
+                'marks and spencer convenience'
+            ];
+            
+            allBrandTypes.forEach(function(brandType) {
+                var color = brandTypeColorMap[brandType] || '#999999';
+                // Format display name: capitalize each word
+                var displayName = brandType.split(' ').map(function(word) {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                }).join(' ');
+                legendHTML += '<div class="legend-item">' +
+                    '<div class="legend-color" style="background-color: ' + color + '; border-radius: 50%;"></div>' +
+                    '<div class="legend-text">' + displayName + '</div>' +
+                    '</div>';
+            });
+            
+            var retailLayer = map.getStyle().layers.find(l => l.id === retailLayerId);
+            
+            if (ladLayerId) {
+                var ladLayer = map.getStyle().layers.find(l => l.id === ladLayerId);
+                if (ladLayer) {
+                    var lineColor = ladLayer.paint['line-color'];
+                    legendHTML += '<div class="legend-item">' +
+                        '<div class="legend-line" style="background-color: ' + (lineColor || '#999') + ';"></div>' +
+                        '<div class="legend-text">LAD Boundary</div>' +
+                        '</div>';
+                }
+            }
+            
+            console.log('Legend HTML generated:', legendHTML);
+            if (legendHTML) {
+                document.getElementById('brand-legend').innerHTML = legendHTML;
+                console.log('Legend updated in DOM');
+            }
+        }
+        
+        if (!ladLayerId) {
+            console.warn('LAD layer not found');
+        } else if (!retailLayerId) {
+            console.warn('Retail layer not found');
+        } else {
+            console.log('Using LAD layer:', ladLayerId);
+            
+            // Add a hidden fill layer for mouse detection
+            map.addLayer({
+                id: 'lad-fill-interactive',
+                type: 'fill',
+                source: map.getStyle().layers.find(l => l.id === ladLayerId).source,
+                'source-layer': map.getStyle().layers.find(l => l.id === ladLayerId)['source-layer'],
+                paint: {
+                    'fill-color': '#000',
+                    'fill-opacity': 0  // Completely transparent, for detection only
+                }
+            });
+            
+            var currentLadName = null;
+            var stickyLadData = null; // Store pinned LAD data
+            var stickyConvRatioData = null; // Store pinned ConvRatio data
+            
+            // Function to fetch and render LAD statistics
+            function updateLADInfo(ladName, isSticky) {
+                var sourceLayer = map.getStyle().layers.find(l => l.id === retailLayerId)['source-layer'];
+                
+                // Query retail points with matching LAD24NM
+                var pointsInLad = map.querySourceFeatures(map.getStyle().layers.find(l => l.id === retailLayerId).source, {
+                    sourceLayer: sourceLayer,
+                    filter: ['==', ['get', 'LAD24NM'], ladName] 
+                });
+                
+                // Deduplicate by ID and brand_type
+                var uniquePointsMap = new Map();
+                pointsInLad.forEach(function(p) {
+                    var brand_type = (p.properties.brand_type || p.properties.brand || 'Unknown').toLowerCase();
+                    var uniqueKey = (p.id || 'no-id') + '|' + brand_type;
+                    if (!uniquePointsMap.has(uniqueKey)) {
+                        uniquePointsMap.set(uniqueKey, p);
+                    }
+                });
+                var uniquePoints = Array.from(uniquePointsMap.values());
+                
+                // Aggregate by full brand_type
+                var brandStats = {};
+                uniquePoints.forEach(function(p) {
+                    var fullBrandType = (p.properties.brand_type || p.properties.brand || 'Unknown').trim().toLowerCase();
+                    brandStats[fullBrandType] = (brandStats[fullBrandType] || 0) + 1;
+                });
+                
+                // Generate HTML
+                var html = '';
+                html += '<p><strong>Region Name:</strong> ' + ladName + '</p>';
+                html += '<p><strong>Total Retailers:</strong> <span style="font-size:20px;font-weight:bold;color:#e67e22">' + uniquePoints.length + '</span></p>';
+                
+                if (Object.keys(brandStats).length > 0) {
+                    html += '<p style="margin-top:15px;"><strong>Brand Distribution:</strong></p>';
+                    
+                    var sortedBrands = Object.entries(brandStats)
+                        .map(function(item) {
+                            var brandType = item[0];
+                            var count = item[1];
+                            var displayName = brandType.split(' ').map(function(w) {
+                                return w.charAt(0).toUpperCase() + w.slice(1);
+                            }).join(' ');
+                            return { brandType: brandType, displayName: displayName, count: count };
+                        })
+                        .sort(function(a, b) { return b.count - a.count; });
+                    
+                    html += '<ul style="margin:10px 0;">';
+                    sortedBrands.forEach(function(item) {
+                        html += '<li><strong>' + item.displayName + ':</strong> ' + item.count + '</li>';
+                    });
+                    html += '</ul>';
+                } else {
+                    html += '<p style="color:#999;">No retail data in this region</p>';
+                }
+                
+                document.getElementById('info-panel').innerHTML = html;
+                
+                // Create close button if sticky
+                if (isSticky) {
+                    var closeContainer = document.getElementById('close-button-container');
+                    closeContainer.innerHTML = '<button id="clear-selection-btn" class="close-btn">✕</button>';
+                    closeContainer.style.display = 'block';
+                } else {
+                    document.getElementById('close-button-container').style.display = 'none';
+                    document.getElementById('close-button-container').innerHTML = '';
+                }
+                
+                // Create chart
+                if (Object.keys(brandStats).length > 0) {
+                    var sortedBrands = Object.entries(brandStats)
+                        .map(function(item) {
+                            var brandType = item[0];
+                            var count = item[1];
+                            var displayName = brandType.split(' ').map(function(w) {
+                                return w.charAt(0).toUpperCase() + w.slice(1);
+                            }).join(' ');
+                            return { brandType: brandType, displayName: displayName, count: count };
+                        })
+                        .sort(function(a, b) { return b.count - a.count; });
+                    
+                    var chartLabels = sortedBrands.map(item => item.displayName);
+                    var chartData = sortedBrands.map(item => item.count);
+                    var chartColors = [
+                        'rgb(0, 83, 158)', 'hsl(203, 70%, 69%)',
+                        'rgb(209, 94, 0)', 'rgb(255, 194, 122)',
+                        'rgb(43, 146, 38)', 'hsl(113, 54%, 74%)',
+                        'rgb(139, 141, 68)', 'hsl(52, 95%, 51%)',
+                        'rgb(80, 114, 39)', 'hsl(83, 32%, 73%)',
+                        'rgb(0, 0, 0)', 'rgb(176, 176, 176)'
+                    ];
+                    
+                    var chartCanvas = document.getElementById('brand-chart');
+                    chartCanvas.style.display = 'block';
+                    
+                    if (window.brandChartInstance) {
+                        window.brandChartInstance.destroy();
+                    }
+                    
+                    window.brandChartInstance = new Chart(chartCanvas, {
+                        type: 'bar',
+                        data: {
+                            labels: chartLabels,
+                            datasets: [{
+                                label: 'Number of Stores',
+                                data: chartData,
+                                backgroundColor: chartColors.slice(0, chartLabels.length),
+                                borderRadius: 4,
+                                borderSkipped: false
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: { display: true, position: 'top' },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return 'Stores: ' + context.parsed.x;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    ticks: { stepSize: 1 }
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    document.getElementById('brand-chart').style.display = 'none';
+                }
+                
+                // Add clear button handler if sticky
+                if (isSticky) {
+                    document.getElementById('clear-selection-btn').addEventListener('click', function() {
+                        stickyLadData = null;
+                        stickyConvRatioData = null; // Also clear pinned ConvRatio data
+                        // Reset map boundary
+                        map.setFilter(ladLayerId, null);
+                        map.setPaintProperty(ladLayerId, 'line-width', 1);
+                        map.setPaintProperty(ladLayerId, 'line-color', '#7d7d7d');
+                        // Reset panel
+                        document.getElementById('info-panel').innerHTML = '';
+                        document.getElementById('brand-chart').style.display = 'none';
+                    });
+                }
+            }
+            
+            // Mouse hover on fill layer
+            map.on('mousemove', 'lad-fill-interactive', function(e) {
+                // Skip if data is pinned
+                if (stickyLadData) {
+                    return;
+                }
+                
+                if (e.features.length > 0) {
+                    var ladFeature = e.features[0];
+                    currentLadName = ladFeature.properties.LAD24NM || ladFeature.properties.LAD_NAME || 'Unknown Area';
+                    
+                    // Highlight LAD boundary
+                    map.setFilter(ladLayerId, ['==', 'LAD24NM', currentLadName]);
+                    
+                    // Bold boundary line
+                    map.setPaintProperty(ladLayerId, 'line-width', 2);
+                    map.setPaintProperty(ladLayerId, 'line-color', '#005c96');
+                    
+                    // Update info
+                    updateLADInfo(currentLadName, false);
+                    map.getCanvas().style.cursor = 'pointer';
+                }
+            });
+            
+            // Click to pin LAD data
+            map.on('click', 'lad-fill-interactive', function(e) {
+                if (e.features.length > 0) {
+                    var ladFeature = e.features[0];
+                    var ladName = ladFeature.properties.LAD24NM || ladFeature.properties.LAD_NAME || 'Unknown Area';
+                    
+                    // Pin this LAD data
+                    stickyLadData = { ladName: ladName };
+                    currentLadName = ladName;
+                    
+                    // Highlight LAD boundary
+                    map.setFilter(ladLayerId, ['==', 'LAD24NM', ladName]);
+                    map.setPaintProperty(ladLayerId, 'line-width', 2);
+                    map.setPaintProperty(ladLayerId, 'line-color', '#005c96');
+                    
+                    // Update info with sticky flag
+                    updateLADInfo(ladName, true);
+                    map.getCanvas().style.cursor = 'pointer';
+                }
+            });
+            
+            // Mouse leave fill layer
+            map.on('mouseleave', 'lad-fill-interactive', function() {
+                // Skip if LAD data is pinned or ConvRatio data is pinned
+                if (stickyLadData || stickyConvRatioData) {
+                    return;
+                }
+                
+                // Reset LAD layer filter to show all boundaries
+                map.setFilter(ladLayerId, null);
+                // Reset line style to default
+                map.setPaintProperty(ladLayerId, 'line-width', 1);
+                map.setPaintProperty(ladLayerId, 'line-color', '#7d7d7d');
+                // Reset info panel
+                document.getElementById('info-panel').innerHTML = '';
+                // Hide chart
+                document.getElementById('brand-chart').style.display = 'none';
+                map.getCanvas().style.cursor = '';
+            });
+        }
+
+        // ==== Convenience Store Ratio Toggle ====
+        var convenienceRatioLayerId = 'convenience-ratio-circles';
+        var isConvenienceRatioActive = false;
+
+        // Add convenience store ratio circle layer
+        function addConvenienceRatioLayer() {
+            // Check if layer already exists
+            if (map.getLayer(convenienceRatioLayerId)) {
+                return;
+            }
+
+            console.log('Adding convenience ratio circles layer');
+            
+            // List all layers to find the uk-lad-aggregated layer
+            var allLayers = map.getStyle().layers;
+            console.log('Searching for uk-lad-aggregated layer...');
+            
+            var mapboxLayer = null;
+            var ukLadLayers = allLayers.filter(l => l.id.includes('uk-lad'));
+            console.log('Found uk-lad layers:', ukLadLayers.map(l => l.id));
+            
+            if (ukLadLayers.length > 0) {
+                mapboxLayer = ukLadLayers[0];
+                console.log('✓ Using layer:', mapboxLayer.id);
+                console.log('Layer config:', mapboxLayer);
+            } else {
+                console.error('No uk-lad layers found!');
+                console.log('All available layers:', allLayers.map(l => l.id));
+                alert('Error: uk-lad-aggregated layer not found in Mapbox style.\n\nPlease ensure the uk-lad-aggregated-61tzms layer has been added to your Mapbox style and the style has been published.');
+                return;
+            }
+            
+            var sourceId = mapboxLayer.source;
+            var sourceLayer = mapboxLayer['source-layer'];
+            console.log('Using source:', sourceId);
+            console.log('Using source-layer:', sourceLayer);
+            
+            // Verify source exists and has ConvRatio field
+            try {
+                var source = map.getSource(sourceId);
+                if (!source) {
+                    console.error('Source not found:', sourceId);
+                    alert('Error: Data source not found');
+                    return;
+                }
+                
+                // Query to verify ConvRatio field exists
+                var queryOptions = { limit: 10 };
+                if (sourceLayer) {
+                    queryOptions.sourceLayer = sourceLayer;
+                }
+                var testFeatures = map.querySourceFeatures(sourceId, queryOptions);
+                console.log('Query returned', testFeatures.length, 'features');
+                
+                if (testFeatures.length > 0) {
+                    console.log('✓ Source data verified');
+                    console.log('Sample feature fields:', Object.keys(testFeatures[0].properties));
+                    
+                    if (!('ConvRatio' in testFeatures[0].properties)) {
+                        console.warn('⚠ ConvRatio field NOT found');
+                        console.log('Available fields:', Object.keys(testFeatures[0].properties));
+                        alert('ConvRatio field not found in layer data. Available fields: ' + Object.keys(testFeatures[0].properties).join(', '));
+                        return;
+                    }
+                    console.log('✓ ConvRatio field confirmed');
+                } else {
+                    console.warn('⚠ No features returned from query');
+                }
+            } catch (e) {
+                console.error('Error verifying source:', e.message);
+                alert('Error verifying data: ' + e.message);
+                return;
+            }
+
+            // Add circle layer for convenience ratio visualization with color gradient
+            var circleLayerConfig = {
+                id: convenienceRatioLayerId,
+                type: 'circle',
+                source: sourceId,
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'ConvRatio'],
+                        0, 5,
+                        0.5, 15,
+                        1, 35
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'ConvRatio'],
+                        0, '#2ecc71',
+                        0.33, '#f1c40f',
+                        0.66, '#e67e22',
+                        1, '#e74c3c'
+                    ],
+                    'circle-opacity': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'ConvRatio'],
+                        0, 0.5,
+                        1, 0.9
+                    ],
+                    'circle-stroke-width': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'ConvRatio'],
+                        0, 1,
+                        1, 3
+                    ],
+                    'circle-stroke-color': '#ffffff',
+                    'circle-stroke-opacity': 0.9
+                }
+            };
+            
+            // Add source-layer if it exists (required for composite sources)
+            if (sourceLayer) {
+                circleLayerConfig['source-layer'] = sourceLayer;
+                console.log('Added source-layer to config:', sourceLayer);
+            }
+            
+            try {
+                map.addLayer(circleLayerConfig, 'lad-fill-interactive');
+                console.log('✓ Added circle layer');
+            } catch (e) {
+                console.error('Error adding circle layer:', e.message);
+                alert('Error adding circle layer: ' + e.message);
+                return;
+            }
+
+            // Text labels will be shown in sidebar on hover instead
+
+            // Add legend for convenience ratio
+            var legendHTML = document.getElementById('brand-legend').innerHTML;
+            var convenienceLegendHTML = '<hr style="margin:10px 0; border:none; border-top:1px solid #ddd;">' +
+                '<div style="margin:12px 0;"><strong style="font-size:14px;">🏪 Convenience Ratio</strong></div>' +
+                '<div style="font-size:12px; color:#666; margin-bottom:12px;">Percentage of convenience stores</div>' +
+                '<div style="width:100%; height:20px; background: linear-gradient(to right, #2ecc71, #f1c40f, #e67e22, #e74c3c); border-radius:3px; border:1px solid #ddd; margin:8px 0;"></div>' +
+                '<div style="display:flex; justify-content:space-between; font-size:11px; color:#999; margin:4px 0;">' +
+                    '<span>0%</span>' +
+                    '<span>50%</span>' +
+                    '<span>100%</span>' +
+                '</div>';
+            
+            document.getElementById('brand-legend').innerHTML = legendHTML + convenienceLegendHTML;
+
+            isConvenienceRatioActive = true;
+            document.getElementById('toggle-convenience-ratio').classList.add('active');
+            
+            // Show the uk-lad-aggregated layer when convenience ratio is active
+            if (map.getLayer('uk-lad-aggregated-bk9zs3')) {
+                map.setLayoutProperty('uk-lad-aggregated-bk9zs3', 'visibility', 'visible');
+                console.log('✓ Showed uk-lad-aggregated-bk9zs3 layer');
+            }
+        }
+
+        // Remove convenience ratio layer and clean up
+        function removeConvenienceRatioLayer() {
+            if (map.getLayer(convenienceRatioLayerId)) {
+                map.removeLayer(convenienceRatioLayerId);
+                console.log('✓ Removed convenience ratio layer');
+            }
+            
+            // Hide uk-lad-aggregated layer when removing convenience ratio
+            if (map.getLayer('uk-lad-aggregated-bk9zs3')) {
+                map.setLayoutProperty('uk-lad-aggregated-bk9zs3', 'visibility', 'none');
+                console.log('✓ Hidden uk-lad-aggregated-bk9zs3 layer');
+            }
+            
+            // Remove convenience ratio layer when toggle off
+            // Also clear any pinned ConvRatio data
+            stickyConvRatioData = null;
+            
+            if (map.getLayer(convenienceRatioLayerId)) {
+                map.removeLayer(convenienceRatioLayerId);
+                console.log('✓ Removed convenience ratio layer');
+            }
+            
+            // Hide uk-lad-aggregated layer when removing convenience ratio
+            if (map.getLayer('uk-lad-aggregated-bk9zs3')) {
+                map.setLayoutProperty('uk-lad-aggregated-bk9zs3', 'visibility', 'none');
+                console.log('✓ Hidden uk-lad-aggregated-bk9zs3 layer');
+            }
+            
+            // Remove legend
+            var legendHTML = document.getElementById('brand-legend').innerHTML;
+            var legendIndex = legendHTML.indexOf('<hr style="margin:10px 0; border:none; border-top:1px solid #ddd;">');
+            if (legendIndex > -1) {
+                document.getElementById('brand-legend').innerHTML = legendHTML.substring(0, legendIndex);
+            }
+            
+            // Clear info panel only if LAD data is not pinned
+            if (!stickyLadData) {
+                document.getElementById('info-panel').innerHTML = '';
+            }
+            
+            isConvenienceRatioActive = false;
+            document.getElementById('toggle-convenience-ratio').classList.remove('active');
+        }
+
+        // Toggle convenience ratio visibility
+        document.getElementById('toggle-convenience-ratio').addEventListener('click', function() {
+            if (isConvenienceRatioActive) {
+                removeConvenienceRatioLayer();
+            } else {
+                addConvenienceRatioLayer();
+            }
+        });
+
+        // Show info in sidebar on hover for convenience ratio circles
+        map.on('mousemove', convenienceRatioLayerId, function(e) {
+            map.getCanvas().style.cursor = 'pointer';
+            
+            if (e.features.length > 0) {
+                var feature = e.features[0];
+                var ladName = feature.properties.LAD24NM || feature.properties.LAD_NAME || 'Unknown';
+                var convRatio = parseFloat(feature.properties.ConvRatio) || 0;
+                var convRatioPercent = (convRatio * 100).toFixed(2);
+                var convCnt = parseInt(feature.properties.conv_cnt) || 0;
+                var superCnt = parseInt(feature.properties.super_cnt) || 0;
+                var totalStores = convCnt + superCnt;
+                
+                // Determine category
+                var categoryText = '';
+                var categoryColor = '';
+                if (convRatio < 0.33) {
+                    categoryText = 'Low';
+                    categoryColor = '#2ecc71';
+                } else if (convRatio < 0.66) {
+                    categoryText = 'Medium';
+                    categoryColor = '#f1c40f';
+                } else if (convRatio < 0.85) {
+                    categoryText = 'High';
+                    categoryColor = '#e67e22';
+                } else {
+                    categoryText = 'Very High';
+                    categoryColor = '#e74c3c';
+                }
+                
+                // Display in sidebar panel
+                var html = '<p><strong>LAD Zone:</strong> ' + ladName + '</p>' +
+                    '<div style="padding:12px; background-color:#f9f9f9; border-left:4px solid ' + categoryColor + '; border-radius:4px; margin:15px 0;">' +
+                        '<div style="font-size:18px; font-weight:bold; color:' + categoryColor + '; margin-bottom:8px;">' + convRatioPercent + '%</div>' +
+                        '<div style="font-size:12px; color:#666;">Convenience Store Ratio</div>' +
+                        '<div style="font-size:11px; color:#999; margin-top:6px;">Category: ' + categoryText + '</div>' +
+                    '</div>' +
+                    '<div style="margin-top:15px;">' +
+                        '<p><strong>Store Breakdown:</strong></p>' +
+                        '<ul style="margin:10px 0; padding-left:20px;">' +
+                            '<li>Convenience Stores: <strong>' + convCnt + '</strong></li>' +
+                            '<li>Supermarkets: <strong>' + superCnt + '</strong></li>' +
+                            '<li>Total Stores: <strong>' + totalStores + '</strong></li>' +
+                        '</ul>' +
+                    '</div>' +
+                    '<p style="font-size:12px; color:#999; margin-top:15px;">Click to pin this data</p>';
+                
+                document.getElementById('info-panel').innerHTML = html;
+            }
+        });
+
+        map.on('mouseleave', convenienceRatioLayerId, function() {
+            map.getCanvas().style.cursor = '';
+            // Only clear the panel if ConvRatio data is not pinned
+            if (!stickyConvRatioData) {
+                document.getElementById('info-panel').innerHTML = '';
+            }
+        });
+
+        // Click to pin ConvRatio data
+        map.on('click', convenienceRatioLayerId, function(e) {
+            if (e.features.length > 0) {
+                var feature = e.features[0];
+                var ladName = feature.properties.LAD24NM || feature.properties.LAD_NAME || 'Unknown';
+                var convRatio = parseFloat(feature.properties.ConvRatio) || 0;
+                var convRatioPercent = (convRatio * 100).toFixed(2);
+                var convCnt = parseInt(feature.properties.conv_cnt) || 0;
+                var superCnt = parseInt(feature.properties.super_cnt) || 0;
+                var totalStores = convCnt + superCnt;
+                
+                // Determine category
+                var categoryText = '';
+                var categoryColor = '';
+                if (convRatio < 0.33) {
+                    categoryText = 'Low';
+                    categoryColor = '#2ecc71';
+                } else if (convRatio < 0.66) {
+                    categoryText = 'Medium';
+                    categoryColor = '#f1c40f';
+                } else if (convRatio < 0.85) {
+                    categoryText = 'High';
+                    categoryColor = '#e67e22';
+                } else {
+                    categoryText = 'Very High';
+                    categoryColor = '#e74c3c';
+                }
+                
+                // Pin this ConvRatio data
+                stickyConvRatioData = { ladName: ladName };
+                
+                // Display in sidebar panel
+                var html = '<p><strong>LAD Zone:</strong> ' + ladName + '</p>' +
+                    '<div style="padding:12px; background-color:#f9f9f9; border-left:4px solid ' + categoryColor + '; border-radius:4px; margin:15px 0;">' +
+                        '<div style="font-size:18px; font-weight:bold; color:' + categoryColor + '; margin-bottom:8px;">' + convRatioPercent + '%</div>' +
+                        '<div style="font-size:12px; color:#666;">Convenience Store Ratio</div>' +
+                        '<div style="font-size:11px; color:#999; margin-top:6px;">Category: ' + categoryText + '</div>' +
+                    '</div>' +
+                    '<div style="margin-top:15px;">' +
+                        '<p><strong>Store Breakdown:</strong></p>' +
+                        '<ul style="margin:10px 0; padding-left:20px;">' +
+                            '<li>Convenience Stores: <strong>' + convCnt + '</strong></li>' +
+                            '<li>Supermarkets: <strong>' + superCnt + '</strong></li>' +
+                            '<li>Total Stores: <strong>' + totalStores + '</strong></li>' +
+                        '</ul>' +
+                    '</div>' +
+                    '<p style="font-size:12px; color:#999; margin-top:15px; font-weight:bold;">✓ Data is pinned (click close button to clear)</p>';
+                
+                document.getElementById('info-panel').innerHTML = html;
+                
+                // Show close button
+                var closeContainer = document.getElementById('close-button-container');
+                closeContainer.innerHTML = '<button id="clear-selection-btn" class="close-btn">✕</button>';
+                closeContainer.style.display = 'block';
+                
+                // Add clear button handler
+                document.getElementById('clear-selection-btn').addEventListener('click', function() {
+                    stickyConvRatioData = null;
+                    stickyLadData = null; // Also clear pinned LAD data
+                    // Reset panel
+                    document.getElementById('info-panel').innerHTML = '';
+                    closeContainer.style.display = 'none';
+                    closeContainer.innerHTML = '';
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

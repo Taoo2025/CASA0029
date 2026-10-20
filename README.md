@@ -1,3 +1,12 @@
+## Coursework projects
+
+| Project | Description | Source |
+|---|---|---|
+| Assessment 1 — UK retail map (individual) | Retail brand distribution, convenience/superstore formats and district-level convenience-store ratios | [Website and documentation](assessment1-retail/) |
+| Group project — London transport resilience | Explore accessibility changes when bus and rail routes are disrupted | [Project documentation below](#london-ptal-resilience-map) |
+
+The retail website's intended Pages address after merge is https://taoo2025.github.io/CASA0029/assessment1-retail/ (not yet verified). The existing transport website remains at the repository root.
+
 # London PTAL Resilience Map
 
 Interactive web application for exploring public-transport accessibility resilience in London.
